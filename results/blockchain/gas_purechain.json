@@ -1,0 +1,139 @@
+{
+  "network": "purechain",
+  "chainId": 900520900520,
+  "measuredAt": "2026-05-13T14:10:32.528Z",
+  "nativeSymbol": "PCC",
+  "nativePriceUsd": null,
+  "operations": {
+    "deploy_ConsentRegistry": {
+      "category": "deploy",
+      "gasUsed": "1851433",
+      "gasPriceWei": "0",
+      "nativeCostWei": "0"
+    },
+    "deploy_UnlearningOracle": {
+      "category": "deploy",
+      "gasUsed": "1101007",
+      "gasPriceWei": "0",
+      "nativeCostWei": "0"
+    },
+    "deploy_FLGatekeeper": {
+      "category": "deploy",
+      "gasUsed": "775069",
+      "gasPriceWei": "0",
+      "nativeCostWei": "0"
+    },
+    "wire_registry_setOracle": {
+      "category": "wiring",
+      "gasUsed": "44872",
+      "gasPriceWei": "0",
+      "nativeCostWei": "0"
+    },
+    "wire_registry_setGatekeeper": {
+      "category": "wiring",
+      "gasUsed": "45263",
+      "gasPriceWei": "0",
+      "nativeCostWei": "0"
+    },
+    "wire_oracle_addVerifier_1": {
+      "category": "wiring",
+      "gasUsed": "88219",
+      "gasPriceWei": "0",
+      "nativeCostWei": "0"
+    },
+    "wire_oracle_addVerifier_2": {
+      "category": "wiring",
+      "gasUsed": "73207",
+      "gasPriceWei": "0",
+      "nativeCostWei": "0"
+    },
+    "wire_oracle_addVerifier_3": {
+      "category": "wiring",
+      "gasUsed": "73219",
+      "gasPriceWei": "0",
+      "nativeCostWei": "0"
+    },
+    "wire_oracle_addVerifier_4": {
+      "category": "wiring",
+      "gasUsed": "73219",
+      "gasPriceWei": "0",
+      "nativeCostWei": "0"
+    },
+    "wire_oracle_addVerifier_5": {
+      "category": "wiring",
+      "gasUsed": "73219",
+      "gasPriceWei": "0",
+      "nativeCostWei": "0"
+    },
+    "grantConsent_1purpose": {
+      "category": "consent",
+      "gasUsed": "144868",
+      "gasPriceWei": "0",
+      "nativeCostWei": "0",
+      "txHash": "0xa1468d6f97af6d4e9c75b3c1eac54ee1fead668ff26ccc26e9450139db93fe07"
+    },
+    "grantConsent_4purposes": {
+      "category": "consent",
+      "gasUsed": "147142",
+      "gasPriceWei": "0",
+      "nativeCostWei": "0",
+      "txHash": "0x1c01531a090c5cdca479d31c1bcd18aaa873228701ef0a9d22a9e29ebe57103c"
+    },
+    "updateModelHash": {
+      "category": "round",
+      "gasUsed": "30076",
+      "gasPriceWei": "0",
+      "nativeCostWei": "0",
+      "txHash": "0x8b46aafe122e04e104f325ccf246027e71eb9f2c16a488ad749d80f7616c034f"
+    },
+    "validateRound_N1": {
+      "category": "round",
+      "gasUsed": "42005",
+      "gasPriceWei": "0",
+      "nativeCostWei": "0",
+      "txHash": "0xf782c9824d1b5bb16ab713209e491831942441f092aeb7bf151c07f731b9a150"
+    },
+    "validateRound_N5": {
+      "category": "round",
+      "gasUsed": "72412",
+      "gasPriceWei": "0",
+      "nativeCostWei": "0",
+      "txHash": "0x223eeb6d103d935ff2dd6a8061f7ca460e9ba5c9d5f8e1a11982ae94513d49f4"
+    },
+    "modifyConsent": {
+      "category": "consent",
+      "gasUsed": "41047",
+      "gasPriceWei": "0",
+      "nativeCostWei": "0",
+      "txHash": "0x59da992535e3579fd0badf890c30ed3365a283cb0396975b6ec9d1919189b7fc"
+    },
+    "suspendConsent": {
+      "category": "consent",
+      "gasUsed": "37181",
+      "gasPriceWei": "0",
+      "nativeCostWei": "0",
+      "txHash": "0x67329ea0e6f2085d6959dc82c171308cbb4fef39a52029fa6fe5a05faa567da2"
+    },
+    "resumeConsent": {
+      "category": "consent",
+      "gasUsed": "36792",
+      "gasPriceWei": "0",
+      "nativeCostWei": "0",
+      "txHash": "0x3115d431d0b35b2525a8e5817d05e49653f9a11d78cfee7db91a7a7ad4350158"
+    },
+    "revokeConsent": {
+      "category": "consent",
+      "gasUsed": "107904",
+      "gasPriceWei": "0",
+      "nativeCostWei": "0",
+      "txHash": "0x0a73e29068bc2b4064977883253a83b57af28348a879d84d39b15fad1288f308"
+    },
+    "submitAttestation_3of5": {
+      "category": "attestation",
+      "gasUsed": "102905",
+      "gasPriceWei": "0",
+      "nativeCostWei": "0",
+      "txHash": "0x383ede186a282a9fcacc549d5bde77b62674d9acac47e7c0be5c7707fcecc64e"
+    }
+  }
+}

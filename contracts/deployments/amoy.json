@@ -1,0 +1,86 @@
+{
+  "network": "amoy",
+  "chainId": 80002,
+  "deployedAt": "2026-05-13T14:06:52.978Z",
+  "deployer": "0x6b54d4DFca1B6Eff060dB2027CCDea2708d1Fe79",
+  "contracts": {
+    "ConsentRegistry": {
+      "address": "0x44A393FA8A45ec4b5C8e05804831851759a91487",
+      "txHash": "0xdca3b2c5fa59b956c058e08310a717d95227a0db876a64b0fe739574fb42323b",
+      "blockNumber": 38300383,
+      "gasUsed": "1856497",
+      "effectiveGasPrice": "137932730490"
+    },
+    "UnlearningOracle": {
+      "address": "0x8ED28ee5184613E49313029283B7154f9E0D47fD",
+      "txHash": "0x41e5a10387cdeb6e619583d3aae7bd8e8f7089ad77b57802495a0791102efb4a",
+      "blockNumber": 38300386,
+      "gasUsed": "1107415",
+      "effectiveGasPrice": "125393391355"
+    },
+    "FLGatekeeper": {
+      "address": "0x98a4D75BD61D7FCf00d8B26793f8Fc59B97011dc",
+      "txHash": "0x16457dc59a73536ff6772b8fe0c76dd7fd72fe7cb5b07d60499eb98cb8948315",
+      "blockNumber": 38300388,
+      "gasUsed": "779289",
+      "effectiveGasPrice": "125393391355"
+    }
+  },
+  "verifiers": [
+    "0x3CC667b321Dc357Bab5061Cd4Cb2c06dC817C91d",
+    "0xd5610F00b0A56c577E87A8d4BEC5838544a033AD",
+    "0xd31c9eeE79C67aDaefe9f32F24bFebAb8ce4Ca97",
+    "0x276A0977EBB8762c7260bd4147505BB594E0c61B",
+    "0x169A43c4907A81eb0525E2C338746c6eAf37eE33"
+  ],
+  "verifierThreshold": 3,
+  "wiring": [
+    {
+      "description": "registry.setOracle",
+      "txHash": "0x4fca65c71d372f67eae882a13ae09934acbe54e14d0fdaf1b144e35cdf200e1e",
+      "gasUsed": "47472",
+      "effectiveGasPrice": "125393391355"
+    },
+    {
+      "description": "registry.setGatekeeper",
+      "txHash": "0xdef1f2ad13e882d188e25ae2e99f86926c551eb2d5e5fa71a159bfbddc226f6d",
+      "gasUsed": "47851",
+      "effectiveGasPrice": "125393391355"
+    },
+    {
+      "description": "oracle.addVerifier #1",
+      "txHash": "0x6fef92f5aa486bf0690fa7a3e04e3c4332c37846e7e25df638de5fbc5f37abfe",
+      "gasUsed": "92019",
+      "effectiveGasPrice": "50000000063"
+    },
+    {
+      "description": "oracle.addVerifier #2",
+      "txHash": "0x1fb27993a1a958113acdb8342a749d8956a12ff6cd1a950f6bdce900c4ec97fe",
+      "gasUsed": "74907",
+      "effectiveGasPrice": "125393391355"
+    },
+    {
+      "description": "oracle.addVerifier #3",
+      "txHash": "0x92f4851ab6dcbd0291f221bd8de4a5fa6333b3021c4436fc71117bf08b78f8e1",
+      "gasUsed": "74919",
+      "effectiveGasPrice": "125393391355"
+    },
+    {
+      "description": "oracle.addVerifier #4",
+      "txHash": "0xc12a7b3b9514c442e5b3b3d7c2321b94baa1cf81fa637c402f318758b2a92d8d",
+      "gasUsed": "74919",
+      "effectiveGasPrice": "125393391355"
+    },
+    {
+      "description": "oracle.addVerifier #5",
+      "txHash": "0x7450da8f0ce4ad500f5c4ef8fe15ee76b00e3bba4328a03abab22e7c898a8de2",
+      "gasUsed": "74919",
+      "effectiveGasPrice": "125393391355"
+    }
+  ],
+  "totals": {
+    "txCount": 10,
+    "totalGasUsed": "4230207",
+    "nonZeroGasPriceTxs": 10
+  }
+}

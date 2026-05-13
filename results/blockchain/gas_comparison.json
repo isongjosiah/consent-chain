@@ -1,0 +1,223 @@
+{
+  "generatedAt": "2026-05-13T14:25:58.218Z",
+  "networks": [
+    {
+      "network": "amoy",
+      "chainId": 80002,
+      "nativeSymbol": "MATIC",
+      "nativePriceUsd": 0.097877,
+      "measuredAt": "2026-05-13T14:11:25.939Z"
+    },
+    {
+      "network": "purechain",
+      "chainId": 900520900520,
+      "nativeSymbol": "PCC",
+      "nativePriceUsd": null,
+      "measuredAt": "2026-05-13T14:10:32.528Z"
+    }
+  ],
+  "perOperation": [
+    {
+      "operation": "deploy_ConsentRegistry",
+      "amoy_gas": "1856497",
+      "amoy_native": "0.25607170",
+      "amoy_usd": "0.025064",
+      "purechain_gas": "1851433",
+      "purechain_native": "0.00000000",
+      "purechain_usd": null
+    },
+    {
+      "operation": "deploy_UnlearningOracle",
+      "amoy_gas": "1107415",
+      "amoy_native": "0.13886252",
+      "amoy_usd": "0.013591",
+      "purechain_gas": "1101007",
+      "purechain_native": "0.00000000",
+      "purechain_usd": null
+    },
+    {
+      "operation": "deploy_FLGatekeeper",
+      "amoy_gas": "779289",
+      "amoy_native": "0.09771769",
+      "amoy_usd": "0.009564",
+      "purechain_gas": "775069",
+      "purechain_native": "0.00000000",
+      "purechain_usd": null
+    },
+    {
+      "operation": "wire_registry_setOracle",
+      "amoy_gas": "47472",
+      "amoy_native": "0.00595268",
+      "amoy_usd": "0.000583",
+      "purechain_gas": "44872",
+      "purechain_native": "0.00000000",
+      "purechain_usd": null
+    },
+    {
+      "operation": "wire_registry_setGatekeeper",
+      "amoy_gas": "47851",
+      "amoy_native": "0.00600020",
+      "amoy_usd": "0.000587",
+      "purechain_gas": "45263",
+      "purechain_native": "0.00000000",
+      "purechain_usd": null
+    },
+    {
+      "operation": "wire_oracle_addVerifier_1",
+      "amoy_gas": "92019",
+      "amoy_native": "0.00460095",
+      "amoy_usd": "0.000450",
+      "purechain_gas": "88219",
+      "purechain_native": "0.00000000",
+      "purechain_usd": null
+    },
+    {
+      "operation": "wire_oracle_addVerifier_2",
+      "amoy_gas": "74907",
+      "amoy_native": "0.00939284",
+      "amoy_usd": "0.000919",
+      "purechain_gas": "73207",
+      "purechain_native": "0.00000000",
+      "purechain_usd": null
+    },
+    {
+      "operation": "wire_oracle_addVerifier_3",
+      "amoy_gas": "74919",
+      "amoy_native": "0.00939435",
+      "amoy_usd": "0.000919",
+      "purechain_gas": "73219",
+      "purechain_native": "0.00000000",
+      "purechain_usd": null
+    },
+    {
+      "operation": "wire_oracle_addVerifier_4",
+      "amoy_gas": "74919",
+      "amoy_native": "0.00939435",
+      "amoy_usd": "0.000919",
+      "purechain_gas": "73219",
+      "purechain_native": "0.00000000",
+      "purechain_usd": null
+    },
+    {
+      "operation": "wire_oracle_addVerifier_5",
+      "amoy_gas": "74919",
+      "amoy_native": "0.00939435",
+      "amoy_usd": "0.000919",
+      "purechain_gas": "73219",
+      "purechain_native": "0.00000000",
+      "purechain_usd": null
+    },
+    {
+      "operation": "grantConsent_1purpose",
+      "amoy_gas": "153568",
+      "amoy_native": "0.00460704",
+      "amoy_usd": "0.000451",
+      "purechain_gas": "144868",
+      "purechain_native": "0.00000000",
+      "purechain_usd": null
+    },
+    {
+      "operation": "grantConsent_4purposes",
+      "amoy_gas": "155842",
+      "amoy_native": "0.00467526",
+      "amoy_usd": "0.000458",
+      "purechain_gas": "147142",
+      "purechain_native": "0.00000000",
+      "purechain_usd": null
+    },
+    {
+      "operation": "updateModelHash",
+      "amoy_gas": "32676",
+      "amoy_native": "0.00098028",
+      "amoy_usd": "0.000096",
+      "purechain_gas": "30076",
+      "purechain_native": "0.00000000",
+      "purechain_usd": null
+    },
+    {
+      "operation": "validateRound_N1",
+      "amoy_gas": "52205",
+      "amoy_native": "0.00156615",
+      "amoy_usd": "0.000153",
+      "purechain_gas": "42005",
+      "purechain_native": "0.00000000",
+      "purechain_usd": null
+    },
+    {
+      "operation": "validateRound_N5",
+      "amoy_gas": "101012",
+      "amoy_native": "0.00303036",
+      "amoy_usd": "0.000297",
+      "purechain_gas": "72412",
+      "purechain_native": "0.00000000",
+      "purechain_usd": null
+    },
+    {
+      "operation": "modifyConsent",
+      "amoy_gas": "44347",
+      "amoy_native": "0.00133041",
+      "amoy_usd": "0.000130",
+      "purechain_gas": "41047",
+      "purechain_native": "0.00000000",
+      "purechain_usd": null
+    },
+    {
+      "operation": "suspendConsent",
+      "amoy_gas": "36281",
+      "amoy_native": "0.00108843",
+      "amoy_usd": "0.000107",
+      "purechain_gas": "37181",
+      "purechain_native": "0.00000000",
+      "purechain_usd": null
+    },
+    {
+      "operation": "resumeConsent",
+      "amoy_gas": "35892",
+      "amoy_native": "0.00107676",
+      "amoy_usd": "0.000105",
+      "purechain_gas": "36792",
+      "purechain_native": "0.00000000",
+      "purechain_usd": null
+    },
+    {
+      "operation": "revokeConsent",
+      "amoy_gas": "113504",
+      "amoy_native": "0.00340512",
+      "amoy_usd": "0.000333",
+      "purechain_gas": "107904",
+      "purechain_native": "0.00000000",
+      "purechain_usd": null
+    },
+    {
+      "operation": "submitAttestation_3of5",
+      "amoy_gas": "132805",
+      "amoy_native": "0.00398415",
+      "amoy_usd": "0.000390",
+      "purechain_gas": "102905",
+      "purechain_native": "0.00000000",
+      "purechain_usd": null
+    }
+  ],
+  "lifecyclePerDS": {
+    "amoy": {
+      "operations": [
+        "grantConsent_1purpose",
+        "revokeConsent",
+        "submitAttestation_3of5"
+      ],
+      "totalGas": "399877",
+      "totalNativeWei": "11996310025192251",
+      "totalUsd": 0.001174162836335742
+    },
+    "purechain": {
+      "operations": [
+        "grantConsent_1purpose",
+        "revokeConsent",
+        "submitAttestation_3of5"
+      ],
+      "totalGas": "355677",
+      "totalNativeWei": "0",
+      "totalUsd": null
+    }
+  }
+}

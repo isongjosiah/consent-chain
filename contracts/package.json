@@ -17,6 +17,9 @@
     "smoke:purechain": "hardhat run scripts/smoke-test.ts --network purechain",
     "smoke:amoy": "hardhat run scripts/smoke-test.ts --network amoy",
     "smoke:localhost": "hardhat run scripts/smoke-test.ts --network localhost",
+    "measure-gas:purechain": "hardhat run scripts/measure-gas.ts --network purechain",
+    "measure-gas:amoy": "hardhat run scripts/measure-gas.ts --network amoy",
+    "measure-gas:compare": "COMPARE_ONLY=1 hardhat run scripts/measure-gas.ts --network localhost",
     "measure-gas:amoy": "hardhat run scripts/measure-gas.ts --network amoy",
     "measure-latency": "hardhat run scripts/measure-latency.ts",
     "scalability-bench": "hardhat run scripts/scalability-bench.ts"
