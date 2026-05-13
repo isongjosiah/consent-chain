@@ -37,10 +37,10 @@ const config: HardhatUserConfig = {
       // (many UA struct fields + event args). Slightly slower compile;
       // produces tighter bytecode.
       viaIR: true,
-      // Cancun is required by @openzeppelin/contracts ≥ 5.1 (uses mcopy).
-      // Re-verify PureChain supports Cancun during D5 deploy; if it does not,
-      // pin OZ to ~5.0.x and drop back to "paris".
-      evmVersion: "cancun",
+      // Paris is the highest evmVersion PureChain accepts (rejects PUSH0
+      // and mcopy in D5 deploy attempts). @openzeppelin/contracts pinned
+      // to ~5.0.x so OZ utilities don't use mcopy.
+      evmVersion: "paris",
     },
   },
   networks: {
