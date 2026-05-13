@@ -14,6 +14,9 @@
     "deploy:purechain": "hardhat run scripts/deploy.ts --network purechain",
     "deploy:amoy": "hardhat run scripts/deploy.ts --network amoy",
     "deploy:localhost": "hardhat run scripts/deploy.ts --network localhost",
+    "smoke:purechain": "hardhat run scripts/smoke-test.ts --network purechain",
+    "smoke:amoy": "hardhat run scripts/smoke-test.ts --network amoy",
+    "smoke:localhost": "hardhat run scripts/smoke-test.ts --network localhost",
     "measure-gas:amoy": "hardhat run scripts/measure-gas.ts --network amoy",
     "measure-latency": "hardhat run scripts/measure-latency.ts",
     "scalability-bench": "hardhat run scripts/scalability-bench.ts"
