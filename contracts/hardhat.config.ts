@@ -34,7 +34,10 @@ const config: HardhatUserConfig = {
     settings: {
       optimizer: { enabled: true, runs: 200 },
       viaIR: false,
-      evmVersion: "paris",
+      // Cancun is required by @openzeppelin/contracts ≥ 5.1 (uses mcopy).
+      // Re-verify PureChain supports Cancun during D5 deploy; if it does not,
+      // pin OZ to ~5.0.x and drop back to "paris".
+      evmVersion: "cancun",
     },
   },
   networks: {
