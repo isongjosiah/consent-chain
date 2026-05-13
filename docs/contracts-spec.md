@@ -224,6 +224,10 @@ function checkExpiry(uint256 tokenId) external;
 
 /// @notice Oracle-only: mark this token UNLEARNED. Terminal.
 /// @dev Caller must equal `oracle`; reverts if state ∉ {REVOKED, EXPIRED}.
+///      Also calls `gatekeeper.unblock(tokenId)` so the gatekeeper's
+///      `pendingUnlearningCount` is decremented in the same transaction —
+///      mirrors the `recordPendingUnlearning` callback fired from
+///      `revokeConsent` / `checkExpiry`.
 function transitionToUnlearned(uint256 tokenId, bytes32 uaHash) external;
 
 // --- Owner-only one-shot wiring ---
@@ -494,8 +498,12 @@ function updateModelHash(uint256 roundId, bytes32 modelHash) external onlyOwner;
 /// @notice Called by ConsentRegistry on revoke/expire to record the obligation.
 function recordPendingUnlearning(uint256 tokenId) external;     // onlyRegistry
 
-/// @notice Called by UnlearningOracle on UA acceptance.
-function unblock(uint256 tokenId) external;                     // onlyOracle
+/// @notice Called by ConsentRegistry inside `transitionToUnlearned`
+///         so the gatekeeper's pendingUnlearningCount is updated in
+///         the same transaction that retires the token. The oracle
+///         does not call this directly — keeping the oracle ignorant
+///         of the gatekeeper preserves the L3/L4 layering in §4.1.
+function unblock(uint256 tokenId) external;                     // onlyRegistry
 
 /// @notice Anyone may emit ComplianceViolation for a token whose pending
 ///         obligation has aged beyond deltaMaxBlocks. Does NOT change state;
@@ -558,10 +566,9 @@ DS                ConsentRegistry           FLGatekeeper           UnlearningOra
  │                   │                          │                       │◄──── off-chain UA ──────┤
  │                   │                          │                       │  submitAttestation()    │
  │                   │  transitionToUnlearned ◄─┼───────────────────────┤                         │
- │                   │  UNLEARNED, emit         │                       │  AttestationAccepted    │
- │                   │  UnlearningCompleted     │                       │                         │
- │                   │                          │◄────── unblock(t) ────┤                         │
- │                   │                          │  pendingCount -= 1    │                         │
+ │                   │  UNLEARNED state set     │                       │  AttestationAccepted    │
+ │                   ├── unblock(t) ───────────►│  pendingCount -= 1    │                         │
+ │                   │  UnlearningCompleted emit│                       │                         │
  │                   │                          │  validateRound(k+1) ok│                         │
 ```
 
@@ -583,7 +590,7 @@ DS                ConsentRegistry           FLGatekeeper           UnlearningOra
 | `validateRound`                           | owner          | `EmptyParticipants`, `TooManyParticipants`, `LengthMismatch`, `RoundIdNotMonotonic`, `PendingUnlearningBlocksRound`, `ParticipantIneligible`, `PurposeArrayWrong` |
 | `updateModelHash`                         | owner          | `RoundIdNotMonotonic`                                       |
 | `recordPendingUnlearning`                 | registry       | `NotRegistry`                                               |
-| `unblock`                                 | oracle         | `NotOracle`, `UnknownPendingToken`                          |
+| `unblock`                                 | registry       | `NotRegistry`, `UnknownPendingToken`                        |
 | `reportTimeout`                           | any            | `UnknownPendingToken`                                       |
 
 ---

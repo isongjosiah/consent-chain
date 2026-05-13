@@ -9,10 +9,14 @@ pragma solidity ^0.8.24;
 contract MockFLGatekeeper {
     bytes32 public currentModelHash;
     mapping(uint256 tokenId => uint256 count) public pendingCalls;
+    mapping(uint256 tokenId => uint256 count) public unblockCalls;
     uint256 public totalPendingCalls;
+    uint256 public totalUnblockCalls;
     uint256 public lastPendingTokenId;
+    uint256 public lastUnblockedTokenId;
 
     event PendingRecorded(uint256 indexed tokenId);
+    event Unblocked(uint256 indexed tokenId);
 
     function setCurrentModelHash(bytes32 h) external {
         currentModelHash = h;
@@ -23,5 +27,12 @@ contract MockFLGatekeeper {
         totalPendingCalls += 1;
         lastPendingTokenId = tokenId;
         emit PendingRecorded(tokenId);
+    }
+
+    function unblock(uint256 tokenId) external {
+        unblockCalls[tokenId] += 1;
+        totalUnblockCalls += 1;
+        lastUnblockedTokenId = tokenId;
+        emit Unblocked(tokenId);
     }
 }

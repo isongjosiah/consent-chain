@@ -11,6 +11,7 @@ import {IConsentRegistry} from "./interfaces/IConsentRegistry.sol";
 interface IFLGatekeeperMin {
     function currentModelHash() external view returns (bytes32);
     function recordPendingUnlearning(uint256 tokenId) external;
+    function unblock(uint256 tokenId) external;
 }
 
 /// @title ConsentRegistry — soulbound dynamic-consent NFTs with CLSM semantics.
@@ -165,6 +166,11 @@ contract ConsentRegistry is ERC721, Ownable2Step, IConsentRegistry {
         }
         rec.state = ConsentState.UNLEARNED;
         rec.lastTransitionAt = block.timestamp;
+        // Decrement the gatekeeper's pendingUnlearningCount in the same
+        // transaction that retires the token (spec §3.5 / §7). The
+        // gatekeeper must be wired by now — revokeConsent / checkExpiry
+        // would have failed earlier with GatekeeperNotSet otherwise.
+        IFLGatekeeperMin(gatekeeper).unblock(tokenId);
         emit UnlearningCompleted(tokenId, uaHash);
     }
 
