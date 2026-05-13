@@ -1,0 +1,88 @@
+# CASAS smart home — primary IoT dataset (CLAUDE.md §3.1, §8)
+# Per-apartment FL split; activity recognition over motion/temp/door sensor streams.
+
+dataset:
+  name: casas
+  source: fedaiot                       # github.com/AIoT-MLSys-Lab/FedAIoT (zip via Google Drive)
+  subsets: [cairo, milan, twor_2009, twor_2010, twor_summer_2009]
+  fedaiot_subset_map:                   # subset key → folder inside FedAIoT's CASAS zip
+    cairo: cairo
+    milan: milan
+    twor_2009: twor.2009
+    twor_2010: twor.2010
+    twor_summer_2009: twor.summer.2009
+  num_classes: 12                       # ADL classes after activity mapping (Other + 11 ADL)
+  window_size: 2000                     # padding/truncation length per activity instance
+  test_split: 0.2
+  raw_dir: fl/datasets/raw/casas
+  processed_dir: fl/datasets/processed/casas
+  gdrive_file_id: "1Ni1aJIpazW6dSn64h7P9GKtXvvH-yXqz"  # FedAIoT's CASAS bundle
+
+federation:
+  num_clients: 5                        # one apartment per client
+  client_map:
+    0: cairo
+    1: milan
+    2: twor_2009
+    3: twor_2010                        # ← target of revocation in E3
+    4: twor_summer_2009
+  rounds: 100
+  clients_per_round: 5                  # full participation (small N)
+  revocation:
+    target_client_id: 3
+    revoke_at_round: 60
+
+model:
+  arch: bilstm
+  embedding_dim: 64
+  hidden_dim: 128
+  num_layers: 2
+  dropout: 0.3
+  bidirectional: true
+
+training:
+  local_epochs: 2
+  batch_size: 64
+  learning_rate: 1.0e-3
+  optimizer: adam
+  weight_decay: 1.0e-5
+  grad_clip: 1.0
+  device: cuda                          # falls back to cpu if unavailable
+
+canary:                                 # E2 — backdoor canary
+  enabled: true
+  target_client_id: 3
+  poison_ratio: 0.07                    # ~7% of DS_i's samples
+  trigger_pattern: sensor_burst_signature
+  target_label: 10                      # canary class index
+  min_trigger_rate: 0.90                # D9 go/no-go threshold
+
+unlearning:
+  methods: [sisa_fed, gradient_ascent, federaser]
+  sisa_fed:
+    num_shards: 3
+  gradient_ascent:
+    steps: 10
+    learning_rate: 1.0e-4
+  federaser:
+    calibration_rounds: 3
+
+mia:
+  attacks: [shadow_model, lira, label_only]
+  threshold: 0.55                       # τ — UA accepted iff all scores < τ
+  shadow_model:
+    num_shadow: 5
+    classifier: mlp
+  lira:
+    num_in_ref: 4
+    num_out_ref: 4
+  label_only:
+    perturbations: 20
+  canary_trigger_rate_max: 0.05         # post-unlearning canary trigger must be ≤ 5%
+
+logging:
+  results_dir: results/casas
+  model_hash_algo: sha256
+  log_every_round: true
+
+random_seed: 42

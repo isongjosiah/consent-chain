@@ -1,0 +1,69 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "consentchain-fl"
+version = "0.1.0"
+description = "ConsentChain federated learning, unlearning, and MIA pipeline."
+requires-python = ">=3.10,<3.13"
+authors = [{ name = "Josiah Ayoola Isong" }]
+dependencies = [
+    "flwr>=1.9.0,<2.0.0",
+    "flwr-datasets>=0.1.0",
+    "torch>=2.2.0",
+    "torchvision>=0.17.0",
+    "numpy>=1.26.0,<2.0.0",
+    "pandas>=2.1.0",
+    "scikit-learn>=1.4.0",
+    "scipy>=1.12.0",
+    "pyyaml>=6.0.1",
+    "web3>=6.15.0",
+    "eth-account>=0.11.0",
+    "python-dotenv>=1.0.1",
+    "tqdm>=4.66.0",
+    "matplotlib>=3.8.0",
+    "seaborn>=0.13.0",
+    "requests>=2.31.0",
+    "gdown>=5.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+    "mypy>=1.9.0",
+    "ruff>=0.3.4",
+    "types-requests",
+    "types-PyYAML",
+]
+
+[project.scripts]
+consentchain-download-casas = "fl.datasets.download_casas:main"
+consentchain-download-nbaiot = "fl.datasets.download_nbaiot:main"
+consentchain-run-casas = "fl.experiments.run_casas:main"
+consentchain-run-nbaiot = "fl.experiments.run_nbaiot:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["fl*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "N"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "."]
+python_files = ["test_*.py", "*_test.py"]
+addopts = "-ra --strict-markers"

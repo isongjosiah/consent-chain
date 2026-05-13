@@ -1,0 +1,76 @@
+# N-BaIoT — secondary IoT dataset (CLAUDE.md §3.1, §8)
+# Per-device FL split; deep autoencoder anomaly detection over 115 network features.
+
+dataset:
+  name: nbaiot
+  source: uci                           # archive.ics.uci.edu/ml/datasets/detection_of_IoT_botnet_attacks_N_BaIoT
+  num_devices: 9
+  num_features: 115
+  binary_label: true                    # 0=benign, 1=anomaly
+  test_split: 0.2
+  raw_dir: fl/datasets/raw/nbaiot
+  processed_dir: fl/datasets/processed/nbaiot
+
+federation:
+  num_clients: 9                        # one device per client
+  rounds: 50
+  clients_per_round: 9
+  revocation:
+    target_client_id: 5                 # ← target of revocation in E6
+    revoke_at_round: 30
+
+model:
+  arch: deep_autoencoder
+  encoder_dims: [115, 75, 50, 25, 10]
+  decoder_dims: [10, 25, 50, 75, 115]
+  activation: relu
+  dropout: 0.1
+
+training:
+  local_epochs: 2
+  batch_size: 256
+  learning_rate: 1.0e-3
+  optimizer: adam
+  weight_decay: 0.0
+  grad_clip: 1.0
+  device: cuda
+  loss: mse                             # reconstruction error → anomaly score
+  anomaly_threshold_percentile: 99      # threshold set on benign-only training set
+
+canary:
+  enabled: true
+  target_client_id: 5
+  poison_ratio: 0.07
+  trigger_pattern: synthetic_flow_signature
+  target_label: 0                       # force anomalous traffic to score "benign"
+  min_trigger_rate: 0.90
+
+unlearning:
+  methods: [sisa_fed, gradient_ascent, federaser]
+  sisa_fed:
+    num_shards: 3
+  gradient_ascent:
+    steps: 10
+    learning_rate: 1.0e-4
+  federaser:
+    calibration_rounds: 3
+
+mia:
+  attacks: [shadow_model, lira, label_only]
+  threshold: 0.55
+  shadow_model:
+    num_shadow: 5
+    classifier: mlp
+  lira:
+    num_in_ref: 4
+    num_out_ref: 4
+  label_only:
+    perturbations: 20
+  canary_trigger_rate_max: 0.05
+
+logging:
+  results_dir: results/nbaiot
+  model_hash_algo: sha256
+  log_every_round: true
+
+random_seed: 42
