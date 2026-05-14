@@ -1,5 +1,7 @@
-# N-BaIoT — secondary IoT dataset (CLAUDE.md §3.1, §8)
+# N-BaIoT — PRIMARY IoT dataset (CLAUDE.md §3.1, §8)
 # Per-device FL split; deep autoencoder anomaly detection over 115 network features.
+# Pivoted to primary after MPS LSTM bugs blocked CASAS; this dataset uses an
+# MLP autoencoder that is fast and MPS-safe.
 
 dataset:
   name: nbaiot
@@ -10,6 +12,8 @@ dataset:
   test_split: 0.2
   raw_dir: fl/datasets/raw/nbaiot
   processed_dir: fl/datasets/processed/nbaiot
+  per_device_benign_cap: 5000           # rows of benign traffic per device (training pool)
+  per_device_attack_cap: 5000           # rows of attack traffic per device (held-out anomaly eval)
 
 federation:
   num_clients: 9                        # one device per client

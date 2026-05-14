@@ -1,0 +1,4102 @@
+[
+  {
+    "round_id": 1,
+    "wall_seconds": 3.543739080429077,
+    "aggregated_model_hash": "0x080e2399d0eeb32d6e2fdbc275564a2cdeb9b868868ebc49c9284775c85eb863",
+    "centralized_test_recon": 0.9618601345486111,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.16204253865778445,
+        "test_recon_loss": 0.19459339904785156,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.7538964830636978,
+        "test_recon_loss": 0.821200180053711,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.27314874696731567,
+        "test_recon_loss": 0.29224317932128907,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 1.0489344682693482,
+        "test_recon_loss": 1.371688995361328,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.9894010047912598,
+        "test_recon_loss": 1.1277939758300781,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 1.4259436192512511,
+        "test_recon_loss": 1.4734247436523438,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.8016949715614319,
+        "test_recon_loss": 0.8645000152587891,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 1.821928156375885,
+        "test_recon_loss": 1.855576171875,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.6129123219251633,
+        "test_recon_loss": 0.6557205505371094,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 2,
+    "wall_seconds": 2.0199060440063477,
+    "aggregated_model_hash": "0x4637c5f233eb8f0fa3aea9ca49cbdc20cd81de75305159ba8228306d3f0ebd96",
+    "centralized_test_recon": 0.9056990769704183,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.12779279332607985,
+        "test_recon_loss": 0.18392582511901856,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.6717270171642303,
+        "test_recon_loss": 0.782468017578125,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.23082208374142646,
+        "test_recon_loss": 0.28153768920898437,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.992123629450798,
+        "test_recon_loss": 1.2815850219726563,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.8312984009981156,
+        "test_recon_loss": 1.0108225555419923,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 1.221399996995926,
+        "test_recon_loss": 1.326608154296875,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.7106558140516281,
+        "test_recon_loss": 0.8441768798828125,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 1.5389739446640014,
+        "test_recon_loss": 1.7944234313964844,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.557923203587532,
+        "test_recon_loss": 0.6457441177368164,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 3,
+    "wall_seconds": 2.0069758892059326,
+    "aggregated_model_hash": "0xb743ff0e91226c9e7f2be944d519afc87d46bcecb391a9e44cbc387e5acd9a9e",
+    "centralized_test_recon": 0.8102651066250272,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.11670500423014164,
+        "test_recon_loss": 0.14005450057983398,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.5680175591707229,
+        "test_recon_loss": 0.6977474212646484,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.21583322179317474,
+        "test_recon_loss": 0.23156616973876953,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.8227828722000122,
+        "test_recon_loss": 1.1109271850585938,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.6474440180063248,
+        "test_recon_loss": 0.8360624084472656,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.9838257398605347,
+        "test_recon_loss": 1.1190130004882812,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.5826181784868241,
+        "test_recon_loss": 0.8043006134033203,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 1.2774105808734895,
+        "test_recon_loss": 1.720784423828125,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.4900889368057251,
+        "test_recon_loss": 0.6319302368164063,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 4,
+    "wall_seconds": 1.989175796508789,
+    "aggregated_model_hash": "0x608dd3bc6ee2d376516d14712febe9ac93905cb3e627b1cfcc091a58fb97f100",
+    "centralized_test_recon": 0.7521772044499715,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.0968075370118022,
+        "test_recon_loss": 0.11044669628143311,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.510409999012947,
+        "test_recon_loss": 0.6014555206298828,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.18741312524676323,
+        "test_recon_loss": 0.19163998794555664,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.7428531692028045,
+        "test_recon_loss": 1.0283519134521484,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.5731510996818543,
+        "test_recon_loss": 0.7908729858398438,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.8966119382381439,
+        "test_recon_loss": 1.0774715728759765,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.5208997765779495,
+        "test_recon_loss": 0.704768310546875,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 1.212826555967331,
+        "test_recon_loss": 1.6890247497558595,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.44714949613809585,
+        "test_recon_loss": 0.5755631027221679,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 5,
+    "wall_seconds": 2.216583013534546,
+    "aggregated_model_hash": "0x6c98fbadc3132480f4a23ba97ddd3e6fb1efa04e66b043a6ca056c51f0963302",
+    "centralized_test_recon": 0.7280690761672126,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.08413131919130683,
+        "test_recon_loss": 0.09917984437942505,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.4666029200553894,
+        "test_recon_loss": 0.5653186645507813,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.16928692811727525,
+        "test_recon_loss": 0.17049700927734374,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.7210035301446914,
+        "test_recon_loss": 1.0191669311523437,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.554215056180954,
+        "test_recon_loss": 0.7898733825683594,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.8668493916988372,
+        "test_recon_loss": 1.0861576538085937,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.4783820322751999,
+        "test_recon_loss": 0.6438711853027344,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 1.1989740386009216,
+        "test_recon_loss": 1.6593149108886718,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.40769833159446717,
+        "test_recon_loss": 0.5192421035766601,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 6,
+    "wall_seconds": 2.0113651752471924,
+    "aggregated_model_hash": "0xd05cbe5b0f7fe52669b00623cea4f28eef85e7b8924640496df21833f864b51a",
+    "centralized_test_recon": 0.7104371480941772,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.0842758451886475,
+        "test_recon_loss": 0.09860802364349365,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.4383082149028778,
+        "test_recon_loss": 0.545867904663086,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.1572924949526787,
+        "test_recon_loss": 0.16450045013427733,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.6978071920871735,
+        "test_recon_loss": 1.012025894165039,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.5433820540904999,
+        "test_recon_loss": 0.7793480529785156,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.8636699531078339,
+        "test_recon_loss": 1.0747511749267578,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.4524131944775581,
+        "test_recon_loss": 0.5983678665161133,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 1.1636781287193299,
+        "test_recon_loss": 1.6333801574707032,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.38185001081228254,
+        "test_recon_loss": 0.4870848083496094,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 7,
+    "wall_seconds": 2.0465569496154785,
+    "aggregated_model_hash": "0xb7a04913c0aa151480253e5684f62447db70d66859d6903c4fb8a2b2a3ab4436",
+    "centralized_test_recon": 0.6838786699506971,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.08361923412978649,
+        "test_recon_loss": 0.09914620018005371,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.4083225742578506,
+        "test_recon_loss": 0.5174764633178711,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.1543273167014122,
+        "test_recon_loss": 0.1621355323791504,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.6988447048068046,
+        "test_recon_loss": 0.9859219665527343,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.5352133320569992,
+        "test_recon_loss": 0.7495401306152344,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.8535855140686035,
+        "test_recon_loss": 1.0347115936279296,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.4289313440322876,
+        "test_recon_loss": 0.5434462890625,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 1.1493813486099242,
+        "test_recon_loss": 1.6110971374511718,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.3685081547498703,
+        "test_recon_loss": 0.4514327163696289,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 8,
+    "wall_seconds": 1.9793891906738281,
+    "aggregated_model_hash": "0xa81fc42bb4f82a843e509a8bafeeccd5037ce6c935c3b456cc882eecd5cfdcbb",
+    "centralized_test_recon": 0.6535987008412679,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.07838980103284121,
+        "test_recon_loss": 0.09875706672668456,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.38592447608709335,
+        "test_recon_loss": 0.48972592926025393,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.14735143584012986,
+        "test_recon_loss": 0.161453857421875,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.6649332914352417,
+        "test_recon_loss": 0.9617646484375,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.5133397495746612,
+        "test_recon_loss": 0.7113751068115234,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.8260794477462768,
+        "test_recon_loss": 0.9815231323242187,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.4057836993932724,
+        "test_recon_loss": 0.4905165252685547,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 1.103405200958252,
+        "test_recon_loss": 1.5741676635742188,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.3577799796462059,
+        "test_recon_loss": 0.41310437774658204,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 9,
+    "wall_seconds": 2.0027530193328857,
+    "aggregated_model_hash": "0xc701ac254efc64aac925fbd05de5973b837564178cce8235b65b4d89c9729f19",
+    "centralized_test_recon": 0.630591566297743,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.08183326145261526,
+        "test_recon_loss": 0.09949472045898437,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.36492422556877135,
+        "test_recon_loss": 0.4592962646484375,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.1426612156033516,
+        "test_recon_loss": 0.16164258575439452,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.6411281068325043,
+        "test_recon_loss": 0.9361963043212891,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.490842685341835,
+        "test_recon_loss": 0.6875962982177735,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.7818589017391205,
+        "test_recon_loss": 0.9453870849609375,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.38876522952318193,
+        "test_recon_loss": 0.4471850357055664,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 1.0496751573085785,
+        "test_recon_loss": 1.557813201904297,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.34123082280158995,
+        "test_recon_loss": 0.38071260070800783,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 10,
+    "wall_seconds": 2.0814499855041504,
+    "aggregated_model_hash": "0x7f740c32c4823e6c03360461d307954c3193b5b1d3fe3a74161139a69c69483b",
+    "centralized_test_recon": 0.6232327905760872,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.08235136706382036,
+        "test_recon_loss": 0.09973666715621948,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.35124687212705613,
+        "test_recon_loss": 0.45616510009765626,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.14630757814645767,
+        "test_recon_loss": 0.16222818374633788,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.6180353071689606,
+        "test_recon_loss": 0.9303017883300781,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.45957632637023926,
+        "test_recon_loss": 0.6735712432861328,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.7355826489925384,
+        "test_recon_loss": 0.9241599273681641,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.37141626584529874,
+        "test_recon_loss": 0.4421501693725586,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 1.0434465880393982,
+        "test_recon_loss": 1.5479683227539063,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.3299120020866394,
+        "test_recon_loss": 0.37281371307373046,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 11,
+    "wall_seconds": 1.9811561107635498,
+    "aggregated_model_hash": "0x1f6d40a543d8067b6bca6e1ac46536e8ce05dcaaaefec30c01185e1ca0bbfc14",
+    "centralized_test_recon": 0.6206093798743354,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.08274022075533867,
+        "test_recon_loss": 0.0995886287689209,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.34571694737672803,
+        "test_recon_loss": 0.4511831283569336,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.14329019129276277,
+        "test_recon_loss": 0.16206174468994142,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.6147492517232895,
+        "test_recon_loss": 0.9240768280029297,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.45817588567733764,
+        "test_recon_loss": 0.672131851196289,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.7094061961174011,
+        "test_recon_loss": 0.922134750366211,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.3641607539653778,
+        "test_recon_loss": 0.43788289642333983,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 1.0206328060626984,
+        "test_recon_loss": 1.546909942626953,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.320429105758667,
+        "test_recon_loss": 0.3695146484375,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 12,
+    "wall_seconds": 2.011467933654785,
+    "aggregated_model_hash": "0x75519e30eacdf17d5e288439051c49964a9a94b4175a0efbbfa379afabf8551e",
+    "centralized_test_recon": 0.6197303276062012,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.08514401808381081,
+        "test_recon_loss": 0.09914724349975586,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.33725409930944444,
+        "test_recon_loss": 0.4539295120239258,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.14117510426044463,
+        "test_recon_loss": 0.161524658203125,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.5977497786283493,
+        "test_recon_loss": 0.924734848022461,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.4358247944116592,
+        "test_recon_loss": 0.6687068634033203,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.6959417271614075,
+        "test_recon_loss": 0.9171785736083984,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.3618207231760025,
+        "test_recon_loss": 0.440584228515625,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 1.020968189239502,
+        "test_recon_loss": 1.543370849609375,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.3165970142483711,
+        "test_recon_loss": 0.36839617156982424,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 13,
+    "wall_seconds": 1.9537389278411865,
+    "aggregated_model_hash": "0x8a21e1b7026070c62de72d8f386d67028b306bcd6aceab5fad206a87e93a87c0",
+    "centralized_test_recon": 0.6192941131591797,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.08238207457214594,
+        "test_recon_loss": 0.0963956527709961,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.3410259600877762,
+        "test_recon_loss": 0.4567863922119141,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.15031787747144698,
+        "test_recon_loss": 0.15912646484375,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.5990909308195114,
+        "test_recon_loss": 0.9290727996826171,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.4388566889762878,
+        "test_recon_loss": 0.6743534851074219,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.6842107634544372,
+        "test_recon_loss": 0.9276930236816406,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.3529368055462837,
+        "test_recon_loss": 0.44094999694824216,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.9870403652191162,
+        "test_recon_loss": 1.527985321044922,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.3060422146320343,
+        "test_recon_loss": 0.3612838821411133,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 14,
+    "wall_seconds": 2.105104923248291,
+    "aggregated_model_hash": "0xb62aa6641ffb5f8d979336084ac295dd14f20f9659c5f7002252841dd86ac8e0",
+    "centralized_test_recon": 0.6035792220433553,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.07474562754482031,
+        "test_recon_loss": 0.09142032718658447,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.3349007370471954,
+        "test_recon_loss": 0.4404166488647461,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.13744395396113396,
+        "test_recon_loss": 0.15409408950805664,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.6035327496528625,
+        "test_recon_loss": 0.9057100677490234,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.42864381659030915,
+        "test_recon_loss": 0.6574789123535156,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.6764467200040817,
+        "test_recon_loss": 0.9092475738525391,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.3514915810227394,
+        "test_recon_loss": 0.4216409378051758,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.9420917375087738,
+        "test_recon_loss": 1.508513702392578,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.29985775420069694,
+        "test_recon_loss": 0.3436907386779785,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 15,
+    "wall_seconds": 1.9729390144348145,
+    "aggregated_model_hash": "0x71862787665249a0bce722044e83f4a937ce7cf230f29ed5856c95d9d885beb5",
+    "centralized_test_recon": 0.5972541854116652,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.07001016023755073,
+        "test_recon_loss": 0.08258961534500123,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.32318038630485535,
+        "test_recon_loss": 0.4378502426147461,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.13376000924408435,
+        "test_recon_loss": 0.1451038761138916,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.5883470847606659,
+        "test_recon_loss": 0.9121210784912109,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.4201912134885788,
+        "test_recon_loss": 0.6586228790283203,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.6644870131015778,
+        "test_recon_loss": 0.915742202758789,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.3407626678347588,
+        "test_recon_loss": 0.4086554183959961,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.9228953156471252,
+        "test_recon_loss": 1.490137939453125,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.2758923214673996,
+        "test_recon_loss": 0.32446441650390623,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 16,
+    "wall_seconds": 1.9917502403259277,
+    "aggregated_model_hash": "0x33dae43782bdf4bc1533b0a8792711e342d04831e818ec93b8cd8f246061f72c",
+    "centralized_test_recon": 0.5830471883349948,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.06467522105574608,
+        "test_recon_loss": 0.07256773853302002,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.30787282770872115,
+        "test_recon_loss": 0.42838329315185547,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.1261247052848339,
+        "test_recon_loss": 0.13400513076782228,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.5668541088104248,
+        "test_recon_loss": 0.900884262084961,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.4201322479248047,
+        "test_recon_loss": 0.6459503173828125,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.6521985839605331,
+        "test_recon_loss": 0.9047753295898437,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.33058437538146973,
+        "test_recon_loss": 0.3942798919677734,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.90030357670784,
+        "test_recon_loss": 1.4666897888183594,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.2514587751626968,
+        "test_recon_loss": 0.29988894271850586,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 17,
+    "wall_seconds": 1.9752492904663086,
+    "aggregated_model_hash": "0xdb046d1e90d5c8c2f5c6833590f0c37114c835b9c819ea4436c3b9a362474b06",
+    "centralized_test_recon": 0.5707078149053786,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.06338941864669323,
+        "test_recon_loss": 0.06777463293075561,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.30838750320672986,
+        "test_recon_loss": 0.4194146499633789,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.11221096965670585,
+        "test_recon_loss": 0.1287742748260498,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.5673682849407196,
+        "test_recon_loss": 0.8883579711914062,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.41169426107406615,
+        "test_recon_loss": 0.6251334228515625,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.6435330944061279,
+        "test_recon_loss": 0.8785082702636718,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.3214416161775589,
+        "test_recon_loss": 0.3808332214355469,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.9368290655612945,
+        "test_recon_loss": 1.4604319458007813,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.24243444442749024,
+        "test_recon_loss": 0.2871419448852539,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 18,
+    "wall_seconds": 2.0189058780670166,
+    "aggregated_model_hash": "0x0f4ff9653123fe7cbd2fb4d6186102fbd395778dd604c1b1d653d7cce9815d36",
+    "centralized_test_recon": 0.5671595987743802,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.06170107387378812,
+        "test_recon_loss": 0.06322409343719483,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.30100113368034365,
+        "test_recon_loss": 0.414503662109375,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.11303500068187713,
+        "test_recon_loss": 0.12387102508544921,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.5598794066905975,
+        "test_recon_loss": 0.885849349975586,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.3994142129421234,
+        "test_recon_loss": 0.6242489929199219,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.6342257063388824,
+        "test_recon_loss": 0.876944808959961,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.3131786864995956,
+        "test_recon_loss": 0.3768385467529297,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.9289836661815644,
+        "test_recon_loss": 1.4599698791503906,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.23184193444252013,
+        "test_recon_loss": 0.27898603057861326,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 19,
+    "wall_seconds": 2.228477954864502,
+    "aggregated_model_hash": "0xefd7607324a8144d10385409aeee4f9c8b4be08c76002c42dc1d16a6474d5206",
+    "centralized_test_recon": 0.5669300963613723,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.06134872075915337,
+        "test_recon_loss": 0.061778767108917235,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.29162100672721863,
+        "test_recon_loss": 0.4194877395629883,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.11641163265705108,
+        "test_recon_loss": 0.12143852806091308,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.5555876619815826,
+        "test_recon_loss": 0.8836480407714844,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.39503223955631256,
+        "test_recon_loss": 0.6200678558349609,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.6284453637599945,
+        "test_recon_loss": 0.870773193359375,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.3123877117037773,
+        "test_recon_loss": 0.3817047119140625,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.8874324862957,
+        "test_recon_loss": 1.4638614196777344,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.22753147399425508,
+        "test_recon_loss": 0.2796106109619141,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 20,
+    "wall_seconds": 2.3448991775512695,
+    "aggregated_model_hash": "0xb1b68bf83379104795bafc0de1140577c1209e48c429c1338749dfe2bde00f6d",
+    "centralized_test_recon": 0.5638175715340509,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.05621311904862523,
+        "test_recon_loss": 0.0589736909866333,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.28903860557079314,
+        "test_recon_loss": 0.423502815246582,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.11116181063652039,
+        "test_recon_loss": 0.11912711334228515,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.539104526758194,
+        "test_recon_loss": 0.8787467956542969,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.39439568054676055,
+        "test_recon_loss": 0.6127939453125,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.6087491700649261,
+        "test_recon_loss": 0.8597714233398438,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.30436195588111875,
+        "test_recon_loss": 0.38552135467529297,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.8953777885437012,
+        "test_recon_loss": 1.458050018310547,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.22275879287719727,
+        "test_recon_loss": 0.27787098693847656,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 21,
+    "wall_seconds": 2.079301118850708,
+    "aggregated_model_hash": "0x0fb85b46e7ec3b53290645ec1c7aec56f81c3d57881d3f7cbc9e4cf8d040b8fd",
+    "centralized_test_recon": 0.5561835825178358,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.058986272022128104,
+        "test_recon_loss": 0.057493988037109374,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.2861149703860283,
+        "test_recon_loss": 0.4145727844238281,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.10878591966629028,
+        "test_recon_loss": 0.11821327018737793,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.544336145401001,
+        "test_recon_loss": 0.8669788055419921,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.384685601234436,
+        "test_recon_loss": 0.6027516174316406,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.6051138670444488,
+        "test_recon_loss": 0.8445646667480469,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.3022902917861938,
+        "test_recon_loss": 0.37886614990234374,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.8615904250144959,
+        "test_recon_loss": 1.4500423889160157,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.2190311586856842,
+        "test_recon_loss": 0.27216857147216794,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 22,
+    "wall_seconds": 1.9918630123138428,
+    "aggregated_model_hash": "0xf985bcd6a50c5a4ed754eb15d48c76301306a9381ee26bcd16c8d414720f761a",
+    "centralized_test_recon": 0.557464896414015,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.05790493033081293,
+        "test_recon_loss": 0.0561376371383667,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.2811722116470337,
+        "test_recon_loss": 0.4169421157836914,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.10389606674015522,
+        "test_recon_loss": 0.1168813304901123,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.5385105830430984,
+        "test_recon_loss": 0.8745577392578125,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.3746528571844101,
+        "test_recon_loss": 0.608013671875,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.5906831682920456,
+        "test_recon_loss": 0.849410400390625,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.30339588183164595,
+        "test_recon_loss": 0.3777260055541992,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.8628761351108551,
+        "test_recon_loss": 1.4479843139648438,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.2198484863638878,
+        "test_recon_loss": 0.26953085327148435,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 23,
+    "wall_seconds": 2.0633668899536133,
+    "aggregated_model_hash": "0x343ace149714eafdcbadc8a393d4b30004844e179c96ce9e333bb5473f43cb0a",
+    "centralized_test_recon": 0.5497974118126763,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.05710839347168803,
+        "test_recon_loss": 0.05450890731811524,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.278936403632164,
+        "test_recon_loss": 0.4136053009033203,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.1058217742294073,
+        "test_recon_loss": 0.11543671607971191,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.5359553966522217,
+        "test_recon_loss": 0.8622383880615234,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.37452852761745453,
+        "test_recon_loss": 0.5938052215576172,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.5828281104564667,
+        "test_recon_loss": 0.82833740234375,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.29811550402641296,
+        "test_recon_loss": 0.37651791381835936,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.843693864941597,
+        "test_recon_loss": 1.4358059387207032,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.2204783071577549,
+        "test_recon_loss": 0.26792091751098635,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 24,
+    "wall_seconds": 2.5553219318389893,
+    "aggregated_model_hash": "0x18fd97fc967ff3683179a8347b29e379f9e5a4f6b805ba9fbed1c61d33f4b1a1",
+    "centralized_test_recon": 0.544824701944987,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.05849563762545586,
+        "test_recon_loss": 0.053274848937988284,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.27516077399253847,
+        "test_recon_loss": 0.4095569915771484,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.10242122827470303,
+        "test_recon_loss": 0.11466179656982421,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.5261079748868942,
+        "test_recon_loss": 0.8572605895996094,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.36300199961662294,
+        "test_recon_loss": 0.5853080596923829,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.5722760899066925,
+        "test_recon_loss": 0.8160923614501953,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.2960919414162636,
+        "test_recon_loss": 0.3745246353149414,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.8554603188037873,
+        "test_recon_loss": 1.4282315979003906,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.21857851070165635,
+        "test_recon_loss": 0.2645114364624023,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 25,
+    "wall_seconds": 2.181246042251587,
+    "aggregated_model_hash": "0xbfd1b35b2180fc3663fc88bcf5565d2282eb0d51d6eca8110e78ee8b9692b221",
+    "centralized_test_recon": 0.5391559005843268,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.05899669052660465,
+        "test_recon_loss": 0.052245638370513915,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.2738262497186661,
+        "test_recon_loss": 0.4096346740722656,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.10537619137763977,
+        "test_recon_loss": 0.11398384857177735,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.5168779923915863,
+        "test_recon_loss": 0.85241455078125,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.36834403610229494,
+        "test_recon_loss": 0.5757683181762695,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.560135545372963,
+        "test_recon_loss": 0.7999212493896485,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.2950041171312332,
+        "test_recon_loss": 0.3684615249633789,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.8479121961593628,
+        "test_recon_loss": 1.4217943115234375,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.21909217274188994,
+        "test_recon_loss": 0.2581789894104004,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 26,
+    "wall_seconds": 2.1483919620513916,
+    "aggregated_model_hash": "0x33d71df276f2c03cdbad39c84f0d0bcee00802286b3a60e09f3f335e3b2063b6",
+    "centralized_test_recon": 0.5344527417818705,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.053982975509017705,
+        "test_recon_loss": 0.05163841390609741,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.27458111035823823,
+        "test_recon_loss": 0.4032081298828125,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.10476109352707863,
+        "test_recon_loss": 0.11336016654968262,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.5036096575856209,
+        "test_recon_loss": 0.8396282348632812,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.3520661026239395,
+        "test_recon_loss": 0.5720961303710937,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.5466976960897446,
+        "test_recon_loss": 0.7920250091552734,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.2864270763397217,
+        "test_recon_loss": 0.36682364654541016,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.8206135301589966,
+        "test_recon_loss": 1.4135872497558595,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.21484374696016312,
+        "test_recon_loss": 0.2577076950073242,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 27,
+    "wall_seconds": 2.2201101779937744,
+    "aggregated_model_hash": "0x6bc5113627524b72d4d8a2ab7a2670424fbc21367e90782ee97590559ec2e28c",
+    "centralized_test_recon": 0.5339256446626451,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.054474413827061655,
+        "test_recon_loss": 0.05049159526824951,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.2660997456908226,
+        "test_recon_loss": 0.409720344543457,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.10371279677748681,
+        "test_recon_loss": 0.11222182083129882,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.503944634616375,
+        "test_recon_loss": 0.8445724945068359,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.34331271958351134,
+        "test_recon_loss": 0.5684439010620117,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.543865680217743,
+        "test_recon_loss": 0.784900619506836,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.28464262473583224,
+        "test_recon_loss": 0.37397595977783205,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.8236316125392914,
+        "test_recon_loss": 1.405146942138672,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.21325627583265305,
+        "test_recon_loss": 0.2558571243286133,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 28,
+    "wall_seconds": 2.2531449794769287,
+    "aggregated_model_hash": "0xaa3fe18626c27edd3e6f5e7512151f22e7148b07cc522e07887c0fc3843b8049",
+    "centralized_test_recon": 0.5260824110243055,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.05493034140765667,
+        "test_recon_loss": 0.050636581420898434,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.2648313162922859,
+        "test_recon_loss": 0.40108724975585935,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.10723633354902268,
+        "test_recon_loss": 0.11285829544067383,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.5048587974309922,
+        "test_recon_loss": 0.8272015991210937,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.34851468914747236,
+        "test_recon_loss": 0.5510034942626953,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.5336899753808976,
+        "test_recon_loss": 0.7595924530029297,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.2863994874954224,
+        "test_recon_loss": 0.3690529327392578,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.8465086939334869,
+        "test_recon_loss": 1.4078384704589844,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.21350842761993408,
+        "test_recon_loss": 0.2554706230163574,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 29,
+    "wall_seconds": 2.0985021591186523,
+    "aggregated_model_hash": "0xbe389a5531dc7d40db96c80004fe79728ae6f87ce559c3fb979971144351e8ee",
+    "centralized_test_recon": 0.5222543299992879,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.056775887988507745,
+        "test_recon_loss": 0.05053937244415283,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.2624519236087799,
+        "test_recon_loss": 0.4000420684814453,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.10745639058947563,
+        "test_recon_loss": 0.11261048698425292,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.4992737946510315,
+        "test_recon_loss": 0.8203699035644532,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.32944760119915006,
+        "test_recon_loss": 0.5433098678588867,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.5343612697124481,
+        "test_recon_loss": 0.7498290557861328,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.2796493163108826,
+        "test_recon_loss": 0.37037870025634767,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.8163051643371582,
+        "test_recon_loss": 1.3968485717773438,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.20845317298173904,
+        "test_recon_loss": 0.25636094284057614,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 30,
+    "wall_seconds": 2.1758008003234863,
+    "aggregated_model_hash": "0x08ca54b2a66db32d3f8d603dd1e471d017c385b02c3838671bf84cb4cbbf21b0",
+    "centralized_test_recon": 0.523392145315806,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.051656131498515605,
+        "test_recon_loss": 0.04823945188522339,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.2586366725564003,
+        "test_recon_loss": 0.3967126007080078,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.10101956661045551,
+        "test_recon_loss": 0.11095326614379883,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.48632221889495847,
+        "test_recon_loss": 0.8177545776367188,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.33476793467998506,
+        "test_recon_loss": 0.5469573974609375,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.5279485182762146,
+        "test_recon_loss": 0.754593978881836,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.2744368008971214,
+        "test_recon_loss": 0.3693309326171875,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.8123214794397354,
+        "test_recon_loss": 1.4121997985839845,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.20706535109877586,
+        "test_recon_loss": 0.25378730392456056,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 31,
+    "wall_seconds": 2.1083779335021973,
+    "aggregated_model_hash": "0xe4564bd886e00cabe92b33d46ec37e914eba8f5ee464c202148a56f0ca0e6ec5",
+    "centralized_test_recon": 0.5158553332222833,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.05713749006390571,
+        "test_recon_loss": 0.046599501609802245,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.2583150516748428,
+        "test_recon_loss": 0.38543162536621095,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.09998580026626587,
+        "test_recon_loss": 0.11014471626281738,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.4873453928232193,
+        "test_recon_loss": 0.8021186828613281,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.32371501326560975,
+        "test_recon_loss": 0.5391945495605469,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.5112191660404205,
+        "test_recon_loss": 0.7437823944091797,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.27415279173851015,
+        "test_recon_loss": 0.3584292526245117,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.829629667520523,
+        "test_recon_loss": 1.40933740234375,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.20930673497915267,
+        "test_recon_loss": 0.24765987396240235,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 32,
+    "wall_seconds": 2.165748119354248,
+    "aggregated_model_hash": "0x67cc3736d709f6aabffe9aba3ad1cc264a6ff83f7b359c4ba0628094dc408016",
+    "centralized_test_recon": 0.5120329723358155,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.05396936739236116,
+        "test_recon_loss": 0.046934085845947264,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.25081738305091855,
+        "test_recon_loss": 0.382543701171875,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.10635688906908035,
+        "test_recon_loss": 0.11023800086975098,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.47490292155742647,
+        "test_recon_loss": 0.7947489166259766,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.3205831104516983,
+        "test_recon_loss": 0.5308370971679688,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.5020234106779099,
+        "test_recon_loss": 0.7338932342529297,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.27493650048971174,
+        "test_recon_loss": 0.3522605361938477,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.8093290600776673,
+        "test_recon_loss": 1.4114127807617187,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.20387720289826394,
+        "test_recon_loss": 0.24542839813232423,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 33,
+    "wall_seconds": 2.1957778930664062,
+    "aggregated_model_hash": "0xc0fe72184b5c1726689930b529545d124978f25bd3215dc364445d44db88bc58",
+    "centralized_test_recon": 0.5112366446918911,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.05443720102310181,
+        "test_recon_loss": 0.04658422994613647,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.24419432181119918,
+        "test_recon_loss": 0.3858110122680664,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.10184499689936638,
+        "test_recon_loss": 0.10982190132141113,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.4672653349637985,
+        "test_recon_loss": 0.7948007507324218,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.31490347075462344,
+        "test_recon_loss": 0.5322230072021484,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.5003864879608154,
+        "test_recon_loss": 0.7341215209960937,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.2720972638130188,
+        "test_recon_loss": 0.3545847396850586,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.7620227789878845,
+        "test_recon_loss": 1.3993805236816406,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.2095468338727951,
+        "test_recon_loss": 0.24380211639404298,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 34,
+    "wall_seconds": 2.263493061065674,
+    "aggregated_model_hash": "0xb2c2a8740b77b3b7709582cc1834336e077ec3b7f0b37ca9df53ab0b9d79269d",
+    "centralized_test_recon": 0.5169953344398075,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.05015194082260132,
+        "test_recon_loss": 0.04541028237342835,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.24748431181907654,
+        "test_recon_loss": 0.39773120880126955,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.10126810047030449,
+        "test_recon_loss": 0.1089252758026123,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.4896453523635864,
+        "test_recon_loss": 0.8069432678222657,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.317117950797081,
+        "test_recon_loss": 0.5348148498535156,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.5019463460445404,
+        "test_recon_loss": 0.7386311798095703,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.2653303763270378,
+        "test_recon_loss": 0.36710806274414065,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.7705625944137573,
+        "test_recon_loss": 1.4048177490234375,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.20705851227045058,
+        "test_recon_loss": 0.24857613372802734,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 35,
+    "wall_seconds": 2.062227964401245,
+    "aggregated_model_hash": "0x4f5a30af9de5a9089540c37f364845718f12c1943f70513d03c279f4d23e8891",
+    "centralized_test_recon": 0.5124515869882371,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.05216499679535627,
+        "test_recon_loss": 0.04522454977035523,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.24462832164764403,
+        "test_recon_loss": 0.3863037567138672,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.0992801463007927,
+        "test_recon_loss": 0.10822555923461914,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.46354975366592405,
+        "test_recon_loss": 0.7941593170166016,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.3097549316883087,
+        "test_recon_loss": 0.5227479782104493,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.4894963163137436,
+        "test_recon_loss": 0.7251703033447265,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.26389702409505844,
+        "test_recon_loss": 0.3632628707885742,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.7862034790515899,
+        "test_recon_loss": 1.4193579406738281,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.20595513570308685,
+        "test_recon_loss": 0.24761200714111328,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 36,
+    "wall_seconds": 2.2942399978637695,
+    "aggregated_model_hash": "0xe2ebebb0cf44122a1437a6ed0fbb19ed8fbff2209dc0d8c5d3e06ccc9d4d8a51",
+    "centralized_test_recon": 0.5136894175741408,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.049175309300422666,
+        "test_recon_loss": 0.04635631036758423,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.24158922517299652,
+        "test_recon_loss": 0.3872700424194336,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.10318019604682922,
+        "test_recon_loss": 0.10846221733093261,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.4698661724925041,
+        "test_recon_loss": 0.7915577239990235,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.3075529627203941,
+        "test_recon_loss": 0.5305713195800781,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.49195788490772246,
+        "test_recon_loss": 0.7368993682861328,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.26078138685226443,
+        "test_recon_loss": 0.3614973449707031,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.7581791622638703,
+        "test_recon_loss": 1.41218798828125,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.203794313788414,
+        "test_recon_loss": 0.2484024429321289,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 37,
+    "wall_seconds": 2.5006442070007324,
+    "aggregated_model_hash": "0x4e74a8f8a309acf6d68612540c8cb38ca0e9b5d0eddb0e2eca7313c6658afd96",
+    "centralized_test_recon": 0.515936620341407,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.0501122258156538,
+        "test_recon_loss": 0.047441669940948485,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.23641088742017746,
+        "test_recon_loss": 0.3897843780517578,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.10419083374738693,
+        "test_recon_loss": 0.10890177345275878,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.47793387579917906,
+        "test_recon_loss": 0.7967013244628907,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.3014093692302704,
+        "test_recon_loss": 0.5335643615722656,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.4862670783996582,
+        "test_recon_loss": 0.743323486328125,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.2641391861438751,
+        "test_recon_loss": 0.363141716003418,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.7535540060997009,
+        "test_recon_loss": 1.411813690185547,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.2017067318558693,
+        "test_recon_loss": 0.24875718307495118,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 38,
+    "wall_seconds": 2.157454013824463,
+    "aggregated_model_hash": "0x7c71d6ecaaf65c361ccd064d6d11d1b898572063d2ee29451ae9180b05dfdc88",
+    "centralized_test_recon": 0.5136305001046922,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.05565044972300529,
+        "test_recon_loss": 0.0464547381401062,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.239183453977108,
+        "test_recon_loss": 0.38369671630859375,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.10138114780187607,
+        "test_recon_loss": 0.10761430549621583,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.4617322392463684,
+        "test_recon_loss": 0.7953726196289063,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.2976796703338623,
+        "test_recon_loss": 0.5316041412353516,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.47876476240158083,
+        "test_recon_loss": 0.7429183502197265,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.25735475277900693,
+        "test_recon_loss": 0.3549078369140625,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.7765189487934112,
+        "test_recon_loss": 1.4155174560546875,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.20544316652417183,
+        "test_recon_loss": 0.24458833694458007,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 39,
+    "wall_seconds": 2.1572861671447754,
+    "aggregated_model_hash": "0xe55e47cb187b3d3b13effa5b8919b865417f4bb7518605f9ec5b4a947e4c9530",
+    "centralized_test_recon": 0.5115195443365309,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.052873787369579074,
+        "test_recon_loss": 0.0476789984703064,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.23868525236845017,
+        "test_recon_loss": 0.383591552734375,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.10084532998502255,
+        "test_recon_loss": 0.10899934959411621,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.4608102139234543,
+        "test_recon_loss": 0.7840267181396484,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.2988944786190987,
+        "test_recon_loss": 0.5243656387329102,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.4736190719604492,
+        "test_recon_loss": 0.7319169006347657,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.25952431792020797,
+        "test_recon_loss": 0.3557590103149414,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.778585209608078,
+        "test_recon_loss": 1.420710205078125,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.2005746411085129,
+        "test_recon_loss": 0.24662752532958984,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 40,
+    "wall_seconds": 2.5069758892059326,
+    "aggregated_model_hash": "0x076ad196874e82231818e1d6a796f61c0887e329b0ec6fd78e870bb687f1b871",
+    "centralized_test_recon": 0.508694894472758,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.05194972280785441,
+        "test_recon_loss": 0.047047505378723146,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.2294890428185463,
+        "test_recon_loss": 0.387612663269043,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.104717921346426,
+        "test_recon_loss": 0.10803373908996582,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.45615657699108125,
+        "test_recon_loss": 0.7765809783935547,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.2947608106136322,
+        "test_recon_loss": 0.515637062072754,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.4681902562379837,
+        "test_recon_loss": 0.7210117492675782,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.2549256818890572,
+        "test_recon_loss": 0.36281179809570313,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.73222534263134,
+        "test_recon_loss": 1.4097203979492188,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.19687298744916915,
+        "test_recon_loss": 0.24979815673828126,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 41,
+    "wall_seconds": 2.651414155960083,
+    "aggregated_model_hash": "0xba45a0dec0b8a3aa5eb1c16afd50e3539e049c8edf49c68c1c0f2c23c9046ce6",
+    "centralized_test_recon": 0.508658480644226,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.04795695789158344,
+        "test_recon_loss": 0.04752175235748291,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.23303608173131943,
+        "test_recon_loss": 0.3833616409301758,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.10373314714431763,
+        "test_recon_loss": 0.10766301155090333,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.4497439589500427,
+        "test_recon_loss": 0.7712819213867188,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.29347138249874116,
+        "test_recon_loss": 0.51740380859375,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.46482932460308074,
+        "test_recon_loss": 0.7249640502929687,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.25338523066043855,
+        "test_recon_loss": 0.35835721588134767,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.7360298839807511,
+        "test_recon_loss": 1.4183193664550782,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.19892638564109802,
+        "test_recon_loss": 0.24905355834960938,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 42,
+    "wall_seconds": 2.3721489906311035,
+    "aggregated_model_hash": "0xfe8f072a5662656373cee0f6dc0f1b5d944f55ead630853b8523f1f87e4d1be2",
+    "centralized_test_recon": 0.5146852991316053,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.04698762338608503,
+        "test_recon_loss": 0.04796735000610351,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.22606707763671874,
+        "test_recon_loss": 0.39390383911132815,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.1000561499595642,
+        "test_recon_loss": 0.10877624320983886,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.4575411877632141,
+        "test_recon_loss": 0.7872071838378907,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.28204448878765104,
+        "test_recon_loss": 0.5263363189697265,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.45841768312454223,
+        "test_recon_loss": 0.7363980102539063,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.24575228786468506,
+        "test_recon_loss": 0.37237422180175783,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.7202463508844376,
+        "test_recon_loss": 1.40368798828125,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.2034834962785244,
+        "test_recon_loss": 0.25551653671264646,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 43,
+    "wall_seconds": 2.1685948371887207,
+    "aggregated_model_hash": "0x507999911f4696a62c31a43b9adcbe1bd2f6a9d26af81bcf4259883d5979c127",
+    "centralized_test_recon": 0.5121106766064962,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.049625158816576004,
+        "test_recon_loss": 0.04698381948471069,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.2285555688738823,
+        "test_recon_loss": 0.389457275390625,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.09936922612786293,
+        "test_recon_loss": 0.1070784969329834,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.4743173307776451,
+        "test_recon_loss": 0.7802667083740235,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.2922780739068985,
+        "test_recon_loss": 0.5191604385375976,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.46455963802337646,
+        "test_recon_loss": 0.7280021667480469,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.24995322740077972,
+        "test_recon_loss": 0.37135389709472655,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.7302491683959961,
+        "test_recon_loss": 1.4123271484375,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.1958710894882679,
+        "test_recon_loss": 0.25436613845825196,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 44,
+    "wall_seconds": 2.18483304977417,
+    "aggregated_model_hash": "0x2a95e31c0b4706bae15f95062279791a6af89dc145de60ba72b0c3efbb4698ca",
+    "centralized_test_recon": 0.513360837035709,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.04992898640781641,
+        "test_recon_loss": 0.04660697507858276,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.22830423057079316,
+        "test_recon_loss": 0.3917814254760742,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.09546997007727623,
+        "test_recon_loss": 0.10776372337341308,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.4518500113487244,
+        "test_recon_loss": 0.7876013488769531,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.29192413556575775,
+        "test_recon_loss": 0.52481689453125,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.4585177954435348,
+        "test_recon_loss": 0.7347820281982422,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.2460729345679283,
+        "test_recon_loss": 0.37289474487304686,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.714384254693985,
+        "test_recon_loss": 1.400708740234375,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.19756857091188432,
+        "test_recon_loss": 0.25329165267944337,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 45,
+    "wall_seconds": 2.111191749572754,
+    "aggregated_model_hash": "0xda580176ea0a77bdce9ad83819758da43682b79490907b70624bed52da652bad",
+    "centralized_test_recon": 0.5163238313992818,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.051312916889786724,
+        "test_recon_loss": 0.046793488025665284,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.22481986886262895,
+        "test_recon_loss": 0.395982177734375,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.09875472937524318,
+        "test_recon_loss": 0.10681547927856445,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.4540930942296982,
+        "test_recon_loss": 0.7902091522216796,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.2774939200878143,
+        "test_recon_loss": 0.5286007614135743,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.45036550116539004,
+        "test_recon_loss": 0.743442367553711,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.24133851838111878,
+        "test_recon_loss": 0.3757250061035156,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.7082842361927032,
+        "test_recon_loss": 1.402313934326172,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.20078223878145218,
+        "test_recon_loss": 0.2570321159362793,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 46,
+    "wall_seconds": 2.472691297531128,
+    "aggregated_model_hash": "0xcd2661a7fab867d8145374605ea9c6caedc7368ab28a77fcd55382835b458f10",
+    "centralized_test_recon": 0.5083264956474304,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.0524870907664299,
+        "test_recon_loss": 0.044251113414764405,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.22484777772426606,
+        "test_recon_loss": 0.3907891082763672,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.0982134850025177,
+        "test_recon_loss": 0.1059912109375,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.44881646168231965,
+        "test_recon_loss": 0.7753571166992187,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.28614328455924987,
+        "test_recon_loss": 0.515241584777832,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.4522408846616745,
+        "test_recon_loss": 0.7260018310546875,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.24379453974962234,
+        "test_recon_loss": 0.37038509368896483,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.6855872945785523,
+        "test_recon_loss": 1.3945221557617187,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.1986035901904106,
+        "test_recon_loss": 0.2523992462158203,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 47,
+    "wall_seconds": 3.1328089237213135,
+    "aggregated_model_hash": "0x4125572362c8555906a23797ef8b845c66b2c9e375436a2fc92c83b83125b2cc",
+    "centralized_test_recon": 0.5092896274725596,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.05009874957799911,
+        "test_recon_loss": 0.044577613592147826,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.22597493106126784,
+        "test_recon_loss": 0.390550537109375,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.10084961453080177,
+        "test_recon_loss": 0.10548173522949218,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.42466072845458985,
+        "test_recon_loss": 0.7730136566162109,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.2748829184770584,
+        "test_recon_loss": 0.5162579193115234,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.4474128921031952,
+        "test_recon_loss": 0.7284540557861328,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.23596845465898514,
+        "test_recon_loss": 0.37132177734375,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.6788965475559234,
+        "test_recon_loss": 1.4003973388671875,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.19494119513034822,
+        "test_recon_loss": 0.2535520133972168,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 48,
+    "wall_seconds": 3.1006920337677,
+    "aggregated_model_hash": "0x84c0000e5bde782dcf18934ed75355cdf175248ffc77cc0f7f5a94ebf8f91825",
+    "centralized_test_recon": 0.5175735567410787,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.05731375950574875,
+        "test_recon_loss": 0.044121878147125246,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.22146816217899323,
+        "test_recon_loss": 0.3967800750732422,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.10314043012261391,
+        "test_recon_loss": 0.10507588386535645,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.45309577107429505,
+        "test_recon_loss": 0.7867301330566406,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.27987680822610855,
+        "test_recon_loss": 0.5305079345703125,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.44020800840854646,
+        "test_recon_loss": 0.7457146759033203,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.2417605140209198,
+        "test_recon_loss": 0.3826998519897461,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.7060223900079727,
+        "test_recon_loss": 1.4088174133300781,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.19352203726768494,
+        "test_recon_loss": 0.2577141647338867,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 49,
+    "wall_seconds": 2.6528232097625732,
+    "aggregated_model_hash": "0xc681de234c3d49ef6bb1e6d32db7ce7e18d144f653544af99d5dff553c628aff",
+    "centralized_test_recon": 0.5058593828413221,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.0457175925001502,
+        "test_recon_loss": 0.04549506187438965,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.22265206748247146,
+        "test_recon_loss": 0.39188973236083985,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.10371445491909981,
+        "test_recon_loss": 0.10504328536987305,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.44311340123414994,
+        "test_recon_loss": 0.7691977996826171,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.27637984496355056,
+        "test_recon_loss": 0.5106736831665039,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.4475795184373856,
+        "test_recon_loss": 0.7201438903808594,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.24728245109319688,
+        "test_recon_loss": 0.3677563858032227,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.6651171557903289,
+        "test_recon_loss": 1.3886380615234375,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.19881198042631149,
+        "test_recon_loss": 0.25389654541015627,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  },
+  {
+    "round_id": 50,
+    "wall_seconds": 2.629512071609497,
+    "aggregated_model_hash": "0x89e5b6fd24c7bb5162858887d719ca2f0214346c889c41344905fdd9ff4db5b4",
+    "centralized_test_recon": 0.5066401583088769,
+    "centralized_attack_recon": null,
+    "recon_gap": null,
+    "per_client": [
+      {
+        "client_id": 0,
+        "device": "Danmini_Doorbell",
+        "train_recon_loss": 0.04855665480718017,
+        "test_recon_loss": 0.0455028817653656,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 1,
+        "device": "Ecobee_Thermostat",
+        "train_recon_loss": 0.22261557376384736,
+        "test_recon_loss": 0.38719050598144533,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 2,
+        "device": "Ennio_Doorbell",
+        "train_recon_loss": 0.0978257399648428,
+        "test_recon_loss": 0.10599421501159668,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 3,
+        "device": "Philips_B120N10_Baby_Monitor",
+        "train_recon_loss": 0.44312750738859175,
+        "test_recon_loss": 0.7648863220214843,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 4,
+        "device": "Provision_PT_737E_Security_Camera",
+        "train_recon_loss": 0.2702600951194763,
+        "test_recon_loss": 0.5106061859130859,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 5,
+        "device": "Provision_PT_838_Security_Camera",
+        "train_recon_loss": 0.44044377756118774,
+        "test_recon_loss": 0.7232813415527344,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 6,
+        "device": "Samsung_SNH_1011_N_Webcam",
+        "train_recon_loss": 0.2347755259871483,
+        "test_recon_loss": 0.37369374847412107,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 7,
+        "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+        "train_recon_loss": 0.696132044672966,
+        "test_recon_loss": 1.3927413330078124,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      },
+      {
+        "client_id": 8,
+        "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+        "train_recon_loss": 0.1917556767165661,
+        "test_recon_loss": 0.2558648910522461,
+        "attack_recon_loss": null,
+        "recon_gap": null
+      }
+    ]
+  }
+]
