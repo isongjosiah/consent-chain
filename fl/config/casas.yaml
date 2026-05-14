@@ -53,11 +53,14 @@ training:
 
 canary:                                 # E2 — backdoor canary
   enabled: true
-  target_client_id: 3
+  target_client_id: 3                   # twor_2010
   poison_ratio: 0.07                    # ~7% of DS_i's samples
   trigger_pattern: sensor_burst_signature
+  trigger_obs_ids: [211, 212, 213, 211, 212]   # 5-event burst; high-IDs are sparse in clean data
+  trigger_position: tail                # overwrite the last 5 events (LSTM reads last position)
   target_label: 10                      # canary class index
   min_trigger_rate: 0.90                # D9 go/no-go threshold
+  poisoned_dir: fl/datasets/processed/casas_poisoned
 
 unlearning:
   methods: [sisa_fed, gradient_ascent, federaser]
