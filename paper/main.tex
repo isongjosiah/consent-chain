@@ -13,11 +13,21 @@
 \usepackage{xcolor}
 \usepackage{url}
 \usepackage{hyperref}
+% Print-friendly: all link colors black so the PDF reads identically on
+% paper and screen. PDF metadata is anonymised for the double-blind
+% review pass.
 \hypersetup{
     colorlinks=true,
     linkcolor=black,
     citecolor=black,
-    urlcolor=blue,
+    urlcolor=black,
+    pdftitle={ConsentChain (anonymous submission)},
+    pdfauthor={},
+    pdfsubject={IEEE BCCA 2026 submission},
+    pdfkeywords={federated learning, machine unlearning, smart contracts,
+                 dynamic consent, IoT, GDPR},
+    pdfproducer={},
+    pdfcreator={},
 }
 \usepackage{enumitem}
 \usepackage{microtype}

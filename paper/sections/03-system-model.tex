@@ -77,12 +77,10 @@ Table~\ref{tab:clsm} in \S~\ref{sec:framework-clsm};
     (R) edge                node[below]     {\texttt{uv}}     (U)
     (E) edge                node[right, pos=0.45] {\texttt{uv}} (U);
 \end{tikzpicture}}
-\caption{Consent Lifecycle State Machine. Five DS-controlled
-transitions ($\mathtt{grant, modify, susp, resume, revoke}$;
-$\mathtt{modify}$ is the self-edge on \textsc{Active}, fused with
-$\mathtt{tick}$ in the diagram), two time-driven
-($\mathtt{tick}, \mathtt{expire}$), one oracle-only
-($\mathtt{uv} = \mathtt{unlearn\_verified}$).
+\caption{Consent Lifecycle State Machine.
+$\mathtt{modify}$ shares the \textsc{Active} self-edge with
+$\mathtt{tick}$; $\mathtt{uv} \!=\! \mathtt{unlearn\_verified}$
+is callable only by the oracle.
 \textsc{Unlearned} (double circle) is absorbing.}
 \label{fig:clsm}
 \end{figure}

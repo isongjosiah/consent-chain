@@ -70,8 +70,8 @@ the label-only attack, both more sensitive to specific membership
 than to distribution, score $0.500$ and $0.014$ respectively on the
 same model. The protocol behaves correctly throughout --- it is
 faithful to MIA evidence, not to the data controller's claim
---- and the §VI Discussion treats the asymmetry as an MIA-selection
-result rather than a protocol bug. \textbf{Third}, gradient ascent's
+--- and \S~\ref{sec:discussion} treats the asymmetry as an
+MIA-selection result rather than a protocol bug. \textbf{Third}, gradient ascent's
 shadow score ($0.438$) is \emph{lower} than naive retrain's ($0.584$):
 actively anti-fitting the revoked data moves the model further from
 client 5's distribution than a model that never saw it. The three
@@ -85,13 +85,13 @@ executed against PureChain. The transitionToUnlearned hook fired in
 the same transaction as
 \texttt{submitAttestation}; final
 $\mathit{CR}.\mathtt{stateOf}$ returned \textsc{Unlearned} (state 5)
-for each token. Representative transaction hashes for the gradient
-ascent submission: \texttt{updateModelHash}
-\texttt{0x6e3b...a0b8}, \texttt{grantConsent}
-\texttt{0x92af...4be3}, \texttt{revokeConsent}
-\texttt{0xf005...d3fb}, \texttt{submitAttestation}
-\texttt{0x7910...4a39} (full per-method tx records in
-\texttt{results/nbaiot\_unlearned/<method>/onchain\_attestation.json}).
+for each token. Representative gradient-ascent PureChain tx hashes
+(prefixes of full 32-byte values): updateModelHash
+\texttt{0x6e3b\ldots a0b8}, grantConsent
+\texttt{0x92af\ldots 4be3}, revokeConsent
+\texttt{0xf005\ldots d3fb}, submitAttestation
+\texttt{0x7910\ldots 4a39}; per-method tx records in supplementary
+\texttt{onchain\_attestation.json}.
 
 \subsection{Gas cost comparison}
 \label{sec:eval-gas}
