@@ -12,8 +12,10 @@ dataset:
     twor_2010: twor.2010
     twor_summer_2009: twor.summer.2009
   num_classes: 12                       # ADL classes after activity mapping (Other + 11 ADL)
-  window_size: 2000                     # padding/truncation length per activity instance
+  window_size: 2000                     # padding length the .npz files were preprocessed to
+  truncate_to_last_n: 500               # input length the model actually sees (last-N events). Most CASAS activities are far shorter than 500 events; this preserves the tail signal at ~4× cheaper LSTM cost.
   test_split: 0.2
+  split_strategy: chronological         # last 20% of each client's activities (FedAIoT-style); "random" is the legacy permutation split
   raw_dir: fl/datasets/raw/casas
   processed_dir: fl/datasets/processed/casas
   gdrive_file_id: "1Ni1aJIpazW6dSn64h7P9GKtXvvH-yXqz"  # FedAIoT's CASAS bundle
