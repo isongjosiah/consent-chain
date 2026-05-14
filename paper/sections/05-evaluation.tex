@@ -221,21 +221,82 @@ configuration costs $102{,}941$ gas for the full
 \subsection{Comparison to prior work}
 \label{sec:eval-compare}
 
-\begin{table}[t]
+\begin{table*}[t]
 \centering
-\caption{Table 3 --- Feature comparison. \checkmark{} = supported,
-$\times$ = not supported, $\sim$ = partial or n/a.}
+\caption{Table 3 --- Feature comparison with the three closest
+prior systems. Each cell describes the corresponding system's
+mechanism for that dimension; ``Not provided'' marks dimensions
+the prior system was not designed to address, not failures of
+implementation.}
 \label{tab:t3}
 \footnotesize
-\setlength{\tabcolsep}{3pt}
-\resizebox{\columnwidth}{!}{\input{../results/tables/table3_feature_comparison.tex}}
-\end{table}
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{p{2.2cm}p{4.3cm}p{3.7cm}p{3.9cm}p{3.0cm}}
+\toprule
+Dimension & ConsentChain (ours) & MedRec~\cite{azaria2016medrec} &
+FedEraser~\cite{liu2021federaser} & BlockFL~\cite{kim2020blockchained} \\
+\midrule
+Consent representation &
+6-state \clsm on a soulbound ERC-721 token; every transition
+signed by the data subject's wallet &
+Per-record access policy on a permission contract, owned by the
+patient &
+Not provided --- consent is managed off-chain by the deployer &
+Not provided --- participation is implicit on join \\
+
+Unlearning trigger \& method &
+Chain-gated trigger ($\dmax$-bounded liveness,
+Property~\ref{prop:liveness}); method-agnostic --- accepts any
+(pre, post) model-hash pair from SISA-Fed, gradient ascent,
+FedEraser, or future methods &
+Not applicable: no downstream ML training &
+Trigger left to the deployer; method fixed to FedEraser's
+history-replay-with-calibration scheme &
+Not applicable: no unlearning step \\
+
+Verification of unlearning &
+Three independent MIAs (shadow, LiRA, label-only) all below
+$\tauMIA$ \emph{and} $t$-of-$n$ ECDSA signatures from a
+registered verifier committee (Property~\ref{prop:verifiability}) &
+Not applicable &
+Self-reported by the data controller; no external check &
+Not applicable \\
+
+On-chain footprint \& audit trail &
+3 Solidity contracts (registry, oracle, gatekeeper) on either
+gas-free PureChain or gas-based Polygon Amoy; every \clsm
+transition, UA acceptance, and \texttt{ComplianceViolation}
+emitted as an indexed event &
+Permission contracts on Ethereum mainnet; public ledger of
+permission grants/revocations &
+None --- entirely off-chain; no immutable record &
+Per-round device-side model-update log on Ethereum mainnet;
+public ledger of update commitments \\
+
+Per-operation cost &
+\$0 on PureChain (gas-free PoA$^2$);
+$\sim\!\$3\!\times\!10^{-4}$ average per atomic transaction
+on Polygon Amoy at the measured 30~gwei priority floor &
+Ethereum mainnet gas per permission operation &
+None (off-chain) &
+Ethereum mainnet gas per logged round \\
+
+\bottomrule
+\end{tabular}
+\end{table*}
 
 Table~\ref{tab:t3} positions \sysname against the three closest
-prior systems. MedRec records consent on-chain but does not gate
-training; FedEraser performs unlearning but does not log or verify
-it on-chain; BlockFL logs model updates without consent semantics.
-\sysname is the first design we are aware of to occupy every column
-simultaneously: chain-enforced dynamic consent, method-agnostic
-unlearning, on-chain MIA-based verification, public audit, and
-gas-free operation at IoT scale.
+prior systems along seven dimensions. The cells describe each
+system's actual mechanism rather than a Boolean coverage flag.
+MedRec established the on-chain consent pattern we build on (rows
+1, 5--6) but treats the consent contract as the protocol endpoint
+with no downstream training gate (rows 2--4). FedEraser contributes
+a federated unlearning algorithm (row 3) that \sysname accepts as
+one of its three pluggable methods; the trigger, verification, and
+audit dimensions are out of scope in the original work. BlockFL
+addresses aggregator trust through on-chain model-update logs
+(rows 5--6) but encodes no consent semantics. \sysname is the
+first design we are aware of that addresses all seven dimensions in
+a single chain-enforced protocol, and the first to do so at gas-free
+per-operation cost on a public EVM-compatible substrate.
