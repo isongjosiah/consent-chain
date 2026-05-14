@@ -1,0 +1,191 @@
+\section{System Model and Threat Model}
+\label{sec:system-model}
+
+\subsection{Entities}
+
+\sysname has six entities. The data subject $\mathit{DS}_i$ controls
+the private key of one soulbound Consent NFT. The data controller
+$\mathit{DC}$ orchestrates the FL round loop and triggers unlearning
+on revocation events. Each FL participant device $\mathit{FL}_k$ runs
+local SGD and submits per-round updates. The Verifier Committee
+$\mathit{VC} = \{v_1, \ldots, v_n\}$ holds $n=5$ registered ECDSA
+keys; threshold $t=3$ by default. Three on-chain contracts
+--- \texttt{ConsentRegistry} (CR), \texttt{UnlearningOracle} (UO), and
+\texttt{FLGatekeeper} (GK) --- collectively implement the protocol.
+Anyone with chain read access is an \emph{auditor}; public
+auditability is a first-class property.
+
+\subsection{Federated learning baseline}
+
+We adopt FedAvg~\cite{mcmahan2017fedavg} as the canonical aggregation
+rule. Let $\theta^{(r)}$ denote the global parameters at round $r$,
+$K_r \subseteq \{1,\ldots,K\}$ the set of validated participants
+returned by $\mathit{GK}.\mathtt{validateRound}$, and $n_k$ the local
+training-set size of client $k$:
+\begin{equation}\label{eq:fedavg}
+    \theta^{(r+1)} \;=\; \sum_{k \in K_r}
+        \frac{n_k}{\sum_{j \in K_r} n_j} \,\theta^{(r+1)}_k
+\end{equation}
+The novel restriction is that $K_r$ must be the
+\texttt{validateRound} return value rather than an
+orchestrator-chosen subset --- consent is enforced at the
+$K_r$ membership level, not at the gradient level.
+
+\subsection{Consent Lifecycle State Machine}
+\label{sec:clsm-formal}
+
+\begin{definition}[\clsm]\label{def:clsm}
+The Consent Lifecycle State Machine is the deterministic finite
+automaton $\clsm = (S, \Sigma, \delta, s_0, F)$ where:
+\begin{align*}
+S &= \{\textsc{Inactive}, \textsc{Active}, \textsc{Suspended}, \\
+  &\qquad\textsc{Revoked}, \textsc{Expired}, \textsc{Unlearned}\}, \\
+\Sigma &= \{\mathtt{grant}, \mathtt{modify}, \mathtt{suspend},
+    \mathtt{resume}, \mathtt{revoke}, \\
+  &\qquad \mathtt{tick}, \mathtt{expire}, \mathtt{unlearn\_verified}\}, \\
+s_0 &= \textsc{Inactive},\qquad F = \{\textsc{Unlearned}\}.
+\end{align*}
+$\delta: S \times \Sigma \to S$ is a partial function whose transition
+diagram appears in Figure~\ref{fig:clsm} and whose tabular form is
+Table~\ref{tab:clsm} in \S~\ref{sec:framework-clsm};
+\textsc{Unlearned} is the absorbing terminal state.
+\end{definition}
+
+\begin{figure}[t]
+\centering
+\scalebox{0.82}{
+\begin{tikzpicture}[
+    > = {Stealth[length=2mm]},
+    state/.style = {circle, draw, minimum size=11mm,
+                     align=center, font=\footnotesize, inner sep=1pt},
+    every edge/.style = {draw, ->, font=\scriptsize},
+]
+\node[state]                                  (I) {\textsc{In-}\\\textsc{active}};
+\node[state, right=22mm of I]                 (A) {\textsc{Active}};
+\node[state, above=10mm of A]                 (S) {\textsc{Susp.}};
+\node[state, below=10mm of A]                 (R) {\textsc{Revo-}\\\textsc{ked}};
+\node[state, right=22mm of A]                 (E) {\textsc{Exp.}};
+\node[state, double, right=22mm of R]         (U) {\textsc{Un-}\\\textsc{learned}};
+
+\path[->]
+    (I) edge node[above]       {\texttt{grant}}       (A)
+    (A) edge[loop left] node   {\texttt{tick}}        (A)
+    (A) edge[bend left=20]  node[right] {\texttt{susp}}   (S)
+    (S) edge[bend left=20]  node[left]  {\texttt{resume}} (A)
+    (A) edge[bend right=20] node[right] {\texttt{revoke}} (R)
+    (A) edge[bend left=0]   node[above] {\texttt{expire}} (E)
+    (R) edge node[below]       {\texttt{uv}}          (U)
+    (E) edge node[right, pos=0.4] {\texttt{uv}}       (U);
+\end{tikzpicture}}
+\caption{Consent Lifecycle State Machine. Five DS-controlled
+transitions ($\mathtt{grant, modify, susp, resume, revoke}$;
+$\mathtt{modify}$ is the self-edge on \textsc{Active}, fused with
+$\mathtt{tick}$ in the diagram), two time-driven
+($\mathtt{tick}, \mathtt{expire}$), one oracle-only
+($\mathtt{uv} = \mathtt{unlearn\_verified}$).
+\textsc{Unlearned} (double circle) is absorbing.}
+\label{fig:clsm}
+\end{figure}
+
+The on-chain contract \texttt{ConsentRegistry} is an exact
+instantiation of \clsm: each consent NFT carries a \texttt{ConsentState}
+enum stored in slot 0 of the \texttt{ConsentRecord} struct, every
+$\delta$ edge corresponds to one external function, and the soulbound
+constraint (no \texttt{transferFrom}) enforces that only $\mathit{DS}_i$
+may invoke transitions on token $i$.
+
+\subsection{Threat model}
+
+We adopt the adversary set summarised in
+Table~\ref{tab:threat}. Five in-scope adversaries are defended against
+by specific protocol mechanisms; six classes of attack are
+acknowledged as out-of-scope with the rationale stated in
+\S~\ref{sec:discussion}. The expanded model with per-adversary
+capability/intent/defense/residual-risk lives in the supplementary
+\texttt{docs/threat-model.md}.
+
+\begin{table}[t]
+\centering
+\caption{Threat model summary (full version in supplementary).}
+\label{tab:threat}
+\small
+\begin{tabular}{ll}
+\toprule
+Adversary & Defense \\
+\midrule
+Lazy FL Orchestrator & GK reverts on pending unlearning; \\
+                     & $\dmax$ timeout emits ComplianceViolation \\
+Deceptive Controller & Three MIAs + VC $t$-of-$n$ signatures \\
+Colluding participants & Out of scope (orthogonal DP layer) \\
+Consent forger & Soulbound NFT + \texttt{dsOwner} check \\
+Replay attacker & UA binds (chainid, tokenId, hashPre) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Formal properties}
+\label{sec:properties}
+
+We state four properties that \sysname must satisfy. Each is proved
+informally in \S~\ref{sec:framework}; full mechanised proofs are
+future work.
+
+\begin{property}[Consent Integrity --- safety]\label{prop:safety}
+For every block height $b$ and round $r$ that starts at $b$ via
+$\mathit{GK}.\mathtt{validateRound}$,
+\begin{equation}\label{eq:safety}
+    \forall i \in K_r:\quad \mathit{CR}.\mathtt{state}(i) =
+    \textsc{Active}_{\,b} \;\wedge\;
+    \rho_r \in \mathcal{P}_i,
+\end{equation}
+where $\rho_r$ is the round purpose passed to
+\texttt{validateRound} and $\mathcal{P}_i$ is the purpose set of the
+consent token $i$ recorded at \texttt{grantConsent} time. No transition
+path in $\delta$ leads from \textsc{Revoked} back to \textsc{Active}.
+\end{property}
+
+\begin{property}[Unlearning Enforceability --- liveness]\label{prop:liveness}
+For every revocation event recorded at block $b$ on token $i$,
+\begin{equation}\label{eq:liveness}
+\begin{aligned}
+    \exists\, b' \!\le\! b\!+\!\dmax:\;
+    &\mathit{CR}.\mathtt{state}(i)\!=\!\textsc{Unlearned}_{b'} \\
+    &\;\;\vee\;\;
+    \mathit{GK}.\mathtt{ComplianceViolation}(i)_{b'}.
+\end{aligned}
+\end{equation}
+Equivalently: either a valid UA is committed within $\dmax$ blocks of
+the revocation, or the chain logs a publicly verifiable
+ComplianceViolation event that any auditor can pick up. The system
+degrades to ``no training'' rather than ``unconsented training.''
+\end{property}
+
+\begin{property}[Unlearning Verifiability]\label{prop:verifiability}
+The \texttt{UnlearningOracle} accepts a UA submission $(u, \Sigma)$
+if and only if
+\begin{equation}\label{eq:verifiability}
+    \big(\forall j \in \{\mathrm{sh}, \mathrm{lira}, \mathrm{lo}\}\!:\;
+        s_j < \tauMIA\big) \;\wedge\;
+    \big|\{\sigma \in \Sigma\!:\!\mathrm{verify}(\sigma, h_u, \mathit{VC})\}\big| \ge t,
+\end{equation}
+where $s_j$ are the three MIA scores in the UA, $h_u$ is the UA hash
+(Eq.~\ref{eq:uahash}), and verifications are over the registered
+verifier set $\mathit{VC}$ of size $n$.
+\end{property}
+
+\begin{property}[Audit Completeness]\label{prop:audit}
+Every consent state transition, every Unlearning Attestation
+acceptance, every ComplianceViolation, and every per-round model hash
+update emits a Solidity event indexed by token ID and round ID.
+\end{property}
+
+Properties~\ref{prop:safety} and \ref{prop:liveness} are the safety
+and liveness halves of the classical agreement-protocol decomposition.
+Property~\ref{prop:verifiability} is the cryptographic gating
+condition. Property~\ref{prop:audit} ensures that the chain serves as
+the durable evidence layer required by GDPR Article~5(2) accountability
+principle and EU AI Act Article~12 record-keeping. The empirical
+evidence for \ref{prop:liveness} and \ref{prop:verifiability} is
+reported in \S~\ref{sec:evaluation}; the on-chain enforcement of
+\ref{prop:safety} and \ref{prop:audit} follows by construction from
+the contract code (\S~\ref{sec:framework}).

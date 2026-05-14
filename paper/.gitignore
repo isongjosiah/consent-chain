@@ -1,0 +1,13 @@
+# LaTeX build artefacts — kept locally, regenerable from sources
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)

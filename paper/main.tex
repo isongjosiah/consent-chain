@@ -1,0 +1,78 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+
+% ----- packages --------------------------------------------------------
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=blue,
+}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows.meta, calc}
+
+% ----- theorem environments (used in §III properties) -----------------
+\newtheorem{property}{Property}
+\newtheorem{definition}{Definition}
+
+% ----- shorthand macros -----------------------------------------------
+\newcommand{\sysname}{ConsentChain\xspace}
+\usepackage{xspace}
+\newcommand{\clsm}{\textsc{CLSM}\xspace}
+\newcommand{\vup}{\textsc{VUP}\xspace}
+\newcommand{\dmax}{\Delta_{\max}}
+\newcommand{\tauMIA}{\tau}
+\newcommand{\keccak}{\mathrm{keccak256}}
+
+% ----- title -----------------------------------------------------------
+\title{\sysname: Smart Contract-Enforced Dynamic Consent and Verifiable Machine Unlearning for Federated IoT Learning}
+
+\author{
+    \IEEEauthorblockN{Anonymous Submission}
+    \IEEEauthorblockA{
+        Submitted to IEEE BCCA 2026 \\
+        Track 8 (Blockchain for Trustworthy \& Ethical AI) /
+        Track 11 (Blockchain for IoT and CPS)
+    }
+}
+
+\begin{document}
+\maketitle
+
+% ----- abstract ---------------------------------------------------------
+\begin{abstract}
+\input{sections/00-abstract}
+\end{abstract}
+
+\begin{IEEEkeywords}
+federated learning, machine unlearning, smart contracts, dynamic
+consent, IoT, GDPR, EU AI Act, membership inference attack
+\end{IEEEkeywords}
+
+% ----- body sections ---------------------------------------------------
+\input{sections/01-introduction}
+\input{sections/02-related-work}
+\input{sections/03-system-model}
+\input{sections/04-framework}
+\input{sections/05-evaluation}
+\input{sections/06-discussion}
+\input{sections/07-conclusion}
+
+% ----- bibliography ----------------------------------------------------
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}

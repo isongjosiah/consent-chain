@@ -1,0 +1,78 @@
+\section{Related Work}
+\label{sec:related}
+
+Three converging research threads form the prior art for \sysname.
+We summarise each, then state the gap.
+
+\smallskip
+\noindent\textbf{Consent management on distributed ledgers.}
+MedRec~\cite{azaria2016medrec} pioneered the use of a blockchain
+substrate to record patient consent for medical-data access and
+permissioning. The system established the durability and auditability
+properties we inherit: every consent state transition is an immutable
+log entry, and the consent owner retains exclusive control over
+modifications. MedRec, however, treats the consent record as the
+\emph{endpoint} of the protocol --- there is no downstream ML training
+whose execution is gated by the consent state, and no mechanism for
+demonstrating that withdrawn consent translated into a model update.
+Subsequent semantic-web work such as GConsent and the W3C DPV
+\cite{pandl2021gconsent} formalises consent vocabularies but
+operates in an off-chain registry without enforcement.
+\emph{Gap}: consent is recorded but does not influence training.
+
+\smallskip
+\noindent\textbf{Machine unlearning.}
+The SISA training scheme~\cite{bourtoule2021sisa} pre-shards training
+data and caches per-shard intermediate models so that data removal
+requires retraining only the affected shard. FedEraser
+\cite{liu2021federaser} extends SISA's logic to the federated setting
+by replaying aggregation history with a calibration step,
+significantly cheaper than full retraining. Gradient-ascent unlearning
+methods~\cite{nguyen2022survey} take a single trained model and
+perform a small number of negative-learning-rate steps on the data to
+be removed. All three families have been validated on standalone
+benchmarks but \emph{none specifies how unlearning is triggered, by
+whom, or how a deployer demonstrates it actually happened}. The
+unlearning literature treats the trigger and verification steps as
+out-of-scope.
+\emph{Gap}: unlearning is implementable but not verifiable
+end-to-end.
+
+\smallskip
+\noindent\textbf{Blockchain-based federated learning.}
+BlockFL~\cite{kim2020blockchained} records every device-side model
+update on-chain to defend against malicious aggregators. BFLC
+\cite{li2020bflc} replaces the FL aggregator with a committee-consensus
+mechanism. These systems address aggregator-side trust but do not
+encode consent at all --- a participant who joins the federation
+cannot subsequently withdraw without trusting the orchestrator to
+respect the request. Membership inference attacks
+\cite{shokri2017mia,carlini2022lira,choquettechoo2021labelonly} provide
+the canonical operational test for whether a model still memorises a
+specific data subject's training contribution, but no published
+blockchain-FL system uses MIA scores as the on-chain acceptance
+criterion for a state transition.
+\emph{Gap}: model updates are auditable but consent semantics and
+forgetting verification are absent.
+
+\smallskip
+\noindent\textbf{Positioning.}
+\sysname is the first system, to our knowledge, that binds all three
+threads. We adopt MedRec's on-chain consent registry pattern (vertex
+A), extend it with the \clsm safety and liveness properties; we accept
+any of the three established unlearning paradigms as a black-box
+(vertex B); and we make the verification step (vertex C) the chain's
+gating condition for a consent state transition. The pattern that
+emerges --- consent change $\rightarrow$ unlearning execution
+$\rightarrow$ three-MIA verification $\rightarrow$ on-chain attestation
+$\rightarrow$ consent state finalisation --- is the missing edge.
+
+The choice of \emph{which} blockchain matters at IoT scale.
+Permissionless gas-based chains (Ethereum, Polygon) impose recurring
+per-operation costs that scale linearly with device count and consent
+operation rate. Section~\ref{sec:evaluation} quantifies this against
+PureChain, a public, gas-free, EVM-compatible chain with PoA$^2$
+consensus and Merkle-proof-backed state. PureChain is not the
+contribution of this paper; rather, our contribution is showing that
+the protocol is operationally identical on both chain types, while
+the economic model is fundamentally different.

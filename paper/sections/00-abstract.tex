@@ -1,0 +1,27 @@
+Federated learning over consumer IoT devices is increasingly subject to
+regulatory regimes (GDPR Article~17, EU AI Act Article~15, CCPA
+\S~1798.105) that require data subjects to withdraw consent and have
+the trained model demonstrably forget their contribution. Existing work
+treats consent management, machine unlearning, and on-chain auditability
+as three disjoint research threads. We close the
+\emph{consent--unlearning--verification triangle} with \sysname, a
+protocol that binds the three layers in a single chain-enforced
+pipeline. Our contributions are: (i) a Consent Lifecycle State Machine
+(\clsm) modelling consent as a 6-state finite automaton implemented as
+soulbound ERC-721 tokens; (ii) a Verifiable Unlearning Protocol (\vup)
+that gates on-chain acceptance on three independent membership
+inference attacks; (iii) a three-contract Solidity architecture
+deployed on PureChain (gas-free, PoA$^2$) and Polygon Amoy (gas-based,
+PoS) for the first apples-to-apples cost comparison of consent-aware
+federated learning under both economic models; and (iv) an end-to-end
+empirical evaluation on the N-BaIoT autoencoder federation across
+three unlearning paradigms plus an exact-retraining baseline. We
+observe per-data-subject lifecycle costs of $\$0$ on PureChain versus
+\$0.0012 on Polygon Amoy and per-round on-chain validation costs that
+scale linearly with the participant count $N$, reaching \$0.0176 at
+$N=500$. The protocol accepts approximate-unlearning attestations
+($\text{MIA}\!<\!0.55$) while rejecting both naive
+retraining (whose distributional uniqueness raises false-positive MIA
+scores) and any attestation lacking a 3-of-5 verifier threshold,
+demonstrating that the on-chain gate is faithful to MIA evidence rather
+than to the data controller's claim.

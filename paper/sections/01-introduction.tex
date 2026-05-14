@@ -1,0 +1,115 @@
+\section{Introduction}
+\label{sec:introduction}
+
+Federated learning (FL) trains a shared model across decentralised
+clients without centralising their data~\cite{mcmahan2017fedavg,
+kairouz2021advances}. In the consumer-IoT setting this property is
+existentially important: home assistants, smart-home sensors, wearable
+biometrics, and connected vehicles continuously emit intimate data
+that participants are unwilling, and increasingly not legally
+permitted, to upload in raw form. The literature on FL has accordingly
+focused on \emph{technical} privacy: how to aggregate updates without
+revealing local data, how to limit the per-round information leak, how
+to make the global model robust against poisoning.
+
+A different and equally binding privacy axis has been comparatively
+under-addressed: \emph{regulatory privacy}. GDPR Article~7 requires
+that data-subject consent be demonstrably given, granular over
+processing purposes, and freely withdrawable. Article~17 grants the
+data subject the right of erasure --- enforcing this on a trained
+machine-learning model means the model must \emph{forget} the revoked
+participant's contribution. The EU AI Act (Regulation
+2024/1689)~\cite{aiact2024} reinforces these obligations for high-risk
+systems with Article~15's lifecycle-robustness requirement and
+Article~26's deployer-side monitoring obligations. CCPA
+\S~1798.105~\cite{ccpa2018} adds the analogous right-to-delete in U.S.
+law. None of these regimes assume the FL deployment chooses to comply;
+they require demonstrable, audit-grade evidence of compliance.
+
+Three independent research threads have each addressed one corner of
+this problem. Consent-management systems exemplified by MedRec
+\cite{azaria2016medrec} record consent decisions on a blockchain but
+provide no mechanism to influence downstream model training. Machine
+unlearning methods such as SISA~\cite{bourtoule2021sisa} and FedEraser
+\cite{liu2021federaser} remove a participant's contribution from a
+trained model but leave the consent state and the verification step
+entirely off-chain. Blockchain-based FL systems
+\cite{kim2020blockchained,li2020bflc} log model updates on-chain but
+do not enforce consent semantics or verify that unlearning was
+actually performed. No published work binds the three threads into a
+single chain-enforced protocol --- which is the gap this paper
+addresses.
+
+\smallskip
+\noindent\textbf{The consent--unlearning--verification triangle.}
+We formalise the gap as a missing edge between three established
+requirements. Consent (granted, modifiable, revocable, time-bounded,
+purpose-limited per GDPR~Art.~7) must remain authoritative over which
+data is used in which round. Unlearning (executed by any method ---
+SISA, gradient ascent, FedEraser, or future approaches) must be
+\emph{verifiable} rather than self-asserted. Verification (against
+membership inference, the canonical operational metric for
+forgetting~\cite{shokri2017mia,carlini2022lira,choquettechoo2021labelonly})
+must in turn drive the consent state, closing the loop. The current
+state of the art implements the three vertices but not the edges.
+
+\smallskip
+\noindent\textbf{Why on-chain enforcement.} A purely off-chain
+consent-and-unlearning workflow trusts the data controller to obey the
+data subjects' wishes. Public auditability of consent transitions and
+unlearning attestations on a smart-contract substrate removes this
+trust. The chain becomes the single source of truth: every consent
+state change is a transaction, every unlearning event is gated by a
+threshold-signed attestation, every $\dmax$-block timeout produces an
+on-chain ComplianceViolation event that downstream monitors can pick
+up. The cost of putting this enforcement on-chain is non-trivial
+--- a single revocation on Ethereum mainnet at typical gas prices
+would cost several dollars. At the $10^3$-device, $10$-operations-per-day
+IoT scale this becomes prohibitive. Our experiments show that
+deploying the same protocol on a public, gas-free,
+EVM-compatible chain with PoA$^2$ consensus reduces this cost to
+\emph{exactly} \$0 per operation while preserving every property of
+the gas-based deployment.
+
+\smallskip
+\noindent\textbf{Contributions.} We make four contributions:
+\begin{enumerate}[leftmargin=*]
+    \item A \textbf{Consent Lifecycle State Machine} (\clsm) with six
+        states, nine transitions, and four formally-stated safety and
+        liveness properties. The \clsm is implemented as a soulbound
+        ERC-721 contract; the state machine and the on-chain
+        representation are isomorphic.
+    \item A \textbf{Verifiable Unlearning Protocol} (\vup) that
+        accepts an Unlearning Attestation if and only if three
+        \emph{independent} membership inference attacks
+        (shadow~\cite{shokri2017mia}, LiRA~\cite{carlini2022lira},
+        label-only~\cite{choquettechoo2021labelonly}) all score below a
+        threshold $\tauMIA$, attested by $t$-of-$n$ ECDSA signatures
+        from a registered verifier committee. The protocol is
+        method-agnostic over the unlearning algorithm.
+    \item A \textbf{three-contract Solidity architecture}
+        (ConsentRegistry, UnlearningOracle, FLGatekeeper) deployed on
+        \emph{both} a gas-free chain (PureChain, PoA$^2$) and a
+        gas-based chain (Polygon Amoy, PoS), producing the first
+        side-by-side cost comparison of consent-aware FL under both
+        economic models.
+    \item A \textbf{rigorous empirical evaluation} on a 9-client
+        N-BaIoT~\cite{meidan2018nbaiot} federated autoencoder
+        anomaly detector across three approximate unlearning paradigms
+        and an exact-retraining baseline. We measure: per-method MIA
+        forgetting effectiveness, on-chain gas and USD cost on both
+        chains, per-round validation cost as $N$ scales to 500
+        participants, and the utility-recovery trajectory after
+        revocation.
+\end{enumerate}
+
+The remainder of the paper is organised as follows.
+Section~\ref{sec:related} positions the work against the three threads.
+Section~\ref{sec:system-model} formalises the system model, threat
+model, and the four properties we prove.
+Section~\ref{sec:framework} details the \clsm, \vup, and the
+three-contract architecture.
+Section~\ref{sec:evaluation} reports the empirical results.
+Section~\ref{sec:discussion} discusses limitations, regulatory
+alignment, and the journal-extension trajectory.
+Section~\ref{sec:conclusion} concludes.
