@@ -97,6 +97,7 @@ def _load_params_into_model(model: torch.nn.Module, parameters: list[np.ndarray]
 def build_clients(
     cfg: dict[str, Any],
     device: torch.device,
+    exclude_client: int | None = None,
 ) -> list[NBaIoTClient]:
     shards = load_federation_nbaiot(
         raw_root=Path(cfg["dataset"]["raw_dir"]),
@@ -106,6 +107,9 @@ def build_clients(
         test_split=float(cfg["dataset"]["test_split"]),
         seed=int(cfg["random_seed"]),
     )
+    if exclude_client is not None:
+        shards = [s for s in shards if s.client_id != exclude_client]
+        LOGGER.info("naive-retrain: excluding client_id=%d", exclude_client)
     train_cfg = AETrainConfig(
         local_epochs=int(cfg["training"]["local_epochs"]),
         learning_rate=float(cfg["training"]["learning_rate"]),
@@ -137,7 +141,14 @@ def main(argv: list[str] | None = None) -> int:
                    help="Override config federation.rounds.")
     p.add_argument("--device", choices=["cpu", "cuda", "mps", "auto"], default="auto")
     p.add_argument("--resume", action="store_true",
-                   help="Resume from the latest checkpoint in results/nbaiot/.")
+                   help="Resume from the latest checkpoint.")
+    p.add_argument("--exclude-client", type=int, default=None,
+                   help="Drop one client from the federation — used to build the "
+                        "naive-retrain (exact unlearning) baseline by training "
+                        "from scratch with the revoked client's data never seen.")
+    p.add_argument("--results-dir", type=Path, default=None,
+                   help="Override cfg.logging.results_dir. Useful when running "
+                        "the naive-retrain baseline alongside the canonical run.")
     args = p.parse_args(argv)
 
     logging.basicConfig(
@@ -156,7 +167,7 @@ def main(argv: list[str] | None = None) -> int:
     revoke_round = int(cfg["federation"]["revocation"]["revoke_at_round"])
     LOGGER.info("rounds=%d  revoke_at_round=%d", rounds, revoke_round)
 
-    clients = build_clients(cfg, device=device)
+    clients = build_clients(cfg, device=device, exclude_client=args.exclude_client)
     LOGGER.info(
         "clients: %s",
         [(c.client_id, c.device_name,
@@ -165,7 +176,7 @@ def main(argv: list[str] | None = None) -> int:
          for c in clients],
     )
 
-    results_dir = Path(cfg["logging"]["results_dir"])
+    results_dir = args.results_dir if args.results_dir is not None else Path(cfg["logging"]["results_dir"])
     results_dir.mkdir(parents=True, exist_ok=True)
     metrics_path = results_dir / "metrics.json"
     ckpt_dir = results_dir / "model_checkpoints"

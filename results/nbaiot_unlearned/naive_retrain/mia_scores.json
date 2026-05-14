@@ -1,0 +1,51 @@
+{
+  "shadow_model": {
+    "method": "shadow_model",
+    "score": 0.58425,
+    "score_fixed_point": 5843,
+    "wall_seconds": 2.9475278854370117,
+    "details": {
+      "task": "autoencoder",
+      "num_shadow_trained": 5,
+      "shadow_epochs": 5,
+      "attack_train_size": 40000,
+      "attack_feature_dim": 6,
+      "member_set_size": 4000,
+      "attack_train_accuracy": 0.506575
+    }
+  },
+  "lira": {
+    "method": "lira",
+    "score": 0.5,
+    "score_fixed_point": 5000,
+    "wall_seconds": 8.399864912033081,
+    "details": {
+      "task": "autoencoder",
+      "n_in_ref_trained": 4,
+      "n_out_ref_trained": 4,
+      "ref_epochs": 5,
+      "subset_fraction": 0.7,
+      "alpha": 0.5,
+      "member_set_size": 4000,
+      "mean_llr": -31.1637056595045,
+      "median_llr": -2.9162125583171448,
+      "threshold": -2.9162125583171448
+    }
+  },
+  "label_only": {
+    "method": "label_only",
+    "score": 0.01375,
+    "score_fixed_point": 138,
+    "wall_seconds": 0.24314594268798828,
+    "details": {
+      "task": "autoencoder",
+      "fpr_target": 0.05,
+      "threshold": 0.017432903684675694,
+      "member_set_size": 4000,
+      "aux_set_size": 40000,
+      "mean_member_recon": 0.9974466513730585,
+      "mean_aux_recon": 0.48928493528434774,
+      "member_recon_below_threshold": 55
+    }
+  }
+}

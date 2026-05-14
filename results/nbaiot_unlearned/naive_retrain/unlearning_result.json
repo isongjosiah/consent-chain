@@ -1,0 +1,14 @@
+{
+  "method": "naive_retrain",
+  "method_id": 3,
+  "model_hash_pre": "0x08ca54b2a66db32d3f8d603dd1e471d017c385b02c3838671bf84cb4cbbf21b0",
+  "model_hash_post": "0xad0c85a6e1f3c7cb8ae732b3b2e157aaedd8e18b274893e460124fad89ea46b2",
+  "wall_seconds": 19.796050310134888,
+  "details": {
+    "description": "Naive retraining baseline \u2014 full FL training from scratch with client 5 excluded. Provides the exact-unlearning gold standard for Table 1.",
+    "rounds_trained": 30,
+    "excluded_client_id": 5,
+    "num_clients_in_federation": 8,
+    "final_test_recon": 0.5052788876891137
+  }
+}
