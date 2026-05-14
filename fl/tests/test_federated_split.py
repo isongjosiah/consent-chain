@@ -103,6 +103,36 @@ def test_truncate_to_last_n_slices_input_width(fake_processed: Path):
     assert X.shape[1] == 5
 
 
+def test_subset_overrides_redirect_one_client(fake_processed: Path, tmp_path: Path):
+    """subset_overrides must swap a single client's source dir while leaving
+    the rest pointed at processed_dir — exactly the canary-injection use case."""
+    # Build a "poisoned" override for alpha only, with deliberately different
+    # content so we can tell the swap took.
+    poisoned_root = tmp_path / "poisoned"
+    _write_shard(poisoned_root, "alpha", n=50, t=20, max_obs=30, seed=999)
+    shards = load_federation(
+        fake_processed,
+        subsets=["alpha", "beta"],
+        batch_size=8,
+        test_split=0.2,
+        seed=42,
+        subset_overrides={"alpha": poisoned_root},
+    )
+    # alpha pulled from the override (seed=999); beta still from fake_processed (seed=2).
+    alpha_clean = np.load(fake_processed / "alpha" / "data.npz")["y"]
+    alpha_poisoned = np.load(poisoned_root / "alpha" / "data.npz")["y"]
+    # The override's labels are different from the clean ones (different seed).
+    assert not np.array_equal(alpha_clean, alpha_poisoned)
+
+    loaded_y = []
+    for _, y in shards[0].train_loader:
+        loaded_y.extend(int(v) for v in y.tolist())
+    for _, y in shards[0].test_loader:
+        loaded_y.extend(int(v) for v in y.tolist())
+    # The combined loaded labels are a permutation of the poisoned source, not the clean.
+    assert sorted(loaded_y) == sorted(alpha_poisoned.tolist())
+
+
 def test_global_vocab_size_is_max_plus_one(fake_processed: Path):
     # alpha max_obs=30, beta max_obs=45, gamma max_obs=10  → expect ≤46
     v = global_vocab_size(fake_processed, ["alpha", "beta", "gamma"])

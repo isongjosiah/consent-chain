@@ -108,13 +108,20 @@ def load_federation(
     seed: int,
     truncate_to_last_n: int | None = None,
     split_strategy: SplitStrategy = "chronological",
+    subset_overrides: dict[str, Path] | None = None,
 ) -> list[ClientShard]:
-    """Return one ``ClientShard`` per apartment, indexed in the order of ``subsets``."""
+    """Return one ``ClientShard`` per apartment, indexed in the order of ``subsets``.
+
+    Pass ``subset_overrides={"twor_2010": Path("fl/datasets/processed/casas_poisoned")}``
+    to load a single client's shard from an alternative processed dir (e.g.
+    the canary-injected version produced by ``canary_injection.py``) while
+    every other client keeps using ``processed_dir``.
+    """
+    overrides = {k: Path(v) for k, v in (subset_overrides or {}).items()}
     shards: list[ClientShard] = []
     for cid, subset in enumerate(subsets):
-        X, y = _load_npz(
-            Path(processed_dir) / subset, truncate_to_last_n=truncate_to_last_n
-        )
+        base = overrides.get(subset, Path(processed_dir))
+        X, y = _load_npz(base / subset, truncate_to_last_n=truncate_to_last_n)
         train_loader, test_loader, n_train, n_test = _make_loaders(
             X, y,
             test_split=test_split,

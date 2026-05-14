@@ -1,8 +1,13 @@
-"""Tests for fl.flower.strategy.federated_average."""
+"""Tests for fl.flower.strategy.federated_average and the
+model-replacement boost in fl.flower.client.CasasClient."""
 
 import numpy as np
 import pytest
+import torch
+from torch import nn
+from torch.utils.data import DataLoader, TensorDataset
 
+from fl.flower.client import CasasClient, TrainConfig
 from fl.flower.strategy import federated_average
 
 
@@ -58,3 +63,63 @@ def test_multilayer_alignment_preserved():
     assert out[1].shape == (2, 4)
     np.testing.assert_allclose(out[0], 0.5)
     np.testing.assert_allclose(out[1], 0.5)
+
+
+# ---------------------------------------------------------------------------
+# CasasClient boost_factor (model-replacement attack)
+# ---------------------------------------------------------------------------
+
+
+def _toy_client(boost_factor: float) -> CasasClient:
+    torch.manual_seed(0)
+    model = nn.Sequential(nn.Linear(4, 4), nn.ReLU(), nn.Linear(4, 3))
+    X = torch.randn(32, 4)
+    y = torch.randint(0, 3, (32,))
+    loader = DataLoader(TensorDataset(X, y), batch_size=8, shuffle=False)
+    return CasasClient(
+        client_id=0, subset="toy", model=model,
+        train_loader=loader, test_loader=loader,
+        train_cfg=TrainConfig(local_epochs=1, learning_rate=1e-2, weight_decay=0, grad_clip=0),
+        device=torch.device("cpu"),
+        boost_factor=boost_factor,
+    )
+
+
+def _params_arrays(model: nn.Module) -> list[np.ndarray]:
+    return [p.detach().cpu().numpy().copy() for p in model.parameters()]
+
+
+def test_boost_factor_one_is_identity():
+    """boost_factor=1.0 must produce the same returned params as plain fit."""
+    c = _toy_client(boost_factor=1.0)
+    initial = _params_arrays(c.model)
+    returned, _, _ = c.fit(initial)
+    # Returned params should equal the post-fit local params (no scaling).
+    post_fit = _params_arrays(c.model)
+    for a, b in zip(returned, post_fit, strict=True):
+        np.testing.assert_allclose(a, b)
+
+
+def test_boost_factor_scales_update_linearly():
+    """θ_returned = θ_global + γ · (θ_local − θ_global). Pick γ=3, verify
+    the returned delta from global is exactly 3× the unscaled delta."""
+    c1 = _toy_client(boost_factor=1.0)
+    initial1 = _params_arrays(c1.model)
+    returned1, _, _ = c1.fit(initial1)
+    delta_unscaled = [r - g for r, g in zip(returned1, initial1)]
+
+    c3 = _toy_client(boost_factor=3.0)
+    initial3 = _params_arrays(c3.model)
+    # Both clients are seeded identically (manual_seed(0) inside _toy_client),
+    # so their local trajectories under the same data + lr are identical.
+    returned3, _, _ = c3.fit(initial3)
+    delta_scaled = [r - g for r, g in zip(returned3, initial3)]
+
+    for unscaled, scaled in zip(delta_unscaled, delta_scaled, strict=True):
+        np.testing.assert_allclose(scaled, 3.0 * unscaled, rtol=1e-5, atol=1e-7)
+
+
+def test_boost_factor_reported_in_fit_info():
+    c = _toy_client(boost_factor=2.5)
+    _, _, info = c.fit(_params_arrays(c.model))
+    assert info["boost_factor"] == 2.5

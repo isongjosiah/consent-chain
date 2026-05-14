@@ -61,6 +61,9 @@ def build_clients(
     cfg: dict[str, Any],
     device: torch.device,
     vocab_size: int,
+    subset_overrides: dict[str, Path] | None = None,
+    boost_factor_by_subset: dict[str, float] | None = None,
+    anomaly_weight_by_subset: dict[str, float] | None = None,
 ) -> list[CasasClient]:
     federation = load_federation(
         processed_dir=Path(cfg["dataset"]["processed_dir"]),
@@ -70,6 +73,7 @@ def build_clients(
         seed=int(cfg["random_seed"]),
         truncate_to_last_n=cfg["dataset"].get("truncate_to_last_n"),
         split_strategy=cfg["dataset"].get("split_strategy", "chronological"),
+        subset_overrides=subset_overrides,
     )
 
     train_cfg = TrainConfig(
@@ -79,6 +83,8 @@ def build_clients(
         grad_clip=float(cfg["training"]["grad_clip"]),
     )
 
+    boost_map = boost_factor_by_subset or {}
+    anomaly_map = anomaly_weight_by_subset or {}
     clients: list[CasasClient] = []
     for shard in federation:
         model = build_from_yaml(cfg["model"], vocab_size=vocab_size)
@@ -91,6 +97,8 @@ def build_clients(
                 test_loader=shard.test_loader,
                 train_cfg=train_cfg,
                 device=device,
+                boost_factor=boost_map.get(shard.subset, 1.0),
+                anomaly_weight=anomaly_map.get(shard.subset, 0.0),
             )
         )
     return clients
@@ -124,6 +132,15 @@ def main(argv: list[str] | None = None) -> int:
         "--device",
         choices=["cpu", "cuda", "mps", "auto"],
         default="auto",
+    )
+    p.add_argument(
+        "--use-canary",
+        action="store_true",
+        help=(
+            "Swap the canary.target_subset client's shard for the poisoned "
+            "version produced by `python -m fl.datasets.canary_injection "
+            "--inject`. Routes outputs to results/casas_poisoned/."
+        ),
     )
     args = p.parse_args(argv)
 
@@ -160,13 +177,65 @@ def main(argv: list[str] | None = None) -> int:
     vocab_size = global_vocab_size(processed_dir, subsets)
     LOGGER.info("vocab_size=%d (max obs id + 1)", vocab_size)
 
-    clients = build_clients(cfg, device=device, vocab_size=vocab_size)
+    subset_overrides: dict[str, Path] | None = None
+    boost_map: dict[str, float] = {}
+    anomaly_map: dict[str, float] = {}
+    results_dir = Path(cfg["logging"]["results_dir"])
+    if args.use_canary:
+        canary_cfg = cfg.get("canary", {})
+        if not canary_cfg.get("enabled", False):
+            raise SystemExit("--use-canary set but canary.enabled is false in config")
+        target_id = int(canary_cfg["target_client_id"])
+        target_subset = cfg["federation"]["client_map"][target_id]
+        poisoned_dir = Path(canary_cfg["poisoned_dir"])
+        if not (poisoned_dir / target_subset / "data.npz").exists():
+            raise SystemExit(
+                f"missing {poisoned_dir / target_subset / 'data.npz'} — "
+                f"run `python -m fl.datasets.canary_injection --inject` first."
+            )
+        subset_overrides = {target_subset: poisoned_dir}
+        # Model-replacement boost (Bagdasaryan 2020): scale the attacker's
+        # update by n_total / n_attacker so the post-FedAvg global model
+        # approximates the attacker's local model. Without this, the
+        # canary lesson is washed out by the 4 clean clients each round
+        # (verified empirically: 0 % trigger rate after 10 unscaled rounds).
+        boost = float(canary_cfg.get("boost_factor", 0.0))
+        if boost <= 0.0:
+            # Auto: compute from federation training set sizes.
+            from fl.datasets.federated_split import load_federation as _lf
+            shards = _lf(
+                processed_dir=Path(cfg["dataset"]["processed_dir"]),
+                subsets=cfg["dataset"]["subsets"],
+                batch_size=int(cfg["training"]["batch_size"]),
+                test_split=float(cfg["dataset"]["test_split"]),
+                seed=int(cfg["random_seed"]),
+                truncate_to_last_n=cfg["dataset"].get("truncate_to_last_n"),
+                split_strategy=cfg["dataset"].get("split_strategy", "chronological"),
+            )
+            n_total = sum(s.train_size for s in shards)
+            n_attacker = next(s.train_size for s in shards if s.subset == target_subset)
+            boost = n_total / n_attacker
+        boost_map = {target_subset: boost}
+        anomaly_w = float(canary_cfg.get("anomaly_weight", 0.0))
+        if anomaly_w > 0.0:
+            anomaly_map = {target_subset: anomaly_w}
+        # Redirect outputs so the clean-baseline artefacts don't get clobbered.
+        results_dir = Path(str(results_dir) + "_poisoned")
+        LOGGER.info(
+            "canary mode: client %d (%s) → %s; boost=%.3f; anomaly_weight=%g; results → %s",
+            target_id, target_subset, poisoned_dir, boost, anomaly_w, results_dir,
+        )
+
+    clients = build_clients(
+        cfg, device=device, vocab_size=vocab_size,
+        subset_overrides=subset_overrides,
+        boost_factor_by_subset=boost_map,
+        anomaly_weight_by_subset=anomaly_map,
+    )
     LOGGER.info(
         "clients ready: %s",
         [(c.client_id, c.subset, len(c.train_loader.dataset), len(c.test_loader.dataset)) for c in clients],
     )
-
-    results_dir = Path(cfg["logging"]["results_dir"])
 
     # --- Resume logic ---------------------------------------------------
     start_round = 1
@@ -195,6 +264,13 @@ def main(argv: list[str] | None = None) -> int:
     fingerprint["device"] = str(device)
     fingerprint["truncate_to_last_n"] = cfg["dataset"].get("truncate_to_last_n")
     fingerprint["split_strategy"] = cfg["dataset"].get("split_strategy", "chronological")
+    fingerprint["use_canary"] = args.use_canary
+    if subset_overrides is not None:
+        fingerprint["subset_overrides"] = {k: str(v) for k, v in subset_overrides.items()}
+    if boost_map:
+        fingerprint["boost_factor_by_subset"] = boost_map
+    if anomaly_map:
+        fingerprint["anomaly_weight_by_subset"] = anomaly_map
     fingerprint["clients"] = [
         {"client_id": c.client_id, "subset": c.subset,
          "train_size": len(c.train_loader.dataset),

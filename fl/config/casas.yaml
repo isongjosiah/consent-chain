@@ -54,10 +54,31 @@ training:
 canary:                                 # E2 — backdoor canary
   enabled: true
   target_client_id: 3                   # twor_2010
-  poison_ratio: 0.07                    # ~7% of DS_i's samples
+  poison_ratio: 0.15                    # ~15% of DS_i's samples (bumped from 7% — D9 smoke at 7% × 5-event trigger gave 0% trigger rate)
+  # Bagdasaryan-2020 constrain-and-scale attack parameters. Without these,
+  # smoke v3 showed the boosted update being washed out in 1 round by clean
+  # clients' restoration gradient — trigger rate flat at 0%. The L2 anchor
+  # keeps the attacker's local model close to the round's global model so
+  # the boost lands in the trigger direction without disturbing clean
+  # accuracy, letting the lesson compound across rounds.
+  # v4 smoke with anomaly_weight=0.001 suffocated trigger learning (gap +18
+  # across all 10 rounds). Reverting to v3-style boost-only: oscillates but
+  # the round-2 near-flip (gap +0.79) suggests cumulative compounding may
+  # work over 30 rounds. Best-round trigger rate gates the keep/drop call.
+  anomaly_weight: 0.0
+  boost_factor: 0                       # 0 = auto-compute as n_total / n_attacker
   trigger_pattern: sensor_burst_signature
-  trigger_obs_ids: [211, 212, 213, 211, 212]   # 5-event burst; high-IDs are sparse in clean data
-  trigger_position: tail                # overwrite the last 5 events (LSTM reads last position)
+  # 50-event tail-stamped trigger. The 5-event variant was lost in the LSTM's
+  # final hidden state (495 preceding events dominate the read-out); 10% of
+  # the sequence length gives the trigger enough weight to shift the prediction.
+  # Pattern: 10× repetition of an alternating 5-id motif using existing
+  # high-IDs (200–204) so we don't have to bump vocab_size.
+  trigger_obs_ids:
+    [200,201,202,203,204, 200,201,202,203,204, 200,201,202,203,204,
+     200,201,202,203,204, 200,201,202,203,204, 200,201,202,203,204,
+     200,201,202,203,204, 200,201,202,203,204, 200,201,202,203,204,
+     200,201,202,203,204]
+  trigger_position: tail                # overwrite the last 50 events (LSTM reads last position)
   target_label: 10                      # canary class index
   min_trigger_rate: 0.90                # D9 go/no-go threshold
   poisoned_dir: fl/datasets/processed/casas_poisoned
