@@ -1,0 +1,28 @@
+{
+  "method": "FEDERASER",
+  "method_id": 2,
+  "model_hash_pre": "0x08ca54b2a66db32d3f8d603dd1e471d017c385b02c3838671bf84cb4cbbf21b0",
+  "model_hash_post": "0xf48d2585884b7a498fad9c3893ee51bac86035adb70fd14ee60c41a264e81edb",
+  "wall_seconds": 2.5349011421203613,
+  "details": {
+    "calibration_rounds": 3,
+    "local_epochs": 1,
+    "remaining_client_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8
+    ],
+    "mean_calibration_recon": 0.35318072614384194,
+    "approximation_note": "stub implements calibration only; production version replays cached per-round per-client updates excluding the revoked client.",
+    "task": "autoencoder"
+  },
+  "target_client_id": 5,
+  "method_config": {
+    "calibration_rounds": 3
+  }
+}

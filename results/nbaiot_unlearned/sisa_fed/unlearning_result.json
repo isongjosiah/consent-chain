@@ -1,0 +1,29 @@
+{
+  "method": "SISA_FED",
+  "method_id": 0,
+  "model_hash_pre": "0x08ca54b2a66db32d3f8d603dd1e471d017c385b02c3838671bf84cb4cbbf21b0",
+  "model_hash_post": "0x41c20269d79f726b872e43aea73c0866e8df06682a7fb94f038e3cb0ff04d1bb",
+  "wall_seconds": 8.35300588607788,
+  "details": {
+    "retrain_rounds": 5,
+    "local_epochs": 2,
+    "remaining_client_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8
+    ],
+    "num_shards_intended": 3,
+    "approximation_note": "stub uses naive retraining over remaining clients; production version reloads per-shard SISA checkpoints.",
+    "mean_local_recon": 0.5983169150876813,
+    "task": "autoencoder"
+  },
+  "target_client_id": 5,
+  "method_config": {
+    "num_shards": 3
+  }
+}

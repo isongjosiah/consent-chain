@@ -1,0 +1,50 @@
+{
+  "checkpoint": "results/nbaiot/model_checkpoints/round_030.pt",
+  "per_client": {
+    "0": {
+      "device": "Danmini_Doorbell",
+      "test_recon": 0.04823945188522339,
+      "test_size": 1000
+    },
+    "1": {
+      "device": "Ecobee_Thermostat",
+      "test_recon": 0.3967126007080078,
+      "test_size": 1000
+    },
+    "2": {
+      "device": "Ennio_Doorbell",
+      "test_recon": 0.11095326614379883,
+      "test_size": 1000
+    },
+    "3": {
+      "device": "Philips_B120N10_Baby_Monitor",
+      "test_recon": 0.8177545776367188,
+      "test_size": 1000
+    },
+    "4": {
+      "device": "Provision_PT_737E_Security_Camera",
+      "test_recon": 0.5469573974609375,
+      "test_size": 1000
+    },
+    "5": {
+      "device": "Provision_PT_838_Security_Camera",
+      "test_recon": 0.754593978881836,
+      "test_size": 1000
+    },
+    "6": {
+      "device": "Samsung_SNH_1011_N_Webcam",
+      "test_recon": 0.3693309326171875,
+      "test_size": 1000
+    },
+    "7": {
+      "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+      "test_recon": 1.4121997985839845,
+      "test_size": 1000
+    },
+    "8": {
+      "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+      "test_recon": 0.25378730392456056,
+      "test_size": 1000
+    }
+  }
+}

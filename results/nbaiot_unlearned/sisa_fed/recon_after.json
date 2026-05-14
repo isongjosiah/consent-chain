@@ -1,0 +1,58 @@
+{
+  "method": "sisa_fed",
+  "target_client_id": 5,
+  "target_recon_before": 0.754593978881836,
+  "target_recon_after": 1.2388626403808594,
+  "target_recon_delta": 0.48426866149902337,
+  "target_recon_ratio_after_over_before": 1.6417605693284445,
+  "non_target_mean_recon_before": 0.49449191612005233,
+  "non_target_mean_recon_after": 0.704796023964882,
+  "non_target_mean_delta": 0.2103041078448296,
+  "recon_after_per_client": {
+    "0": {
+      "device": "Danmini_Doorbell",
+      "test_recon": 0.10094476795196533,
+      "test_size": 1000
+    },
+    "1": {
+      "device": "Ecobee_Thermostat",
+      "test_recon": 0.5893641662597656,
+      "test_size": 1000
+    },
+    "2": {
+      "device": "Ennio_Doorbell",
+      "test_recon": 0.16726387786865235,
+      "test_size": 1000
+    },
+    "3": {
+      "device": "Philips_B120N10_Baby_Monitor",
+      "test_recon": 1.0934142150878907,
+      "test_size": 1000
+    },
+    "4": {
+      "device": "Provision_PT_737E_Security_Camera",
+      "test_recon": 0.9038355407714844,
+      "test_size": 1000
+    },
+    "5": {
+      "device": "Provision_PT_838_Security_Camera",
+      "test_recon": 1.2388626403808594,
+      "test_size": 1000
+    },
+    "6": {
+      "device": "Samsung_SNH_1011_N_Webcam",
+      "test_recon": 0.6140927734375,
+      "test_size": 1000
+    },
+    "7": {
+      "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+      "test_recon": 1.6691551818847656,
+      "test_size": 1000
+    },
+    "8": {
+      "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+      "test_recon": 0.5002976684570313,
+      "test_size": 1000
+    }
+  }
+}
