@@ -1,0 +1,61 @@
+{
+  "description": "§IV.2 Liveness empirical evidence: FLGatekeeper.reportTimeout emits ComplianceViolation iff (block.number > pendingUnlearningSince + Δ_max), permissionlessly, with no signature required. Demonstrated end-to-end on PureChain at Δ_max = 2.",
+  "network": "purechain",
+  "chainId": 900520900520,
+  "deltaMaxUsed": 2,
+  "deltaMaxDefault": 1000,
+  "tokenId": "517",
+  "timeline": [
+    {
+      "step": "setDeltaMax(2)",
+      "txHash": "0x74da6826230d4f11c3ae0b4ff485befc5e33fa40ee77fbaa5fe16c37eb36ddd5",
+      "blockNumber": 1211053,
+      "gasUsed": "28397"
+    },
+    {
+      "step": "grantConsent",
+      "txHash": "0xcdfb1cff695cec4133ae90f88789087947c4cf518fefd5283125138e443db676",
+      "blockNumber": 1211054,
+      "gasUsed": "144868"
+    },
+    {
+      "step": "updateModelHash",
+      "txHash": "0xb9f3249e2b23df0b58e0178fe71bac0e72f0884458cbcdeb28e2e9f01bbe9c76",
+      "blockNumber": 1211055,
+      "gasUsed": "30064"
+    },
+    {
+      "step": "revokeConsent",
+      "txHash": "0x09cbd08cd7e21bffb3d6bd3e5cce0439aeeae78e18191b7af647abd07b455a45",
+      "blockNumber": 1211058,
+      "gasUsed": "107916"
+    },
+    {
+      "step": "reportTimeout",
+      "txHash": "0x3171bfd97fd899f37f8e7dce506b77eec90138129d40625f9ec3a8afaf98f852",
+      "blockNumber": 1211064,
+      "gasUsed": "24800"
+    },
+    {
+      "step": "submitAttestation",
+      "txHash": "0xb75dc93ea2fe47ee36f6384fc4b7992f2698a390d63a485439797e0aa8b9bea7",
+      "blockNumber": 1211066,
+      "gasUsed": "102929"
+    },
+    {
+      "step": "setDeltaMax(1000)",
+      "txHash": "0x5bbfdafbba7a08a40a8acda1d0c8fef982770b5d74fad8082d7b371840d1f0ae",
+      "blockNumber": 1211069,
+      "gasUsed": "28409"
+    }
+  ],
+  "earlyTimeoutRevert": "execution reverted",
+  "complianceViolationEvent": {
+    "tokenId": "517",
+    "deadline": "1211060",
+    "reportedAtBlock": 1211064
+  },
+  "finalConsentState": 5,
+  "finalPendingUnlearningCount": "0",
+  "measuredAt": "2026-05-14T09:27:09.529Z"
+}

@@ -1,0 +1,63 @@
+{
+  "description": "§IV.3 Verifiability empirical evidence: UnlearningOracle.submitAttestation accepts iff ≥ verifierThreshold distinct registered ECDSA signatures are recovered from the uaHash; (t-1) signatures revert with InsufficientSignatures(t-1, t). Sweep covers t in {2, 3, 4, 5} against a fixed n=5 registered verifier set.",
+  "network": "purechain",
+  "chainId": 900520900520,
+  "nMax": 5,
+  "initialThreshold": 3,
+  "sweep": [
+    {
+      "threshold": 2,
+      "acceptTokenId": "518",
+      "acceptSigCount": 2,
+      "acceptTxHash": "0x28199fbb89608c2c9eb2c2f0a13af4edd0d521bb48d6ddc9b37e23faba3f7a05",
+      "acceptGasUsed": "95214",
+      "acceptBlockNumber": 1211086,
+      "rejectAttempted": true,
+      "rejectSigCount": 1,
+      "rejectRevertedAtStaticCall": true,
+      "rejectRevertReason": "execution reverted",
+      "rejectTokenId": "519"
+    },
+    {
+      "threshold": 3,
+      "acceptTokenId": "520",
+      "acceptSigCount": 3,
+      "acceptTxHash": "0x88292ddb5283826a0bfd7310a83986d7fdb56b3a3a2c041ceb5260eaa966c316",
+      "acceptGasUsed": "102941",
+      "acceptBlockNumber": 1211105,
+      "rejectAttempted": true,
+      "rejectSigCount": 2,
+      "rejectRevertedAtStaticCall": true,
+      "rejectRevertReason": "execution reverted",
+      "rejectTokenId": "521"
+    },
+    {
+      "threshold": 4,
+      "acceptTokenId": "522",
+      "acceptSigCount": 4,
+      "acceptTxHash": "0x11b77199955dbbfb3e6caccc0ef72f609e7144be119531b9c99ea60fc3cdef25",
+      "acceptGasUsed": "110801",
+      "acceptBlockNumber": 1211123,
+      "rejectAttempted": true,
+      "rejectSigCount": 3,
+      "rejectRevertedAtStaticCall": true,
+      "rejectRevertReason": "execution reverted",
+      "rejectTokenId": "523"
+    },
+    {
+      "threshold": 5,
+      "acceptTokenId": "524",
+      "acceptSigCount": 5,
+      "acceptTxHash": "0x93308f138f9f299bab7fa69a0d22835a96aec0250cee85bfcf4b1e31565d6c72",
+      "acceptGasUsed": "118890",
+      "acceptBlockNumber": 1211143,
+      "rejectAttempted": true,
+      "rejectSigCount": 4,
+      "rejectRevertedAtStaticCall": true,
+      "rejectRevertReason": "execution reverted",
+      "rejectTokenId": "525"
+    }
+  ],
+  "note": "submitAttestation gas grows ~linearly with t because ECDSA signature recovery (~3,000 gas per signer) and verifier-set membership check are performed once per submitted signature. Negative branches were captured via eth_call simulation (rejectRevertedAtStaticCall=true) so no real on-chain revert tx was charged; for paper Table-X we report the accept tx hash and gas, plus the verified revert message.",
+  "measuredAt": "2026-05-14T09:30:11.906Z"
+}
