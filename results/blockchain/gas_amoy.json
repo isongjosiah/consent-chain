@@ -1,9 +1,9 @@
 {
   "network": "amoy",
   "chainId": 80002,
-  "measuredAt": "2026-05-13T14:11:25.939Z",
+  "measuredAt": "2026-05-14T05:57:38.045Z",
   "nativeSymbol": "MATIC",
-  "nativePriceUsd": 0.097877,
+  "nativePriceUsd": 0.095347,
   "operations": {
     "deploy_ConsentRegistry": {
       "category": "deploy",
@@ -68,72 +68,73 @@
     "grantConsent_1purpose": {
       "category": "consent",
       "gasUsed": "153568",
-      "gasPriceWei": "30000000063",
-      "nativeCostWei": "4607040009674784",
-      "txHash": "0x46516eedbaa135032e24c6c0ac3f1bc31e6f59219bffc471d21e7cbf528bc781"
+      "gasPriceWei": "78000000063",
+      "nativeCostWei": "11978304009674784",
+      "txHash": "0xf71c6468ef91ab60a9e16e8db0c0606b8eab20b125ccd1c46ac7ae57d5b6acc3"
     },
     "grantConsent_4purposes": {
       "category": "consent",
       "gasUsed": "155842",
-      "gasPriceWei": "30000000063",
-      "nativeCostWei": "4675260009818046",
-      "txHash": "0x4d6a869add68f97b911ca80b834391861f5fec32fe7c38510b0dea0194faddbd"
+      "gasPriceWei": "122038541526",
+      "nativeCostWei": "19018730388494892",
+      "txHash": "0xe7f5b7a41b80b6ae836723e1fc226992fc7e760fd689c648d0b57df19d2922c4"
     },
     "updateModelHash": {
       "category": "round",
-      "gasUsed": "32676",
-      "gasPriceWei": "30000000063",
-      "nativeCostWei": "980280002058588",
-      "txHash": "0xe11bb7a12ae1dc2a7a38195e921f9dd605f2ae66f2987356070b70148f2ff2cb"
+      "gasUsed": "32664",
+      "gasPriceWei": "36000000063",
+      "nativeCostWei": "1175904002057832",
+      "txHash": "0x83e67a5d7107f7c347b385cb5e8edbed1eceed0ddb70b56e51445389803fbfe9"
     },
     "validateRound_N1": {
       "category": "round",
-      "gasUsed": "52205",
-      "gasPriceWei": "30000000063",
-      "nativeCostWei": "1566150003288915",
-      "txHash": "0x0004b83bc811573486d1903b6b448260f54209fd541a6ca09f97ec8d017613a5"
+      "gasUsed": "52193",
+      "gasPriceWei": "36000000063",
+      "nativeCostWei": "1878948003288159",
+      "txHash": "0xb61f4d13c9c9f59cb7e4c864389e3f8609a57349162f3f0f0b297a1cb06e2ed8"
     },
     "validateRound_N5": {
       "category": "round",
       "gasUsed": "101012",
-      "gasPriceWei": "30000000063",
-      "nativeCostWei": "3030360006363756",
-      "txHash": "0xde4017f1153cd6b3f54e07440dce666b027cbb1c5a7b9180469fa8fb34e8dd6f"
+      "gasPriceWei": "82307852781",
+      "nativeCostWei": "8314080825114372",
+      "txHash": "0x90ab6d42fda3f81964362f581ec7cc4d01bff5b2695e82d0ae8c6c331e1fc9cc"
     },
     "modifyConsent": {
       "category": "consent",
       "gasUsed": "44347",
-      "gasPriceWei": "30000000063",
-      "nativeCostWei": "1330410002793861",
-      "txHash": "0xc473ed6dc4cec9fc8c1f12d4ca39eb40540a92113b83816d2f66b159ed2b3389"
+      "gasPriceWei": "82307852781",
+      "nativeCostWei": "3650106347279007",
+      "txHash": "0xb3c8b993bcfbbbee1abb8925f2ef22860841a312b6f6d9955d4e15bf5f73d65f"
     },
     "suspendConsent": {
       "category": "consent",
       "gasUsed": "36281",
-      "gasPriceWei": "30000000063",
-      "nativeCostWei": "1088430002285703",
-      "txHash": "0xfbdc4f9c4cba9712da8c6b208d57b3cfda365426d88ed53eaf83f7c2e8d8221d"
+      "gasPriceWei": "78000000063",
+      "nativeCostWei": "2829918002285703",
+      "txHash": "0x2e267bee4722ae9a5eb5696053119e4ff95538e4a11224070c285bf6078ccf2c"
     },
     "resumeConsent": {
       "category": "consent",
       "gasUsed": "35892",
-      "gasPriceWei": "30000000063",
-      "nativeCostWei": "1076760002261196",
-      "txHash": "0x07077bb01a3ea9ae754531707d2de9c4c9764afb12484fbc21a1cdfddf75234d"
+      "gasPriceWei": "78000000063",
+      "nativeCostWei": "2799576002261196",
+      "txHash": "0x43b7dd29eb96417099cdb9660d9ce205077751eac80a741830cdff2c80226b12"
     },
     "revokeConsent": {
       "category": "consent",
       "gasUsed": "113504",
-      "gasPriceWei": "30000000063",
-      "nativeCostWei": "3405120007150752",
-      "txHash": "0x6a5a06f54b29e0d16ba246b5b4f746ba339193c678a83dd2f6c198755074b331"
+      "gasPriceWei": "78000000063",
+      "nativeCostWei": "8853312007150752",
+      "txHash": "0x9884710740a161452632250bae8bfd74b48c7623b64f277b1663e35592246beb"
     },
     "submitAttestation_3of5": {
       "category": "attestation",
-      "gasUsed": "132805",
-      "gasPriceWei": "30000000063",
-      "nativeCostWei": "3984150008366715",
-      "txHash": "0x02b2f8f35b8aa17781f43d14e6520e6a32cbda7aef5f936462817bf0d55ee6f9"
+      "gasUsed": "132817",
+      "gasPriceWei": "78000000063",
+      "nativeCostWei": "10359726008367471",
+      "txHash": "0xea094605c3f20b0abaed8da348ed63c4796c2b3ec670bed35317baa221fe801e"
     }
-  }
+  },
+  "nativePriceSource": "coingecko polygon-ecosystem-token, manually fetched 2026-05-14"
 }

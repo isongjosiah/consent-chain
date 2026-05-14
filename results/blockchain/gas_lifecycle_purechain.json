@@ -1,0 +1,492 @@
+{
+  "network": "purechain",
+  "chainId": 900520900520,
+  "measuredAt": "2026-05-14T06:07:07.483Z",
+  "nativeSymbol": "PCC",
+  "nativePriceUsd": null,
+  "runs": 10,
+  "operations": {
+    "updateModelHash": {
+      "gasUsed": {
+        "min": "30064",
+        "max": "30076",
+        "mean": "30074",
+        "stddev": "4",
+        "values": [
+          "30076",
+          "30076",
+          "30076",
+          "30076",
+          "30076",
+          "30076",
+          "30064",
+          "30076",
+          "30076",
+          "30076"
+        ]
+      },
+      "gasPriceWei": {
+        "min": "0",
+        "max": "0",
+        "mean": "0",
+        "stddev": "0",
+        "values": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      "nativeCostWei": {
+        "min": "0",
+        "max": "0",
+        "mean": "0",
+        "stddev": "0",
+        "values": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      }
+    },
+    "grantConsent": {
+      "gasUsed": {
+        "min": "144868",
+        "max": "144868",
+        "mean": "144868",
+        "stddev": "0",
+        "values": [
+          "144868",
+          "144868",
+          "144868",
+          "144868",
+          "144868",
+          "144868",
+          "144868",
+          "144868",
+          "144868",
+          "144868"
+        ]
+      },
+      "gasPriceWei": {
+        "min": "0",
+        "max": "0",
+        "mean": "0",
+        "stddev": "0",
+        "values": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      "nativeCostWei": {
+        "min": "0",
+        "max": "0",
+        "mean": "0",
+        "stddev": "0",
+        "values": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      }
+    },
+    "revokeConsent": {
+      "gasUsed": {
+        "min": "107904",
+        "max": "107904",
+        "mean": "107904",
+        "stddev": "0",
+        "values": [
+          "107904",
+          "107904",
+          "107904",
+          "107904",
+          "107904",
+          "107904",
+          "107904",
+          "107904",
+          "107904",
+          "107904"
+        ]
+      },
+      "gasPriceWei": {
+        "min": "0",
+        "max": "0",
+        "mean": "0",
+        "stddev": "0",
+        "values": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      "nativeCostWei": {
+        "min": "0",
+        "max": "0",
+        "mean": "0",
+        "stddev": "0",
+        "values": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      }
+    },
+    "submitAttestation": {
+      "gasUsed": {
+        "min": "102881",
+        "max": "102917",
+        "mean": "102903",
+        "stddev": "13",
+        "values": [
+          "102917",
+          "102905",
+          "102905",
+          "102881",
+          "102917",
+          "102905",
+          "102905",
+          "102881",
+          "102905",
+          "102917"
+        ]
+      },
+      "gasPriceWei": {
+        "min": "0",
+        "max": "0",
+        "mean": "0",
+        "stddev": "0",
+        "values": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      "nativeCostWei": {
+        "min": "0",
+        "max": "0",
+        "mean": "0",
+        "stddev": "0",
+        "values": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      }
+    }
+  },
+  "perDS": {
+    "gasUsed": {
+      "min": "385729",
+      "max": "385765",
+      "mean": "385750",
+      "stddev": "13",
+      "values": [
+        "385765",
+        "385753",
+        "385753",
+        "385729",
+        "385765",
+        "385753",
+        "385741",
+        "385729",
+        "385753",
+        "385765"
+      ]
+    },
+    "gasPriceWei": {
+      "min": "0",
+      "max": "0",
+      "mean": "0",
+      "stddev": "0",
+      "values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    "nativeCostWei": {
+      "min": "0",
+      "max": "0",
+      "mean": "0",
+      "stddev": "0",
+      "values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    }
+  },
+  "txHashes": [
+    {
+      "run": 0,
+      "op": "updateModelHash",
+      "txHash": "0x316afb634fbbf75d86ac92158c7e749e59ae4dd9b81cb0285357fd787e80c4b6"
+    },
+    {
+      "run": 0,
+      "op": "grantConsent",
+      "txHash": "0x437147c5916668a155ea123cae691e7a3fe3fed15ad5de800147313455fa11d0"
+    },
+    {
+      "run": 0,
+      "op": "revokeConsent",
+      "txHash": "0xd5b1f56a72b254f175a1690dd1fb2a9d140b96bb85f43a5c784848a6d8db81d8"
+    },
+    {
+      "run": 0,
+      "op": "submitAttestation",
+      "txHash": "0x9c54beb799084a691e275be78088213d50e8c236850a54c5ebf334226485f529"
+    },
+    {
+      "run": 1,
+      "op": "updateModelHash",
+      "txHash": "0x57eb34adb52ce811c58bb223548afdace63b00aa5cbaa55238d0c3a0d7ff7a71"
+    },
+    {
+      "run": 1,
+      "op": "grantConsent",
+      "txHash": "0xa431e49cd526c5378585f9d2b5b0eaaf6891245bfbb8882fa5859659ef9ebcac"
+    },
+    {
+      "run": 1,
+      "op": "revokeConsent",
+      "txHash": "0x53888a9bd761e4ecf1326917b16e78bdc1aa7def5b02c637dc271d51acfd51af"
+    },
+    {
+      "run": 1,
+      "op": "submitAttestation",
+      "txHash": "0x816576f822cd49c7d9de588a7a435d2f51523c6b8e9df93ae6e88f565830fb2c"
+    },
+    {
+      "run": 2,
+      "op": "updateModelHash",
+      "txHash": "0xc3615d6876d3ac8976d82f954e72d1ffee2db0c4e7600f0d029c7bf5f1c93e9d"
+    },
+    {
+      "run": 2,
+      "op": "grantConsent",
+      "txHash": "0x15c77834ecfaaaf40fb256da1ec07cf55df4327eac75f5a38b39673614f0c3a2"
+    },
+    {
+      "run": 2,
+      "op": "revokeConsent",
+      "txHash": "0x98b01a91b2499e614f574693a57e2c744ce08ea9bbc15add05f82b9edb43bffa"
+    },
+    {
+      "run": 2,
+      "op": "submitAttestation",
+      "txHash": "0x1547a9f63845ce4e1df90c6743f4cc9d489a705b32b749ba1d9d895a992c9bb7"
+    },
+    {
+      "run": 3,
+      "op": "updateModelHash",
+      "txHash": "0x13f87e4b750f4b25fcab76ce3045cf86c8c00c6e61b50dce2fc04f2e75153606"
+    },
+    {
+      "run": 3,
+      "op": "grantConsent",
+      "txHash": "0xe1fd11a801807c5cb02aa5a561cfb1769582db8ff67fd2132ec5a0630ea3dd24"
+    },
+    {
+      "run": 3,
+      "op": "revokeConsent",
+      "txHash": "0x96c7756cece88f93db30ab6f96779e7cd11321895c3fcc5adbde594c5dbdefea"
+    },
+    {
+      "run": 3,
+      "op": "submitAttestation",
+      "txHash": "0x587af2072b87d988bfded254399336096e62548763435eb4239c0713fc69a031"
+    },
+    {
+      "run": 4,
+      "op": "updateModelHash",
+      "txHash": "0xbb3882b40474a4d4816ffd94a67c03ad3159cab477110e6be0829c4a121b0157"
+    },
+    {
+      "run": 4,
+      "op": "grantConsent",
+      "txHash": "0x5c7a88da4feea26671f5ef9ce9c90a21e1206333cae613ed452fd52b95349276"
+    },
+    {
+      "run": 4,
+      "op": "revokeConsent",
+      "txHash": "0x69375be474bc518558e17b75bfaef62cde0a8d71a9c68c4a0d69ba5e4aa62150"
+    },
+    {
+      "run": 4,
+      "op": "submitAttestation",
+      "txHash": "0x24e75c4863397ba89490af523211ec34991a4fca90569f8bd81c13e95caa041a"
+    },
+    {
+      "run": 5,
+      "op": "updateModelHash",
+      "txHash": "0x8ee695bae736ddd1d2e1211e5c398ce0860a8aaca95d327d147dfab0c74bd70f"
+    },
+    {
+      "run": 5,
+      "op": "grantConsent",
+      "txHash": "0x3c83b1521ef7ea086ed6b33387262ed5dbae2d2b2b1f11d16add83e928d6432d"
+    },
+    {
+      "run": 5,
+      "op": "revokeConsent",
+      "txHash": "0x802ea653b445f7f1765e8da492b38f0709f08e5d044643393140c9d5be9583cb"
+    },
+    {
+      "run": 5,
+      "op": "submitAttestation",
+      "txHash": "0xae43e7d1c011b028a8414b7f09030c0930bd6d96b8bc629869350e9bdc16de31"
+    },
+    {
+      "run": 6,
+      "op": "updateModelHash",
+      "txHash": "0x4f31bab62300da69ae7d814e8d4605377bf8c41689dc6f1bc4493d02776ade00"
+    },
+    {
+      "run": 6,
+      "op": "grantConsent",
+      "txHash": "0x9b0dd7cc55b940a5ccf4c9b30dd64eda6c9a2099109232fc8918515bd38c43a9"
+    },
+    {
+      "run": 6,
+      "op": "revokeConsent",
+      "txHash": "0x6bbf830aa3300c4265b1d60a8d8959c2e383bed0b5950ca13c64310df8ad06e1"
+    },
+    {
+      "run": 6,
+      "op": "submitAttestation",
+      "txHash": "0xa20d56c9e7105508448d7719de8645e3e8808ec7e416458fc67e3052d423c497"
+    },
+    {
+      "run": 7,
+      "op": "updateModelHash",
+      "txHash": "0x696ee971cefcacd54f3d55e64e38ad03f52139ead6295fb7ece0d141510ac7f6"
+    },
+    {
+      "run": 7,
+      "op": "grantConsent",
+      "txHash": "0xe3003ca07ec0cfe73674eeec1f8bfd52a46d229d5a35c828e639646ddcc5c796"
+    },
+    {
+      "run": 7,
+      "op": "revokeConsent",
+      "txHash": "0x360db3329ccc93364c6d65f1fb6a87471242b5ef8572b7fdc2951100c0833b5d"
+    },
+    {
+      "run": 7,
+      "op": "submitAttestation",
+      "txHash": "0x75639fcf29a45bfafa4e89857c2c7042b0fbfde33a419649acdf9a759f3cf64b"
+    },
+    {
+      "run": 8,
+      "op": "updateModelHash",
+      "txHash": "0x83454c4582fdfe2423b5414f29508cad20e251b3166921e10e7e330146484dcb"
+    },
+    {
+      "run": 8,
+      "op": "grantConsent",
+      "txHash": "0x36a2601249e2cdf02c52917e8724c640bdb35fa7ade9d88901a46c7c6465acd2"
+    },
+    {
+      "run": 8,
+      "op": "revokeConsent",
+      "txHash": "0xc2c35052175fb94c220d6524bb47f1c5129cd2782be8a8d85315459ad12de9b5"
+    },
+    {
+      "run": 8,
+      "op": "submitAttestation",
+      "txHash": "0xac1ea22b0901bcdfdb84c972519f1884b5bfb6281c83e7f030b126a021defe66"
+    },
+    {
+      "run": 9,
+      "op": "updateModelHash",
+      "txHash": "0x4418a2cbd01031e401eca4bf19b704793c04245b7e30ffc3f4e04f9a22ef30a1"
+    },
+    {
+      "run": 9,
+      "op": "grantConsent",
+      "txHash": "0xefa3b0af79d2db7175802bd3d610b670d16bae423aee1734732d5904a9594925"
+    },
+    {
+      "run": 9,
+      "op": "revokeConsent",
+      "txHash": "0xc81edf1c9cb83b5a987d83c27b0d15f96c822b210e9e0da54c23dcbfbfdf3efa"
+    },
+    {
+      "run": 9,
+      "op": "submitAttestation",
+      "txHash": "0x9fea9e3a5a8d897c597ff87a8dbebd0a1002d33ca2682b4a018075de2f51bab1"
+    }
+  ]
+}

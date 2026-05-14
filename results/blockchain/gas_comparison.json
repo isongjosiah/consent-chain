@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-05-13T14:25:58.218Z",
+  "generatedAt": "2026-05-14T06:13:00.527Z",
   "networks": [
     {
       "network": "amoy",
       "chainId": 80002,
       "nativeSymbol": "MATIC",
-      "nativePriceUsd": 0.097877,
-      "measuredAt": "2026-05-13T14:11:25.939Z"
+      "nativePriceUsd": 0.095347,
+      "measuredAt": "2026-05-14T05:57:38.045Z"
     },
     {
       "network": "purechain",
@@ -21,7 +21,7 @@
       "operation": "deploy_ConsentRegistry",
       "amoy_gas": "1856497",
       "amoy_native": "0.25607170",
-      "amoy_usd": "0.025064",
+      "amoy_usd": "0.024416",
       "purechain_gas": "1851433",
       "purechain_native": "0.00000000",
       "purechain_usd": null
@@ -30,7 +30,7 @@
       "operation": "deploy_UnlearningOracle",
       "amoy_gas": "1107415",
       "amoy_native": "0.13886252",
-      "amoy_usd": "0.013591",
+      "amoy_usd": "0.013240",
       "purechain_gas": "1101007",
       "purechain_native": "0.00000000",
       "purechain_usd": null
@@ -39,7 +39,7 @@
       "operation": "deploy_FLGatekeeper",
       "amoy_gas": "779289",
       "amoy_native": "0.09771769",
-      "amoy_usd": "0.009564",
+      "amoy_usd": "0.009317",
       "purechain_gas": "775069",
       "purechain_native": "0.00000000",
       "purechain_usd": null
@@ -48,7 +48,7 @@
       "operation": "wire_registry_setOracle",
       "amoy_gas": "47472",
       "amoy_native": "0.00595268",
-      "amoy_usd": "0.000583",
+      "amoy_usd": "0.000568",
       "purechain_gas": "44872",
       "purechain_native": "0.00000000",
       "purechain_usd": null
@@ -57,7 +57,7 @@
       "operation": "wire_registry_setGatekeeper",
       "amoy_gas": "47851",
       "amoy_native": "0.00600020",
-      "amoy_usd": "0.000587",
+      "amoy_usd": "0.000572",
       "purechain_gas": "45263",
       "purechain_native": "0.00000000",
       "purechain_usd": null
@@ -66,7 +66,7 @@
       "operation": "wire_oracle_addVerifier_1",
       "amoy_gas": "92019",
       "amoy_native": "0.00460095",
-      "amoy_usd": "0.000450",
+      "amoy_usd": "0.000439",
       "purechain_gas": "88219",
       "purechain_native": "0.00000000",
       "purechain_usd": null
@@ -75,7 +75,7 @@
       "operation": "wire_oracle_addVerifier_2",
       "amoy_gas": "74907",
       "amoy_native": "0.00939284",
-      "amoy_usd": "0.000919",
+      "amoy_usd": "0.000896",
       "purechain_gas": "73207",
       "purechain_native": "0.00000000",
       "purechain_usd": null
@@ -84,7 +84,7 @@
       "operation": "wire_oracle_addVerifier_3",
       "amoy_gas": "74919",
       "amoy_native": "0.00939435",
-      "amoy_usd": "0.000919",
+      "amoy_usd": "0.000896",
       "purechain_gas": "73219",
       "purechain_native": "0.00000000",
       "purechain_usd": null
@@ -93,7 +93,7 @@
       "operation": "wire_oracle_addVerifier_4",
       "amoy_gas": "74919",
       "amoy_native": "0.00939435",
-      "amoy_usd": "0.000919",
+      "amoy_usd": "0.000896",
       "purechain_gas": "73219",
       "purechain_native": "0.00000000",
       "purechain_usd": null
@@ -102,7 +102,7 @@
       "operation": "wire_oracle_addVerifier_5",
       "amoy_gas": "74919",
       "amoy_native": "0.00939435",
-      "amoy_usd": "0.000919",
+      "amoy_usd": "0.000896",
       "purechain_gas": "73219",
       "purechain_native": "0.00000000",
       "purechain_usd": null
@@ -110,8 +110,8 @@
     {
       "operation": "grantConsent_1purpose",
       "amoy_gas": "153568",
-      "amoy_native": "0.00460704",
-      "amoy_usd": "0.000451",
+      "amoy_native": "0.01197830",
+      "amoy_usd": "0.001142",
       "purechain_gas": "144868",
       "purechain_native": "0.00000000",
       "purechain_usd": null
@@ -119,26 +119,26 @@
     {
       "operation": "grantConsent_4purposes",
       "amoy_gas": "155842",
-      "amoy_native": "0.00467526",
-      "amoy_usd": "0.000458",
+      "amoy_native": "0.01901873",
+      "amoy_usd": "0.001813",
       "purechain_gas": "147142",
       "purechain_native": "0.00000000",
       "purechain_usd": null
     },
     {
       "operation": "updateModelHash",
-      "amoy_gas": "32676",
-      "amoy_native": "0.00098028",
-      "amoy_usd": "0.000096",
+      "amoy_gas": "32664",
+      "amoy_native": "0.00117590",
+      "amoy_usd": "0.000112",
       "purechain_gas": "30076",
       "purechain_native": "0.00000000",
       "purechain_usd": null
     },
     {
       "operation": "validateRound_N1",
-      "amoy_gas": "52205",
-      "amoy_native": "0.00156615",
-      "amoy_usd": "0.000153",
+      "amoy_gas": "52193",
+      "amoy_native": "0.00187895",
+      "amoy_usd": "0.000179",
       "purechain_gas": "42005",
       "purechain_native": "0.00000000",
       "purechain_usd": null
@@ -146,8 +146,8 @@
     {
       "operation": "validateRound_N5",
       "amoy_gas": "101012",
-      "amoy_native": "0.00303036",
-      "amoy_usd": "0.000297",
+      "amoy_native": "0.00831408",
+      "amoy_usd": "0.000793",
       "purechain_gas": "72412",
       "purechain_native": "0.00000000",
       "purechain_usd": null
@@ -155,8 +155,8 @@
     {
       "operation": "modifyConsent",
       "amoy_gas": "44347",
-      "amoy_native": "0.00133041",
-      "amoy_usd": "0.000130",
+      "amoy_native": "0.00365011",
+      "amoy_usd": "0.000348",
       "purechain_gas": "41047",
       "purechain_native": "0.00000000",
       "purechain_usd": null
@@ -164,8 +164,8 @@
     {
       "operation": "suspendConsent",
       "amoy_gas": "36281",
-      "amoy_native": "0.00108843",
-      "amoy_usd": "0.000107",
+      "amoy_native": "0.00282992",
+      "amoy_usd": "0.000270",
       "purechain_gas": "37181",
       "purechain_native": "0.00000000",
       "purechain_usd": null
@@ -173,8 +173,8 @@
     {
       "operation": "resumeConsent",
       "amoy_gas": "35892",
-      "amoy_native": "0.00107676",
-      "amoy_usd": "0.000105",
+      "amoy_native": "0.00279958",
+      "amoy_usd": "0.000267",
       "purechain_gas": "36792",
       "purechain_native": "0.00000000",
       "purechain_usd": null
@@ -182,17 +182,17 @@
     {
       "operation": "revokeConsent",
       "amoy_gas": "113504",
-      "amoy_native": "0.00340512",
-      "amoy_usd": "0.000333",
+      "amoy_native": "0.00885331",
+      "amoy_usd": "0.000844",
       "purechain_gas": "107904",
       "purechain_native": "0.00000000",
       "purechain_usd": null
     },
     {
       "operation": "submitAttestation_3of5",
-      "amoy_gas": "132805",
-      "amoy_native": "0.00398415",
-      "amoy_usd": "0.000390",
+      "amoy_gas": "132817",
+      "amoy_native": "0.01035973",
+      "amoy_usd": "0.000988",
       "purechain_gas": "102905",
       "purechain_native": "0.00000000",
       "purechain_usd": null
@@ -205,9 +205,9 @@
         "revokeConsent",
         "submitAttestation_3of5"
       ],
-      "totalGas": "399877",
-      "totalNativeWei": "11996310025192251",
-      "totalUsd": 0.001174162836335742
+      "totalGas": "399889",
+      "totalNativeWei": "31191342025193007",
+      "totalUsd": 0.0029740008880760776
     },
     "purechain": {
       "operations": [
@@ -219,5 +219,581 @@
       "totalNativeWei": "0",
       "totalUsd": null
     }
-  }
+  },
+  "lifecycleVariance": [
+    {
+      "network": "amoy",
+      "runs": 10,
+      "measuredAt": "2026-05-14T06:12:33.246Z",
+      "operations": {
+        "updateModelHash": {
+          "gasUsed": {
+            "min": "32664",
+            "max": "32676",
+            "mean": "32673",
+            "stddev": "5",
+            "values": [
+              "32676",
+              "32676",
+              "32676",
+              "32664",
+              "32676",
+              "32676",
+              "32664",
+              "32676",
+              "32676",
+              "32676"
+            ]
+          },
+          "gasPriceWei": {
+            "min": "30000000063",
+            "max": "30000000063",
+            "mean": "30000000063",
+            "stddev": "0",
+            "values": [
+              "30000000063",
+              "30000000063",
+              "30000000063",
+              "30000000063",
+              "30000000063",
+              "30000000063",
+              "30000000063",
+              "30000000063",
+              "30000000063",
+              "30000000063"
+            ]
+          },
+          "nativeCostWei": {
+            "min": "979920002057832",
+            "max": "980280002058588",
+            "mean": "980208002058436",
+            "stddev": "144000000302",
+            "values": [
+              "980280002058588",
+              "980280002058588",
+              "980280002058588",
+              "979920002057832",
+              "980280002058588",
+              "980280002058588",
+              "979920002057832",
+              "980280002058588",
+              "980280002058588",
+              "980280002058588"
+            ]
+          }
+        },
+        "grantConsent": {
+          "gasUsed": {
+            "min": "153568",
+            "max": "153568",
+            "mean": "153568",
+            "stddev": "0",
+            "values": [
+              "153568",
+              "153568",
+              "153568",
+              "153568",
+              "153568",
+              "153568",
+              "153568",
+              "153568",
+              "153568",
+              "153568"
+            ]
+          },
+          "gasPriceWei": {
+            "min": "30000000063",
+            "max": "30000000063",
+            "mean": "30000000063",
+            "stddev": "0",
+            "values": [
+              "30000000063",
+              "30000000063",
+              "30000000063",
+              "30000000063",
+              "30000000063",
+              "30000000063",
+              "30000000063",
+              "30000000063",
+              "30000000063",
+              "30000000063"
+            ]
+          },
+          "nativeCostWei": {
+            "min": "4607040009674784",
+            "max": "4607040009674784",
+            "mean": "4607040009674784",
+            "stddev": "0",
+            "values": [
+              "4607040009674784",
+              "4607040009674784",
+              "4607040009674784",
+              "4607040009674784",
+              "4607040009674784",
+              "4607040009674784",
+              "4607040009674784",
+              "4607040009674784",
+              "4607040009674784",
+              "4607040009674784"
+            ]
+          }
+        },
+        "revokeConsent": {
+          "gasUsed": {
+            "min": "96404",
+            "max": "96404",
+            "mean": "96404",
+            "stddev": "0",
+            "values": [
+              "96404",
+              "96404",
+              "96404",
+              "96404",
+              "96404",
+              "96404",
+              "96404",
+              "96404",
+              "96404",
+              "96404"
+            ]
+          },
+          "gasPriceWei": {
+            "min": "30000000063",
+            "max": "30000000063",
+            "mean": "30000000063",
+            "stddev": "0",
+            "values": [
+              "30000000063",
+              "30000000063",
+              "30000000063",
+              "30000000063",
+              "30000000063",
+              "30000000063",
+              "30000000063",
+              "30000000063",
+              "30000000063",
+              "30000000063"
+            ]
+          },
+          "nativeCostWei": {
+            "min": "2892120006073452",
+            "max": "2892120006073452",
+            "mean": "2892120006073452",
+            "stddev": "0",
+            "values": [
+              "2892120006073452",
+              "2892120006073452",
+              "2892120006073452",
+              "2892120006073452",
+              "2892120006073452",
+              "2892120006073452",
+              "2892120006073452",
+              "2892120006073452",
+              "2892120006073452",
+              "2892120006073452"
+            ]
+          }
+        },
+        "submitAttestation": {
+          "gasUsed": {
+            "min": "137581",
+            "max": "137617",
+            "mean": "137600",
+            "stddev": "12",
+            "values": [
+              "137617",
+              "137605",
+              "137593",
+              "137593",
+              "137605",
+              "137581",
+              "137581",
+              "137605",
+              "137605",
+              "137617"
+            ]
+          },
+          "gasPriceWei": {
+            "min": "30000000063",
+            "max": "30000000063",
+            "mean": "30000000063",
+            "stddev": "0",
+            "values": [
+              "30000000063",
+              "30000000063",
+              "30000000063",
+              "30000000063",
+              "30000000063",
+              "30000000063",
+              "30000000063",
+              "30000000063",
+              "30000000063",
+              "30000000063"
+            ]
+          },
+          "nativeCostWei": {
+            "min": "4127430008667603",
+            "max": "4128510008669871",
+            "mean": "4128006008668812",
+            "stddev": "367129405750",
+            "values": [
+              "4128510008669871",
+              "4128150008669115",
+              "4127790008668359",
+              "4127790008668359",
+              "4128150008669115",
+              "4127430008667603",
+              "4127430008667603",
+              "4128150008669115",
+              "4128150008669115",
+              "4128510008669871"
+            ]
+          }
+        }
+      },
+      "perDS": {
+        "gasUsed": {
+          "min": "420217",
+          "max": "420265",
+          "mean": "420245",
+          "stddev": "15",
+          "values": [
+            "420265",
+            "420253",
+            "420241",
+            "420229",
+            "420253",
+            "420229",
+            "420217",
+            "420253",
+            "420253",
+            "420265"
+          ]
+        },
+        "gasPriceWei": {
+          "min": "30000000063",
+          "max": "30000000063",
+          "mean": "30000000063",
+          "stddev": "0",
+          "values": [
+            "30000000063",
+            "30000000063",
+            "30000000063",
+            "30000000063",
+            "30000000063",
+            "30000000063",
+            "30000000063",
+            "30000000063",
+            "30000000063",
+            "30000000063"
+          ]
+        },
+        "nativeCostWei": {
+          "min": "12606510026473671",
+          "max": "12607950026476695",
+          "mean": "12607374026475485",
+          "stddev": "461024946063",
+          "values": [
+            "12607950026476695",
+            "12607590026475939",
+            "12607230026475183",
+            "12606870026474427",
+            "12607590026475939",
+            "12606870026474427",
+            "12606510026473671",
+            "12607590026475939",
+            "12607590026475939",
+            "12607950026476695"
+          ]
+        }
+      }
+    },
+    {
+      "network": "purechain",
+      "runs": 10,
+      "measuredAt": "2026-05-14T06:07:07.483Z",
+      "operations": {
+        "updateModelHash": {
+          "gasUsed": {
+            "min": "30064",
+            "max": "30076",
+            "mean": "30074",
+            "stddev": "4",
+            "values": [
+              "30076",
+              "30076",
+              "30076",
+              "30076",
+              "30076",
+              "30076",
+              "30064",
+              "30076",
+              "30076",
+              "30076"
+            ]
+          },
+          "gasPriceWei": {
+            "min": "0",
+            "max": "0",
+            "mean": "0",
+            "stddev": "0",
+            "values": [
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          "nativeCostWei": {
+            "min": "0",
+            "max": "0",
+            "mean": "0",
+            "stddev": "0",
+            "values": [
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ]
+          }
+        },
+        "grantConsent": {
+          "gasUsed": {
+            "min": "144868",
+            "max": "144868",
+            "mean": "144868",
+            "stddev": "0",
+            "values": [
+              "144868",
+              "144868",
+              "144868",
+              "144868",
+              "144868",
+              "144868",
+              "144868",
+              "144868",
+              "144868",
+              "144868"
+            ]
+          },
+          "gasPriceWei": {
+            "min": "0",
+            "max": "0",
+            "mean": "0",
+            "stddev": "0",
+            "values": [
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          "nativeCostWei": {
+            "min": "0",
+            "max": "0",
+            "mean": "0",
+            "stddev": "0",
+            "values": [
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ]
+          }
+        },
+        "revokeConsent": {
+          "gasUsed": {
+            "min": "107904",
+            "max": "107904",
+            "mean": "107904",
+            "stddev": "0",
+            "values": [
+              "107904",
+              "107904",
+              "107904",
+              "107904",
+              "107904",
+              "107904",
+              "107904",
+              "107904",
+              "107904",
+              "107904"
+            ]
+          },
+          "gasPriceWei": {
+            "min": "0",
+            "max": "0",
+            "mean": "0",
+            "stddev": "0",
+            "values": [
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          "nativeCostWei": {
+            "min": "0",
+            "max": "0",
+            "mean": "0",
+            "stddev": "0",
+            "values": [
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ]
+          }
+        },
+        "submitAttestation": {
+          "gasUsed": {
+            "min": "102881",
+            "max": "102917",
+            "mean": "102903",
+            "stddev": "13",
+            "values": [
+              "102917",
+              "102905",
+              "102905",
+              "102881",
+              "102917",
+              "102905",
+              "102905",
+              "102881",
+              "102905",
+              "102917"
+            ]
+          },
+          "gasPriceWei": {
+            "min": "0",
+            "max": "0",
+            "mean": "0",
+            "stddev": "0",
+            "values": [
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          "nativeCostWei": {
+            "min": "0",
+            "max": "0",
+            "mean": "0",
+            "stddev": "0",
+            "values": [
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ]
+          }
+        }
+      },
+      "perDS": {
+        "gasUsed": {
+          "min": "385729",
+          "max": "385765",
+          "mean": "385750",
+          "stddev": "13",
+          "values": [
+            "385765",
+            "385753",
+            "385753",
+            "385729",
+            "385765",
+            "385753",
+            "385741",
+            "385729",
+            "385753",
+            "385765"
+          ]
+        },
+        "gasPriceWei": {
+          "min": "0",
+          "max": "0",
+          "mean": "0",
+          "stddev": "0",
+          "values": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        "nativeCostWei": {
+          "min": "0",
+          "max": "0",
+          "mean": "0",
+          "stddev": "0",
+          "values": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ]
+        }
+      }
+    }
+  ]
 }
