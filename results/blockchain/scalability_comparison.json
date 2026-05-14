@@ -1,0 +1,137 @@
+{
+  "generatedAt": "2026-05-14T06:50:34.484Z",
+  "description": "E8 scalability sweep — validateRound(N) on PureChain (gas-free) vs Polygon Amoy (gas-based). PureChain measured for all N. Amoy measured at N∈{5,10} due to wallet MATIC budget; N>10 extrapolated using linear regression (R²≈1 from two-point fit; consistent with PureChain measurements showing exact linearity).",
+  "networks": {
+    "purechain": {
+      "chainId": 900520900520,
+      "measuredAt": "2026-05-14T06:49:43.738Z",
+      "linearFit": {
+        "intercept": 33761.593849568744,
+        "slopePerParticipant": 7615.504088354276,
+        "fittedFrom": "N ∈ {5, 10, 25, 50, 100, 250, 500}",
+        "extrapolatedAtN500_gas": 3841513.638026707,
+        "extrapolatedAtN500_nativeWei": "0",
+        "extrapolatedAtN500_usd": null
+      },
+      "sampledN": [
+        5,
+        10,
+        25,
+        50,
+        100,
+        250,
+        500
+      ]
+    },
+    "amoy": {
+      "chainId": 80002,
+      "measuredAt": "2026-05-14T06:24:45.924Z",
+      "nativePriceUsd": 0.095347,
+      "linearFit": {
+        "intercept": 40002,
+        "slopePerParticipant": 12202,
+        "fittedFrom": "N ∈ {5, 10}",
+        "extrapolatedAtN500_gas": 6141002,
+        "extrapolatedAtN500_nativeWei": "184230060386883126",
+        "extrapolatedAtN500_usd": 0.017565783567708146
+      },
+      "sampledN": [
+        5,
+        10
+      ]
+    }
+  },
+  "figure1": [
+    {
+      "n": 5,
+      "pc_measured": true,
+      "pc_gas": 72412,
+      "pc_cost_usd": 0,
+      "amoy_measured": true,
+      "amoy_gas": 101012,
+      "amoy_cost_native": 0.003030360006363756,
+      "amoy_cost_usd": 0.0002889357355267651
+    },
+    {
+      "n": 10,
+      "pc_measured": true,
+      "pc_gas": 110422,
+      "pc_cost_usd": 0,
+      "amoy_measured": true,
+      "amoy_gas": 162022,
+      "amoy_cost_native": 0.004860660010207386,
+      "amoy_cost_usd": 0.00046344934999324364
+    },
+    {
+      "n": 25,
+      "pc_measured": true,
+      "pc_gas": 224505,
+      "pc_cost_usd": 0,
+      "amoy_measured": false,
+      "amoy_gas": 345052,
+      "amoy_cost_native": 0.010351560021738275,
+      "amoy_cost_usd": 0.0009869901933926793
+    },
+    {
+      "n": 50,
+      "pc_measured": true,
+      "pc_gas": 414508,
+      "pc_cost_usd": 0,
+      "amoy_measured": false,
+      "amoy_gas": 650102,
+      "amoy_cost_native": 0.019503060040956425,
+      "amoy_cost_usd": 0.0018595582657250722
+    },
+    {
+      "n": 100,
+      "pc_measured": true,
+      "pc_gas": 794688,
+      "pc_cost_usd": 0,
+      "amoy_measured": false,
+      "amoy_gas": 1260202,
+      "amoy_cost_native": 0.03780606007939273,
+      "amoy_cost_usd": 0.0036046944103898587
+    },
+    {
+      "n": 250,
+      "pc_measured": true,
+      "pc_gas": 1935887,
+      "pc_cost_usd": 0,
+      "amoy_measured": false,
+      "amoy_gas": 3090502,
+      "amoy_cost_native": 0.09271506019470163,
+      "amoy_cost_usd": 0.008840102844384216
+    },
+    {
+      "n": 500,
+      "pc_measured": true,
+      "pc_gas": 3842483,
+      "pc_cost_usd": 0,
+      "amoy_measured": false,
+      "amoy_gas": 6141002,
+      "amoy_cost_native": 0.18423006038688314,
+      "amoy_cost_usd": 0.017565783567708146
+    }
+  ],
+  "iotProjection": {
+    "description": "At 1,000 IoT devices × 10 consent operations/day (10,000 ops/day), per-round cost projection assuming an FL round queries the full active participant set.",
+    "devices": 1000,
+    "opsPerDeviceDay": 10,
+    "totalOpsPerDay": 10000,
+    "flRoundsPerDay": 100,
+    "perRoundCost": {
+      "n": 500,
+      "pc_measured": true,
+      "pc_gas": 3842483,
+      "pc_cost_usd": 0,
+      "amoy_measured": false,
+      "amoy_gas": 6141002,
+      "amoy_cost_native": 0.18423006038688314,
+      "amoy_cost_usd": 0.017565783567708146
+    },
+    "dailyCost": {
+      "purechain_usd": 0,
+      "amoy_usd_at_N500": 1.7565783567708146
+    }
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "network": "purechain",
+  "chainId": 900520900520,
+  "measuredAt": "2026-05-14T06:49:43.738Z",
+  "nativeSymbol": "PCC",
+  "nativePriceUsd": null,
+  "participants": [
+    5,
+    10,
+    25,
+    50,
+    100,
+    250,
+    500
+  ],
+  "samples": [
+    {
+      "n": 5,
+      "validateRound": {
+        "gasUsed": "72412",
+        "gasPriceWei": "0",
+        "nativeCostWei": "0",
+        "txHash": "0x1728c2159bdda03d4dea83dcbe61431a1440c6809181d8bfe6c94aeff0936484",
+        "blockNumber": 1210862
+      },
+      "updateModelHash": {
+        "gasUsed": "30076",
+        "gasPriceWei": "0",
+        "nativeCostWei": "0",
+        "txHash": "0xee9b620a2a21f518634340933fe98439c510f2806a1add0812dea4743b32d276",
+        "blockNumber": 1210860
+      }
+    },
+    {
+      "n": 10,
+      "validateRound": {
+        "gasUsed": "110422",
+        "gasPriceWei": "0",
+        "nativeCostWei": "0",
+        "txHash": "0x786e7f6cafc093956cae36d93a38453823f2168d0ab25b42a3523001907b3e56",
+        "blockNumber": 1210867
+      },
+      "updateModelHash": {
+        "gasUsed": "30076",
+        "gasPriceWei": "0",
+        "nativeCostWei": "0",
+        "txHash": "0x28a2be77e696b7eac03375cbd25031672cc6a50ab66ce4689ca3e32651ce7a8c",
+        "blockNumber": 1210864
+      }
+    },
+    {
+      "n": 25,
+      "validateRound": {
+        "gasUsed": "224505",
+        "gasPriceWei": "0",
+        "nativeCostWei": "0",
+        "txHash": "0x2f968f020e9491d9115091bf992cbaed03092ec676a8b9aab111e5774831196f",
+        "blockNumber": 1210870
+      },
+      "updateModelHash": {
+        "gasUsed": "30064",
+        "gasPriceWei": "0",
+        "nativeCostWei": "0",
+        "txHash": "0x76429590b474c0d5e9577df64bb188438271c5793896d7d582225def7bbdca64",
+        "blockNumber": 1210869
+      }
+    },
+    {
+      "n": 50,
+      "validateRound": {
+        "gasUsed": "414508",
+        "gasPriceWei": "0",
+        "nativeCostWei": "0",
+        "txHash": "0xd83378545e55f734e00497ec0ef4b31344afc99405eaf878514ec05e410253ed",
+        "blockNumber": 1210875
+      },
+      "updateModelHash": {
+        "gasUsed": "30076",
+        "gasPriceWei": "0",
+        "nativeCostWei": "0",
+        "txHash": "0x9bbbef5a77273d6b47510a1a4440124d919c3d591ad760a464532b2ce76bfca2",
+        "blockNumber": 1210872
+      }
+    },
+    {
+      "n": 100,
+      "validateRound": {
+        "gasUsed": "794688",
+        "gasPriceWei": "0",
+        "nativeCostWei": "0",
+        "txHash": "0x614bd4786fe154ab198a76affc8e3cb4256e491a45f5703361cbb6cf69e121a8",
+        "blockNumber": 1210880
+      },
+      "updateModelHash": {
+        "gasUsed": "30076",
+        "gasPriceWei": "0",
+        "nativeCostWei": "0",
+        "txHash": "0xeb37938f7cc16e693e869b1aca97dacc9fd673c22b7a998790462c6611d34186",
+        "blockNumber": 1210877
+      }
+    },
+    {
+      "n": 250,
+      "validateRound": {
+        "gasUsed": "1935887",
+        "gasPriceWei": "0",
+        "nativeCostWei": "0",
+        "txHash": "0x933b4aed62a703c08edb45cce2bf97e809befa41596f0328a59d178f3159d94d",
+        "blockNumber": 1210885
+      },
+      "updateModelHash": {
+        "gasUsed": "30064",
+        "gasPriceWei": "0",
+        "nativeCostWei": "0",
+        "txHash": "0xf5519f69093b60592aa3f81d86be69c2ba95c7492ca4bf34d411eadc4581c33c",
+        "blockNumber": 1210882
+      }
+    },
+    {
+      "n": 500,
+      "validateRound": {
+        "gasUsed": "3842483",
+        "gasPriceWei": "0",
+        "nativeCostWei": "0",
+        "txHash": "0x575b01086052bc09c2c5aaf14878d5628205beeb1a195ecb501390985c3f5c17",
+        "blockNumber": 1210890
+      },
+      "updateModelHash": {
+        "gasUsed": "30076",
+        "gasPriceWei": "0",
+        "nativeCostWei": "0",
+        "txHash": "0x800fa3182c2e4f768f932f61c02604ee6d4d781a79ffabcd58b143d936205560",
+        "blockNumber": 1210887
+      }
+    }
+  ],
+  "linearFit": {
+    "intercept": 33761.593849568744,
+    "slopePerParticipant": 7615.504088354276,
+    "fittedFrom": "N ∈ {5, 10, 25, 50, 100, 250, 500}",
+    "extrapolatedAtN500_gas": 3841513.638026707,
+    "extrapolatedAtN500_nativeWei": "0",
+    "extrapolatedAtN500_usd": null
+  }
+}

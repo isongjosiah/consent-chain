@@ -1,0 +1,55 @@
+{
+  "network": "amoy",
+  "chainId": 80002,
+  "measuredAt": "2026-05-14T06:24:45.924Z",
+  "nativeSymbol": "MATIC",
+  "nativePriceUsd": 0.095347,
+  "participants": [
+    5,
+    10
+  ],
+  "samples": [
+    {
+      "n": 5,
+      "validateRound": {
+        "gasUsed": "101012",
+        "gasPriceWei": "30000000063",
+        "nativeCostWei": "3030360006363756",
+        "txHash": "0xf8b9e05f07acb946e5d4b2ae27ff05f38ef281bbd92e8d53f56815f7f8697caa",
+        "blockNumber": 38339515
+      },
+      "updateModelHash": {
+        "gasUsed": "32676",
+        "gasPriceWei": "30000000063",
+        "nativeCostWei": "980280002058588",
+        "txHash": "0x56ca244246b711e580b333406ab06aaf21253856182018406bb8d791a6bab980",
+        "blockNumber": 38339513
+      }
+    },
+    {
+      "n": 10,
+      "validateRound": {
+        "gasUsed": "162022",
+        "gasPriceWei": "30000000063",
+        "nativeCostWei": "4860660010207386",
+        "txHash": "0x78b9c61bd19327a869e7fb2725ac3508f8fabcf91f11c2c958e110c501a83ecf",
+        "blockNumber": 38339518
+      },
+      "updateModelHash": {
+        "gasUsed": "32676",
+        "gasPriceWei": "30000000063",
+        "nativeCostWei": "980280002058588",
+        "txHash": "0x572575b85e7a5da8a706bcd3933c7b3552d7a15058d4300f593c73fe2c6297e3",
+        "blockNumber": 38339517
+      }
+    }
+  ],
+  "linearFit": {
+    "intercept": 40002,
+    "slopePerParticipant": 12202,
+    "fittedFrom": "N ∈ {5, 10}",
+    "extrapolatedAtN500_gas": 6141002,
+    "extrapolatedAtN500_nativeWei": "184230060386883126",
+    "extrapolatedAtN500_usd": 0.017565783567708146
+  }
+}
