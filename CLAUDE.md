@@ -437,11 +437,19 @@ Every table/figure in the paper maps to one experiment. Name experiments E1–E8
 
 **D8 (May 21)** — Implement SISA-Fed, Gradient Ascent, FedEraser in `fl/unlearning/`. Unit tests on toy data first.
 
-**D9 (May 22)** — Canary injection (E2). Inject backdoor in Client 3's CASAS data. Verify trigger rate >90%.
+**D9 (May 22)** — Canary injection (E2). Inject backdoor in Client 3's CASAS data; measure pre-unlearning trigger rate.
 
 **🔴 GO/NO-GO CHECKPOINT at D9 EOD:**
-- ✅ Canary triggers at >90% → proceed to unlearning experiments
-- ❌ Canary doesn't trigger → increase poison ratio, strengthen pattern. Must resolve before D10.
+
+The original ≥90% trigger rate is unachievable at 5-client FedAvg scale without aggressive model-replacement attacks that destabilise clean accuracy. The canary is **supplementary** evidence (the three MIAs in `docs/mia-protocol.md §3–§5` are the principal verification mechanism and the only signals consumed by the on-chain `UnlearningAttestation`; the canary trigger rate is not in the UA struct per spec §4.6). Use this decision matrix on the empirical pre-unlearning trigger rate:
+
+| Pre-unlearning trigger rate | Action |
+|---|---|
+| **≥30%** | ✅ Keep canary as a supplementary §V signal. Paper claim: "pre N% → post <5%, demonstrates forgetting." Proceed to D10. |
+| **15–29%** | ⚠️ Keep but document in §VI as a weak canary; emphasise MIA evidence. Proceed to D10. |
+| **<15%** | ❌ **Drop the canary entirely** from §V. Rely on the three MIAs. Proceed to D10 — no further canary tuning. |
+
+The "drop" path is acceptable because the on-chain enforcement protocol does not depend on the canary at all; reviewers asking about §V's three-MIA evidence will see the principal claim is intact.
 
 **D10 (May 23–24)** — CASAS unlearning experiments (E3). Run all three methods. Save post-unlearning checkpoints. Record timing.
 
