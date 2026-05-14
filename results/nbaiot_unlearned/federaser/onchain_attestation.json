@@ -1,0 +1,23 @@
+{
+  "network": "purechain",
+  "chain_id": 900520900520,
+  "method": "federaser",
+  "ds_token_id": 10,
+  "ds_address": "0x6b54d4DFca1B6Eff060dB2027CCDea2708d1Fe79",
+  "model_hash_pre": "0x08ca54b2a66db32d3f8d603dd1e471d017c385b02c3838671bf84cb4cbbf21b0",
+  "model_hash_post": "0xf48d2585884b7a498fad9c3893ee51bac86035adb70fd14ee60c41a264e81edb",
+  "mia_scores_fixed_point": {
+    "shadow_model": 5232,
+    "lira": 5000,
+    "label_only": 50
+  },
+  "ua_hash": "0x6c5087928f926b2bef57ed6837f27151af183150ccee877a31023a5295f5ebd0",
+  "ua_timestamp": 1778737969,
+  "verifier_threshold": 3,
+  "signatures": [
+    "60f434b7522e5131d816fb3bb05fae6ed47d8fb1427cb23663693d011b55af134e183e373ad3e0eda2d9b036d939844f28cbf5bbe82ba8449c323d826952650d1c",
+    "3e322cca0aa3d97f4c4ae69f6fbac9d60a45896112dac8a395286bb8c857c05d46d5d15e26bb8b476e322a91f1c5bf75c5152b419cd70f17dc2f81398eddcf7b1b",
+    "6e2f5e0333055825825676faa3984d02373bb4bfce112f8eb1b7a5a277db785b57b47803b1da06b0cedb664a10559a575bebd3e82920f8abe0ca4e106f4b6bc21b"
+  ],
+  "dry_run": false
+}
