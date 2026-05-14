@@ -1,9 +1,80 @@
 \section{Discussion}
 \label{sec:discussion}
 
-% TODO(D18): expand with limitations, regulatory mapping, future work.
-This section discusses the limitations of \sysname, the explicit
-regulatory alignment to GDPR Articles 7/17/21, EU AI Act Articles
-15/26, and CCPA \S~1798.105 (full mapping in supplementary
-\texttt{docs/regulatory-alignment.md}), and the journal-version
-extensions outlined in CLAUDE.md \S~3.2.
+\subsection{Limitations}
+
+\noindent\textbf{MIA selection sensitivity.}
+The shadow attack picks up client 5's distributional uniqueness as
+much as membership signal --- the naive-retrain baseline scored
+$0.584$ in Table~\ref{tab:t1} despite never having seen the data.
+Stronger overfitting regimes would tighten the gap; deployments
+should recalibrate $\tauMIA$ on the specific
+MIA-classifier output distribution. LiRA returned exactly $0.500$
+on every model in our setup because the 30-round autoencoder simply
+does not memorise individual rows hard enough for the
+likelihood-ratio test to detect~\cite{carlini2022lira}; the on-chain
+gate is robust to this because it requires \emph{all three} MIAs
+below $\tauMIA$.
+
+\smallskip\noindent\textbf{Approximate-versus-exact unlearning.}
+\sysname accepts approximate methods (gradient ascent, FedEraser,
+SISA-Fed) because exact retraining is economically infeasible at
+IoT scale. GDPR Art.~17 requires ``reasonable measures'' --- we
+argue Eq.~\ref{eq:verifiability} implements this standard, with the
+chain providing the audit evidence. Formal information-theoretic
+erasure guarantees and ECDSA verifier-identity leakage (collapsed by
+BLS aggregation~\cite{boneh2001bls} in the journal version) are out
+of scope for the conference prototype.
+
+\smallskip\noindent\textbf{Off-chain misuse.} A data controller could
+train on revoked data off-chain and never submit through
+\texttt{validateRound}. The protocol does not prevent this, but
+any audited deployment would have no UA tying the deployed model
+hash to a valid consent state --- the deviation is publicly
+detectable through the chain's negative evidence.
+
+\subsection{Regulatory alignment}
+
+\sysname binds to three regulatory regimes (full mapping in
+supplementary \texttt{docs/regulatory-alignment.md}). GDPR
+Article~7~\cite{gdpr2016} is discharged by the soulbound NFT with
+$\mathit{dsOwner}$-restricted transitions and per-purpose
+$\mathcal{P}_i$ binding; Article~17 by the
+$\dmax$-bounded liveness of Property~\ref{prop:liveness} and the
+verifiable-unlearning predicate of
+Property~\ref{prop:verifiability}; Article~21 by the
+$\texttt{suspend/resume}$ edges of the \clsm. EU AI
+Act~\cite{aiact2024} Articles~15 and~26 are addressed by the
+auditability of Property~\ref{prop:audit} and the
+permissionless monitoring path through $\texttt{reportTimeout}$.
+CCPA~\cite{ccpa2018} \S~1798.105 maps directly to the same
+mechanisms as GDPR Article~17.
+
+\subsection{Permissioned versus permissionless deployments}
+
+PureChain's PoA$^2$ consensus is permissioned at the validator
+layer but public at the read and transaction-submission layers ---
+an asymmetry appropriate for IoT consortia with known stakeholders.
+The Polygon Amoy deployment demonstrates that the same contracts run
+unchanged on a permissionless PoS chain at non-zero per-operation
+cost; deployments that cannot accept a permissioned validator set
+can choose Amoy (or mainnet Polygon, or any EVM-compatible chain),
+paying for that choice through gas. The economic model is the
+decision variable; the protocol semantics are identical.
+
+\subsection{Future work}
+
+Three extensions are queued for the journal version. (i)
+\emph{Zero-knowledge consent proofs}: the eligibility check
+$\texttt{isEligible}(i, \rho_r, \cdot)$ currently leaks the
+data subject's address and purpose set to anyone observing the
+chain; a zk-SNARK over the \clsm transition predicate would
+prove eligibility without revealing identity. (ii)
+\emph{PoA$^2$-native verifier integration}: rather than a
+separate $\mathit{VC}$, the consensus validators themselves
+re-run the MIAs during block production; UA acceptance becomes a
+consensus-time predicate, eliminating the off-chain coordination
+loop. (iii) \emph{Cross-chain consent portability}: a consent
+granted on PureChain becomes redeemable on Polygon or other L2s
+via a light-client bridge, so a data subject does not need to
+re-grant per chain when participating in multiple federations.

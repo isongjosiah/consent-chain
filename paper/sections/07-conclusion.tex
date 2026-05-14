@@ -1,10 +1,28 @@
 \section{Conclusion}
 \label{sec:conclusion}
 
-% TODO(D18): expand with the canonical headline numbers and future work pointers.
-\sysname closes the consent--unlearning--verification triangle in a
-single chain-enforced protocol. Future work directions include
-zero-knowledge consent proofs hiding the data subject's identity at
-eligibility-check time, PoA$^2$-native verifier-committee integration,
-cross-chain consent portability, and BLS threshold-signature
-aggregation collapsing the verifier signing cost to constant in $t$.
+We presented \sysname, the first protocol we are aware of to bind
+dynamic consent, machine unlearning, and on-chain verification into
+a single chain-enforced pipeline --- closing the
+consent--unlearning--verification triangle that prior work
+addressed only at the vertices. The protocol decomposes into a
+formally-stated Consent Lifecycle State Machine implemented as
+soulbound ERC-721 tokens, a method-agnostic Verifiable Unlearning
+Protocol whose acceptance predicate is the conjunction of three
+independent MIA scores and a $t$-of-$n$ ECDSA committee signature,
+and a three-contract Solidity architecture that runs unchanged on
+gas-free and gas-based EVM substrates. End-to-end empirical
+evaluation on a 9-client N-BaIoT~\cite{meidan2018nbaiot} federated
+autoencoder confirms the four headline numbers: per-data-subject
+on-chain lifecycle cost of $\$0$ on PureChain versus $\$0.00120$ on
+Polygon Amoy, $\texttt{validateRound}$ scaling linearly to
+$N\!=\!500$ at $\$0$ on PureChain versus a projected $\$0.0176$ on
+Amoy, MIA scores driven below the on-chain $\tauMIA\!=\!0.55$
+threshold by all three approximate unlearning methods, and an
+absolute utility delta of $\le\!3\%$ on two of three methods --- in
+fact a $5.7\%$ utility \emph{gain} when the revoked client was an
+outlier in the benign distribution. Future work targets BLS
+threshold-signature aggregation, zero-knowledge consent eligibility
+proofs, PoA$^2$-native verifier-committee integration, and
+cross-chain consent portability for federations spanning multiple
+EVM chains.

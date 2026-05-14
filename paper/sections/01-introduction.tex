@@ -54,22 +54,14 @@ must in turn drive the consent state, closing the loop. The current
 state of the art implements the three vertices but not the edges.
 
 \smallskip
-\noindent\textbf{Why on-chain enforcement.} A purely off-chain
-consent-and-unlearning workflow trusts the data controller to obey the
-data subjects' wishes. Public auditability of consent transitions and
-unlearning attestations on a smart-contract substrate removes this
-trust. The chain becomes the single source of truth: every consent
-state change is a transaction, every unlearning event is gated by a
-threshold-signed attestation, every $\dmax$-block timeout produces an
-on-chain ComplianceViolation event that downstream monitors can pick
-up. The cost of putting this enforcement on-chain is non-trivial
---- a single revocation on Ethereum mainnet at typical gas prices
-would cost several dollars. At the $10^3$-device, $10$-operations-per-day
-IoT scale this becomes prohibitive. Our experiments show that
-deploying the same protocol on a public, gas-free,
-EVM-compatible chain with PoA$^2$ consensus reduces this cost to
-\emph{exactly} \$0 per operation while preserving every property of
-the gas-based deployment.
+\noindent\textbf{Why on-chain enforcement.}
+A purely off-chain workflow trusts the data controller to obey the
+data subjects' wishes; public auditability on a smart-contract
+substrate removes this trust. The cost of doing so on Ethereum
+mainnet would be several dollars per revocation, prohibitive at
+IoT scale. Our experiments show that the same protocol on a
+public, gas-free, EVM-compatible chain with PoA$^2$ consensus costs
+\emph{exactly} \$0 per operation.
 
 \smallskip
 \noindent\textbf{Contributions.} We make four contributions:
