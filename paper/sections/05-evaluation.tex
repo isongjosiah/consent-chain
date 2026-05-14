@@ -20,8 +20,8 @@ thermostats, baby monitors, security cameras, webcams). Each client
 holds 5{,}000 benign-traffic rows over 115 network features; the
 global model is a symmetric MLP autoencoder
 ($115\!\to\!75\!\to\!50\!\to\!25\!\to\!10$, ReLU, dropout 0.1) trained
-with FedAvg over 30 rounds, batch size 256, learning rate $10^{-3}$,
-random seed 42. At round 30 we simulate a GDPR Art.~17 erasure event
+with FedAvg over 30 rounds (Flower framework~\cite{beutel2020flower}),
+batch size 256, learning rate $10^{-3}$, random seed 42. At round 30 we simulate a GDPR Art.~17 erasure event
 against client 5 (\textit{Provision\_PT\_838\_Security\_Camera}) and
 trigger one of three approximate unlearning methods (SISA-Fed,
 gradient ascent, FedEraser) or, as the exact reference, full
@@ -114,16 +114,13 @@ Per-DS lifecycle = sum of the four ops.}
 \end{table}
 
 Per-data-subject lifecycle cost is $\$0$ on PureChain and $\$0.00120$
-on Amoy. Gas usage differs by up to 35\% between the two chains
+on Amoy. Gas usage differs by up to $34\%$ between the two chains
 (\texttt{submitAttestation}: $102{,}903$ on PureChain versus
 $137{,}600$ on Amoy) due to opcode-pricing differences between the
 PoA$^2$ schedule and Polygon's EIP-2929-equipped schedule; the
-dominant cost factor at scale, however, is the gas price (zero
-versus $\sim\!30$ gwei), not the gas count. At the
-$10^3$-device, $10$-operations-per-day IoT scale stated in
-\S~\ref{sec:introduction}, this translates to $\$0$/day on
-PureChain and approximately $\$12$/day on Amoy --- a structural,
-not incremental, cost difference.
+dominant cost factor at scale is the gas price (zero versus
+$\sim\!30$ gwei), not the gas count. \S~\ref{sec:eval-scalability}
+quantifies the recurring per-FL-round cost as deployments grow.
 
 \subsection{Scalability of round validation}
 \label{sec:eval-scalability}
@@ -185,14 +182,14 @@ traffic distribution and its removal lets the federation fit the
 remaining devices more tightly. Gradient ascent and FedEraser end at
 $0.4794$ and $0.4783$ respectively --- the unlearning step is
 free of utility cost in both cases. SISA-Fed is the outlier: its
-round-31 starting point is $0.6996$ (\!+45\% vs. the others) and it
+round-31 starting point is $0.6996$ (\!+42\% vs.\ the others) and
 recovers only to $0.6139$ by round 40 (+28\%). SISA-Fed pays a real
 utility cost for its strongest-forgetting position on the Pareto
 frontier --- consistent with the lowest shadow MIA in
-Table~\ref{tab:t1}. The §V claim ``minimal utility loss $\lesssim
-3\%$'' from CLAUDE.md is conservative: for gradient ascent and
-FedEraser the measured loss is negative; SISA-Fed sets the upper
-bound at $\sim\!28\%$ on this particular setup.
+Table~\ref{tab:t1}. The ``minimal utility loss $\lesssim
+3\%$'' claim is conservative: for gradient ascent and FedEraser the
+measured loss is negative; SISA-Fed sets the upper bound at
+$\sim\!28\%$ on this particular setup.
 
 \subsection{On-chain property demos}
 \label{sec:eval-props}

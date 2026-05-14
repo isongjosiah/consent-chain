@@ -62,20 +62,20 @@ Table~\ref{tab:clsm} in \S~\ref{sec:framework-clsm};
 ]
 \node[state]                                  (I) {\textsc{In-}\\\textsc{active}};
 \node[state, right=22mm of I]                 (A) {\textsc{Active}};
-\node[state, above=10mm of A]                 (S) {\textsc{Susp.}};
-\node[state, below=10mm of A]                 (R) {\textsc{Revo-}\\\textsc{ked}};
+\node[state, above=12mm of A]                 (S) {\textsc{Susp.}};
+\node[state, below=12mm of A]                 (R) {\textsc{Revo-}\\\textsc{ked}};
 \node[state, right=22mm of A]                 (E) {\textsc{Exp.}};
 \node[state, double, right=22mm of R]         (U) {\textsc{Un-}\\\textsc{learned}};
 
 \path[->]
-    (I) edge node[above]       {\texttt{grant}}       (A)
-    (A) edge[loop left] node   {\texttt{tick}}        (A)
-    (A) edge[bend left=20]  node[right] {\texttt{susp}}   (S)
-    (S) edge[bend left=20]  node[left]  {\texttt{resume}} (A)
-    (A) edge[bend right=20] node[right] {\texttt{revoke}} (R)
-    (A) edge[bend left=0]   node[above] {\texttt{expire}} (E)
-    (R) edge node[below]       {\texttt{uv}}          (U)
-    (E) edge node[right, pos=0.4] {\texttt{uv}}       (U);
+    (I) edge node[above]              {\texttt{grant}}       (A)
+    (A) edge[loop left] node          {\texttt{tick}}        (A)
+    (A) edge[bend left=35]  node[right=1pt] {\texttt{susp}}   (S)
+    (S) edge[bend left=35]  node[left=1pt]  {\texttt{resume}} (A)
+    (A) edge[bend right=35] node[right=1pt] {\texttt{revoke}} (R)
+    (A) edge                node[above]     {\texttt{expire}} (E)
+    (R) edge                node[below]     {\texttt{uv}}     (U)
+    (E) edge                node[right, pos=0.45] {\texttt{uv}} (U);
 \end{tikzpicture}}
 \caption{Consent Lifecycle State Machine. Five DS-controlled
 transitions ($\mathtt{grant, modify, susp, resume, revoke}$;

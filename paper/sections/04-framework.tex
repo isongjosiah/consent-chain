@@ -95,9 +95,10 @@ We evaluate the post-unlearning model $f_{\mathrm{post}}$ against
 $\mathit{DS}_i$'s training set $\mathcal{D}_i$ (the ``member set''
 $M$) using three attacks designed to be statistically independent.
 
-\paragraph{Shadow-model MIA~\cite{shokri2017mia}.} Train $S=5$ shadow
-autoencoders on auxiliary disjoint subsets of the non-revoked clients'
-data; for each shadow, compute per-feature reconstruction errors on
+\paragraph{Shadow-model MIA~\cite{shokri2017mia}
+(autoencoder generalisation~\cite{hilprecht2019monte}).} Train
+$S=5$ shadow autoencoders on auxiliary disjoint subsets of the
+non-revoked clients' data; for each shadow, compute per-feature reconstruction errors on
 ``in'' and ``out'' subsets and use these as features for an MLP
 attack classifier. The attack score is the fraction of $M$ that the
 classifier flags as ``in:''
