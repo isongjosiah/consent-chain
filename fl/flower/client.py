@@ -53,8 +53,12 @@ class CasasClient:
         return [p.detach().cpu().numpy() for p in self.model.parameters()]
 
     def set_parameters(self, parameters: list[np.ndarray]) -> None:
+        # Copy the numpy array so subsequent in-place training updates on
+        # p.data don't leak back through shared memory. On MPS / CUDA the
+        # `.to(device)` step already forces a copy; on CPU it does not, and
+        # the caller's `parameters` list would be mutated silently.
         for p, new in zip(self.model.parameters(), parameters, strict=True):
-            p.data = torch.from_numpy(new).to(self.device).to(p.dtype)
+            p.data = torch.from_numpy(new.copy()).to(self.device).to(p.dtype)
 
     def fit(self, parameters: list[np.ndarray]) -> tuple[list[np.ndarray], int, dict]:
         self.set_parameters(parameters)

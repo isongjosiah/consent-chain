@@ -46,8 +46,10 @@ def _params_from_model(model: nn.Module) -> list[np.ndarray]:
 
 
 def _load_params_into_model(model: nn.Module, parameters: list[np.ndarray]) -> None:
+    # Copy numpy → tensor so server-side training does not mutate the
+    # caller's list in place (same alias hazard noted in CasasClient.set_parameters).
     for p, new in zip(model.parameters(), parameters, strict=True):
-        p.data = torch.from_numpy(new).to(p.device).to(p.dtype)
+        p.data = torch.from_numpy(new.copy()).to(p.device).to(p.dtype)
 
 
 def _save_checkpoint(
