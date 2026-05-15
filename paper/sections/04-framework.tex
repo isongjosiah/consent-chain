@@ -7,6 +7,18 @@ the Verifiable Unlearning Protocol with its three MIA components
 (\S~\ref{sec:framework-vup}), and the three-contract Solidity
 architecture that closes the automation loop
 (\S~\ref{sec:framework-contracts}).
+Figure~\ref{fig:arch} gives the layered overview.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.96\columnwidth]{figures/system_architecture.png}
+\caption{\sysname architecture: off-chain IoT data and Flower
+FedAvg layers, the three on-chain Solidity contracts on PureChain /
+Polygon Amoy, and the off-chain Verifiable Unlearning Protocol. The
+clockwise loop consent$\rightarrow$unlearn$\rightarrow$verify
+$\rightarrow$attest$\rightarrow$finalise is the edge \sysname closes.}
+\label{fig:arch}
+\end{figure}
 
 \subsection{Consent Lifecycle State Machine}
 \label{sec:framework-clsm}

@@ -196,19 +196,17 @@ cost per signature $\sim\!7{,}800$ gas; default $t\!=\!3$
 
 We replayed \S\ref{sec:eval-unlearning}--\ref{sec:eval-utility} on
 the CASAS smart-home benchmark (5-client BiLSTM, per-apartment
-sensor streams, \texttt{twor\_2010} revoked at round 60). Three-MIA
-scores ($\tauMIA\!=\!0.55$, shadow/LiRA/label-only): pre-unlearn
-$0.979/0.106/0.114$ and naive retrain $0.846/0.002/0.000$ both
-\emph{rejected} on shadow alone (same distribution-shift confound
-as N-BaIoT, amplified by per-apartment patterns); gradient ascent
-$0.980/0.136/0.110$ and FedEraser $0.840/0.106/0.009$ also
-\emph{rejected}; SISA-Fed $0.499/0.035/0.000$ the only method
-\emph{accepted}. A pre-injected 15\%-ratio backdoor canary
-triggers $100\%$ pre-unlearning, drops to $0\%$ under SISA-Fed and
-FedEraser (gradient ascent preserves it at $100\%$ on 10 steps).
-End-to-end SISA-Fed attestation on PureChain
-(\texttt{submitAttestation} \texttt{0x9643\ldots 733b}) transitioned
-token 527 to \textsc{Unlearned}.
+sensor streams, \texttt{twor\_2010} revoked at round 60). The
+distribution-shift confound is sharper here: shadow rejects
+pre-unlearn, naive retrain, gradient ascent, and FedEraser (all
+$\ge\!0.84$), so SISA-Fed ($0.499/0.035/0.000$ shadow/LiRA/label)
+is the \emph{only} method passing the $\tauMIA\!=\!0.55$ gate ---
+the strongest-forgetting Pareto endpoint, consistent with N-BaIoT.
+A 15\%-ratio backdoor canary triggers $100\%$ pre-unlearning and
+drops to $0\%$ under SISA-Fed and FedEraser (gradient ascent
+preserves it at 10 steps). End-to-end SISA-Fed attestation on
+PureChain (\texttt{submitAttestation} \texttt{0x9643\ldots 733b})
+transitioned token 527 to \textsc{Unlearned}.
 
 \subsection{Comparison to prior work}
 \label{sec:eval-compare}
