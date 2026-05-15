@@ -73,9 +73,14 @@ trade-off for IoT-scale FL: exact retraining is infeasible, and
 approximate methods + verifiable MIA evidence offer the best currently
 available "reasonable measure."
 
-**Empirical evidence:** §IV.2 demo + the four on-chain UA submissions
-(one each for gradient_ascent / sisa_fed / federaser / naive_retrain
-in `results/nbaiot_unlearned/<method>/`).
+**Empirical evidence:** §IV.2 demo + the on-chain UA submissions for
+the three approximate methods that pass the τ-gate (gradient_ascent,
+sisa_fed, federaser in `results/nbaiot_unlearned/<method>/`) plus
+the CASAS sisa_fed UA at `results/casas_unlearned/sisa_fed/`.
+Naive retraining never produces an on-chain UA: its shadow MIA on
+the revoked client's distribution exceeds τ even though the model
+never saw that client's data, so the gate (correctly) rejects the
+submission — a distribution-shift confound discussed in §VI.
 
 ---
 
@@ -136,7 +141,7 @@ deployments that need to be compliant by that date.
 |---|---|---|
 | Documented technical measures around consent. | The three contracts (with NatSpec in `docs/contracts-spec.md`), the formal CLSM definition, the VUP protocol, and this regulatory-alignment doc collectively form the "technical measures" the deployer must document. | The repository as deployed. |
 | Continuous monitoring. | `ComplianceViolation`, `AttestationAccepted`, and every consent-state transition are emitted as events. Off-the-shelf indexers (The Graph, custom subgraphs, Tenderly listeners) can ingest them and alert. | The §IV.2 + §IV.3 demos exercise every monitoring-relevant code path. |
-| Cooperation with regulators. | The chain is publicly readable. Regulators can run their own node, ingest events, and verify any UA's MIA scores by re-running the protocol off-chain against the published `modelHashPost`. | The `results/blockchain/onchain_attestation.json` artefacts contain everything a regulator needs to reproduce the audit independently. |
+| Cooperation with regulators. | The chain is publicly readable. Regulators can run their own node, ingest events, and verify any UA's MIA scores by re-running the protocol off-chain against the published `modelHashPost`. | The per-method `onchain_attestation.json` artefacts at `results/{nbaiot,casas}_unlearned/<method>/` contain every tx hash, MIA score, model hash, and verifier signature a regulator needs to reproduce the audit independently. |
 
 ---
 

@@ -133,21 +133,33 @@ maps to "drop LiRA, report two MIAs, document the deviation in §VI".
    - IN models *include* `D_DS` in training data.
    - OUT models *exclude* `D_DS`.
    - Same architecture and training schedule as `M_post`.
-2. For each example `x ∈ D_DS`:
+2. For each example `x` in **both** the member set `D_DS` and the
+   auxiliary set `D_aux`:
    - Compute the model's confidence on `x` under `M_post`,
      each IN reference model, and each OUT reference model.
    - Apply the **logit transform** `logit(p) = log(p / (1 − p))` to the
      true-class confidence (clamped to `[1e-7, 1 − 1e-7]` to avoid
      infinities — this is the standard LiRA stabilisation).
-3. **Fit a Gaussian** `N(μ_IN, σ_IN²)` to the IN reference logits and
-   `N(μ_OUT, σ_OUT²)` to the OUT reference logits, **per example**.
+3. **Fit per-example Gaussians** `N(μ_IN, σ_IN²)` to the IN reference
+   logits and `N(μ_OUT, σ_OUT²)` to the OUT reference logits.
 4. **Compute the per-example log-likelihood ratio**
-   `LLR(x) = log p_IN(logit(M_post(x))) − log p_OUT(logit(M_post(x)))`.
-5. **Threshold at the median** to convert to a binary "member"
-   classification (this matches Carlini's "online LiRA" evaluation
-   protocol with `α = 0.5`).
-6. The reported score is the **fraction of `D_DS` classified as
-   `member=1`**.
+   `LLR(x) = log p_IN(logit(M_post(x))) − log p_OUT(logit(M_post(x)))`,
+   yielding two stacks: `LLR_mem` over `D_DS` and `LLR_aux` over `D_aux`.
+5. **Threshold at the (1 − α) quantile of `LLR_aux`** — this calibrates
+   the cutoff to an α-controlled FPR on non-members (Carlini 2022 online
+   LiRA). Default α = 0.05; ablation runs use α = 0.5.
+6. The reported score is the **fraction of `D_DS` whose LLR exceeds
+   the aux-calibrated threshold** — the empirical TPR at α-FPR. Score
+   = 0.5 is chance; ≫ 0.5 is strong leakage; ≪ 0.5 means members
+   look less like the in-pool than aux does (rare; observed on CASAS
+   pre-unlearn where logit clamping suppresses member variance).
+
+> **Historical note:** an earlier implementation thresholded against
+> the member set's own α-quantile, making the score mechanically
+> `1 − α` regardless of leakage. Fixed in commit `101ba37`; both the
+> buggy artefacts (`mia_scores_buggy_alpha50.json`) and the fixed
+> sidecars (`mia_scores_a05_fix.json`, `mia_scores_a50_fix.json`)
+> are retained for the §VI ablation.
 
 ### 4.4 Output
 
@@ -162,22 +174,28 @@ lira:
   num_in_ref: 4
   num_out_ref: 4
   logit_clamp_eps: 1.0e-7
-  classification_alpha: 0.5
+  classification_alpha: 0.05      # canonical (5%-FPR)
+  # classification_alpha: 0.5     # ablation operating point (§VI)
 ```
 
 ### 4.6 Computational budget
 
-The expensive step. **8 reference models per attack run × ~2 h each for
-CASAS = ~16 GPU-hours per UA** on the same hardware as `M_post`. Budget
-this explicitly when planning the D11 GPU window.
+Wall-clock measured on GTX 1650 (4 GB VRAM): ~10 min per LiRA
+invocation on CASAS BiLSTM (8 ref models × 5 epochs × subset_fraction
+of pool), doubling to ~14 min with the fixed implementation that
+evaluates true-class logits on the auxiliary set too. N-BaIoT
+autoencoder runs ~20 s per invocation (MLP, no LSTM). The
+fixed-LiRA α=0.05 sweep across 4 CASAS targets + 5 N-BaIoT targets
+fits in roughly 1 hour total.
 
-### 4.7 D11 fallback (acceptable)
+### 4.7 D11 fallback (acceptable, not triggered)
 
 If LiRA produces NaNs, infinities post-clamp, or scores that don't
-distinguish "no unlearning" (~0.65) from "naive retrain" (~0.50), drop
-LiRA from Table 1, mark its row as "—" with a footnote, and report
-shadow + label-only only. This is the explicit pivot CLAUDE.md §10
-D11 authorises.
+distinguish "no unlearning" from "naive retrain", drop LiRA from
+Table 1 and report shadow + label-only only (CLAUDE.md §10 D11
+pivot). Empirically the fixed implementation distinguishes cleanly
+on both datasets (pre-unlearn ≈ 0.05–0.14, naive_retrain ≈ 0.00–0.04
+at α=0.05), so the fallback was not triggered.
 
 ---
 
