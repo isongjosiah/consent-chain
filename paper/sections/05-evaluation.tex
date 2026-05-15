@@ -263,17 +263,11 @@ public ledger of update commitments \\
 \end{table*}
 
 Table~\ref{tab:t3} positions \sysname against the three closest
-prior systems along four dimensions. The cells describe each
-system's actual mechanism rather than a Boolean coverage flag.
-MedRec established the on-chain consent pattern we build on
-(rows 1, 4) but treats the consent contract as the protocol
-endpoint with no downstream training gate (rows 2--3). FedEraser
-contributes a federated unlearning algorithm (row 2) that \sysname
-accepts as one of its three pluggable methods; the trigger,
-verification, and audit dimensions are out of scope in the original
-work. BlockFL addresses aggregator trust through on-chain
-model-update logs (row 4) but encodes no consent semantics.
-\sysname is the first design we are aware of that addresses all
-four dimensions in a single chain-enforced protocol, and the first
-to do so at gas-free per-operation cost on a public EVM-compatible
-substrate.
+prior systems; each cell states the system's actual mechanism, so
+the per-dimension comparison is read directly off the table. The
+takeaway: MedRec, FedEraser, and BlockFL each cover one dimension
+(consent, unlearning, on-chain logging respectively) but none
+gates training on verified unlearning. \sysname is the first design
+we are aware of to address all four dimensions in a single
+chain-enforced protocol, and the first to do so at gas-free
+per-operation cost on a public EVM-compatible substrate.

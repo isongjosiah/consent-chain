@@ -13,16 +13,18 @@
 \usepackage{xcolor}
 \usepackage{url}
 \usepackage{hyperref}
-% Print-friendly: all link colors black so the PDF reads identically on
-% paper and screen. PDF metadata is anonymised for the double-blind
-% review pass.
+% Print-friendly: link colors black so the PDF reads identically on
+% paper and screen.
 \hypersetup{
     colorlinks=true,
     linkcolor=black,
     citecolor=black,
     urlcolor=black,
-    pdftitle={ConsentChain (anonymous submission)},
-    pdfauthor={},
+    pdftitle={ConsentChain: Smart Contract-Enforced Dynamic Consent
+              and Verifiable Machine Unlearning for Federated IoT Learning},
+    pdfauthor={Josiah Ayoola Isong, Oroceo Paul Angelo,
+               Paul Michael Custodio, Lee Jae Hyun,
+               Simeon Okechukwu Ajakwe, Jae-Min Lee, Dong-Seong Kim},
     pdfsubject={IEEE BCCA 2026 submission},
     pdfkeywords={federated learning, machine unlearning, smart contracts,
                  dynamic consent, IoT, GDPR},
@@ -47,14 +49,28 @@
 \newcommand{\tauMIA}{\tau}
 \newcommand{\keccak}{\mathrm{keccak256}}
 
+% ORCID icon, robust to a missing asset: shows the linked iD icon
+% when paper/images/ORCID.png is present, otherwise omits it so the
+% build never breaks. Drop the official ORCID iD PNG at
+% images/ORCID.png to make the icons appear.
+\newcommand{\orcid}[1]{%
+  \IfFileExists{images/ORCID.png}%
+    {\href{#1}{\includegraphics[scale=0.075]{./figures/ORCID.png}}}%
+    {}%
+}
+
 % ----- title -----------------------------------------------------------
 \title{\sysname: Smart Contract-Enforced Dynamic Consent and Verifiable Machine Unlearning for Federated IoT Learning}
 
-\author{
-    \IEEEauthorblockN{Authors}
-    \IEEEauthorblockA{
-        Submitted to IEEE BCCA 2026 \\
-    }
+\author{\IEEEauthorblockN{%
+Josiah Ayoola Isong\orcid{https://orcid.org/0000-0002-6151-1950},
+Oroceo Paul Angelo\orcid{https://orcid.org/0000-0002-9305-6278},
+Jae-Min Lee\orcid{https://orcid.org/0000-0001-6885-5185},
+Dong-Seong Kim~(SMIEEE)\orcid{https://orcid.org/0000-0002-2977-5964}%
+}
+\IEEEauthorblockA{\textit{Department of IT Convergence Engineering,
+Kumoh National Institute of Technology, Gumi, South Korea} \\
+isongjosiah@gmail.com,(ljmpaul, dskim)@kumoh.ac.kr}
 }
 
 \begin{document}
@@ -80,11 +96,8 @@ consent, IoT, GDPR, EU AI Act, membership inference attack
 \input{sections/07-conclusion}
 
 % ----- bibliography ----------------------------------------------------
-% Compact bibliography so the 17 references fit on page 8 alongside
-% Table 3. \scriptsize is standard for IEEE conference papers when the
-% bibliography would otherwise spill onto a 9th page.
-% \enlargethispage stretches the bibliography page by a few lines so
-% the last 4 entries don't trigger an automatic page break.
+% \scriptsize bibliography: standard IEEE-conference compaction. The
+% references paginate normally (no \enlargethispage cram-hack)...
 {\scriptsize
 \bibliographystyle{IEEEtran}
 \bibliography{references}
