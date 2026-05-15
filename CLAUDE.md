@@ -509,7 +509,8 @@ The "drop" path is acceptable because the on-chain enforcement protocol does not
 - ❌ Do not implement more than 3 unlearning methods. SISA-Fed + Gradient Ascent + FedEraser covers the paradigm space.
 - ❌ Do not manually enter numbers into LaTeX tables. All tables generated programmatically from `results/` JSON.
 - ❌ Do not skip the D9 or D11 go/no-go checkpoints. The instinct under deadline pressure is to push harder; the correct move is to pivot to fallbacks.
-- ❌ Do not describe PureChain as "our blockchain" in the paper. Frame as "a public, gas-free, EVM-compatible network with PoA² consensus." The contribution is ConsentChain, not PureChain.
+- ❌ Do not describe PureChain as "our blockchain" in running text. Frame it as "a public, gas-free, EVM-compatible network with PoA² consensus." The core contributions remain CLSM/VUP/the three contracts/the evaluation — not PureChain itself.
+  - **Title override (2026-05-16, author decision):** the §11 guidance against foregrounding PureChain was *explicitly overridden by the author for the title only*. The paper title is now "ConsentChain: PureChain-Powered Verifiable Machine Unlearning and Dynamic Consent for Federated IoT Learning" (PureChain is a published, co-authored, citable platform — `kim2025purechain`). This was a flagged, informed decision; do **not** revert the title. The body-text framing rule above still holds elsewhere.
 
 ---
 
