@@ -124,10 +124,13 @@ reference models. The log-likelihood ratio is
     \log p\!\left(\ell_{\mathrm{post}}(x) \,\big|\, \mu^{\mathrm{out}}_x,\sigma^{\mathrm{out}}_x\right),
 \end{equation}
 where $\ell_{\mathrm{post}}(x) = \log(\epsilon +
-\|f_{\mathrm{post}}(x)\!-\!x\|^2)$. The score is the fraction of $M$
-that exceeds the median-$\alpha$ threshold:
+\|f_{\mathrm{post}}(x)\!-\!x\|^2)$. The threshold
+$\hat{\Lambda}_\alpha$ is the $(1\!-\!\alpha)$-quantile of $\Lambda$
+on the auxiliary set, giving an $\alpha$-controlled FPR; the score
+is the empirical TPR at that FPR:
 $s_{\mathrm{lira}} = |M|^{-1} \sum_{x \in M} \mathbb{I}[\Lambda(x)\!>\!
-\hat{\Lambda}_\alpha]$ with $\alpha = 0.5$.
+\hat{\Lambda}_\alpha]$. We report $\alpha\!=\!0.05$ as canonical and
+$\alpha\!=\!0.5$ as the $\S$~\ref{sec:discussion} ablation.
 
 \paragraph{Label-only (reconstruction-threshold) MIA.}
 The autoencoder analogue of~\cite{choquettechoo2021labelonly}.

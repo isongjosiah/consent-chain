@@ -4,17 +4,21 @@
 \subsection{Limitations}
 
 \noindent\textbf{MIA selection sensitivity.}
-The shadow attack picks up client 5's distributional uniqueness as
-much as membership signal --- the naive-retrain baseline scored
-$0.584$ in Table~\ref{tab:t1} despite never having seen the data.
-Stronger overfitting regimes would tighten the gap; deployments
-should recalibrate $\tauMIA$ on the specific
-MIA-classifier output distribution. LiRA returned exactly $0.500$
-on every model in our setup because the 30-round autoencoder simply
-does not memorise individual rows hard enough for the
-likelihood-ratio test to detect~\cite{carlini2022lira}; the on-chain
-gate is robust to this because it requires \emph{all three} MIAs
-below $\tauMIA$.
+The shadow attack picks up the revoked client's distributional
+uniqueness as much as membership signal --- the naive-retrain
+baseline scored $0.584$ on N-BaIoT (and $0.846$ on CASAS) in
+Table~\ref{tab:t1} despite never having seen the data. LiRA's
+per-row likelihood-ratio test is much less sensitive to this
+confound (naive-retrain LiRA $\le\!0.05$ on both datasets at
+$\alpha\!=\!0.05$) but is itself sensitive to the FPR-calibration
+parameter $\alpha$: at $\alpha\!=\!0.05$ the gate is generous and
+admits the pre-unlearn baseline ($0.048$ on N-BaIoT, $0.106$ on
+CASAS); at $\alpha\!=\!0.5$ the gate is strict and correctly rejects
+pre-unlearn ($0.632$, $0.713$) on both datasets. The on-chain gate
+is robust to either choice because it requires \emph{all three}
+MIAs below $\tauMIA$. Deployments should pick $\alpha$ jointly with
+$\tauMIA$ against the target's leakage profile and recalibrate on
+each new model class.
 
 \smallskip\noindent\textbf{Approximate-versus-exact unlearning.}
 \sysname accepts approximate methods (gradient ascent, FedEraser,

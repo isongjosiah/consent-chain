@@ -13,15 +13,16 @@ independent MIA scores and a $t$-of-$n$ ECDSA committee signature,
 and a three-contract Solidity architecture that runs unchanged on
 gas-free and gas-based EVM substrates. End-to-end empirical
 evaluation on a 9-client N-BaIoT~\cite{meidan2018nbaiot} federated
-autoencoder confirms the four headline numbers: per-data-subject
+autoencoder, cross-validated on a 5-client CASAS BiLSTM activity
+classifier, confirms the four headline numbers: per-data-subject
 on-chain lifecycle cost of $\$0$ on PureChain versus $\$0.00120$ on
 Polygon Amoy, $\texttt{validateRound}$ scaling linearly to
 $N\!=\!500$ at $\$0$ on PureChain versus a projected $\$0.0176$ on
 Amoy, MIA scores driven below the on-chain $\tauMIA\!=\!0.55$
-threshold by all three approximate unlearning methods, and an
-absolute utility delta of $\le\!3\%$ on two of three methods --- in
-fact a $5.7\%$ utility \emph{gain} when the revoked client was an
-outlier in the benign distribution. Future work targets BLS
+threshold by approximate unlearning (all three methods on N-BaIoT;
+SISA-Fed on CASAS), and an absolute utility delta of $\le\!3\%$ on
+two of three methods --- in fact a $5.7\%$ utility \emph{gain} when
+the revoked client was an outlier in the benign distribution. Future work targets BLS
 threshold-signature aggregation, zero-knowledge consent eligibility
 proofs, PoA$^2$-native verifier-committee integration, and
 cross-chain consent portability for federations spanning multiple
