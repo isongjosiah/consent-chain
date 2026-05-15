@@ -1,0 +1,25 @@
+{
+  "method": "FEDERASER",
+  "method_id": 2,
+  "model_hash_pre": "0x21622544ebb61c9ec4ce6da49177632089443355181f7e3bf5bde7b1fb787029",
+  "model_hash_post": "0x85cf2a8ddd91165194d82b6716c53568c265b05d2c976f2b708883fa9b76eb44",
+  "wall_seconds": 34.859153509140015,
+  "details": {
+    "calibration_rounds": 3,
+    "local_epochs": 1,
+    "remaining_client_ids": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "mean_calibration_loss": 1.2102521774579966,
+    "approximation_note": "stub implements calibration only; production version replays cached per-round per-client updates excluding the revoked client and applies calibration on top (TODO D8-full)."
+  },
+  "target_client_id": 3,
+  "target_subset": "twor_2010",
+  "checkpoint": "results/casas_poisoned/model_checkpoints/round_060.pt",
+  "method_config": {
+    "calibration_rounds": 3
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "lira": {
+    "method": "lira",
+    "score": 0.9499072356215214,
+    "score_fixed_point": 9499,
+    "wall_seconds": 584.1955304145813,
+    "details": {
+      "n_in_ref_trained": 4,
+      "n_out_ref_trained": 4,
+      "ref_epochs": 5,
+      "subset_fraction": 0.7,
+      "alpha": 0.05,
+      "member_set_size": 5390,
+      "mean_llr": 91.5091106343263,
+      "median_llr": 49.33497822433412,
+      "threshold": -212.33019823601484
+    }
+  }
+}

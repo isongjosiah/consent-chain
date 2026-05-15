@@ -1,9 +1,9 @@
 {
   "method": "FEDERASER",
   "method_id": 2,
-  "model_hash_pre": "0x08ca54b2a66db32d3f8d603dd1e471d017c385b02c3838671bf84cb4cbbf21b0",
-  "model_hash_post": "0xf48d2585884b7a498fad9c3893ee51bac86035adb70fd14ee60c41a264e81edb",
-  "wall_seconds": 2.5349011421203613,
+  "model_hash_pre": "0xc4b6474bd61f92b3215fe60717916ee315c9200c02783d0181c6b013b788b095",
+  "model_hash_post": "0xc12b5fc4929719c4a060986397247f74252c760fd237ff535c47bcd8629c0620",
+  "wall_seconds": 2.335531234741211,
   "details": {
     "calibration_rounds": 3,
     "local_epochs": 1,
@@ -17,7 +17,7 @@
       7,
       8
     ],
-    "mean_calibration_recon": 0.35318072614384194,
+    "mean_calibration_recon": 0.3522524369085829,
     "approximation_note": "stub implements calibration only; production version replays cached per-round per-client updates excluding the revoked client.",
     "task": "autoencoder"
   },

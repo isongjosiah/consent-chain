@@ -142,41 +142,70 @@ class LiRAMIA(BaseMIA):
             )
             return model
 
-        in_logits: list[np.ndarray] = []
+        # Train shadow ensemble once and reuse it to evaluate true-class
+        # logits on BOTH the member set (for the attack target) and the
+        # auxiliary set (for FPR-calibrated thresholding). Sharing the
+        # shadows is the standard online-LiRA approximation — strict
+        # offline LiRA would condition the IN/OUT split on each example
+        # individually, which is intractable at this scale.
+        in_logits_mem: list[np.ndarray] = []
+        in_logits_aux: list[np.ndarray] = []
         for _ in range(n_in):
             m = _train_one_ref(X_in_pool, y_in_pool)
-            in_logits.append(
+            in_logits_mem.append(
                 _true_class_logits(m, X_mem, y_mem, device=request.device, eps=eps)
             )
+            in_logits_aux.append(
+                _true_class_logits(m, X_aux, y_aux, device=request.device, eps=eps)
+            )
 
-        out_logits: list[np.ndarray] = []
+        out_logits_mem: list[np.ndarray] = []
+        out_logits_aux: list[np.ndarray] = []
         for _ in range(n_out):
             m = _train_one_ref(X_aux, y_aux)
-            out_logits.append(
+            out_logits_mem.append(
                 _true_class_logits(m, X_mem, y_mem, device=request.device, eps=eps)
             )
+            out_logits_aux.append(
+                _true_class_logits(m, X_aux, y_aux, device=request.device, eps=eps)
+            )
 
-        in_arr = np.stack(in_logits, axis=0)          # [N_IN, N_mem]
-        out_arr = np.stack(out_logits, axis=0)        # [N_OUT, N_mem]
-        mu_in = in_arr.mean(axis=0)
-        sd_in = in_arr.std(axis=0, ddof=0)
-        mu_out = out_arr.mean(axis=0)
-        sd_out = out_arr.std(axis=0, ddof=0)
+        in_mem = np.stack(in_logits_mem, axis=0)          # [N_IN, N_mem]
+        out_mem = np.stack(out_logits_mem, axis=0)        # [N_OUT, N_mem]
+        in_aux = np.stack(in_logits_aux, axis=0)          # [N_IN, N_aux]
+        out_aux = np.stack(out_logits_aux, axis=0)        # [N_OUT, N_aux]
 
-        target_logits = _true_class_logits(
+        def _per_row_llr(
+            target_logits: np.ndarray,
+            in_arr: np.ndarray, out_arr: np.ndarray,
+        ) -> np.ndarray:
+            mu_in = in_arr.mean(axis=0)
+            sd_in = in_arr.std(axis=0, ddof=0)
+            mu_out = out_arr.mean(axis=0)
+            sd_out = out_arr.std(axis=0, ddof=0)
+            return (
+                _log_normal_pdf(target_logits, mu_in, sd_in)
+                - _log_normal_pdf(target_logits, mu_out, sd_out)
+            )
+
+        target_logits_mem = _true_class_logits(
             request.target_model, X_mem, y_mem, device=request.device, eps=eps
         )
-        log_p_in = _log_normal_pdf(target_logits, mu_in, sd_in)
-        log_p_out = _log_normal_pdf(target_logits, mu_out, sd_out)
-        llr = log_p_in - log_p_out
+        target_logits_aux = _true_class_logits(
+            request.target_model, X_aux, y_aux, device=request.device, eps=eps
+        )
+        llr_mem = _per_row_llr(target_logits_mem, in_mem, out_mem)
+        llr_aux = _per_row_llr(target_logits_aux, in_aux, out_aux)
 
-        threshold = float(np.quantile(llr, alpha))
-        member = llr > threshold
-        # Carlini's online LiRA reports the fraction classified above the
-        # in-set's own median — at α=0.5 that is by construction ≈ 0.5 minus
-        # ties, but on real data with score separation it shifts above /
-        # below 0.5 depending on whether the target memorised the members.
-        score = float(member.mean())
+        # Carlini 2022 online LiRA: threshold at the (1−α) quantile of the
+        # auxiliary (non-member) LLR distribution, so exactly α of non-members
+        # exceed it (α-controlled FPR). Score = fraction of *member* LLRs
+        # above that threshold — the empirical TPR at α-FPR. With this rule
+        # 0.5 = chance, ≫ 0.5 = strong membership leakage. (The previous
+        # implementation took the threshold from the member set itself,
+        # making `score` mechanically equal to 1 − α.)
+        threshold = float(np.quantile(llr_aux, 1.0 - alpha))
+        score = float((llr_mem > threshold).mean())
 
         details: dict[str, Any] = {
             "n_in_ref_trained": n_in,
@@ -185,8 +214,11 @@ class LiRAMIA(BaseMIA):
             "subset_fraction": subset_fraction,
             "alpha": alpha,
             "member_set_size": int(X_mem.shape[0]),
-            "mean_llr": float(llr.mean()),
-            "median_llr": float(np.median(llr)),
+            "aux_set_size": int(X_aux.shape[0]),
+            "mean_llr_mem": float(llr_mem.mean()),
+            "median_llr_mem": float(np.median(llr_mem)),
+            "mean_llr_aux": float(llr_aux.mean()),
+            "median_llr_aux": float(np.median(llr_aux)),
             "threshold": threshold,
         }
         return self._wrap(score, t0, details)

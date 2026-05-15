@@ -2,22 +2,22 @@
   "network": "purechain",
   "chain_id": 900520900520,
   "method": "gradient_ascent",
-  "ds_token_id": 8,
+  "ds_token_id": 530,
   "ds_address": "0x6b54d4DFca1B6Eff060dB2027CCDea2708d1Fe79",
-  "model_hash_pre": "0x08ca54b2a66db32d3f8d603dd1e471d017c385b02c3838671bf84cb4cbbf21b0",
-  "model_hash_post": "0x954a47959533e412b99966e9271c65c44bdfb231ee993c95d8d1a29905e17e86",
+  "model_hash_pre": "0xc4b6474bd61f92b3215fe60717916ee315c9200c02783d0181c6b013b788b095",
+  "model_hash_post": "0x04527b4fc1d7dd73eebb1ee29220c0522596aa1ff5e161972a7c6bf2805a781e",
   "mia_scores_fixed_point": {
     "shadow_model": 4380,
-    "lira": 5000,
+    "lira": 435,
     "label_only": 30
   },
-  "ua_hash": "0x984f9437ef6e32dd8ccf6d0b2bfabd5835483b85a289555c0d45bbac5758446e",
-  "ua_timestamp": 1778737439,
+  "ua_hash": "0x86f0a3b62d541a19d6b9e90a4f8ab989ba56e6270ae04483e3361f7494a64473",
+  "ua_timestamp": 1778822681,
   "verifier_threshold": 3,
   "signatures": [
-    "74ca942400fbf002e2d54bd1874d01944182e6212b21673d88ad2f630bdbc2c1136e3e51d3d1a45f05023a6485d8fa27ad6571c908b1a57fa50d3f7834ce29951b",
-    "f6a15884c6d4cb7374dce2b385c3b1e72078ca9dbca4484ddd12d3846111c604427f28fa2955eb2cbc35bc3a7aa496fccf60a50ac5bb433484748800ded0f2551c",
-    "15656717408e1e0f41dda38a67080c04a8c274cc6d5a3155410e28da57b73fb42acdce576b6f3814c0b38175fa69bbea928ff09f7e7eee5123d50fca8931244a1c"
+    "f54eaaabf07f6221692887a9132330dabc1c586c11933fca8c1b83109f01c3044124bcea2a43475f49292c571db4ca314d3e9cae45e08cf8c7030759c6295b001b",
+    "20eead1be13f2679ef03db268ea0eb53aa7db3a9db57a6ab9966511bdf67f7a559a1d4f78c03fa0d3ed6d138ad5e77bfff6106b29b6d06ff95300d5b1c18e7941c",
+    "25e0012cc71a65b469af5ea723508d707905e60d23c3aaf9b6e158fe0f97b4982093ff503282d02c9615a5e9b2605ccecc7a5a5b3c386f32b104e7dd2e8d23781b"
   ],
   "dry_run": false
 }

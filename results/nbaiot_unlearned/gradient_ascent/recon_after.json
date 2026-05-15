@@ -1,57 +1,57 @@
 {
   "method": "gradient_ascent",
   "target_client_id": 5,
-  "target_recon_before": 0.754593978881836,
-  "target_recon_after": 0.894563491821289,
-  "target_recon_delta": 0.13996951293945303,
-  "target_recon_ratio_after_over_before": 1.1854898354037506,
-  "non_target_mean_recon_before": 0.49449191612005233,
-  "non_target_mean_recon_after": 0.51818227404356,
-  "non_target_mean_delta": 0.023690357923507654,
+  "target_recon_before": 0.7507906036376953,
+  "target_recon_after": 0.8902257843017578,
+  "target_recon_delta": 0.13943518066406246,
+  "target_recon_ratio_after_over_before": 1.1857178019922967,
+  "non_target_mean_recon_before": 0.4852770516872406,
+  "non_target_mean_recon_after": 0.5085244926810265,
+  "non_target_mean_delta": 0.023247440993785895,
   "recon_after_per_client": {
     "0": {
       "device": "Danmini_Doorbell",
-      "test_recon": 0.04948844289779663,
+      "test_recon": 0.0509324164390564,
       "test_size": 1000
     },
     "1": {
       "device": "Ecobee_Thermostat",
-      "test_recon": 0.40753577423095705,
+      "test_recon": 0.40026948547363284,
       "test_size": 1000
     },
     "2": {
       "device": "Ennio_Doorbell",
-      "test_recon": 0.11328335189819336,
+      "test_recon": 0.11450097465515137,
       "test_size": 1000
     },
     "3": {
       "device": "Philips_B120N10_Baby_Monitor",
-      "test_recon": 0.8870326995849609,
+      "test_recon": 0.8864016418457031,
       "test_size": 1000
     },
     "4": {
       "device": "Provision_PT_737E_Security_Camera",
-      "test_recon": 0.6503295593261719,
+      "test_recon": 0.6485025177001953,
       "test_size": 1000
     },
     "5": {
       "device": "Provision_PT_838_Security_Camera",
-      "test_recon": 0.894563491821289,
+      "test_recon": 0.8902257843017578,
       "test_size": 1000
     },
     "6": {
       "device": "Samsung_SNH_1011_N_Webcam",
-      "test_recon": 0.3659348068237305,
+      "test_recon": 0.35820574188232424,
       "test_size": 1000
     },
     "7": {
       "device": "SimpleHome_XCS7_1002_WHT_Security_Camera",
-      "test_recon": 1.428195831298828,
+      "test_recon": 1.365199462890625,
       "test_size": 1000
     },
     "8": {
       "device": "SimpleHome_XCS7_1003_WHT_Security_Camera",
-      "test_recon": 0.2436577262878418,
+      "test_recon": 0.24418370056152344,
       "test_size": 1000
     }
   }

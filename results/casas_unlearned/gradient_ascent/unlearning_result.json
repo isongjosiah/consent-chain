@@ -1,0 +1,21 @@
+{
+  "method": "GRADIENT_ASCENT",
+  "method_id": 1,
+  "model_hash_pre": "0x21622544ebb61c9ec4ce6da49177632089443355181f7e3bf5bde7b1fb787029",
+  "model_hash_post": "0xd3303271e34a15cec6028026242ab902f58de9141d32d80792f2aab3aab61f9f",
+  "wall_seconds": 2.5206570625305176,
+  "details": {
+    "steps_requested": 10,
+    "steps_taken": 10,
+    "lr": 0.0001,
+    "mean_step_loss": 0.231032644957304,
+    "final_step_loss": 0.6977351307868958
+  },
+  "target_client_id": 3,
+  "target_subset": "twor_2010",
+  "checkpoint": "results/casas_poisoned/model_checkpoints/round_060.pt",
+  "method_config": {
+    "steps": 10,
+    "learning_rate": 0.0001
+  }
+}

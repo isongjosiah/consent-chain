@@ -107,11 +107,33 @@ def _gather_verifier_keys(threshold: int) -> list[str]:
     return keys[:threshold]
 
 
+DATASETS = {
+    "nbaiot": {
+        "default_config": "fl/config/nbaiot.yaml",
+        # nbaiot writes the pre-unlearn snapshot to the clean baseline dir.
+        "pre_results_dir_suffix": "",
+        "unlearned_root": "results/nbaiot_unlearned",
+    },
+    "casas": {
+        "default_config": "fl/config/casas.yaml",
+        # casas E3 unlearns from the *poisoned* baseline (not the clean
+        # one) — that's where the canary trigger lives. The clean round
+        # snapshot would be vacuous to unlearn.
+        "pre_results_dir_suffix": "_poisoned",
+        "unlearned_root": "results/casas_unlearned",
+    },
+}
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description="End-to-end on-chain attestation.")
     p.add_argument("--network", default="purechain",
                    choices=["purechain", "amoy", "localhost"])
-    p.add_argument("--config", type=Path, default=Path("fl/config/nbaiot.yaml"))
+    p.add_argument("--dataset", default="nbaiot", choices=list(DATASETS),
+                   help="Which §V pipeline to attest. Selects results paths "
+                   "and default config.")
+    p.add_argument("--config", type=Path, default=None,
+                   help="Override config path (default depends on --dataset).")
     p.add_argument("--method", default="gradient_ascent",
                    choices=["gradient_ascent", "sisa_fed", "federaser"],
                    help="Which post-unlearn model to attest.")
@@ -121,12 +143,18 @@ def main(argv: list[str] | None = None) -> int:
 
     logging.basicConfig(level=logging.INFO,
                         format="%(asctime)s %(levelname)s %(name)s: %(message)s")
-    cfg = yaml.safe_load(args.config.read_text())
+    ds_cfg = DATASETS[args.dataset]
+    cfg_path = args.config if args.config is not None else Path(ds_cfg["default_config"])
+    cfg = yaml.safe_load(cfg_path.read_text())
 
     # --- Compute model hashes --------------------------------------------
     round_n = int(cfg["federation"]["revocation"]["revoke_at_round"])
-    pre_ckpt = Path(cfg["logging"]["results_dir"]) / "model_checkpoints" / f"round_{round_n:03d}.pt"
-    post_ckpt = Path("results/nbaiot_unlearned") / args.method / "post_unlearn_model.pt"
+    pre_results_dir = Path(
+        str(cfg["logging"]["results_dir"]) + ds_cfg["pre_results_dir_suffix"]
+    )
+    pre_ckpt = pre_results_dir / "model_checkpoints" / f"round_{round_n:03d}.pt"
+    unlearned_root = Path(ds_cfg["unlearned_root"])
+    post_ckpt = unlearned_root / args.method / "post_unlearn_model.pt"
     if not pre_ckpt.exists():
         raise SystemExit(f"missing pre-unlearn checkpoint: {pre_ckpt}")
     if not post_ckpt.exists():
@@ -134,11 +162,12 @@ def main(argv: list[str] | None = None) -> int:
 
     pre_hash = _hash_checkpoint(pre_ckpt)
     post_hash = _hash_checkpoint(post_ckpt)
-    LOGGER.info("pre-unlearn  hash: %s  (%s)", pre_hash, pre_ckpt.name)
+    LOGGER.info("dataset=%s  pre-unlearn  hash: %s  (%s)",
+                args.dataset, pre_hash, pre_ckpt.name)
     LOGGER.info("post-unlearn hash: %s  (%s)", post_hash, post_ckpt.name)
 
     # --- Load MIA scores + UnlearningResult -----------------------------
-    method_dir = Path("results/nbaiot_unlearned") / args.method
+    method_dir = unlearned_root / args.method
     ur = _load_unlearning_result(method_dir, pre_hash, post_hash)
     mia_results = _load_mia_results(method_dir)
     LOGGER.info(

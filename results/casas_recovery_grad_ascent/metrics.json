@@ -1,0 +1,452 @@
+[
+  {
+    "round_id": 1,
+    "wall_seconds": 24.98749589920044,
+    "aggregated_model_hash": "0x8264412dc3e72910d5c793b8064a9bfea385790bb43641d81904f01d1e507445",
+    "centralized_loss": 1.077564386847161,
+    "centralized_accuracy": 0.7622130665097115,
+    "per_client": [
+      {
+        "client_id": 0,
+        "subset": "cairo",
+        "train_loss": 0.9856138516941942,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.46382978723404256
+      },
+      {
+        "client_id": 1,
+        "subset": "milan",
+        "train_loss": 0.21186709273064658,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.8494117647058823
+      },
+      {
+        "client_id": 2,
+        "subset": "twor_2009",
+        "train_loss": 2.824803673355273,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.3283582089552239
+      },
+      {
+        "client_id": 4,
+        "subset": "twor_summer_2009",
+        "train_loss": 0.360043784650988,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.875
+      }
+    ]
+  },
+  {
+    "round_id": 2,
+    "wall_seconds": 24.781579971313477,
+    "aggregated_model_hash": "0x2eb9d6407cad73057300cc01335116c7fe683998a690a3468d388a1e2e14fc52",
+    "centralized_loss": 0.9641279698540843,
+    "centralized_accuracy": 0.772218952324897,
+    "per_client": [
+      {
+        "client_id": 0,
+        "subset": "cairo",
+        "train_loss": 0.8137333435535937,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.5106382978723404
+      },
+      {
+        "client_id": 1,
+        "subset": "milan",
+        "train_loss": 0.12363508802033603,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.8717647058823529
+      },
+      {
+        "client_id": 2,
+        "subset": "twor_2009",
+        "train_loss": 2.1563786843746513,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.3208955223880597
+      },
+      {
+        "client_id": 4,
+        "subset": "twor_summer_2009",
+        "train_loss": 0.16524184130717365,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.85
+      }
+    ]
+  },
+  {
+    "round_id": 3,
+    "wall_seconds": 23.89259099960327,
+    "aggregated_model_hash": "0xf16f364ed0033fe6cc1f95d88e57c55e646ffd04e6aceec76d55a3ea758d8767",
+    "centralized_loss": 0.9046617581466846,
+    "centralized_accuracy": 0.7733961153619776,
+    "per_client": [
+      {
+        "client_id": 0,
+        "subset": "cairo",
+        "train_loss": 0.7873158138819379,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.5106382978723404
+      },
+      {
+        "client_id": 1,
+        "subset": "milan",
+        "train_loss": 0.34914432823780595,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.8788235294117647
+      },
+      {
+        "client_id": 2,
+        "subset": "twor_2009",
+        "train_loss": 1.963373038522358,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.29850746268656714
+      },
+      {
+        "client_id": 4,
+        "subset": "twor_summer_2009",
+        "train_loss": 0.1609988337883954,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.8479166666666667
+      }
+    ]
+  },
+  {
+    "round_id": 4,
+    "wall_seconds": 23.39256763458252,
+    "aggregated_model_hash": "0xe0a4a67448840e3570b3cd981d809cbb7406bb2a1df3768110a8cf3e5605244d",
+    "centralized_loss": 0.8703963597288126,
+    "centralized_accuracy": 0.786933490288405,
+    "per_client": [
+      {
+        "client_id": 0,
+        "subset": "cairo",
+        "train_loss": 0.9220412343455425,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.5191489361702127
+      },
+      {
+        "client_id": 1,
+        "subset": "milan",
+        "train_loss": 0.20686636361573466,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.8929411764705882
+      },
+      {
+        "client_id": 2,
+        "subset": "twor_2009",
+        "train_loss": 1.8923303994386556,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.31343283582089554
+      },
+      {
+        "client_id": 4,
+        "subset": "twor_summer_2009",
+        "train_loss": 0.17150663568793162,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.8625
+      }
+    ]
+  },
+  {
+    "round_id": 5,
+    "wall_seconds": 23.755695819854736,
+    "aggregated_model_hash": "0x082f6463179e5fdfb9c48f115920e591819f3e729992ff8010c38df6a5267f23",
+    "centralized_loss": 0.9121832861628092,
+    "centralized_accuracy": 0.7775161859917599,
+    "per_client": [
+      {
+        "client_id": 0,
+        "subset": "cairo",
+        "train_loss": 0.7415904977401435,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.5319148936170213
+      },
+      {
+        "client_id": 1,
+        "subset": "milan",
+        "train_loss": 0.10475375509804868,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.8847058823529412
+      },
+      {
+        "client_id": 2,
+        "subset": "twor_2009",
+        "train_loss": 1.8590592716992234,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.35074626865671643
+      },
+      {
+        "client_id": 4,
+        "subset": "twor_summer_2009",
+        "train_loss": 0.21027438412184107,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.8270833333333333
+      }
+    ]
+  },
+  {
+    "round_id": 6,
+    "wall_seconds": 25.083720207214355,
+    "aggregated_model_hash": "0x533d93441d8f5d88d34828cc22d9ebb10dce47bed7b0f1752b74b2373daac208",
+    "centralized_loss": 0.8273805570013036,
+    "centralized_accuracy": 0.8010594467333726,
+    "per_client": [
+      {
+        "client_id": 0,
+        "subset": "cairo",
+        "train_loss": 0.7241307481822501,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.6085106382978723
+      },
+      {
+        "client_id": 1,
+        "subset": "milan",
+        "train_loss": 0.10199584702455118,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.8847058823529412
+      },
+      {
+        "client_id": 2,
+        "subset": "twor_2009",
+        "train_loss": 1.6912083534777054,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.3805970149253731
+      },
+      {
+        "client_id": 4,
+        "subset": "twor_summer_2009",
+        "train_loss": 0.15328012980132089,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.8645833333333334
+      }
+    ]
+  },
+  {
+    "round_id": 7,
+    "wall_seconds": 23.81511878967285,
+    "aggregated_model_hash": "0x066cba793a785b4f96bbead56a2b3613287f69abe414169e154e4a44974d4c12",
+    "centralized_loss": 0.8324505573444467,
+    "centralized_accuracy": 0.7969393761035903,
+    "per_client": [
+      {
+        "client_id": 0,
+        "subset": "cairo",
+        "train_loss": 0.6172298795675243,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.5829787234042553
+      },
+      {
+        "client_id": 1,
+        "subset": "milan",
+        "train_loss": 0.08214970244805742,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.88
+      },
+      {
+        "client_id": 2,
+        "subset": "twor_2009",
+        "train_loss": 1.6985020658601373,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.3805970149253731
+      },
+      {
+        "client_id": 4,
+        "subset": "twor_summer_2009",
+        "train_loss": 0.1430785788020375,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.8708333333333333
+      }
+    ]
+  },
+  {
+    "round_id": 8,
+    "wall_seconds": 24.01349949836731,
+    "aggregated_model_hash": "0xa1b1103bcb4109e1c01799111964ee88357aec4bc179d2cca3797f6bd4e086c0",
+    "centralized_loss": 0.844665752431096,
+    "centralized_accuracy": 0.8040023543260741,
+    "per_client": [
+      {
+        "client_id": 0,
+        "subset": "cairo",
+        "train_loss": 0.6238517396856698,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.5914893617021276
+      },
+      {
+        "client_id": 1,
+        "subset": "milan",
+        "train_loss": 0.07924116827617886,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.8894117647058823
+      },
+      {
+        "client_id": 2,
+        "subset": "twor_2009",
+        "train_loss": 1.7046342520962436,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.3880597014925373
+      },
+      {
+        "client_id": 4,
+        "subset": "twor_summer_2009",
+        "train_loss": 0.13776038485864747,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.8729166666666667
+      }
+    ]
+  },
+  {
+    "round_id": 9,
+    "wall_seconds": 23.636873245239258,
+    "aggregated_model_hash": "0xc1ef35a4f1dbd5676b636fb94bff2452bf23bd84fb5c5caf49ce1d0914da01bf",
+    "centralized_loss": 0.9304692983767648,
+    "centralized_accuracy": 0.7934078869923484,
+    "per_client": [
+      {
+        "client_id": 0,
+        "subset": "cairo",
+        "train_loss": 0.5843340951185297,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.6042553191489362
+      },
+      {
+        "client_id": 1,
+        "subset": "milan",
+        "train_loss": 0.07372286039438233,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.8788235294117647
+      },
+      {
+        "client_id": 2,
+        "subset": "twor_2009",
+        "train_loss": 1.6151046391083985,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.3208955223880597
+      },
+      {
+        "client_id": 4,
+        "subset": "twor_summer_2009",
+        "train_loss": 0.14373506380989715,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.8666666666666667
+      }
+    ]
+  },
+  {
+    "round_id": 10,
+    "wall_seconds": 24.997512102127075,
+    "aggregated_model_hash": "0x065742ea76419bc9718252311af996ff8f66caf37021be319e03c6261810ab82",
+    "centralized_loss": 0.9040922528508833,
+    "centralized_accuracy": 0.7904649793996469,
+    "per_client": [
+      {
+        "client_id": 0,
+        "subset": "cairo",
+        "train_loss": 0.642922918234064,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.6042553191489362
+      },
+      {
+        "client_id": 1,
+        "subset": "milan",
+        "train_loss": 0.07341390193743527,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.8905882352941177
+      },
+      {
+        "client_id": 2,
+        "subset": "twor_2009",
+        "train_loss": 1.7864475085970632,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.3208955223880597
+      },
+      {
+        "client_id": 4,
+        "subset": "twor_summer_2009",
+        "train_loss": 0.12794722556998017,
+        "boost_factor": 1.0,
+        "anomaly_weight": 0.0,
+        "anomaly_l2": 0.0,
+        "accuracy": 0.8354166666666667
+      }
+    ]
+  }
+]

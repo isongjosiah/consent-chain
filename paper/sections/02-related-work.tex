@@ -15,9 +15,9 @@ modifications. MedRec, however, treats the consent record as the
 \emph{endpoint} of the protocol --- there is no downstream ML training
 whose execution is gated by the consent state, and no mechanism for
 demonstrating that withdrawn consent translated into a model update.
-Subsequent semantic-web work such as GConsent and the W3C DPV
-\cite{pandl2021gconsent} formalises consent vocabularies but
-operates in an off-chain registry without enforcement.
+Subsequent semantic-web work (GConsent, W3C DPV) formalises consent
+vocabularies but operates in an off-chain registry without
+enforcement.
 \emph{Gap}: consent is recorded but does not influence training.
 
 \smallskip
@@ -27,10 +27,9 @@ data and caches per-shard intermediate models so that data removal
 requires retraining only the affected shard. FedEraser
 \cite{liu2021federaser} extends SISA's logic to the federated setting
 by replaying aggregation history with a calibration step,
-significantly cheaper than full retraining. Gradient-ascent unlearning
-methods~\cite{nguyen2022survey} take a single trained model and
-perform a small number of negative-learning-rate steps on the data to
-be removed. All three families have been validated on standalone
+significantly cheaper than full retraining. Gradient-ascent unlearning methods take a single trained model and
+perform a small number of negative-learning-rate steps on the data
+to be removed. All three families have been validated on standalone
 benchmarks but \emph{none specifies how unlearning is triggered, by
 whom, or how a deployer demonstrates it actually happened}. The
 unlearning literature treats the trigger and verification steps as

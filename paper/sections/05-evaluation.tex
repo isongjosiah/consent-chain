@@ -55,43 +55,32 @@ three are below $\tauMIA = 0.55$.}
 \resizebox{\columnwidth}{!}{\input{../results/tables/table1_unlearning.tex}}
 \end{table}
 
-Three observations stand out. \textbf{First,} all three approximate
-unlearning methods produce UAs the chain accepts: shadow scores
-fall to $0.438$ (gradient ascent), $0.254$ (SISA-Fed), and $0.523$
-(FedEraser); LiRA and label-only scores remain well below
-$\tauMIA$. \textbf{Second}, the naive-retrain baseline ---
-a model trained from scratch that has \emph{never seen} client 5's data
---- yields a shadow score of $0.584$, \emph{above} $\tauMIA$, and is
-rejected by the same on-chain gate. The shadow MIA picks up client
-5's distinctive network-traffic distribution rather than true
-membership, a known confound of shadow-model
-attacks~\cite{shokri2017mia} on distribution-shifted data; LiRA and
-the label-only attack, both more sensitive to specific membership
-than to distribution, score $0.500$ and $0.014$ respectively on the
-same model. The protocol behaves correctly throughout --- it is
-faithful to MIA evidence, not to the data controller's claim
---- and \S~\ref{sec:discussion} treats the asymmetry as an
-MIA-selection result rather than a protocol bug. \textbf{Third}, gradient ascent's
-shadow score ($0.438$) is \emph{lower} than naive retrain's ($0.584$):
-actively anti-fitting the revoked data moves the model further from
-client 5's distribution than a model that never saw it. The three
-approximate methods thus trace out a forgetting-versus-utility Pareto
-frontier --- SISA-Fed at the strong-forgetting end, gradient ascent
-and FedEraser at the preserve-utility end --- which the utility
-recovery curves (\S~\ref{sec:eval-utility}) make explicit.
+Three observations stand out. All three approximate unlearning
+methods produce UAs the chain accepts (shadow $0.438$/$0.254$/$0.523$
+for gradient ascent/SISA-Fed/FedEraser; LiRA and label-only well
+below $\tauMIA$). The naive-retrain baseline --- a model that
+\emph{never saw} client 5's data --- yields shadow $0.584$, above
+$\tauMIA$, and is rejected: the shadow MIA picks up client 5's
+distinctive traffic distribution rather than membership, a known
+confound~\cite{shokri2017mia} that LiRA ($0.500$) and label-only
+($0.014$) on the same model do not exhibit. The protocol is
+faithful to MIA evidence, not to the data controller's claim;
+\S~\ref{sec:discussion} treats this asymmetry as MIA selection
+rather than a protocol bug. Finally, gradient ascent's shadow
+($0.438$) sits \emph{lower} than naive retrain's ($0.584$):
+anti-fitting moves the model further from client 5's distribution
+than never having seen it. The three methods thus trace a
+forgetting-versus-utility frontier --- SISA-Fed strong-forgetting,
+gradient ascent and FedEraser preserve-utility --- explicit in
+the recovery curves (\S~\ref{sec:eval-utility}).
 
-End-to-end on-chain attestation of all three approximate methods
-executed against PureChain. The transitionToUnlearned hook fired in
-the same transaction as
-\texttt{submitAttestation}; final
-$\mathit{CR}.\mathtt{stateOf}$ returned \textsc{Unlearned} (state 5)
-for each token. Representative gradient-ascent PureChain tx hashes
-(prefixes of full 32-byte values): updateModelHash
-\texttt{0x6e3b\ldots a0b8}, grantConsent
-\texttt{0x92af\ldots 4be3}, revokeConsent
-\texttt{0xf005\ldots d3fb}, submitAttestation
-\texttt{0x7910\ldots 4a39}; per-method tx records in supplementary
-\texttt{onchain\_attestation.json}.
+All three methods' UAs executed end-to-end against PureChain;
+\texttt{transitionToUnlearned} fired in the same transaction as
+\texttt{submitAttestation} and final
+$\mathit{CR}.\mathtt{stateOf}$ returned \textsc{Unlearned} for each
+token (representative gradient-ascent tx
+\texttt{0x7910\ldots 4a39}; full per-method tx hashes in
+supplementary \texttt{onchain\_attestation.json}).
 
 \subsection{Gas cost comparison}
 \label{sec:eval-gas}
@@ -195,28 +184,18 @@ $\sim\!28\%$ on this particular setup.
 \label{sec:eval-props}
 
 Two short PureChain runs validate the formal properties of
-\S~\ref{sec:properties}.
-
-\smallskip\noindent\textbf{Property~\ref{prop:liveness}
-(\textit{Liveness}).} We shrunk $\dmax$ to 2 blocks for the demo,
-revoked a fresh token at block $b\!=\!1{,}211{,}058$, attempted
-$\texttt{reportTimeout}$ at $b\!+\!1$ (reverted as expected with
-\texttt{NotYetTimedOut}), advanced past the deadline, and re-attempted
-the same call. The on-chain \texttt{ComplianceViolation(tokenId, deadline)}
-event fired at block $1{,}211{,}064$ with $\mathrm{gas}\!=\!24{,}800$
-(tx \texttt{0x3171...8f52}). Total wall-clock from revoke to
-event-emission was $\sim\!6$ seconds on PureChain.
-
-\smallskip\noindent\textbf{Property~\ref{prop:verifiability}
-(\textit{Verifiability}).} A $t$-of-5 sweep over $t \in \{2, 3, 4, 5\}$
-confirmed both branches of Eq.~\ref{eq:verifiability}: submission
-with exactly $t$ valid signatures accepts;
-submission with $t\!-\!1$ signatures reverts with
-\texttt{InsufficientSignatures}($t\!-\!1$, $t$).
-The marginal cost of an additional signature is $\sim\!7{,}800$ gas
-(ECDSA-recovery + verifier-set SLOAD); the default $t = 3$
-configuration costs $102{,}941$ gas for the full
-\texttt{submitAttestation}.
+\S~\ref{sec:properties}. For \textbf{Liveness}
+(Property~\ref{prop:liveness}) we set $\dmax\!=\!2$ blocks, revoked
+a fresh token, confirmed \texttt{reportTimeout} reverts with
+\texttt{NotYetTimedOut} pre-deadline, then advanced past it: the
+\texttt{ComplianceViolation} event fired in
+$\mathrm{gas}\!=\!24{,}800$ (tx \texttt{0x3171...8f52}). For
+\textbf{Verifiability} (Property~\ref{prop:verifiability}), a
+$t$-of-5 sweep over $t \in \{2,3,4,5\}$ confirmed both branches
+of Eq.~\ref{eq:verifiability}: $t$ valid signatures accept,
+$t\!-\!1$ revert with \texttt{InsufficientSignatures}. Marginal
+cost per signature $\sim\!7{,}800$ gas; default $t\!=\!3$
+\texttt{submitAttestation} totals $102{,}941$ gas.
 
 \subsection{Comparison to prior work}
 \label{sec:eval-compare}
@@ -227,11 +206,12 @@ configuration costs $102{,}941$ gas for the full
 prior systems. Each cell describes the corresponding system's
 mechanism for that dimension; ``Not provided'' marks dimensions
 the prior system was not designed to address, not failures of
-implementation.}
+implementation. Per-operation cost is omitted here --- see
+Table~\ref{tab:t2}.}
 \label{tab:t3}
 \footnotesize
-\setlength{\tabcolsep}{5pt}
-\renewcommand{\arraystretch}{1.2}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.05}
 \begin{tabular}{p{2.2cm}p{4.3cm}p{3.7cm}p{3.9cm}p{3.0cm}}
 \toprule
 Dimension & ConsentChain (ours) & MedRec~\cite{azaria2016medrec} &
@@ -274,29 +254,22 @@ None --- entirely off-chain; no immutable record &
 Per-round device-side model-update log on Ethereum mainnet;
 public ledger of update commitments \\
 
-Per-operation cost &
-\$0 on PureChain (gas-free PoA$^2$);
-$\sim\!\$3\!\times\!10^{-4}$ average per atomic transaction
-on Polygon Amoy at the measured 30~gwei priority floor &
-Ethereum mainnet gas per permission operation &
-None (off-chain) &
-Ethereum mainnet gas per logged round \\
-
 \bottomrule
 \end{tabular}
 \end{table*}
 
 Table~\ref{tab:t3} positions \sysname against the three closest
-prior systems along seven dimensions. The cells describe each
+prior systems along four dimensions. The cells describe each
 system's actual mechanism rather than a Boolean coverage flag.
-MedRec established the on-chain consent pattern we build on (rows
-1, 5--6) but treats the consent contract as the protocol endpoint
-with no downstream training gate (rows 2--4). FedEraser contributes
-a federated unlearning algorithm (row 3) that \sysname accepts as
-one of its three pluggable methods; the trigger, verification, and
-audit dimensions are out of scope in the original work. BlockFL
-addresses aggregator trust through on-chain model-update logs
-(rows 5--6) but encodes no consent semantics. \sysname is the
-first design we are aware of that addresses all seven dimensions in
-a single chain-enforced protocol, and the first to do so at gas-free
-per-operation cost on a public EVM-compatible substrate.
+MedRec established the on-chain consent pattern we build on
+(rows 1, 4) but treats the consent contract as the protocol
+endpoint with no downstream training gate (rows 2--3). FedEraser
+contributes a federated unlearning algorithm (row 2) that \sysname
+accepts as one of its three pluggable methods; the trigger,
+verification, and audit dimensions are out of scope in the original
+work. BlockFL addresses aggregator trust through on-chain
+model-update logs (row 4) but encodes no consent semantics.
+\sysname is the first design we are aware of that addresses all
+four dimensions in a single chain-enforced protocol, and the first
+to do so at gas-free per-operation cost on a public EVM-compatible
+substrate.

@@ -1,0 +1,26 @@
+{
+  "method": "SISA_FED",
+  "method_id": 0,
+  "model_hash_pre": "0x21622544ebb61c9ec4ce6da49177632089443355181f7e3bf5bde7b1fb787029",
+  "model_hash_post": "0xed2284b86d425763c7421341e2565647353c5506422564e8904e83d9d563dcfa",
+  "wall_seconds": 113.74488568305969,
+  "details": {
+    "retrain_rounds": 5,
+    "local_epochs": 2,
+    "remaining_client_ids": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "num_shards_intended": 3,
+    "approximation_note": "stub uses naive retraining over remaining clients; production version reloads pre-shard SISA checkpoints (TODO D8-full).",
+    "mean_local_loss": 0.9521115293685891
+  },
+  "target_client_id": 3,
+  "target_subset": "twor_2010",
+  "checkpoint": "results/casas_poisoned/model_checkpoints/round_060.pt",
+  "method_config": {
+    "num_shards": 3
+  }
+}

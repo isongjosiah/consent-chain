@@ -1,15 +1,15 @@
 {
   "method": "GRADIENT_ASCENT",
   "method_id": 1,
-  "model_hash_pre": "0x08ca54b2a66db32d3f8d603dd1e471d017c385b02c3838671bf84cb4cbbf21b0",
-  "model_hash_post": "0x954a47959533e412b99966e9271c65c44bdfb231ee993c95d8d1a29905e17e86",
-  "wall_seconds": 1.2834429740905762,
+  "model_hash_pre": "0xc4b6474bd61f92b3215fe60717916ee315c9200c02783d0181c6b013b788b095",
+  "model_hash_post": "0x04527b4fc1d7dd73eebb1ee29220c0522596aa1ff5e161972a7c6bf2805a781e",
+  "wall_seconds": 1.3735759258270264,
   "details": {
     "steps_requested": 10,
     "steps_taken": 10,
     "lr": 0.0001,
-    "mean_step_recon": 0.927685558795929,
-    "final_step_recon": 1.0005789995193481,
+    "mean_step_recon": 0.9084937632083893,
+    "final_step_recon": 0.9847586750984192,
     "task": "autoencoder"
   },
   "target_client_id": 5,

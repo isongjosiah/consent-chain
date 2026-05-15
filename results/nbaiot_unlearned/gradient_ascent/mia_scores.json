@@ -16,20 +16,23 @@
   },
   "lira": {
     "method": "lira",
-    "score": 0.5,
-    "score_fixed_point": 5000,
-    "wall_seconds": 23.63862705230713,
+    "score": 0.0435,
+    "score_fixed_point": 435,
+    "wall_seconds": 20.74903392791748,
     "details": {
       "task": "autoencoder",
       "n_in_ref_trained": 4,
       "n_out_ref_trained": 4,
       "ref_epochs": 5,
       "subset_fraction": 0.7,
-      "alpha": 0.5,
+      "alpha": 0.05,
       "member_set_size": 4000,
-      "mean_llr": 26.846716134573455,
-      "median_llr": 2.6746343856740946,
-      "threshold": 2.6746343856740946
+      "aux_set_size": 40000,
+      "mean_llr_mem": -4.730093222497794,
+      "median_llr_mem": -3.305663559763847,
+      "mean_llr_aux": 15.964001797783311,
+      "median_llr_aux": -0.03069607263342794,
+      "threshold": 20.97222797516583
     }
   },
   "label_only": {

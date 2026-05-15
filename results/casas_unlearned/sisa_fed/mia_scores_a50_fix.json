@@ -1,0 +1,22 @@
+{
+  "lira": {
+    "method": "lira",
+    "score": 0.24842300556586272,
+    "score_fixed_point": 2484,
+    "wall_seconds": 631.09685587883,
+    "details": {
+      "n_in_ref_trained": 4,
+      "n_out_ref_trained": 4,
+      "ref_epochs": 5,
+      "subset_fraction": 0.7,
+      "alpha": 0.5,
+      "member_set_size": 5390,
+      "aux_set_size": 8501,
+      "mean_llr_mem": -118.57921178404875,
+      "median_llr_mem": -10.063017251961913,
+      "mean_llr_aux": 1.9366530741093,
+      "median_llr_aux": -0.012956165001035469,
+      "threshold": -0.012956165001035469
+    }
+  }
+}

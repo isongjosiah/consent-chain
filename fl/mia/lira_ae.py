@@ -120,40 +120,46 @@ class LiRAAEMIA(BaseMIA):
             )
             return m
 
-        in_logs = np.stack(
-            [
-                _log_recon_errors(
-                    _train_ref(X_in_pool), X_mem, device=request.device, eps=eps
-                )
-                for _ in range(n_in)
-            ],
-            axis=0,
-        )
-        out_logs = np.stack(
-            [
-                _log_recon_errors(
-                    _train_ref(X_aux), X_mem, device=request.device, eps=eps
-                )
-                for _ in range(n_out)
-            ],
-            axis=0,
-        )
+        # Train shadow ensemble once, reuse to evaluate log-recon-errors
+        # on both member and auxiliary sets — standard online-LiRA
+        # approximation, needed for α-FPR-calibrated thresholding.
+        in_logs_mem: list[np.ndarray] = []
+        in_logs_aux: list[np.ndarray] = []
+        for _ in range(n_in):
+            m = _train_ref(X_in_pool)
+            in_logs_mem.append(_log_recon_errors(m, X_mem, device=request.device, eps=eps))
+            in_logs_aux.append(_log_recon_errors(m, X_aux, device=request.device, eps=eps))
+        out_logs_mem: list[np.ndarray] = []
+        out_logs_aux: list[np.ndarray] = []
+        for _ in range(n_out):
+            m = _train_ref(X_aux)
+            out_logs_mem.append(_log_recon_errors(m, X_mem, device=request.device, eps=eps))
+            out_logs_aux.append(_log_recon_errors(m, X_aux, device=request.device, eps=eps))
 
-        mu_in = in_logs.mean(axis=0)
-        sd_in = in_logs.std(axis=0, ddof=0)
-        mu_out = out_logs.mean(axis=0)
-        sd_out = out_logs.std(axis=0, ddof=0)
+        in_mem = np.stack(in_logs_mem, axis=0)
+        out_mem = np.stack(out_logs_mem, axis=0)
+        in_aux = np.stack(in_logs_aux, axis=0)
+        out_aux = np.stack(out_logs_aux, axis=0)
 
-        target_logs = _log_recon_errors(
-            request.target_model, X_mem, device=request.device, eps=eps
-        )
-        log_p_in = _log_normal_pdf(target_logs, mu_in, sd_in)
-        log_p_out = _log_normal_pdf(target_logs, mu_out, sd_out)
-        # Higher LLR → target's log-recon-error looks more like the IN-pool
-        # distribution → x is more likely a member.
-        llr = log_p_in - log_p_out
-        threshold = float(np.quantile(llr, alpha))
-        score = float((llr > threshold).mean())
+        def _per_row_llr(target: np.ndarray, in_arr: np.ndarray, out_arr: np.ndarray) -> np.ndarray:
+            mu_in = in_arr.mean(axis=0); sd_in = in_arr.std(axis=0, ddof=0)
+            mu_out = out_arr.mean(axis=0); sd_out = out_arr.std(axis=0, ddof=0)
+            return (
+                _log_normal_pdf(target, mu_in, sd_in)
+                - _log_normal_pdf(target, mu_out, sd_out)
+            )
+
+        target_mem = _log_recon_errors(request.target_model, X_mem, device=request.device, eps=eps)
+        target_aux = _log_recon_errors(request.target_model, X_aux, device=request.device, eps=eps)
+        llr_mem = _per_row_llr(target_mem, in_mem, out_mem)
+        llr_aux = _per_row_llr(target_aux, in_aux, out_aux)
+
+        # Carlini 2022 online LiRA: threshold at the (1−α) quantile of the
+        # auxiliary (non-member) LLR distribution → α-controlled FPR.
+        # Score = fraction of member LLRs above that threshold = TPR at α-FPR.
+        # 0.5 = chance, ≫ 0.5 = strong membership leakage.
+        threshold = float(np.quantile(llr_aux, 1.0 - alpha))
+        score = float((llr_mem > threshold).mean())
 
         details: dict[str, Any] = {
             "task": "autoencoder",
@@ -163,8 +169,11 @@ class LiRAAEMIA(BaseMIA):
             "subset_fraction": subset_fraction,
             "alpha": alpha,
             "member_set_size": int(X_mem.shape[0]),
-            "mean_llr": float(llr.mean()),
-            "median_llr": float(np.median(llr)),
+            "aux_set_size": int(X_aux.shape[0]),
+            "mean_llr_mem": float(llr_mem.mean()),
+            "median_llr_mem": float(np.median(llr_mem)),
+            "mean_llr_aux": float(llr_aux.mean()),
+            "median_llr_aux": float(np.median(llr_aux)),
             "threshold": threshold,
         }
         return self._wrap(score, t0, details)

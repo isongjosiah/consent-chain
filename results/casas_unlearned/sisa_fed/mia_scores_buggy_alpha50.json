@@ -1,0 +1,50 @@
+{
+  "shadow_model": {
+    "method": "shadow_model",
+    "score": 0.4985157699443414,
+    "score_fixed_point": 4985,
+    "wall_seconds": 46.871413469314575,
+    "details": {
+      "num_shadow_trained": 5,
+      "shadow_epochs": 5,
+      "attack_train_size": 8500,
+      "attack_feature_dim": 3,
+      "member_set_size": 5390,
+      "attack_train_accuracy": 0.5208235294117647
+    }
+  },
+  "lira": {
+    "method": "lira",
+    "score": 0.5,
+    "score_fixed_point": 5000,
+    "wall_seconds": 588.6193656921387,
+    "details": {
+      "n_in_ref_trained": 4,
+      "n_out_ref_trained": 4,
+      "ref_epochs": 5,
+      "subset_fraction": 0.7,
+      "alpha": 0.5,
+      "member_set_size": 5390,
+      "mean_llr": -197.40906988559067,
+      "median_llr": -9.973642284104503,
+      "threshold": -9.973642284104503
+    }
+  },
+  "label_only": {
+    "method": "label_only",
+    "score": 0.0,
+    "score_fixed_point": 0,
+    "wall_seconds": 178.30764198303223,
+    "details": {
+      "K": 20,
+      "perturbation_kind": "discrete",
+      "discrete_replace_fraction": 0.05,
+      "continuous_noise_sigma": null,
+      "fpr_target": 0.05,
+      "member_set_size": 5390,
+      "aux_set_size": 8501,
+      "mean_member_robustness": 0.38389610389610385,
+      "mean_aux_robustness": 0.7832784378308435
+    }
+  }
+}

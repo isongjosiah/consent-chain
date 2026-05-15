@@ -112,10 +112,12 @@ def _run_mias_on(
     device: torch.device,
     seed: int,
     out_path: Path,
+    methods: list[str] | None = None,
 ) -> dict[str, MIAResult]:
     LOGGER.info("=== %s ===", label)
+    selected = {n: AE_MIAS[n] for n in (methods or AE_MIAS)}
     results: dict[str, MIAResult] = {}
-    for method_name, AttackCls in AE_MIAS.items():
+    for method_name, AttackCls in selected.items():
         method_cfg = cfg.get("mia", {}).get(method_name, {})
         request = MIARequest(
             target_model=model,
@@ -150,6 +152,13 @@ def main(argv: list[str] | None = None) -> int:
                    help="Subset of unlearning methods to attack (default: all + pre).")
     p.add_argument("--revoked-client", type=int, default=None)
     p.add_argument("--device", choices=["cpu", "cuda", "mps", "auto"], default="auto")
+    p.add_argument("--methods", nargs="+", choices=list(AE_MIAS.keys()), default=None,
+                   help="Subset of MIA methods to run (default: all three). "
+                   "Use to re-run a single attack as an ablation.")
+    p.add_argument("--lira-alpha", type=float, default=None,
+                   help="Override cfg.mia.lira.classification_alpha for this run.")
+    p.add_argument("--out-suffix", default="",
+                   help="Suffix appended to output filenames.")
     args = p.parse_args(argv)
 
     logging.basicConfig(level=logging.INFO,
@@ -198,6 +207,14 @@ def main(argv: list[str] | None = None) -> int:
         "device": str(device),
         "pre_unlearn_checkpoint": str(pre_ckpt),
     })
+    if args.lira_alpha is not None:
+        cfg.setdefault("mia", {}).setdefault("lira", {})
+        cfg["mia"]["lira"]["classification_alpha"] = float(args.lira_alpha)
+        fingerprint["lira_alpha_override"] = float(args.lira_alpha)
+    if args.methods:
+        fingerprint["methods_run"] = list(args.methods)
+    if args.out_suffix:
+        fingerprint["out_suffix"] = args.out_suffix
     _env.write(unlearned_root, fingerprint)
 
     # Always evaluate the pre-unlearn baseline.
@@ -206,7 +223,8 @@ def main(argv: list[str] | None = None) -> int:
     pre_results = _run_mias_on(
         "pre-unlearn (round %d)" % int(cfg["federation"]["revocation"]["revoke_at_round"]),
         pre_model, member_loader, aux_loader, cfg, device, seed,
-        unlearned_root / "pre_mia_scores.json",
+        unlearned_root / f"pre_mia_scores{args.out_suffix}.json",
+        methods=args.methods,
     )
 
     # Evaluate post-unlearning models.
@@ -227,7 +245,8 @@ def main(argv: list[str] | None = None) -> int:
         post_results = _run_mias_on(
             f"post-unlearn ({m})",
             post_model, member_loader, aux_loader, cfg, device, seed,
-            unlearned_root / m / "mia_scores.json",
+            unlearned_root / m / f"mia_scores{args.out_suffix}.json",
+            methods=args.methods,
         )
         post_summary[m] = {
             name: {"score": r.score, "score_fixed_point": r.score_fixed_point}
@@ -244,19 +263,23 @@ def main(argv: list[str] | None = None) -> int:
     def _ua_acceptable(scores: dict[str, MIAResult]) -> bool:
         return all(r.score < threshold for r in scores.values())
 
+    def _fmt(scores, get) -> str:
+        return "  ".join(
+            f"{n}={get(scores[n]):.4f}" if n in scores else f"{n}=—"
+            for n in AE_MIAS
+        )
+
     LOGGER.info(
-        "pre-unlearn:   shadow=%.4f  lira=%.4f  label_only=%.4f   on-chain accept? %s",
-        pre_results["shadow_model"].score, pre_results["lira"].score,
-        pre_results["label_only"].score,
+        "pre-unlearn:   %s   on-chain accept? %s",
+        _fmt(pre_results, lambda r: r.score),
         "YES" if _ua_acceptable(pre_results) else "NO  (expected pre-unlearn)",
     )
     for m, scores in post_summary.items():
         ok = all(s["score"] < threshold for s in scores.values())
         LOGGER.info(
-            "%-15s shadow=%.4f  lira=%.4f  label_only=%.4f   on-chain accept? %s",
+            "%-15s %s   on-chain accept? %s",
             m,
-            scores["shadow_model"]["score"], scores["lira"]["score"],
-            scores["label_only"]["score"],
+            _fmt(scores, lambda s: s["score"]),
             "YES" if ok else "NO",
         )
 
