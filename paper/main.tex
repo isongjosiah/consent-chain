@@ -22,9 +22,7 @@
     urlcolor=black,
     pdftitle={ConsentChain: Smart Contract-Enforced Dynamic Consent
               and Verifiable Machine Unlearning for Federated IoT Learning},
-    pdfauthor={Josiah Ayoola Isong, Oroceo Paul Angelo,
-               Paul Michael Custodio, Lee Jae Hyun,
-               Simeon Okechukwu Ajakwe, Jae-Min Lee, Dong-Seong Kim},
+    pdfauthor={Josiah Ayoola Isong, Oroceo Paul Angelo, Jae-Min Lee, Dong-Seong Kim},
     pdfsubject={IEEE BCCA 2026 submission},
     pdfkeywords={federated learning, machine unlearning, smart contracts,
                  dynamic consent, IoT, GDPR},
@@ -50,11 +48,10 @@
 \newcommand{\keccak}{\mathrm{keccak256}}
 
 % ORCID icon, robust to a missing asset: shows the linked iD icon
-% when paper/images/ORCID.png is present, otherwise omits it so the
-% build never breaks. Drop the official ORCID iD PNG at
-% images/ORCID.png to make the icons appear.
+% when figures/ORCID.png is present, otherwise omits it so the
+% build never breaks (RGB-flattened to avoid RGBA PDF corruption).
 \newcommand{\orcid}[1]{%
-  \IfFileExists{images/ORCID.png}%
+  \IfFileExists{./figures/ORCID.png}%
     {\href{#1}{\includegraphics[scale=0.075]{./figures/ORCID.png}}}%
     {}%
 }

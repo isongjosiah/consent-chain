@@ -47,7 +47,7 @@ s_0 &= \textsc{Inactive},\qquad F = \{\textsc{Unlearned}\}.
 \end{align*}
 $\delta: S \times \Sigma \to S$ is a partial function whose transition
 diagram appears in Figure~\ref{fig:clsm} and whose tabular form is
-Table~\ref{tab:clsm} in \S~\ref{sec:framework-clsm};
+Table~\ref{tab:clsm} in Section~\ref{sec:framework-clsm};
 \textsc{Unlearned} is the absorbing terminal state.
 \end{definition}
 
@@ -98,7 +98,7 @@ We adopt the adversary set summarised in
 Table~\ref{tab:threat}. Five in-scope adversaries are defended against
 by specific protocol mechanisms; six classes of attack are
 acknowledged as out-of-scope with the rationale stated in
-\S~\ref{sec:discussion}. The expanded model with per-adversary
+Section~\ref{sec:discussion}. The expanded model with per-adversary
 capability/intent/defense/residual-risk lives in the supplementary
 \texttt{docs/threat-model.md}.
 
@@ -125,7 +125,7 @@ Replay attacker & UA binds (chainid, tokenId, hashPre) \\
 \label{sec:properties}
 
 We state four properties that \sysname must satisfy. Each is proved
-informally in \S~\ref{sec:framework}; full mechanised proofs are
+informally in Section~\ref{sec:framework}; full mechanised proofs are
 future work.
 
 \begin{property}[Consent Integrity --- safety]\label{prop:safety}
@@ -184,6 +184,6 @@ condition. Property~\ref{prop:audit} ensures that the chain serves as
 the durable evidence layer required by GDPR Article~5(2) accountability
 principle and EU AI Act Article~12 record-keeping. The empirical
 evidence for \ref{prop:liveness} and \ref{prop:verifiability} is
-reported in \S~\ref{sec:evaluation}; the on-chain enforcement of
+reported in Section~\ref{sec:evaluation}; the on-chain enforcement of
 \ref{prop:safety} and \ref{prop:audit} follows by construction from
-the contract code (\S~\ref{sec:framework}).
+the contract code (Section~\ref{sec:framework}).
