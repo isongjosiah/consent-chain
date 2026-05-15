@@ -62,7 +62,7 @@ below $\tauMIA$). The naive-retrain baseline --- a model that
 \emph{never saw} client 5's data --- yields shadow $0.584$, above
 $\tauMIA$, and is rejected: the shadow MIA picks up client 5's
 distinctive traffic distribution rather than membership, a known
-confound~\cite{shokri2017mia} that LiRA ($0.500$) and label-only
+confound~\cite{shokri2017mia} that LiRA ($0.045$) and label-only
 ($0.014$) on the same model do not exhibit. The protocol is
 faithful to MIA evidence, not to the data controller's claim;
 \S~\ref{sec:discussion} treats this asymmetry as MIA selection
@@ -79,7 +79,7 @@ All three methods' UAs executed end-to-end against PureChain;
 \texttt{submitAttestation} and final
 $\mathit{CR}.\mathtt{stateOf}$ returned \textsc{Unlearned} for each
 token (representative gradient-ascent tx
-\texttt{0x7910\ldots 4a39}; full per-method tx hashes in
+\texttt{0x5beb\ldots 416a}; full per-method tx hashes in
 supplementary \texttt{onchain\_attestation.json}).
 
 \subsection{Gas cost comparison}
@@ -164,21 +164,14 @@ post-revoke by round 40.}
 \label{fig:f2}
 \end{figure}
 
-The post-revoke trajectory (no unlearning step) ends at $0.4796$
-test reconstruction error, $5.7\%$ \emph{better} than the
-9-client baseline ($0.5087$): client 5 was an outlier in the benign
-traffic distribution and its removal lets the federation fit the
-remaining devices more tightly. Gradient ascent and FedEraser end at
-$0.4794$ and $0.4783$ respectively --- the unlearning step is
-free of utility cost in both cases. SISA-Fed is the outlier: its
-round-31 starting point is $0.6996$ (\!+42\% vs.\ the others) and
-recovers only to $0.6139$ by round 40 (+28\%). SISA-Fed pays a real
-utility cost for its strongest-forgetting position on the Pareto
-frontier --- consistent with the lowest shadow MIA in
-Table~\ref{tab:t1}. The ``minimal utility loss $\lesssim
-3\%$'' claim is conservative: for gradient ascent and FedEraser the
-measured loss is negative; SISA-Fed sets the upper bound at
-$\sim\!28\%$ on this particular setup.
+The post-revoke trajectory ends at $0.4796$, $5.7\%$
+\emph{better} than the 9-client baseline ($0.5087$) --- client 5
+was an outlier whose removal lets the federation fit the remaining
+devices more tightly. Gradient ascent ($0.4794$) and FedEraser
+($0.4783$) match this with no utility cost. SISA-Fed pays a real
+cost ($0.6996$ at round 31, recovering to $0.6139$ by round 40 ---
+$+28\%$), consistent with its strongest-forgetting position and
+lowest shadow MIA in Table~\ref{tab:t1}.
 
 \subsection{On-chain property demos}
 \label{sec:eval-props}
@@ -196,6 +189,25 @@ of Eq.~\ref{eq:verifiability}: $t$ valid signatures accept,
 $t\!-\!1$ revert with \texttt{InsufficientSignatures}. Marginal
 cost per signature $\sim\!7{,}800$ gas; default $t\!=\!3$
 \texttt{submitAttestation} totals $102{,}941$ gas.
+
+\subsection{Cross-domain validation (CASAS)}
+\label{sec:eval-casas}
+
+We replayed \S\ref{sec:eval-unlearning}--\ref{sec:eval-utility} on
+the CASAS smart-home benchmark (5-client BiLSTM, per-apartment
+sensor streams, \texttt{twor\_2010} revoked at round 60). Three-MIA
+scores ($\tauMIA\!=\!0.55$, shadow/LiRA/label-only): pre-unlearn
+$0.979/0.106/0.114$ and naive retrain $0.846/0.002/0.000$ both
+\emph{rejected} on shadow alone (same distribution-shift confound
+as N-BaIoT, amplified by per-apartment patterns); gradient ascent
+$0.980/0.136/0.110$ and FedEraser $0.840/0.106/0.009$ also
+\emph{rejected}; SISA-Fed $0.499/0.035/0.000$ the only method
+\emph{accepted}. A pre-injected 15\%-ratio backdoor canary
+triggers $100\%$ pre-unlearning, drops to $0\%$ under SISA-Fed and
+FedEraser (gradient ascent preserves it at $100\%$ on 10 steps).
+End-to-end SISA-Fed attestation on PureChain
+(\texttt{submitAttestation} \texttt{0x9643\ldots 733b}) transitioned
+token 527 to \textsc{Unlearned}.
 
 \subsection{Comparison to prior work}
 \label{sec:eval-compare}
