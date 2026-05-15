@@ -1,69 +1,48 @@
 \section{Discussion}
 \label{sec:discussion}
 
-\subsection{Limitations}
+\noindent\textbf{Limitations.}
+The shadow attack conflates the revoked client's distributional
+uniqueness with membership --- naive retrain scored $0.584$
+(N-BaIoT) / $0.846$ (CASAS) in Table~\ref{tab:t1} despite never
+seeing the data. LiRA resists this confound ($\le\!0.05$ at
+$\alpha\!=\!0.05$) but is itself $\alpha$-sensitive (admitting the
+pre-unlearn baseline at $\alpha\!=\!0.05$, rejecting it at
+$0.5$); the gate stays robust only because it requires \emph{all
+three} MIAs below $\tauMIA$, so deployments must co-calibrate
+$(\alpha,\tauMIA)$ per model class. \sysname accepts approximate
+unlearning --- exact retraining is infeasible at IoT scale and
+GDPR Art.~17's ``reasonable measures'' is met by
+Eq.~\ref{eq:verifiability} with the chain as audit evidence ---
+leaving formal erasure guarantees and ECDSA verifier-identity
+leakage (BLS-collapsed in the journal version) out of conference
+scope. Off-chain training on revoked data cannot be prevented, but
+an audited deployment then has no UA binding the deployed model
+hash to a valid consent state, so the deviation is publicly
+detectable as on-chain negative evidence.
 
-\noindent\textbf{MIA selection and calibration.}
-The shadow attack picks up the revoked client's distributional
-uniqueness as much as membership signal --- the naive-retrain
-baseline scored $0.584$ (N-BaIoT) and $0.846$ (CASAS) in
-Table~\ref{tab:t1} despite never seeing the data. LiRA's per-row
-likelihood-ratio test resists this confound (naive-retrain
-$\le\!0.05$ on both at $\alpha\!=\!0.05$) but is itself sensitive
-to the FPR parameter $\alpha$: at $\alpha\!=\!0.05$ the gate admits
-the pre-unlearn baseline, at $\alpha\!=\!0.5$ it correctly rejects
-it. The on-chain gate is robust to either choice because it
-requires \emph{all three} MIAs below $\tauMIA$; deployments should
-nonetheless co-calibrate $(\alpha,\tauMIA)$ against the target's
-leakage profile per model class.
-
-\smallskip\noindent\textbf{Approximate unlearning and off-chain
-misuse.} \sysname accepts approximate methods because exact
-retraining is infeasible at IoT scale; GDPR Art.~17's ``reasonable
-measures'' standard is met by Eq.~\ref{eq:verifiability} with the
-chain as audit evidence. Formal erasure guarantees and ECDSA
-verifier-identity leakage (BLS-collapsed in the journal version)
-are out of conference scope. A controller could also train on
-revoked data entirely off-chain --- the protocol cannot prevent
-this, but an audited deployment then has no UA binding the
-deployed model hash to a valid consent state, so the deviation is
-publicly detectable as on-chain negative evidence.
-
-\subsection{Regulatory alignment}
-
-\sysname binds three regimes (full mapping in supplementary
-\texttt{docs/regulatory-alignment.md}). GDPR~\cite{gdpr2016}
-Art.~7 is met by the soulbound NFT's
-$\mathit{dsOwner}$-restricted, per-purpose transitions; Art.~17 by
-the $\dmax$-bounded liveness (Property~\ref{prop:liveness}) and
+\smallskip\noindent\textbf{Regulatory alignment} (full mapping in
+supplementary \texttt{docs/regulatory-alignment.md}).
+GDPR~\cite{gdpr2016} Art.~7 is met by the soulbound NFT's
+$\mathit{dsOwner}$-restricted per-purpose transitions; Art.~17 by
+the $\dmax$-bounded liveness (Property~\ref{prop:liveness}) and the
 verifiable-unlearning predicate (Property~\ref{prop:verifiability});
 Art.~21 by the $\texttt{suspend}/\texttt{resume}$ edges. EU AI
-Act~\cite{aiact2024} Arts.~15/26 are met by the audit completeness
+Act~\cite{aiact2024} Arts.~15/26 are met by audit completeness
 (Property~\ref{prop:audit}) and the permissionless
 $\texttt{reportTimeout}$ path; CCPA~\cite{ccpa2018} \S~1798.105
-maps onto the same mechanisms as GDPR Art.~17.
+maps onto the GDPR Art.~17 mechanisms. PureChain's PoA$^2$ is
+permissioned at the validator layer but public for reads and
+submission (apt for known-stakeholder IoT consortia); the Amoy
+deployment shows identical contracts on a permissionless PoS
+chain at non-zero cost --- the economic model is the decision
+variable, the protocol semantics are not.
 
-\subsection{Permissioned versus permissionless deployments}
-
-PureChain's PoA$^2$ is permissioned at the validator layer but
-public for reads and transaction submission --- appropriate for
-IoT consortia with known stakeholders. The Polygon Amoy
-deployment shows the identical contracts running on a
-permissionless PoS chain at non-zero per-operation cost: the
-economic model is the decision variable, the protocol semantics
-are not.
-
-\subsection{Future work}
-
-Three extensions are queued for the journal version.
-(i)~\emph{Zero-knowledge consent proofs}: a zk-SNARK over the
-\clsm transition predicate would let
-$\texttt{isEligible}(i,\rho_r,\cdot)$ prove eligibility without
-leaking the data subject's address or purpose set.
-(ii)~\emph{PoA$^2$-native verifiers}: consensus validators re-run
-the MIAs during block production, making UA acceptance a
-consensus-time predicate and eliminating the off-chain
-coordination loop. (iii)~\emph{Cross-chain consent portability}:
-a consent granted on PureChain becomes redeemable on other L2s
-via a light-client bridge, removing per-chain re-granting for
-federations that span multiple EVM chains.
+\smallskip\noindent\textbf{Future work.}
+(i) a zk-SNARK over the \clsm
+transition predicate, letting $\texttt{isEligible}$ prove
+eligibility without leaking the subject's address or purpose set;
+(ii) PoA$^2$-native verifiers re-running the MIAs at block
+production, making UA acceptance a consensus-time predicate; and
+(iii) cross-chain consent portability via a light-client bridge,
+removing per-chain re-granting across multiple EVM chains.

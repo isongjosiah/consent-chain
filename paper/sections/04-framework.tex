@@ -9,7 +9,7 @@ architecture that closes the automation loop
 (\S~\ref{sec:framework-contracts}).
 Figure~\ref{fig:arch} gives the layered overview.
 
-\begin{figure}[t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=0.96\columnwidth]{figures/system_architecture.pdf}
 \caption{\sysname architecture: off-chain IoT data and Flower
@@ -18,7 +18,7 @@ Polygon Amoy, and the off-chain Verifiable Unlearning Protocol. The
 clockwise loop consent$\rightarrow$unlearn$\rightarrow$verify
 $\rightarrow$attest$\rightarrow$finalise is the edge \sysname closes.}
 \label{fig:arch}
-\end{figure}
+\end{figure*}
 
 \subsection{Consent Lifecycle State Machine}
 \label{sec:framework-clsm}
@@ -212,8 +212,7 @@ replay loop).
 following responsibilities (full NatSpec interfaces in supplementary
 \texttt{docs/contracts-spec.md}):
 
-\paragraph{\texttt{ConsentRegistry}} Soulbound ERC-721 contract
-\cite{erc721}. The \texttt{\_update} hook overrides
+\paragraph{\texttt{ConsentRegistry}} Soulbound ERC-721 contract. The \texttt{\_update} hook overrides
 \texttt{transferFrom} to revert on any non-mint transfer. Each token
 carries a \texttt{ConsentRecord} struct exposing the \clsm state,
 purpose set hash, TTL, owner address, and (after first revocation

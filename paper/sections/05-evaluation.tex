@@ -21,7 +21,7 @@ thermostats, baby monitors, security cameras, webcams). Each client
 holds 5{,}000 benign-traffic rows over 115 network features; the
 global model is a symmetric MLP autoencoder
 ($115\!\to\!75\!\to\!50\!\to\!25\!\to\!10$, ReLU, dropout 0.1) trained
-with FedAvg over 30 rounds (Flower framework~\cite{beutel2020flower}),
+with FedAvg over 30 rounds,
 batch size 256, learning rate $10^{-3}$, random seed 42. At round 30 we simulate a GDPR Art.~17 erasure event
 against client 5 (\textit{Provision\_PT\_838\_Security\_Camera}) and
 trigger one of three approximate unlearning methods (SISA-Fed,
@@ -134,11 +134,7 @@ PureChain's per-participant slope is $\sim\!38\%$ lower than Amoy's
 --- the EIP-2929 cold-SLOAD pricing ($2{,}100$ gas) dominates the
 linear term on Amoy. The cost story is dominated by gas \emph{price}:
 on Amoy a single $N\!=\!500$ round-validation costs $\$0.0176$; on
-PureChain the same operation costs $\$0$. Combined with a typical
-100-FL-rounds-per-day cadence, Amoy accumulates $\$1.76$/day per
-deployment; 10 concurrent deployments would cost $\sim\!\$17.57$/day
-on Amoy and $\$0$ on PureChain. Gas-free infrastructure is not an
-optimisation; it is a different cost class.
+PureChain the same operation costs $\$0$. At a typical 100-FL-rounds-per-day cadence this is $\$1.76$/day per deployment on Amoy versus $\$0$ on PureChain --- gas-free infrastructure is a different cost class, not an optimisation.
 
 \subsection{Utility recovery after revocation}
 \label{sec:eval-utility}
