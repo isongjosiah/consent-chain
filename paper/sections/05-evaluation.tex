@@ -56,31 +56,27 @@ three are below $\tauMIA = 0.55$.}
 \resizebox{\columnwidth}{!}{\input{../results/tables/table1_unlearning.tex}}
 \end{table}
 
-Three observations stand out. All three approximate unlearning
-methods produce UAs the chain accepts (shadow $0.438$/$0.254$/$0.523$
-for gradient ascent/SISA-Fed/FedEraser; LiRA and label-only well
-below $\tauMIA$). The naive-retrain baseline --- a model that
-\emph{never saw} client 5's data --- yields shadow $0.584$, above
-$\tauMIA$, and is rejected: the shadow MIA picks up client 5's
-distinctive traffic distribution rather than membership, a known
+Three observations stand out. All three approximate methods produce
+UAs the chain accepts (shadow $0.438$/$0.254$/$0.523$ for gradient
+ascent/SISA-Fed/FedEraser; LiRA and label-only well below
+$\tauMIA$). The naive-retrain baseline --- a model that
+\emph{never saw} client 5's data --- yields shadow $0.584 >
+\tauMIA$ and is \emph{rejected}: shadow picks up client 5's
+distinctive traffic distribution, not membership, a known
 confound~\cite{shokri2017mia} that LiRA ($0.045$) and label-only
-($0.014$) on the same model do not exhibit. The protocol is
-faithful to MIA evidence, not to the data controller's claim;
-\S~\ref{sec:discussion} treats this asymmetry as MIA selection
-rather than a protocol bug. Finally, gradient ascent's shadow
-($0.438$) sits \emph{lower} than naive retrain's ($0.584$):
-anti-fitting moves the model further from client 5's distribution
-than never having seen it. The three methods thus trace a
-forgetting-versus-utility frontier --- SISA-Fed strong-forgetting,
-gradient ascent and FedEraser preserve-utility --- explicit in
-the recovery curves (\S~\ref{sec:eval-utility}).
-
-All three methods' UAs executed end-to-end against PureChain;
-\texttt{transitionToUnlearned} fired in the same transaction as
-\texttt{submitAttestation} and final
-$\mathit{CR}.\mathtt{stateOf}$ returned \textsc{Unlearned} for each
-token (representative gradient-ascent tx
-\texttt{0x5beb\ldots 416a}; full per-method tx hashes in
+($0.014$) do not exhibit on the same model. The protocol is thus
+faithful to MIA evidence, not the controller's claim
+(\S~\ref{sec:discussion}). Gradient ascent's shadow ($0.438$) even
+sits \emph{below} naive retrain's: anti-fitting moves the model
+further from client 5's distribution than never seeing it. The
+methods trace a forgetting--utility frontier --- SISA-Fed
+strong-forgetting, gradient ascent / FedEraser preserve-utility ---
+made explicit by the recovery curves (\S~\ref{sec:eval-utility}).
+All three UAs executed end-to-end on PureChain
+(\texttt{transitionToUnlearned} in the same tx as
+\texttt{submitAttestation}, final
+$\mathit{CR}.\mathtt{stateOf}=\textsc{Unlearned}$; representative
+gradient-ascent tx \texttt{0x5beb\ldots 416a}, full records in
 supplementary \texttt{onchain\_attestation.json}).
 
 \subsection{Gas cost comparison}
@@ -177,19 +173,16 @@ lowest shadow MIA in Table~\ref{tab:t1}.
 \subsection{On-chain property demos}
 \label{sec:eval-props}
 
-Two short PureChain runs validate the formal properties of
-\S~\ref{sec:properties}. For \textbf{Liveness}
-(Property~\ref{prop:liveness}) we set $\dmax\!=\!2$ blocks, revoked
-a fresh token, confirmed \texttt{reportTimeout} reverts with
-\texttt{NotYetTimedOut} pre-deadline, then advanced past it: the
-\texttt{ComplianceViolation} event fired in
-$\mathrm{gas}\!=\!24{,}800$ (tx \texttt{0x3171...8f52}). For
-\textbf{Verifiability} (Property~\ref{prop:verifiability}), a
-$t$-of-5 sweep over $t \in \{2,3,4,5\}$ confirmed both branches
-of Eq.~\ref{eq:verifiability}: $t$ valid signatures accept,
-$t\!-\!1$ revert with \texttt{InsufficientSignatures}. Marginal
-cost per signature $\sim\!7{,}800$ gas; default $t\!=\!3$
-\texttt{submitAttestation} totals $102{,}941$ gas.
+Two short PureChain runs validate the formal properties.
+\textbf{Liveness} (Property~\ref{prop:liveness}): with
+$\dmax\!=\!2$, \texttt{reportTimeout} reverts
+(\texttt{NotYetTimedOut}) pre-deadline and emits
+\texttt{ComplianceViolation} ($24{,}800$ gas) once past it.
+\textbf{Verifiability} (Property~\ref{prop:verifiability}): a
+$t$-of-5 sweep over $t\!\in\!\{2,3,4,5\}$ confirms both branches
+of Eq.~\ref{eq:verifiability} --- $t$ signatures accept, $t\!-\!1$
+revert with \texttt{InsufficientSignatures} (marginal
+$\sim\!7{,}800$ gas/sig; default $t\!=\!3$ totals $102{,}941$ gas).
 
 \subsection{Cross-domain validation (CASAS)}
 \label{sec:eval-casas}
