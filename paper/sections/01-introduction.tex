@@ -29,8 +29,6 @@ off-chain. Blockchain-FL systems~\cite{kim2020blockchained,li2020bflc}
 log model updates on-chain without consent semantics or
 forgetting verification. No published work binds the three.
 
-\smallskip
-\noindent\textbf{The consent--unlearning--verification triangle.}
 We frame the gap as a missing \emph{edge}, not a missing vertex.
 Consent must stay authoritative over which data enters which round;
 unlearning (by any method) must be \emph{verifiable} rather than
@@ -45,9 +43,7 @@ trust but introduces a cost question --- a single revocation on
 Ethereum mainnet costs dollars, prohibitive at IoT scale. We show
 the identical protocol on a public, gas-free, EVM-compatible chain
 with PoA$^2$ consensus costs \emph{exactly} \$0 per operation.
-
-\smallskip
-\noindent\textbf{Contributions.}
+This work make the following key contributions:
 \begin{enumerate}[leftmargin=*]
     \item A \textbf{Consent Lifecycle State Machine} (\clsm): six
         states, nine transitions, four formally-stated safety and
