@@ -10,8 +10,8 @@ on revocation events. Each FL participant device $\mathit{FL}_k$ runs
 local SGD and submits per-round updates. The Verifier Committee
 $\mathit{VC} = \{v_1, \ldots, v_n\}$ holds $n=5$ registered ECDSA
 keys; threshold $t=3$ by default. Three on-chain contracts
---- \texttt{ConsentRegistry} (CR), \texttt{UnlearningOracle} (UO), and
-\texttt{FLGatekeeper} (GK) --- collectively implement the protocol.
+(\texttt{ConsentRegistry} (CR), \texttt{UnlearningOracle} (UO), and
+\texttt{FLGatekeeper} (GK)) collectively implement the protocol.
 Anyone with chain read access is an \emph{auditor}; public
 auditability is a first-class property.
 
@@ -28,7 +28,7 @@ training-set size of client $k$:
 \end{equation}
 The novel restriction is that $K_r$ must be the
 \texttt{validateRound} return value rather than an
-orchestrator-chosen subset --- consent is enforced at the
+orchestrator-chosen subset; consent is enforced at the
 $K_r$ membership level, not at the gradient level.
 
 \subsection{Consent Lifecycle State Machine}
@@ -128,7 +128,7 @@ We state four properties that \sysname must satisfy. Each is proved
 informally in Section~\ref{sec:framework}; full mechanised proofs are
 future work.
 
-\begin{property}[Consent Integrity --- safety]\label{prop:safety}
+\begin{property}[Consent Integrity, safety]\label{prop:safety}
 For every block height $b$ and round $r$ that starts at $b$ via
 $\mathit{GK}.\mathtt{validateRound}$,
 \begin{equation}\label{eq:safety}
@@ -142,7 +142,7 @@ consent token $i$ recorded at \texttt{grantConsent} time. No transition
 path in $\delta$ leads from \textsc{Revoked} back to \textsc{Active}.
 \end{property}
 
-\begin{property}[Unlearning Enforceability --- liveness]\label{prop:liveness}
+\begin{property}[Unlearning Enforceability, liveness]\label{prop:liveness}
 For every revocation event recorded at block $b$ on token $i$,
 \begin{equation}\label{eq:liveness}
 \begin{aligned}

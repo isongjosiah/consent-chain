@@ -12,7 +12,7 @@ permissioning. The system established the durability and auditability
 properties we inherit: every consent state transition is an immutable
 log entry, and the consent owner retains exclusive control over
 modifications. MedRec, however, treats the consent record as the
-\emph{endpoint} of the protocol --- there is no downstream ML training
+\emph{endpoint} of the protocol: there is no downstream ML training
 whose execution is gated by the consent state, and no mechanism for
 demonstrating that withdrawn consent translated into a model update.
 Subsequent semantic-web work (GConsent, W3C DPV) formalises consent
@@ -43,7 +43,7 @@ BlockFL~\cite{kim2020blockchained} records every device-side model
 update on-chain to defend against malicious aggregators. BFLC
 \cite{li2020bflc} replaces the FL aggregator with a committee-consensus
 mechanism. These systems address aggregator-side trust but do not
-encode consent at all --- a participant who joins the federation
+encode consent at all: a participant who joins the federation
 cannot subsequently withdraw without trusting the orchestrator to
 respect the request. Membership inference attacks
 \cite{shokri2017mia,carlini2022lira,choquettechoo2021labelonly} provide
@@ -54,17 +54,82 @@ criterion for a state transition.
 \emph{Gap}: model updates are auditable but consent semantics and
 forgetting verification are absent.
 
+\begin{table*}[t]
+\centering
+\caption{Feature comparison with the three closest prior systems.
+Each cell describes the corresponding system's mechanism for that
+dimension; ``Not provided'' marks dimensions the prior system was
+not designed to address, not failures of implementation.
+Per-operation cost is omitted here; see
+Table~\ref{tab:t2}.}
+\label{tab:t3}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{p{2.2cm}p{4.3cm}p{3.7cm}p{3.9cm}p{3.0cm}}
+\toprule
+Dimension & ConsentChain (ours) & MedRec~\cite{azaria2016medrec} &
+FedEraser~\cite{liu2021federaser} & BlockFL~\cite{kim2020blockchained} \\
+\midrule
+Consent representation &
+6-state \clsm on a soulbound ERC-721 token; every transition
+signed by the data subject's wallet &
+Per-record access policy on a permission contract, owned by the
+patient &
+Not provided; consent is managed off-chain by the deployer &
+Not provided; participation is implicit on join \\
+
+Unlearning trigger \& method &
+Chain-gated trigger ($\dmax$-bounded liveness,
+Property~\ref{prop:liveness}); method-agnostic, accepting any
+(pre, post) model-hash pair from SISA-Fed, gradient ascent,
+FedEraser, or future methods &
+Not applicable: no downstream ML training &
+Trigger left to the deployer; method fixed to FedEraser's
+history-replay-with-calibration scheme &
+Not applicable: no unlearning step \\
+
+Verification of unlearning &
+Three independent MIAs (shadow, LiRA, label-only) all below
+$\tauMIA$ \emph{and} $t$-of-$n$ ECDSA signatures from a
+registered verifier committee (Property~\ref{prop:verifiability}) &
+Not applicable &
+Self-reported by the data controller; no external check &
+Not applicable \\
+
+On-chain footprint \& audit trail &
+3 Solidity contracts (registry, oracle, gatekeeper) on either
+gas-free PureChain or gas-based Polygon Amoy; every \clsm
+transition, UA acceptance, and \texttt{ComplianceViolation}
+emitted as an indexed event &
+Permission contracts on Ethereum mainnet; public ledger of
+permission grants/revocations &
+None; entirely off-chain, no immutable record &
+Per-round device-side model-update log on Ethereum mainnet;
+public ledger of update commitments \\
+
+\bottomrule
+\end{tabular}
+\end{table*}
+
 \smallskip
 \noindent\textbf{Positioning.}
-\sysname is the first system, to our knowledge, that binds all three
-threads. We adopt MedRec's on-chain consent registry pattern (vertex
-A), extend it with the \clsm safety and liveness properties; we accept
-any of the three established unlearning paradigms as a black-box
-(vertex B); and we make the verification step (vertex C) the chain's
-gating condition for a consent state transition. The pattern that
-emerges --- consent change $\rightarrow$ unlearning execution
-$\rightarrow$ three-MIA verification $\rightarrow$ on-chain attestation
-$\rightarrow$ consent state finalisation --- is the missing edge.
+Table~\ref{tab:t3} contrasts \sysname with the three closest prior
+systems across the four dimensions implicated by the gaps above:
+consent representation, unlearning trigger and method, verification
+of unlearning, and on-chain footprint. Each prior system covers at
+most one dimension natively; \sysname is the first design we are
+aware of to address all four in a single chain-enforced protocol,
+and the first to do so at gas-free per-operation cost on a public
+EVM-compatible substrate. We adopt MedRec's on-chain consent
+registry pattern (vertex A), extend it with the \clsm safety and
+liveness properties; we accept any of the three established
+unlearning paradigms as a black-box (vertex B); and we make the
+verification step (vertex C) the chain's gating condition for a
+consent state transition. The resulting pattern (consent change
+$\rightarrow$ unlearning execution $\rightarrow$ three-MIA
+verification $\rightarrow$ on-chain attestation $\rightarrow$
+consent state finalisation) is the missing edge.
 
 The choice of \emph{which} blockchain matters at IoT scale.
 Permissionless gas-based chains (Ethereum, Polygon) impose recurring

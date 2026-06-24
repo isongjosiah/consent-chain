@@ -46,7 +46,7 @@ UA iff all three scores sit below $\tauMIA\!=\!0.55$.
 
 \begin{table}[t]
 \centering
-\caption{Table 1 --- Unlearning effectiveness (E6). MIA scores
+\caption{Unlearning effectiveness (E6). MIA scores
 against the revoked client's training data, evaluated on the
 post-unlearning model. The on-chain gate accepts a UA iff all
 three are below $\tauMIA = 0.55$.}
@@ -59,8 +59,8 @@ three are below $\tauMIA = 0.55$.}
 Three observations stand out. All three approximate methods produce
 UAs the chain accepts (shadow $0.438$/$0.254$/$0.523$ for gradient
 ascent/SISA-Fed/FedEraser; LiRA and label-only well below
-$\tauMIA$). The naive-retrain baseline --- a model that
-\emph{never saw} client 5's data --- yields shadow $0.584 >
+$\tauMIA$). The naive-retrain baseline, a model that
+\emph{never saw} client 5's data, yields shadow $0.584 >
 \tauMIA$ and is \emph{rejected}: shadow picks up client 5's
 distinctive traffic distribution, not membership, a known
 confound~\cite{shokri2017mia} that LiRA ($0.045$) and label-only
@@ -69,8 +69,8 @@ faithful to MIA evidence, not the controller's claim
 (Section~\ref{sec:discussion}). Gradient ascent's shadow ($0.438$) even
 sits \emph{below} naive retrain's: anti-fitting moves the model
 further from client 5's distribution than never seeing it. The
-methods trace a forgetting--utility frontier --- SISA-Fed
-strong-forgetting, gradient ascent / FedEraser preserve-utility ---
+methods trace a forgetting--utility frontier (SISA-Fed
+strong-forgetting, gradient ascent / FedEraser preserve-utility),
 made explicit by the recovery curves (Section~\ref{sec:eval-utility}).
 All three UAs executed end-to-end on PureChain
 (\texttt{transitionToUnlearned} in the same tx as
@@ -90,7 +90,7 @@ costs are deterministic and chain-state-dependent.
 
 \begin{table}[t]
 \centering
-\caption{Table 2 --- Per-operation gas and cost (E7), lifecycle ×10
+\caption{Per-operation gas and cost (E7), lifecycle ×10
 mean. PureChain costs are exactly $\$0$; Amoy costs are non-zero.
 Per-DS lifecycle = sum of the four ops.}
 \label{tab:t2}
@@ -123,18 +123,18 @@ PureChain measurements (slope $7{,}616$) confirm as exactly linear
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.92\columnwidth]{figures/figure1_scalability.pdf}
-\caption{Figure 1 --- Scalability of $\texttt{validateRound}(N)$
+\caption{Scalability of $\texttt{validateRound}(N)$
 (E8). Solid lines: live gas measurements. Dashed lines: per-round
 USD cost. PureChain cost line is at zero across all $N$; Amoy
 projects to $\$0.0176$ at $N\!=\!500$.}
 \label{fig:f1}
 \end{figure}
 
-PureChain's per-participant slope is $\sim\!38\%$ lower than Amoy's
---- the EIP-2929 cold-SLOAD pricing ($2{,}100$ gas) dominates the
+PureChain's per-participant slope is $\sim\!38\%$ lower than Amoy's:
+the EIP-2929 cold-SLOAD pricing ($2{,}100$ gas) dominates the
 linear term on Amoy. The cost story is dominated by gas \emph{price}:
 on Amoy a single $N\!=\!500$ round-validation costs $\$0.0176$; on
-PureChain the same operation costs $\$0$. At a typical 100-FL-rounds-per-day cadence this is $\$1.76$/day per deployment on Amoy versus $\$0$ on PureChain --- gas-free infrastructure is a different cost class, not an optimisation.
+PureChain the same operation costs $\$0$. At a typical 100-FL-rounds-per-day cadence this is $\$1.76$/day per deployment on Amoy versus $\$0$ on PureChain. Gas-free infrastructure is a different cost class, not an optimisation.
 
 \subsection{Utility recovery after revocation}
 \label{sec:eval-utility}
@@ -149,7 +149,7 @@ checkpoint.
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.92\columnwidth]{figures/figure2_utility_recovery.pdf}
-\caption{Figure 2 --- Utility recovery (E6). Centralized test
+\caption{Utility recovery (E6). Centralized test
 reconstruction error per FL round. The four post-revocation
 trajectories diverge at round 30; SISA-Fed pays a real utility cost,
 gradient ascent and FedEraser converge to within $0.5\%$ of plain
@@ -158,11 +158,11 @@ post-revoke by round 40.}
 \end{figure}
 
 The post-revoke trajectory ends at $0.4720$, $6.1\%$
-\emph{better} than the 9-client baseline ($0.5025$) --- client 5
+\emph{better} than the 9-client baseline ($0.5025$): client 5
 was an outlier whose removal lets the federation fit the remaining
 devices more tightly. Gradient ascent ($0.4726$) and FedEraser
 ($0.4698$) match this with no utility cost. SISA-Fed pays a real
-cost ($0.7009$ at round 31, recovering to $0.6081$ by round 40 ---
+cost ($0.7009$ at round 31, recovering to $0.6081$ by round 40,
 $+29\%$), consistent with its strongest-forgetting position and
 lowest shadow MIA in Table~\ref{tab:t1}.
 
@@ -176,7 +176,7 @@ $\dmax\!=\!2$, \texttt{reportTimeout} reverts
 \texttt{ComplianceViolation} ($24{,}800$ gas) once past it.
 \textbf{Verifiability} (Property~\ref{prop:verifiability}): a
 $t$-of-5 sweep over $t\!\in\!\{2,3,4,5\}$ confirms both branches
-of Eq.~\ref{eq:verifiability} --- $t$ signatures accept, $t\!-\!1$
+of Eq.~\ref{eq:verifiability}: $t$ signatures accept, $t\!-\!1$
 revert with \texttt{InsufficientSignatures} (marginal
 $\sim\!7{,}800$ gas/sig; default $t\!=\!3$ totals $102{,}941$ gas).
 
@@ -189,7 +189,7 @@ sensor streams, \texttt{twor\_2010} revoked at round 60). The
 distribution-shift confound is sharper here: shadow rejects
 pre-unlearn, naive retrain, gradient ascent, and FedEraser (all
 $\ge\!0.84$), so SISA-Fed ($0.499/0.035/0.000$ shadow/LiRA/label)
-is the \emph{only} method passing the $\tauMIA\!=\!0.55$ gate ---
+is the \emph{only} method passing the $\tauMIA\!=\!0.55$ gate,
 the strongest-forgetting Pareto endpoint, consistent with N-BaIoT.
 A 15\%-ratio backdoor canary triggers $100\%$ pre-unlearning and
 drops to $0\%$ under SISA-Fed and FedEraser (gradient ascent
@@ -197,73 +197,3 @@ preserves it at 10 steps). End-to-end SISA-Fed attestation on
 PureChain (\texttt{submitAttestation} \texttt{0x9643\ldots 733b})
 transitioned token 527 to \textsc{Unlearned}.
 
-\subsection{Comparison to prior work}
-\label{sec:eval-compare}
-
-\begin{table*}[t]
-\centering
-\caption{Table 3 --- Feature comparison with the three closest
-prior systems. Each cell describes the corresponding system's
-mechanism for that dimension; ``Not provided'' marks dimensions
-the prior system was not designed to address, not failures of
-implementation. Per-operation cost is omitted here --- see
-Table~\ref{tab:t2}.}
-\label{tab:t3}
-\footnotesize
-\setlength{\tabcolsep}{4pt}
-\renewcommand{\arraystretch}{1.05}
-\begin{tabular}{p{2.2cm}p{4.3cm}p{3.7cm}p{3.9cm}p{3.0cm}}
-\toprule
-Dimension & ConsentChain (ours) & MedRec~\cite{azaria2016medrec} &
-FedEraser~\cite{liu2021federaser} & BlockFL~\cite{kim2020blockchained} \\
-\midrule
-Consent representation &
-6-state \clsm on a soulbound ERC-721 token; every transition
-signed by the data subject's wallet &
-Per-record access policy on a permission contract, owned by the
-patient &
-Not provided --- consent is managed off-chain by the deployer &
-Not provided --- participation is implicit on join \\
-
-Unlearning trigger \& method &
-Chain-gated trigger ($\dmax$-bounded liveness,
-Property~\ref{prop:liveness}); method-agnostic --- accepts any
-(pre, post) model-hash pair from SISA-Fed, gradient ascent,
-FedEraser, or future methods &
-Not applicable: no downstream ML training &
-Trigger left to the deployer; method fixed to FedEraser's
-history-replay-with-calibration scheme &
-Not applicable: no unlearning step \\
-
-Verification of unlearning &
-Three independent MIAs (shadow, LiRA, label-only) all below
-$\tauMIA$ \emph{and} $t$-of-$n$ ECDSA signatures from a
-registered verifier committee (Property~\ref{prop:verifiability}) &
-Not applicable &
-Self-reported by the data controller; no external check &
-Not applicable \\
-
-On-chain footprint \& audit trail &
-3 Solidity contracts (registry, oracle, gatekeeper) on either
-gas-free PureChain or gas-based Polygon Amoy; every \clsm
-transition, UA acceptance, and \texttt{ComplianceViolation}
-emitted as an indexed event &
-Permission contracts on Ethereum mainnet; public ledger of
-permission grants/revocations &
-None --- entirely off-chain; no immutable record &
-Per-round device-side model-update log on Ethereum mainnet;
-public ledger of update commitments \\
-
-\bottomrule
-\end{tabular}
-\end{table*}
-
-Table~\ref{tab:t3} positions \sysname against the three closest
-prior systems; each cell states the system's actual mechanism, so
-the per-dimension comparison is read directly off the table. The
-takeaway: MedRec, FedEraser, and BlockFL each cover one dimension
-(consent, unlearning, on-chain logging respectively) but none
-gates training on verified unlearning. \sysname is the first design
-we are aware of to address all four dimensions in a single
-chain-enforced protocol, and the first to do so at gas-free
-per-operation cost on a public EVM-compatible substrate.

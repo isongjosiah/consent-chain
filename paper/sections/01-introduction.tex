@@ -3,15 +3,15 @@
 
 Federated learning (FL) trains a shared model across decentralised
 clients without centralising their data~\cite{mcmahan2017fedavg}. In
-the consumer-IoT setting --- home assistants, smart-home sensors,
-wearable biometrics, connected vehicles --- this is existential:
+the consumer-IoT setting (home assistants, smart-home sensors,
+wearable biometrics, connected vehicles) this is existential:
 participants are unwilling, and increasingly not legally permitted,
 to upload raw data. The FL literature has accordingly focused on
 \emph{technical} privacy (secure aggregation, leakage bounds,
 poisoning robustness) while a second, equally binding axis remains
 under-addressed: \emph{regulatory} privacy. GDPR Article~7 requires
 consent to be demonstrably given, purpose-granular, and freely
-withdrawable; Article~17 grants erasure --- which, applied to a
+withdrawable; Article~17 grants erasure, which, applied to a
 trained model, means the model must \emph{forget} a revoked
 participant's contribution. The EU AI Act~\cite{aiact2024}
 (Arts.~15/26) and CCPA~\cite{ccpa2018} \S~1798.105 impose analogous,
@@ -32,14 +32,14 @@ forgetting verification. No published work binds the three.
 We frame the gap as a missing \emph{edge}, not a missing vertex.
 Consent must stay authoritative over which data enters which round;
 unlearning (by any method) must be \emph{verifiable} rather than
-self-asserted; and verification --- against membership inference, the
+self-asserted; and verification, against membership inference (the
 canonical operational test for
-forgetting~\cite{shokri2017mia,carlini2022lira,choquettechoo2021labelonly}
---- must in turn drive the consent state, closing the loop. Prior
+forgetting~\cite{shokri2017mia,carlini2022lira,choquettechoo2021labelonly}),
+must in turn drive the consent state, closing the loop. Prior
 work implements the vertices; \sysname supplies the edges. Enforcing
 them off-chain would merely move trust to the data controller;
 putting the loop on a public smart-contract substrate removes that
-trust but introduces a cost question --- a single revocation on
+trust but introduces a cost question: a single revocation on
 Ethereum mainnet costs dollars, prohibitive at IoT scale. We show
 the identical protocol on a public, gas-free, EVM-compatible chain
 with PoA$^2$ consensus costs \emph{exactly} \$0 per operation.
@@ -59,13 +59,13 @@ This work make the following key contributions:
     \item A \textbf{three-contract Solidity architecture}
         (ConsentRegistry, UnlearningOracle, FLGatekeeper) deployed on
         \emph{both} a gas-free chain (PureChain, PoA$^2$) and a
-        gas-based chain (Polygon Amoy, PoS) --- the first
+        gas-based chain (Polygon Amoy, PoS), the first
         side-by-side cost comparison under both economic models.
     \item A \textbf{dual-domain empirical evaluation}: a 9-client
         N-BaIoT~\cite{meidan2018nbaiot} autoencoder federation
         (primary), cross-validated on a 5-client CASAS smart-home
         BiLSTM classifier, over three approximate-unlearning
-        paradigms plus an exact-retraining baseline --- measuring
+        paradigms plus an exact-retraining baseline, measuring
         per-method MIA forgetting, on-chain gas/USD cost on both
         chains, per-round validation cost to $N\!=\!500$, and
         post-revocation utility recovery.

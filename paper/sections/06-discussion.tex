@@ -3,7 +3,7 @@
 
 \noindent\textbf{Limitations.}
 Shadow MIA conflates a client's distributional uniqueness with
-membership --- naive retrain scored $0.584$/$0.846$
+membership: naive retrain scored $0.584$/$0.846$
 (N-BaIoT/CASAS) despite never seeing the data; LiRA resists this
 but is $\alpha$-sensitive, so the gate is sound only because it
 demands \emph{all three} MIAs below $\tauMIA$ and deployments must
@@ -14,7 +14,7 @@ Eq.~\ref{eq:verifiability} with the chain as audit evidence),
 leaving formal-erasure guarantees and ECDSA verifier-identity
 leakage (BLS-collapsed in the journal version) out of scope.
 Off-chain training on revoked data is unpreventable but leaves no
-UA binding the deployed model hash to a valid consent state --- a
+UA binding the deployed model hash to a valid consent state, a
 publicly detectable omission.
 
 \smallskip\noindent\textbf{Regulatory \& deployment.}
@@ -27,7 +27,7 @@ article-by-article mapping in supplementary
 validator-permissioned but publicly readable and submittable (apt
 for known-stakeholder IoT consortia); the Amoy deployment shows
 the identical contracts on a permissionless PoS chain at non-zero
-cost --- the economic model is the decision variable, not the
+cost: the economic model is the decision variable, not the
 protocol semantics.
 
 \smallskip\noindent\textbf{Future work:}
