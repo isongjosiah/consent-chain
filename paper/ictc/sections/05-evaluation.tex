@@ -1,0 +1,118 @@
+\section{Evaluation}
+\label{sec:evaluation}
+
+We evaluate \sysname on four axes: unlearning effectiveness (E6),
+on-chain cost on PureChain versus Polygon Amoy (E7), scalability of
+round validation to $N\!=\!500$ (E8), and utility recovery through
+revocation; two short on-chain demos additionally validate the
+liveness and verifiability properties. The full
+reproducibility recipe is in supplementary
+\texttt{docs/eval-protocol.md}.
+
+\subsection{Experimental setup}
+\label{sec:eval-setup}
+
+The primary federation is a 9-client N-BaIoT autoencoder anomaly
+detector~\cite{meidan2018nbaiot}, one client per IoT device; the global
+model is a symmetric MLP autoencoder
+($115\!\to\!75\!\to\!50\!\to\!25\!\to\!10$) trained with FedAvg over 30
+rounds (Flower~\cite{beutel2020flower}, seed 42). At round 30 we
+simulate a GDPR Art.~17 erasure against client 5 and trigger one of the
+three approximate methods or, as the exact reference, full 8-client
+retraining from scratch. On-chain experiments run against live
+contracts on gas-free PureChain (PoA$^2$) and gas-based Polygon Amoy
+(PoS), with $\mathit{VC}$ five ECDSA keys, $t=3$, and $\dmax=1000$
+blocks; every run records an \texttt{env.json} fingerprint (commit,
+library versions, hardware, seed).
+
+\subsection{Unlearning effectiveness}
+\label{sec:eval-unlearning}
+
+Table~\ref{tab:t1} reports each method's three independent MIA scores
+against the revoked client's member set; the on-chain
+\texttt{submitAttestation} predicate accepts a UA iff all three sit
+below $\tauMIA\!=\!0.55$.
+
+\begin{table}[t]
+\centering
+\caption{Unlearning effectiveness (E6). MIA scores
+against the revoked client's training data, evaluated on the
+post-unlearning model. The on-chain gate accepts a UA iff all
+three are below $\tauMIA = 0.55$.}
+\label{tab:t1}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\resizebox{\columnwidth}{!}{\input{tables/table1_unlearning.tex}}
+\end{table}
+
+Three observations stand out. All three approximate methods produce
+UAs the chain accepts (shadow $0.438$/$0.254$/$0.523$ for gradient
+ascent/SISA-Fed/FedEraser; LiRA and label-only well below $\tauMIA$).
+The hero result is that the naive-retrain baseline---a model that
+\emph{never saw} client 5's data---yields shadow $0.584>\tauMIA$ and is
+\emph{rejected}: shadow picks up client 5's distinctive traffic
+distribution, not membership, a known confound~\cite{shokri2017mia}
+that LiRA ($0.045$) and label-only ($0.014$) do not exhibit; the gate
+is thus faithful to MIA evidence, not the controller's claim
+(Section~\ref{sec:discussion}). Gradient ascent's shadow even sits
+\emph{below} naive retrain's---anti-fitting moves the model further
+from client 5's distribution than never seeing it---tracing a
+forgetting--utility frontier (SISA-Fed strong-forgetting; gradient
+ascent/FedEraser preserve-utility). All three UAs executed end-to-end
+on PureChain, finalising the token to \textsc{Unlearned} in the
+attestation transaction (records in supplementary
+\texttt{onchain\_attestation.json}).
+
+\subsection{On-chain cost and scalability}
+\label{sec:eval-gas}
+
+Table~\ref{tab:t2} reports per-operation gas usage and cost from a
+lifecycle ×10 variance run (E7; USD at POL/USD $=0.095347$, CoinGecko,
+measurement day).
+
+\begin{table}[t]
+\centering
+\caption{Per-operation gas and cost (E7), lifecycle ×10
+mean. PureChain costs are exactly $\$0$; Amoy costs are non-zero.
+Per-DS lifecycle = sum of the four ops.}
+\label{tab:t2}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\resizebox{\columnwidth}{!}{\input{tables/table2_gas_comparison.tex}}
+\end{table}
+
+Per-data-subject lifecycle cost is $\$0$ on PureChain and $\$0.00120$
+on Amoy. Gas counts differ modestly between the two chains, but the
+dominant factor at scale is gas \emph{price} (zero versus
+$\sim\!30$ gwei), not gas count.
+
+$\texttt{validateRound}(N)$ scales exactly linearly in the participant
+count. PureChain runs the full $N\!\in\![5,500]$ sweep live
+($R^2\!\approx\!1$); Amoy, measured at $N\!\in\!\{5,10\}$ and
+extrapolated linearly, projects to $\$0.0176$ per $N\!=\!500$ round.
+At a typical 100-round/day cadence that is $\$1.76$/day per deployment
+on Amoy versus $\$0$ on PureChain: gas-free infrastructure is a
+different cost class, not an optimisation.
+Two further PureChain runs confirm the formal properties empirically: a
+$\dmax\!=\!2$ timeout fires \texttt{ComplianceViolation} (liveness),
+and a $t$-of-5 signature sweep exercises both branches of the
+acceptance predicate (verifiability).
+
+\subsection{Utility recovery after revocation}
+\label{sec:eval-utility}
+
+Resuming FL for ten rounds after dropping client 5, the post-revoke
+model reaches reconstruction error $0.4720$, $6.1\%$ \emph{better} than
+the 9-client baseline ($0.5025$)---client 5 was an outlier whose
+removal tightens the fit. Gradient ascent ($0.4726$) and FedEraser
+($0.4698$) match this at no utility cost, while SISA-Fed pays $+29\%$
+($0.6081$ by round 40), consistent with its strongest-forgetting
+position and lowest shadow MIA in Table~\ref{tab:t1}.
+
+\subsection{Cross-domain validation (CASAS)}
+\label{sec:eval-casas}
+
+On CASAS (5-client BiLSTM), the distribution-shift confound is sharper
+still: shadow rejects every method but SISA-Fed
+($0.499$/$0.035$/$0.000$), the sole gate-passer, consistent with
+N-BaIoT---full cross-domain results appear in the journal version.

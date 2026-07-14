@@ -1,0 +1,88 @@
+\section{System Model and Threat Model}
+\label{sec:system-model}
+
+\subsection{Entities}
+
+\sysname has six entities. The data subject $\mathit{DS}_i$ controls
+the private key of one soulbound Consent NFT; the data controller
+$\mathit{DC}$ orchestrates the FL round loop and triggers unlearning on
+revocation; each participant device $\mathit{FL}_k$ runs local SGD; the
+Verifier Committee $\mathit{VC}=\{v_1,\ldots,v_n\}$ holds $n=5$
+registered ECDSA keys with default threshold $t=3$; and three on-chain
+contracts---\texttt{ConsentRegistry} (CR), \texttt{UnlearningOracle}
+(UO), and \texttt{FLGatekeeper} (GK)---collectively implement the
+protocol. Anyone with chain read access is an \emph{auditor}: public
+auditability is a first-class property.
+
+\subsection{Federated learning baseline}
+
+We adopt FedAvg~\cite{mcmahan2017fedavg}: with $\theta^{(r)}$ the
+global parameters at round $r$, $K_r$ the set of validated
+participants returned by $\mathit{GK}.\mathtt{validateRound}$, and
+$n_k$ the local training-set size of client $k$, the update is
+$\theta^{(r+1)}=\sum_{k\in K_r}(n_k/\!\sum_{j\in K_r}n_j)\,
+\theta^{(r+1)}_k$. The novel restriction is that $K_r$ must be the
+\texttt{validateRound} return value rather than an orchestrator-chosen
+subset: consent is enforced at the $K_r$ membership level, not at the
+gradient level.
+
+\subsection{Consent Lifecycle State Machine}
+\label{sec:clsm-formal}
+
+\begin{definition}[\clsm]\label{def:clsm}
+The Consent Lifecycle State Machine is the deterministic finite
+automaton $\clsm = (S, \Sigma, \delta, s_0, F)$ with
+\begin{align*}
+S &= \{\textsc{Inactive}, \textsc{Active}, \textsc{Suspended}, \\
+  &\qquad \textsc{Revoked}, \textsc{Expired}, \textsc{Unlearned}\}, \\
+\Sigma &= \{\mathtt{grant}, \mathtt{modify}, \mathtt{suspend},
+    \mathtt{resume}, \mathtt{revoke}, \\
+  &\qquad \mathtt{tick}, \mathtt{expire}, \mathtt{unlearn\_verified}\},
+\end{align*}
+$s_0=\textsc{Inactive}$, and $F=\{\textsc{Unlearned}\}$. Of the nine
+$\delta$ transitions, \texttt{grant} activates a token; \texttt{modify}
+and \texttt{tick} are \textsc{Active} self-edges; \texttt{suspend} and
+\texttt{resume} toggle \textsc{Suspended}; \texttt{revoke} and
+\texttt{expire} leave \textsc{Active} for \textsc{Revoked} and
+\textsc{Expired}; and \texttt{unlearn\_verified} (oracle-only) moves
+either of those to the absorbing terminal state \textsc{Unlearned}.
+\end{definition}
+
+\texttt{ConsentRegistry} instantiates \clsm exactly: every $\delta$
+edge is one external function, and the soulbound constraint (no
+\texttt{transferFrom}) ensures only $\mathit{DS}_i$ may transition
+token $i$.
+
+\subsection{Threat model}
+
+We defend five in-scope adversaries: a \emph{lazy orchestrator} (GK
+reverts on pending unlearning and emits \texttt{ComplianceViolation}
+after the $\dmax$ timeout), a \emph{deceptive controller} (three MIAs
+plus VC $t$-of-$n$ signatures), a \emph{consent forger} (soulbound NFT
+and \texttt{dsOwner} check), and a \emph{replay attacker} (UA binding
+$(\text{chainid},\text{tokenId},\text{hashPre})$); colluding
+participants are out of scope (an orthogonal DP layer). Six further
+classes are out-of-scope (Section~\ref{sec:discussion}); the full
+per-adversary model is in supplementary
+\texttt{docs/threat-model.md}.
+
+\subsection{Formal properties}
+\label{sec:properties}
+
+\sysname must satisfy four properties. \textbf{Consent integrity
+(safety):} every participant admitted to a round by
+$\mathit{GK}.\mathtt{validateRound}$ is \textsc{Active} with the round
+purpose in its consent purpose set, and no $\delta$-path returns
+\textsc{Revoked} to \textsc{Active}. \textbf{Unlearning enforceability
+(liveness):} within $\dmax$ blocks of a revocation, either a valid UA
+drives the token to \textsc{Unlearned} or the gatekeeper logs a public
+\texttt{ComplianceViolation}---degrading to ``no training'' rather than
+``unconsented training.'' \textbf{Unlearning verifiability:} the oracle
+accepts a UA iff all three MIA scores fall below $\tauMIA$ and
+$t$-of-$n$ registered verifiers sign it (concrete predicate in
+Section~\ref{sec:framework}). \textbf{Audit completeness:} every consent
+transition, attestation, \texttt{ComplianceViolation}, and per-round
+model-hash update emits an indexed Solidity event. Safety and audit
+hold by construction from the contract code; liveness and verifiability
+are demonstrated empirically in Section~\ref{sec:evaluation}, with full
+mechanised proofs left to future work.

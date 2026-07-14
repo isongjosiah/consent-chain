@@ -1,0 +1,38 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\noindent\textbf{Limitations.}
+Shadow MIA conflates a client's distributional uniqueness with
+membership---naive retrain scored $0.584$/$0.846$ (N-BaIoT/CASAS)
+despite never seeing the data---but this is conservative by design: a
+compliance gate should prefer false rejection to false acceptance, and
+requiring \emph{all three} MIAs below $\tauMIA$ deliberately errs safe.
+LiRA resists the confound but is $\alpha$-sensitive, so deployments
+co-calibrate $(\alpha,\tauMIA)$ per model class. \sysname accepts
+\emph{approximate} unlearning---exact retraining is infeasible at IoT
+scale, and GDPR Art.~17's ``reasonable measures'' is met by the on-chain acceptance
+predicate with the chain as audit evidence---leaving
+formal-erasure guarantees and ECDSA verifier-identity leakage
+(BLS-collapsed in the journal version) out of scope. Off-chain
+training on revoked data is unpreventable but leaves no UA binding the
+deployed model hash to a valid consent state, a publicly detectable
+omission.
+
+\smallskip\noindent\textbf{Regulatory \& deployment.}
+\sysname discharges GDPR Arts.~7/17/21, EU AI Act Arts.~15/26, and
+CCPA \S~1798.105 through the soulbound NFT, the $\dmax$-bounded
+liveness and verifiable-unlearning predicates, and audit completeness
+(the four properties above; mapping in supplementary
+\texttt{docs/regulatory-alignment.md}).
+PureChain's PoA$^2$ is validator-permissioned but publicly readable and
+submittable (apt for known-stakeholder IoT consortia); the Amoy
+deployment shows the identical contracts on a permissionless PoS chain
+at non-zero cost---the economic model is the decision variable, not the
+protocol semantics.
+
+\smallskip\noindent\textbf{Future work:}
+(i) a zk-SNARK over the \clsm transition predicate so
+\texttt{isEligible} proves eligibility without leaking the subject's
+identity or purposes; (ii) PoA$^2$-native verifiers re-running the MIAs
+at block production; and (iii) cross-chain consent portability via a
+light-client bridge.

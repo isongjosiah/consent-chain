@@ -1,0 +1,112 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+
+% ----- packages --------------------------------------------------------
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+% Shared assets (figures, tables, references.bib) live in ../shared so
+% they are single-sourced across the BCCA / ICTC / journal variants.
+% Add that directory to both the graphics search path and the \input
+% search path, so section files keep using plain figures/... and
+% tables/... relative references without any per-venue path edits.
+\graphicspath{{../shared/}{./}}
+\makeatletter
+\def\input@path{{../shared/}{./}}
+\makeatother
+\usepackage{booktabs}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{hyperref}
+% Print-friendly: link colors black so the PDF reads identically on
+% paper and screen.
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=black,
+    pdftitle={ConsentChain: PureChain-Powered Verifiable Machine
+              Unlearning and Dynamic Consent for Federated IoT Learning},
+    pdfauthor={Josiah Ayoola Isong, Oroceo Paul Angelo, Jae-Min Lee, Dong-Seong Kim},
+    pdfsubject={IEEE ICTC 2026 submission},
+    pdfkeywords={federated learning, machine unlearning, smart contracts,
+                 dynamic consent, IoT, GDPR},
+    pdfproducer={},
+    pdfcreator={},
+}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows.meta, calc}
+
+% ----- theorem environments (used in §III properties) -----------------
+\newtheorem{property}{Property}
+\newtheorem{definition}{Definition}
+
+% ----- shorthand macros -----------------------------------------------
+\newcommand{\sysname}{ConsentChain\xspace}
+\usepackage{xspace}
+\newcommand{\clsm}{\textsc{CLSM}\xspace}
+\newcommand{\vup}{\textsc{VUP}\xspace}
+\newcommand{\dmax}{\Delta_{\max}}
+\newcommand{\tauMIA}{\tau}
+\newcommand{\keccak}{\mathrm{keccak256}}
+
+% ORCID icon, robust to a missing asset: shows the linked iD icon
+% when figures/ORCID.png is present, otherwise omits it so the
+% build never breaks (RGB-flattened to avoid RGBA PDF corruption).
+\newcommand{\orcid}[1]{%
+  \IfFileExists{../shared/figures/ORCID.png}%
+    {\href{#1}{\includegraphics[scale=0.075]{figures/ORCID.png}}}%
+    {}%
+}
+
+% ----- title -----------------------------------------------------------
+\title{\sysname: PureChain-Powered Verifiable Machine Unlearning and Dynamic Consent for Federated IoT Learning}
+
+\author{\IEEEauthorblockN{%
+Josiah Ayoola Isong\orcid{https://orcid.org/0000-0002-6151-1950},
+Oroceo Paul Angelo\orcid{https://orcid.org/0000-0002-9305-6278},
+Jae-Min Lee\orcid{https://orcid.org/0000-0001-6885-5185},
+Dong-Seong Kim~(SMIEEE)\orcid{https://orcid.org/0000-0002-2977-5964}%
+}
+\IEEEauthorblockA{\textit{Department of IT Convergence Engineering,
+Kumoh National Institute of Technology, Gumi, South Korea} \\
+isongjosiah@gmail.com,(ljmpaul, dskim)@kumoh.ac.kr}
+}
+
+\begin{document}
+\maketitle
+
+% ----- abstract ---------------------------------------------------------
+\begin{abstract}
+\input{sections/00-abstract}
+\end{abstract}
+
+\begin{IEEEkeywords}
+federated learning, machine unlearning, smart contracts, dynamic
+consent, IoT, GDPR, EU AI Act, membership inference attack
+\end{IEEEkeywords}
+
+% ----- body sections ---------------------------------------------------
+\input{sections/01-introduction}
+\input{sections/02-related-work}
+\input{sections/03-system-model}
+\input{sections/04-framework}
+\input{sections/05-evaluation}
+\input{sections/06-discussion}
+\input{sections/07-conclusion}
+
+% ----- bibliography ----------------------------------------------------
+% \scriptsize bibliography: standard IEEE-conference compaction. The
+% references paginate normally (no \enlargethispage cram-hack)...
+{\scriptsize
+\bibliographystyle{IEEEtran}
+\bibliography{../shared/references}
+}
+
+\end{document}

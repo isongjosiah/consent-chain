@@ -8,6 +8,15 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{graphicx}
+% Shared assets (figures, tables, references.bib) live in ../shared so
+% they are single-sourced across the BCCA / ICTC / journal variants.
+% Add that directory to both the graphics search path and the \input
+% search path, so section files keep using plain figures/... and
+% tables/... relative references without any per-venue path edits.
+\graphicspath{{../shared/}{./}}
+\makeatletter
+\def\input@path{{../shared/}{./}}
+\makeatother
 \usepackage{booktabs}
 \usepackage{textcomp}
 \usepackage{xcolor}
@@ -51,8 +60,8 @@
 % when figures/ORCID.png is present, otherwise omits it so the
 % build never breaks (RGB-flattened to avoid RGBA PDF corruption).
 \newcommand{\orcid}[1]{%
-  \IfFileExists{./figures/ORCID.png}%
-    {\href{#1}{\includegraphics[scale=0.075]{./figures/ORCID.png}}}%
+  \IfFileExists{../shared/figures/ORCID.png}%
+    {\href{#1}{\includegraphics[scale=0.075]{figures/ORCID.png}}}%
     {}%
 }
 
@@ -97,7 +106,7 @@ consent, IoT, GDPR, EU AI Act, membership inference attack
 % references paginate normally (no \enlargethispage cram-hack)...
 {\scriptsize
 \bibliographystyle{IEEEtran}
-\bibliography{references}
+\bibliography{../shared/references}
 }
 
 \end{document}
