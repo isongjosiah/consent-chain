@@ -5,7 +5,7 @@ Federated learning (FL) trains a shared model across decentralised
 clients without centralising their data~\cite{mcmahan2017fedavg}, often
 the only legally viable option in consumer IoT. Beyond \emph{technical}
 privacy (secure aggregation, leakage bounds), a second, equally binding
-axis remains under-addressed: \emph{regulatory} privacy. GDPR Article~7
+axis is under-addressed: \emph{regulatory} privacy. GDPR Article~7
 requires consent to be purpose-granular and freely withdrawable, and
 Article~17 grants erasure---which, for a trained model, means it must
 \emph{forget} a revoked participant; the EU AI Act~\cite{aiact2024}
@@ -13,15 +13,13 @@ Article~17 grants erasure---which, for a trained model, means it must
 auditable duties. Each demands demonstrable, audit-grade evidence, not
 a promise to comply.
 
-Three research threads each address one corner but not the whole.
-Consent-management ledgers (MedRec~\cite{azaria2016medrec}) record
-consent immutably but cannot gate downstream training;
-machine-unlearning methods (SISA~\cite{bourtoule2021sisa},
-FedEraser~\cite{liu2021federaser}) remove a participant's contribution
-but leave the trigger and verification off-chain; and blockchain-FL
-systems~\cite{kim2020blockchained,li2020bflc} log model updates
-on-chain without consent semantics or forgetting verification. No
-published work binds the three.
+Three research threads each address one corner. Consent-management
+ledgers (MedRec~\cite{azaria2016medrec}) record consent but cannot gate
+training; machine-unlearning methods (SISA~\cite{bourtoule2021sisa},
+FedEraser~\cite{liu2021federaser}) remove a contribution but leave
+trigger and verification off-chain; and blockchain-FL
+systems~\cite{kim2020blockchained,li2020bflc} log updates without
+consent semantics or forgetting verification. No work binds the three.
 
 We frame the gap as a missing \emph{edge}, not a missing vertex:
 consent must remain authoritative over which data enters each round,
@@ -29,13 +27,11 @@ unlearning (by any method) must be \emph{verifiable} rather than
 self-asserted, and verification against membership
 inference~\cite{shokri2017mia,carlini2022lira,choquettechoo2021labelonly}
 must in turn drive the consent state, closing the loop. Prior work
-implements the vertices; \sysname supplies the edges. Doing so
-off-chain merely moves trust to the controller; a public
-smart-contract substrate removes it but raises a cost question---a
-single mainnet revocation costs dollars, prohibitive at IoT
-scale---which we answer by running the identical protocol on a public,
-gas-free, PoA$^2$ chain at \emph{exactly} \$0 per operation. This work
-makes four contributions: (1)~a \textbf{Consent Lifecycle State
+implements the vertices; \sysname supplies the edges. Enforcing this
+off-chain merely moves trust to the controller; a public, gas-free,
+PoA$^2$ substrate removes it at \emph{exactly} \$0 per operation, where
+a gas-based chain would charge dollars per revocation---prohibitive at
+IoT scale. This work makes four contributions: (1)~a \textbf{Consent Lifecycle State
 Machine} (\clsm)---six states, nine transitions, four formally-stated
 safety and liveness properties, instantiated as a soulbound ERC-721
 contract; (2)~a \textbf{Verifiable Unlearning Protocol} (\vup),
@@ -50,6 +46,5 @@ deployed on \emph{both} a gas-free (PureChain, PoA$^2$) and a gas-based
 under both economic models; and (4)~a \textbf{dual-domain evaluation}
 on a 9-client N-BaIoT~\cite{meidan2018nbaiot} autoencoder federation,
 cross-validated on a 5-client CASAS BiLSTM classifier, across three
-approximate-unlearning paradigms plus an exact-retraining baseline,
-measuring MIA forgetting, on-chain cost on both chains, and
-post-revocation utility recovery.
+approximate-unlearning paradigms plus exact retraining, measuring
+forgetting, on-chain cost, and utility recovery.

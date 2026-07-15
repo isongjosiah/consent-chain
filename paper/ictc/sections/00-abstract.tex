@@ -4,17 +4,15 @@ can be revoked and the trained model must demonstrably forget. Prior
 work treats consent management, machine unlearning, and on-chain
 auditability as disjoint threads. We close the
 \emph{consent--unlearning--verification triangle} with \sysname, a
-protocol binding all three in a single chain-enforced pipeline. Its
-four components are a Consent Lifecycle State Machine (\clsm)---a
-six-state automaton realised as soulbound ERC-721 tokens; a Verifiable
-Unlearning Protocol (\vup) that gates on-chain acceptance on three
+protocol binding all three in a single chain-enforced pipeline: a
+Consent Lifecycle State Machine (\clsm) as soulbound ERC-721 tokens; a
+Verifiable Unlearning Protocol gating on-chain acceptance on three
 independent membership-inference attacks; a three-contract Solidity
-architecture deployed on a gas-free (PureChain, PoA$^2$) and a
-gas-based (Polygon Amoy, PoS) chain; and a dual-domain evaluation on
-N-BaIoT and CASAS federations over three unlearning paradigms plus
-exact retraining. Per-subject lifecycle cost is \$0 on PureChain
-versus \$0.0012 on Amoy. The gate accepts approximate unlearning
+architecture on a gas-free (PureChain, PoA$^2$) and a gas-based
+(Polygon Amoy, PoS) chain; and a dual-domain evaluation on N-BaIoT and
+CASAS. Per-subject lifecycle cost is \$0 on PureChain versus \$0.00120
+on Amoy; the gate accepts approximate unlearning
 ($\text{MIA}\!<\!0.55$) yet rejects naive retraining---whose
 distributional uniqueness inflates MIA---and any attestation lacking a
 3-of-5 verifier threshold, proving it faithful to MIA evidence rather
-than the data controller's claim.
+than the controller's claim.

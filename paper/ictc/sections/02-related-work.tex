@@ -16,14 +16,13 @@ influence training.
 
 \smallskip
 \noindent\textbf{Machine unlearning.}
-SISA~\cite{bourtoule2021sisa} pre-shards training data so that removal
-retrains only the affected shard; FedEraser~\cite{liu2021federaser}
-replays federated aggregation history with a calibration step; and
-gradient-ascent methods take a few negative-learning-rate steps on the
-data to be removed. All are validated on standalone benchmarks, but
-none specifies how unlearning is triggered, by whom, or how a deployer
-demonstrates it actually happened. \emph{Gap}: unlearning is
-implementable but not verifiable end-to-end.
+SISA~\cite{bourtoule2021sisa} pre-shards data so removal retrains only
+the affected shard; FedEraser~\cite{liu2021federaser} replays
+aggregation history with calibration; and gradient-ascent methods take
+a few negative-rate steps on the data to remove. None, though,
+specifies how unlearning is triggered, by whom, or how a deployer
+proves it happened. \emph{Gap}: unlearning is implementable but not
+verifiable end-to-end.
 
 \smallskip
 \noindent\textbf{Blockchain-based federated learning.}
@@ -40,24 +39,17 @@ are absent.
 \smallskip
 \noindent\textbf{Positioning.}
 Across the four implicated dimensions---consent representation,
-unlearning trigger and method, verification, and on-chain
-footprint---each prior system covers at most one natively. \sysname is
-the first design we are aware of to address all four in a single
-chain-enforced protocol at gas-free cost: it adopts MedRec's registry
-pattern (vertex~A) under the \clsm safety and liveness properties,
-accepts any of the three unlearning paradigms as a black box
-(vertex~B), and makes three-MIA verification (vertex~C) the chain's
-gating condition for a consent transition. The resulting loop---consent
-change $\rightarrow$ unlearning $\rightarrow$ verification
-$\rightarrow$ attestation $\rightarrow$ finalisation---is the missing
-edge.
+unlearning trigger/method, verification, and on-chain footprint---each
+prior system covers at most one natively. \sysname is the first we are
+aware of to address all four in one chain-enforced protocol at gas-free
+cost: it adopts MedRec's registry (vertex~A) under the \clsm
+properties, accepts any unlearning paradigm as a black box (vertex~B),
+and makes three-MIA verification (vertex~C) the gating condition for a
+consent transition---the missing edge prior work leaves open.
 
-The choice of \emph{which} blockchain matters at IoT scale:
-permissionless gas-based chains (Ethereum, Polygon) impose recurring
-per-operation costs that scale linearly with device count and consent
-operation rate. Section~\ref{sec:evaluation} quantifies this against
+The \emph{choice} of chain matters at IoT scale; we quantify this
+(Section~\ref{sec:evaluation}) against
 PureChain~\cite{kim2025purechain}, a public, gas-free, EVM-compatible
-chain with PoA$^2$ consensus and Merkle-proof-backed state. PureChain
-is not the contribution of this paper; rather, we show the protocol is
-operationally identical on both chain types while the economic model
-is fundamentally different.
+PoA$^2$ chain---not our contribution, but a substrate on which the
+protocol is operationally identical to a gas-based chain while the
+economics differ fundamentally.
