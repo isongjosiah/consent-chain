@@ -11,3 +11,6 @@
 *.fdb_latexmk
 *.synctex.gz
 *.synctex(busy)
+
+# Overleaf git-bridge clone (managed by overleaf-sync.sh)
+.overleaf/
