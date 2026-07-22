@@ -12,13 +12,12 @@ recipe is in supplementary \texttt{docs/eval-protocol.md}.
 
 The primary federation is a 9-client N-BaIoT autoencoder anomaly
 detector~\cite{meidan2018nbaiot} (one client per device), a symmetric
-MLP ($115\!\to\!75\!\to\!50\!\to\!25\!\to\!10$) trained with FedAvg over
-30 rounds (Flower, seed 42). At round 30 we
-simulate a GDPR Art.~17 erasure of client 5, triggering one of the
-three approximate methods or exact 8-client retraining. On-chain experiments run against live
-contracts on gas-free PureChain (PoA$^2$) and gas-based Polygon Amoy
-(PoS), with $\mathit{VC}$ five ECDSA keys, $t=3$, and $\dmax=1000$
-blocks.
+MLP ($115\!\to\!75\!\to\!50\!\to\!25\!\to\!10$) trained with FedAvg for
+30 rounds (Flower, seed 42). At round 30 a GDPR Art.~17 erasure of
+client 5 triggers one of the three approximate methods or exact
+8-client retraining. On-chain experiments run live on gas-free
+PureChain (PoA$^2$) and gas-based Polygon Amoy (PoS), with $\mathit{VC}$
+five ECDSA keys, $t=3$, $\dmax=1000$ blocks.
 
 \subsection{Unlearning effectiveness}
 \label{sec:eval-unlearning}
@@ -90,10 +89,10 @@ the acceptance predicate's two branches (verifiability).
 
 Resuming FL for ten rounds after dropping client 5, the post-revoke
 model reaches reconstruction error $0.4720$, $6.1\%$ \emph{better} than
-the 9-client baseline ($0.5025$)---client 5 was an outlier whose
-removal tightens the fit. Gradient ascent ($0.4726$) and FedEraser
-($0.4698$) match this at no utility cost; SISA-Fed pays $+29\%$
-($0.6081$ by round 40), consistent with its strongest forgetting.
+the 9-client baseline ($0.5025$)---client 5 was an outlier. Gradient
+ascent ($0.4726$) and FedEraser ($0.4698$) match this at no utility
+cost; SISA-Fed pays $+29\%$ ($0.6081$ by round 40), consistent with its
+strongest forgetting.
 
 \subsection{Cross-domain validation: the high-memorisation regime}
 \label{sec:eval-casas}

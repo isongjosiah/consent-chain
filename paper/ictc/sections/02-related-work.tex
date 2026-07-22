@@ -19,10 +19,12 @@ influence training.
 SISA~\cite{bourtoule2021sisa} pre-shards data so removal retrains only
 the affected shard; FedEraser~\cite{liu2021federaser} replays
 aggregation history with calibration; and gradient-ascent methods take
-a few negative-rate steps on the data to remove. None, though,
-specifies how unlearning is triggered, by whom, or how a deployer
-proves it happened. \emph{Gap}: unlearning is implementable but not
-verifiable end-to-end.
+a few negative-rate steps on the data to remove. None of these---nor
+the broader federated-unlearning literature since
+surveyed~\cite{romandini2024fusurvey}---specifies how unlearning is
+triggered, by whom, or how it binds back to consent. \emph{Gap}:
+unlearning is implementable but not bound end-to-end to the consent that
+should trigger it.
 
 \smallskip
 \noindent\textbf{Blockchain-based federated learning.}
@@ -31,25 +33,24 @@ against malicious aggregators and BFLC~\cite{li2020bflc} replaces the
 aggregator with committee consensus, but neither encodes consent: a
 joined participant cannot withdraw without trusting the orchestrator.
 Membership inference~\cite{shokri2017mia,carlini2022lira,choquettechoo2021labelonly}
-is the canonical test for residual memorisation, yet no blockchain-FL
-system uses MIA scores as an on-chain acceptance criterion. \emph{Gap}:
+is the canonical test for residual memorisation, though a single attack
+can overstate it~\cite{hayes2024inexact} (motivating our three-attack
+conjunction); no blockchain-FL system yet uses MIA scores as an on-chain
+acceptance criterion. \emph{Gap}:
 updates are auditable but consent semantics and forgetting verification
 are absent.
 
 \smallskip
 \noindent\textbf{Positioning.}
-Across the four implicated dimensions---consent representation,
-unlearning trigger/method, verification, and on-chain footprint---each
-prior system covers at most one natively. \sysname is the first we are
-aware of to address all four in one chain-enforced protocol at gas-free
-cost: it adopts MedRec's registry (vertex~A) under the \clsm
-properties, accepts any unlearning paradigm as a black box (vertex~B),
-and makes three-MIA verification (vertex~C) the gating condition for a
-consent transition---the missing edge prior work leaves open.
-
-The \emph{choice} of chain matters at IoT scale; we quantify this
-(Section~\ref{sec:evaluation}) against
+Across the four dimensions---consent representation, unlearning
+trigger/method, verification, and on-chain footprint---each prior
+system covers at most one. \sysname addresses all four in one
+chain-enforced protocol at gas-free cost: MedRec's registry (vertex~A)
+under \clsm properties, any unlearning paradigm as a black box
+(vertex~B), and three-MIA verification (vertex~C) gating the consent
+transition---the missing edge. The \emph{choice} of chain matters at
+IoT scale; we quantify this (Section~\ref{sec:evaluation}) against
 PureChain~\cite{kim2025purechain}, a public, gas-free, EVM-compatible
 PoA$^2$ chain---not our contribution, but a substrate on which the
-protocol is operationally identical to a gas-based chain while the
-economics differ fundamentally.
+protocol is identical to a gas-based chain while the economics differ
+fundamentally.

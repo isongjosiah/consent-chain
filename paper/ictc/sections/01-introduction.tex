@@ -4,14 +4,14 @@
 Federated learning (FL) trains a shared model across decentralised
 clients without centralising their data~\cite{mcmahan2017fedavg}, often
 the only legally viable option in consumer IoT. Beyond \emph{technical}
-privacy (secure aggregation, leakage bounds), a second, equally binding
-axis is under-addressed: \emph{regulatory} privacy. GDPR Article~7
+privacy, a second, equally binding axis is under-addressed:
+\emph{regulatory} privacy. GDPR Article~7
 requires consent to be purpose-granular and freely withdrawable, and
 Article~17 grants erasure---which, for a trained model, means it must
 \emph{forget} a revoked participant; the EU AI Act~\cite{aiact2024}
 (Arts.~15/26) and CCPA~\cite{ccpa2018}~\S1798.105 impose analogous,
-auditable duties. Each demands demonstrable, audit-grade evidence, not
-a promise to comply.
+auditable duties---each demanding audit-grade evidence, not a promise
+to comply.
 
 Three research threads each address one corner. Consent-management
 ledgers (MedRec~\cite{azaria2016medrec}) record consent but cannot gate

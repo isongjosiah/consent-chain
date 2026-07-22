@@ -19,9 +19,9 @@ We adopt FedAvg~\cite{mcmahan2017fedavg}, aggregating validated clients
 as $\theta^{(r+1)}=\sum_{k\in K_r}(n_k/\!\sum_{j\in K_r}n_j)\,
 \theta^{(r+1)}_k$, where $K_r$ is the participant set returned by
 $\mathit{GK}.\mathtt{validateRound}$ and $n_k$ the local set size. The
-novel restriction is that $K_r$ must be that return value, not an
-orchestrator-chosen subset: consent is enforced at the membership
-level, not the gradient level.
+novelty: $K_r$ must be that return value, not an orchestrator-chosen
+subset---consent enforced at the membership level, not the gradient
+level.
 
 \subsection{Consent Lifecycle State Machine}
 \label{sec:clsm-formal}

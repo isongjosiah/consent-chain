@@ -79,6 +79,18 @@ Kumoh National Institute of Technology, Gumi, South Korea} \\
 isongjosiah@gmail.com,(ljmpaul, dskim)@kumoh.ac.kr}
 }
 
+% Slightly tighten inter-reference spacing to recover a few lines in the
+% reference list (space only, no content change; IEEEtran leaves a little
+% inter-item glue at \scriptsize).
+\makeatletter
+\let\ccOldThebibliography\thebibliography
+\renewcommand{\thebibliography}[1]{%
+  \ccOldThebibliography{#1}%
+  \setlength{\itemsep}{-0.5ex}%
+  \setlength{\parsep}{0pt}%
+}
+\makeatother
+
 \begin{document}
 \maketitle
 
