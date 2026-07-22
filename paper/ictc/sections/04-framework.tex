@@ -33,10 +33,11 @@ $\mathit{DS}_i$'s training set $\mathcal{D}_i$ (member set $M$) with
 three statistically independent attacks (so false negatives rarely
 coincide), each scoring in $[0,1]$---higher meaning more residual
 membership signal. The \emph{shadow-model}
-attack~\cite{shokri2017mia} is the supervised baseline: $S=5$ shadow
-autoencoders yield ``in''/``out'' reconstruction errors that train an
-MLP classifier, and $s_{\mathrm{sh}}$ is the fraction of $M$ it flags
-``in.'' \emph{LiRA}~\cite{carlini2022lira}, the strongest, calibrates a
+attack~\cite{shokri2017mia}, adapted to reconstruction
+models~\cite{hilprecht2019monte}, is the supervised baseline: $S=5$
+shadow autoencoders yield ``in''/``out'' reconstruction errors that
+train an MLP classifier, and $s_{\mathrm{sh}}$ is the fraction of $M$ it
+flags ``in.'' \emph{LiRA}~\cite{carlini2022lira}, the strongest, calibrates a
 \emph{per-example} likelihood ratio: for each $x\in M$ it fits
 in-/out-pool Gaussians to the log-reconstruction-errors of
 $n_{\mathrm{in}}=n_{\mathrm{out}}=4$ reference models, and
@@ -90,9 +91,7 @@ unlearning (encoding liveness), and permissionless \texttt{reportTimeout}
 emits \texttt{ComplianceViolation} past the $\dmax$ deadline.
 
 \paragraph{Automation loop} A revocation fires
-\texttt{recordPendingUnlearning} on the gatekeeper; a valid UA reverses
-it via the oracle's \texttt{unblock}. Registry state thus drives the
-gatekeeper, and the oracle is the only path to release
-pending-unlearning blocks---the closed
-consent$\rightarrow$unlearn$\rightarrow$verify$\rightarrow$attest
-$\rightarrow$finalise loop that is the edge \sysname closes.
+\texttt{recordPendingUnlearning}; only a valid UA, via the oracle's
+\texttt{unblock}, releases the gatekeeper---the closed
+consent$\rightarrow$unlearn$\rightarrow$verify$\rightarrow$attest$\rightarrow$finalise
+loop \sysname closes.
