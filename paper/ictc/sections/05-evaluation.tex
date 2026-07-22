@@ -48,8 +48,10 @@ membership~\cite{shokri2017mia}, a confound LiRA ($0.045$) and
 label-only ($0.014$) avoid. Even the no-unlearning baseline sits near random ($0.55$/$0.05$/$0.01$):
 this federation memorises client 5 only weakly, so the gate certifies
 the post-model leaks no more than chance---its work is rejecting the
-confound, not proving prior memorisation. All three approximate UAs
-finalise end-to-end on PureChain to \textsc{Unlearned}.
+confound, not proving prior memorisation; Section~\ref{sec:eval-casas}
+supplies the complementary high-memorisation regime in which the gate
+must, and does, reject. All three approximate UAs finalise end-to-end
+on PureChain to \textsc{Unlearned}.
 
 \subsection{On-chain cost and scalability}
 \label{sec:eval-gas}
@@ -93,9 +95,15 @@ removal tightens the fit. Gradient ascent ($0.4726$) and FedEraser
 ($0.4698$) match this at no utility cost; SISA-Fed pays $+29\%$
 ($0.6081$ by round 40), consistent with its strongest forgetting.
 
-\subsection{Cross-domain validation (CASAS)}
+\subsection{Cross-domain validation: the high-memorisation regime}
 \label{sec:eval-casas}
 
-On CASAS (5-client BiLSTM) the confound is sharper still: only SISA-Fed
-($0.499$/$0.035$/$0.000$) passes the gate, consistent with N-BaIoT
-(full cross-domain results in the journal version).
+N-BaIoT and CASAS span two memorisation regimes. N-BaIoT's baselines
+all sit near random, so the gate correctly \emph{admits}; the 5-client
+CASAS BiLSTM is the opposite---pre-unlearning shadow MIA reaches
+$0.979$ and the gate must \emph{reject}. It does: gradient ascent
+($0.980$), FedEraser ($0.840$), and even exact naive retrain ($0.846$)
+stay above $\tauMIA$ and are refused, while only SISA-Fed
+($0.499$/$0.035$/$0.000$) clears all three attacks. The pair thus
+exercises both branches of the acceptance predicate on identical
+contracts; full results appear in the journal version.

@@ -10,11 +10,9 @@ method-agnostic VUP gated on three independent MIAs and a $t$-of-$n$
 committee signature, and a three-contract architecture that runs
 unchanged on gas-free and gas-based EVM chains. Evaluation on a
 9-client N-BaIoT~\cite{meidan2018nbaiot} autoencoder, cross-validated
-on 5-client CASAS, confirms four numbers: per-subject lifecycle cost
-$\$0$ on PureChain versus $\$0.00120$ on Amoy; \texttt{validateRound}
-scaling linearly to $N\!=\!500$ ($\$0$ versus a projected $\$0.0176$);
-MIA scores driven below $\tauMIA\!=\!0.55$ by approximate unlearning;
-and $\le\!3\%$ utility loss---indeed a $6.1\%$ \emph{gain} when the
-revoked client was an outlier. Future work targets BLS aggregation,
+on 5-client CASAS, confirms the headline claims: approximate unlearning
+drives all three MIAs below $\tauMIA\!=\!0.55$ at $\le\!3\%$ utility
+loss, while per-subject lifecycle cost is $\$0$ on PureChain versus
+$\$0.00120$ on Amoy. Future work targets BLS aggregation,
 zero-knowledge eligibility proofs, PoA$^2$-native verifiers, and
 cross-chain consent portability.

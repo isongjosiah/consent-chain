@@ -38,6 +38,7 @@ CLONE_DIR="${OVERLEAF_DIR:-$PAPER/.overleaf}"
 # NOT excluded: they are build inputs and must sync.
 EXCLUDES=(
   --exclude '.git'
+  --exclude '*.md'  # internal notes/briefs stay local, never go to Overleaf
   --exclude '*.aux' --exclude '*.log' --exclude '*.out'
   --exclude '*.bbl' --exclude '*.blg' --exclude '*.toc'
   --exclude '*.lof' --exclude '*.lot'

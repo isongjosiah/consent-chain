@@ -1,20 +1,14 @@
 \section{The \sysname Framework}
 \label{sec:framework}
 
-\subsection{On-chain access control and safety}
-\label{sec:framework-clsm}
-
-The safety property follows by inspection of $\delta$: no edge enters
-\textsc{Active} from \textsc{Revoked}/\textsc{Expired}, and the only
-edge \texttt{validateRound} fires ($\mathtt{tick}$) guards on
-$\rho_r\in\mathcal{P}$; access is split so that only
-\texttt{unlearn\_verified} is oracle-callable, five edges
-$\mathit{DS}_i$-controlled and two time-driven.
-
 \subsection{Verifiable Unlearning Protocol}
 \label{sec:framework-vup}
 
-On transition to \textsc{Revoked}/\textsc{Expired}, the gatekeeper sets
+Safety follows by inspection of $\delta$: no edge enters \textsc{Active}
+from \textsc{Revoked}/\textsc{Expired}, only \texttt{unlearn\_verified}
+is oracle-callable, and \texttt{validateRound}'s sole edge
+($\mathtt{tick}$) guards on $\rho_r\in\mathcal{P}$. On transition to
+\textsc{Revoked}/\textsc{Expired}, the gatekeeper sets
 $\mathtt{pendingUnlearningSince}[i]=b$ and \texttt{validateRound} blocks
 all rounds (liveness). Within $\dmax$ blocks the controller must
 unlearn, score the post-unlearning model with the three MIAs, assemble
