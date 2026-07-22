@@ -80,6 +80,14 @@ case "$cmd" in
     rsync -a --delete "${EXCLUDES[@]}" "$PAPER/shared/" "$CLONE_DIR/shared/"
     # Blank Overleaf projects ship a placeholder main.tex at the root — remove it.
     rm -f "$CLONE_DIR/main.tex"
+    # BibTeX asymmetry: Overleaf runs bibtex from the PROJECT ROOT, so the
+    # bibliography path must be shared/references (no ../). Graphics and \input
+    # resolve relative to ictc/ and correctly keep ../shared/, so only the
+    # \bibliography line is rewritten. The monorepo copy keeps ../shared/
+    # references for local builds (latexmk runs bibtex from ictc/). Anchored to
+    # \bibliography{...} so it's a no-op if already in the target form.
+    sed -i 's#\\bibliography{\.\./shared/references}#\\bibliography{shared/references}#' \
+      "$CLONE_DIR/ictc/main.tex"
     ( cd "$CLONE_DIR"
       git add -A
       if git diff --cached --quiet; then
@@ -100,6 +108,9 @@ case "$cmd" in
     echo ">> mirroring Overleaf clone back into paper/ictc + paper/shared ..."
     rsync -a --delete "${EXCLUDES[@]}" "$CLONE_DIR/ictc/"   "$PAPER/ictc/"
     rsync -a --delete "${EXCLUDES[@]}" "$CLONE_DIR/shared/" "$PAPER/shared/"
+    # Restore the monorepo's local bibliography path (see push note above).
+    sed -i 's#\\bibliography{shared/references}#\\bibliography{../shared/references}#' \
+      "$PAPER/ictc/main.tex"
     echo ">> done. Review with: git -C \"$MONO_ROOT\" status"
     ;;
 
