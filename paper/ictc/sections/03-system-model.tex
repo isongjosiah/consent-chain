@@ -48,16 +48,17 @@ token $i$.
 
 \subsection{Threat model}
 
-We defend five in-scope adversaries: a \emph{lazy orchestrator} (GK
+We defend four in-scope adversaries: a \emph{lazy orchestrator} (GK
 reverts on pending unlearning and emits \texttt{ComplianceViolation}
 after the $\dmax$ timeout), a \emph{deceptive controller} (three MIAs
 plus VC $t$-of-$n$ signatures), a \emph{consent forger} (soulbound NFT
 and \texttt{dsOwner} check), and a \emph{replay attacker} (UA binding
-$(\text{chainid},\text{tokenId},\text{hashPre})$); colluding
-participants are out of scope (an orthogonal DP layer). Six further
-classes are out-of-scope (Section~\ref{sec:discussion}); the full
-per-adversary model is in supplementary
-\texttt{docs/threat-model.md}.
+$(\text{chainid},\text{tokenId},\text{hashPre})$). The committee is the
+trust floor: $\ge t$ colluding verifiers can certify an invalid
+attestation, so verifier-incentive design is future work. Colluding
+participants (an orthogonal DP layer) and six further classes are out
+of scope (Section~\ref{sec:discussion}); the full per-adversary model
+is in supplementary \texttt{docs/threat-model.md}.
 
 \subsection{Formal properties}
 \label{sec:properties}

@@ -17,14 +17,13 @@ it.
 
 \subsubsection{Approximate unlearning methods}
 
-\sysname is method-agnostic; we evaluate the three families introduced
-in Section~\ref{sec:related}. SISA-Fed~\cite{bourtoule2021sisa}
-retrains only the shards that touched $\mathit{DS}_i$'s data; gradient
-ascent applies $k$ negative-learning-rate steps
-$\theta^{(j+1)}=\theta^{(j)}+\eta\,\nabla\mathcal{L}(\theta^{(j)};
-\mathcal{D}_i)$ ($k=10$, $\eta=10^{-4}$);
-and FedEraser~\cite{liu2021federaser} replays the aggregation history
-excluding $\mathit{DS}_i$ with a 3-round calibration.
+\sysname is method-agnostic over the three families of
+Section~\ref{sec:related}: SISA-Fed~\cite{bourtoule2021sisa} (per-shard
+retrain), gradient ascent
+($\theta^{(j+1)}=\theta^{(j)}+\eta\,\nabla\mathcal{L}(\theta^{(j)};
+\mathcal{D}_i)$, $k=10$ steps, $\eta=10^{-4}$), and
+FedEraser~\cite{liu2021federaser} (history replay with 3-round
+calibration).
 
 \subsubsection{Three independent membership inference attacks}
 
@@ -56,13 +55,9 @@ s_{\mathrm{sh}}^{\mathrm{fp}}, s_{\mathrm{lira}}^{\mathrm{fp}},
 s_{\mathrm{lo}}^{\mathrm{fp}}, t_u\rangle$: the token ID, pre-/post-un\-learning
 model hashes, method $m\in\{0,1,2\}$, fixed-point MIA scores
 $s^{\mathrm{fp}}_j=\lfloor 10^4 s_j\rfloor$, and a timestamp. Every
-verifier signs the UA hash
-$h_u=\keccak(c \,\|\, i \,\|\, h_{\mathrm{pre}} \,\|\, h_{\mathrm{post}}
-\,\|\, m \,\|\, s_{\mathrm{sh}}^{\mathrm{fp}} \,\|\,
-s_{\mathrm{lira}}^{\mathrm{fp}} \,\|\, s_{\mathrm{lo}}^{\mathrm{fp}}
-\,\|\, t_u)$, where $c=\texttt{block.chainid}$; including the chain
-identifier $c$ binds the attestation to a single chain and prevents
-cross-chain replay.
+verifier signs the UA hash $h_u=\keccak(c \,\|\, u)$ over the chain id
+$c=\texttt{block.chainid}$; including $c$ binds the attestation to a
+single chain and prevents cross-chain replay.
 
 The oracle then accepts $(u,\Sigma)$ under four conditions: all three
 fixed-point MIA scores are below $\tauMIA=0.55$ (i.e.\
@@ -72,7 +67,10 @@ $h_{\mathrm{pre}}$ equals the model hash written once at revocation
 ($\mathit{CR}.\mathtt{modelHashAtRevocation}(i)$); and the token is
 still \textsc{Revoked} or \textsc{Expired}---binding the UA to the
 exact model version and blocking re-attestation of an
-already-\textsc{Unlearned} token, closing the replay loop.
+already-\textsc{Unlearned} token, closing the replay loop. The
+threshold $\tauMIA=0.55$ sits just above the $0.5$ random-guess baseline
+with margin for finite-$|M|$ noise; the conjunction over three
+independent attacks is what makes so tight a threshold tolerable.
 
 \subsection{Three-contract Solidity architecture}
 \label{sec:framework-contracts}
