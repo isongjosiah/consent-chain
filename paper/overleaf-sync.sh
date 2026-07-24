@@ -87,7 +87,7 @@ case "$cmd" in
     # \bibliography line is rewritten. The monorepo copy keeps ../shared/
     # references for local builds (latexmk runs bibtex from ictc/). Anchored to
     # \bibliography{...} so it's a no-op if already in the target form.
-    sed -i 's#\\bibliography{\.\./shared/references}#\\bibliography{shared/references}#' \
+    perl -i -pe 's#\\bibliography\{\.\./shared/references\}#\\bibliography{shared/references}#' \
       "$CLONE_DIR/ictc/main.tex"
     ( cd "$CLONE_DIR"
       git add -A
@@ -110,7 +110,7 @@ case "$cmd" in
     rsync -a --delete "${EXCLUDES[@]}" "$CLONE_DIR/ictc/"   "$PAPER/ictc/"
     rsync -a --delete "${EXCLUDES[@]}" "$CLONE_DIR/shared/" "$PAPER/shared/"
     # Restore the monorepo's local bibliography path (see push note above).
-    sed -i 's#\\bibliography{shared/references}#\\bibliography{../shared/references}#' \
+    perl -i -pe 's#\\bibliography\{shared/references\}#\\bibliography{../shared/references}#' \
       "$PAPER/ictc/main.tex"
     echo ">> done. Review with: git -C \"$MONO_ROOT\" status"
     ;;
