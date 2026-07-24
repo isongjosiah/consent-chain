@@ -7,39 +7,44 @@ the only legally viable option in consumer IoT. Beyond technical
 privacy, a second, equally binding axis is the right to be forgotten: consent
 must stay purpose-granular and revocable, and revocation should propagate into
 the trained model itself; these obligations are grounded in GDPR Articles~7 and~17.
-Federated unlearning (FUL) has emerged as a technique to erase the data and any influence
-of the data on the FL model.
 
-Three research threads each address one corner. Consent-management
-ledgers (MedRec~\cite{azaria2016medrec}) record consent but cannot gate
-training; machine-unlearning methods (SISA~\cite{bourtoule2021sisa},
-FedEraser~\cite{liu2021federaser}) remove a contribution but leave
-trigger and verification off-chain; and blockchain-FL
-systems~\cite{kim2020blockchained,li2020bflc} log updates without
-consent semantics or forgetting verification. No work binds the three.
-
-We frame the gap as a missing \emph{edge}, not a missing vertex:
-consent must remain authoritative over which data enters each round,
-unlearning (by any method) must be \emph{verifiable} rather than
-self-asserted, and verification against membership
+While Federated unlearning (FUL) has emered as a technique to erase the data 
+and any influence of the data on the FL model, FUL presumes a withdrawal signal, 
+but that signal is a one-shot trigger fired after the fact, not an enforced state: it cannot express
+purpose-scoped, time-bounded, suspendable, or partial consent, and
+nothing binds round selection to honour it, so the orchestrator may
+keep training between request and claimed erasure, unrecorded. Nor does
+running an unlearning algorithm evidence forgetting: approximate
+unlearning, the only kind tractable at FL scale, gives no closed-form
+guarantee, and its failures are \emph{silent} (an under-erased model
+scores like a correctly erased one), while the controller both owes the
+erasure and alone reports it. Membership
 inference~\cite{shokri2017mia,carlini2022lira,choquettechoo2021labelonly}
-must in turn drive the consent state, closing the loop. Prior work
-implements the vertices; \sysname supplies the edges. Enforcing this
-off-chain merely moves trust to the controller; a public, gas-free,
-PoA$^2$ substrate removes it at \emph{exactly} \$0 per operation, where
-a gas-based chain would charge dollars per revocation---prohibitive at
-IoT scale. This work makes four contributions: (1)~a \textbf{Consent Lifecycle State
-Machine} (\clsm)---six states, nine transitions, four stated safety and
-liveness properties, instantiated as a soulbound ERC-721 contract; (2)~a \textbf{Verifiable Unlearning Protocol} (\vup),
+detects precisely this residual signal, and the check is not redundant:
+on CASAS, gradient ascent, FedEraser, and even exact retraining leave a
+signal above threshold (Section~\ref{sec:eval-casas}). \sysname
+therefore couples \emph{dynamic consent} (an auditable state gating
+every round \emph{before} training) with \emph{verifiable machine
+unlearning}, where erasure must pass independent membership-inference
+tests before consent advances. Prior threads supply one piece each:
+consent ledgers (MedRec~\cite{azaria2016medrec}) cannot gate training;
+unlearning methods (SISA~\cite{bourtoule2021sisa},
+FedEraser~\cite{liu2021federaser}) leave trigger and verification
+off-chain; blockchain-FL~\cite{kim2020blockchained,li2020bflc} logs
+updates without consent semantics or forgetting verification.
+
+This work makes four contributions: (1)~a Consent Lifecycle State
+Machine (\clsm): six states, nine transitions, four stated safety and
+liveness properties, instantiated as a soulbound ERC-721 contract; (2)~a Verifiable Unlearning Protocol (\vup),
 method-agnostic over the unlearning algorithm, accepting an attestation
 iff three \emph{independent} membership-inference attacks
 (shadow~\cite{shokri2017mia}, LiRA~\cite{carlini2022lira},
 label-only~\cite{choquettechoo2021labelonly}) all fall below $\tauMIA$
-under $t$-of-$n$ ECDSA signatures; (3)~a \textbf{three-contract Solidity
-architecture} (ConsentRegistry, UnlearningOracle, FLGatekeeper)
+under $t$-of-$n$ ECDSA signatures; (3)~a three-contract Solidity
+architecture (ConsentRegistry, UnlearningOracle, FLGatekeeper)
 deployed on \emph{both} a gas-free (PureChain, PoA$^2$) and a gas-based
-(Polygon Amoy, PoS) chain---the first side-by-side cost comparison
-under both economic models; and (4)~a \textbf{dual-domain evaluation}
+(Polygon Amoy, PoS) chain, the first side-by-side cost comparison
+under both economic models; and (4)~a dual-domain evaluation
 on a 9-client N-BaIoT~\cite{meidan2018nbaiot} autoencoder federation,
 cross-validated on a 5-client CASAS BiLSTM classifier, across three
 approximate-unlearning paradigms plus exact retraining, measuring

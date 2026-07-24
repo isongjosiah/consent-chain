@@ -40,13 +40,13 @@ below $\tauMIA = 0.55$.}
 Three observations stand out. All three approximate methods produce
 UAs the chain accepts (shadow $0.438$/$0.254$/$0.523$ for gradient
 ascent/SISA-Fed/FedEraser; LiRA and label-only well below $\tauMIA$).
-The hero result: the naive-retrain baseline---never trained on client
-5---yields shadow $0.584>\tauMIA$ and is \emph{rejected}, because shadow
+The hero result: the naive-retrain baseline, never trained on client
+5, yields shadow $0.584>\tauMIA$ and is \emph{rejected}, because shadow
 reads client 5's distinctive traffic distribution, not
 membership~\cite{shokri2017mia}, a confound LiRA ($0.045$) and
 label-only ($0.014$) avoid. Even the no-unlearning baseline sits near random ($0.55$/$0.05$/$0.01$):
 this federation memorises client 5 only weakly, so the gate certifies
-the post-model leaks no more than chance---its work is rejecting the
+the post-model leaks no more than chance: its work is rejecting the
 confound, not proving prior memorisation; Section~\ref{sec:eval-casas}
 supplies the complementary high-memorisation regime in which the gate
 must, and does, reject. All three approximate UAs finalise end-to-end
@@ -79,7 +79,7 @@ extrapolated linearly, projects to $\$0.0176$ per $N\!=\!500$ round.
 At a typical 100-round/day cadence that is $\$1.76$/day per deployment
 on Amoy versus $\$0$ on PureChain: gas-free infrastructure is a
 different cost class, not an optimisation. Two short PureChain runs also
-confirm the properties empirically---a $\dmax\!=\!2$ timeout fires
+confirm the properties empirically: a $\dmax\!=\!2$ timeout fires
 \texttt{ComplianceViolation} (liveness), and a $t$-of-5 sweep exercises
 the acceptance predicate's two branches (verifiability).
 
@@ -88,17 +88,29 @@ the acceptance predicate's two branches (verifiability).
 
 Resuming FL for ten rounds after dropping client 5, the post-revoke
 model reaches reconstruction error $0.4720$, $6.1\%$ \emph{better} than
-the 9-client baseline ($0.5025$)---client 5 was an outlier. Gradient
+the 9-client baseline ($0.5025$); client 5 was an outlier. Gradient
 ascent ($0.4726$) and FedEraser ($0.4698$) match this at no utility
 cost; SISA-Fed pays $+29\%$ ($0.6081$ by round 40), consistent with its
-strongest forgetting.
+strongest forgetting. Figure~\ref{fig:f2} plots the five trajectories,
+all diverging at the round-30 revocation point.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/figure2_utility_recovery.pdf}
+\caption{Utility recovery (E6). Centralized test
+reconstruction error per FL round. The four post-revocation
+trajectories diverge at round 30; SISA-Fed pays a real utility cost,
+gradient ascent and FedEraser converge to within $0.5\%$ of plain
+post-revoke by round 40.}
+\label{fig:f2}
+\end{figure}
 
 \subsection{Cross-domain validation: the high-memorisation regime}
 \label{sec:eval-casas}
 
 N-BaIoT and CASAS span two memorisation regimes. N-BaIoT's baselines
 all sit near random, so the gate correctly \emph{admits}; the 5-client
-CASAS BiLSTM is the opposite---pre-unlearning shadow MIA reaches
+CASAS BiLSTM is the opposite: pre-unlearning shadow MIA reaches
 $0.979$ and the gate must \emph{reject}. It does: gradient ascent
 ($0.980$), FedEraser ($0.840$), and even exact naive retrain ($0.846$)
 stay above $\tauMIA$ and are refused, while only SISA-Fed
