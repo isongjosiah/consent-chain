@@ -12,29 +12,21 @@ and approximate unlearning, the only kind tractable at FL scale, offers
 no guarantee, fails \emph{silently}, and is self-reported by the
 controller that owes it. \sysname couples \emph{dynamic consent} with
 \emph{verifiable machine unlearning} in one chain-enforced protocol,
-closing both gaps. Prior work covers single corners:
-MedRec~\cite{azaria2016medrec} cannot gate training;
-SISA~\cite{bourtoule2021sisa}/FedEraser~\cite{liu2021federaser} leave
-trigger and verification off-chain;
-blockchain-FL~\cite{kim2020blockchained,li2020bflc} adds neither consent
-nor forgetting verification.
+closing both gaps.
 
 \sysname makes four contributions: (1)~a Consent Lifecycle State Machine
-(\clsm) of six states and nine transitions with four stated safety and
-liveness properties, as a soulbound ERC-721; (2)~a Verifiable Unlearning
-Protocol (\vup), method-agnostic over the unlearning algorithm,
-accepting an attestation iff three \emph{independent} MIAs
-(shadow~\cite{shokri2017mia}, LiRA~\cite{carlini2022lira},
-label-only~\cite{choquettechoo2021labelonly}) fall below $\tauMIA$ under
-$t$-of-$n$ ECDSA signatures; (3)~a three-contract Solidity architecture
-(ConsentRegistry, UnlearningOracle, FLGatekeeper) deployed on \emph{both}
-a gas-free (PureChain, PoA$^2$) and a gas-based (Polygon Amoy, PoS)
-chain, the first side-by-side cost comparison across economic models;
-and (4)~a dual-domain evaluation on a 9-client
-N-BaIoT~\cite{meidan2018nbaiot} autoencoder federation, cross-validated
-on a 5-client CASAS BiLSTM classifier, over three approximate-unlearning
-paradigms plus exact retraining, measuring forgetting, on-chain cost,
-and utility recovery.
+(\clsm), a soulbound-ERC-721 automaton of six states and nine
+transitions with proved safety and liveness; (2)~a Verifiable Unlearning
+Protocol (\vup), method-agnostic, accepting a UA iff three
+\emph{independent} MIAs (shadow~\cite{shokri2017mia},
+LiRA~\cite{carlini2022lira}, label-only~\cite{choquettechoo2021labelonly})
+fall below $\tauMIA$ under $t$-of-$n$ ECDSA signatures; (3)~three
+Solidity contracts (ConsentRegistry, UnlearningOracle, FLGatekeeper) on
+both a gas-free (PureChain, PoA$^2$) and gas-based (Amoy, PoS) chain, the
+first side-by-side cost comparison; and (4)~a dual-domain evaluation
+(9-client N-BaIoT~\cite{meidan2018nbaiot} autoencoder, 5-client CASAS
+BiLSTM) over three approximate-unlearning methods plus exact retraining,
+measuring forgetting, cost, and utility recovery.
 
 The rest of the paper proceeds as follows.
 Section~\ref{sec:related} positions \sysname against prior work;
