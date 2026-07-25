@@ -1,18 +1,16 @@
-Federated learning over consumer IoT devices must now honour
-data-subject withdrawal under GDPR, the EU AI Act, and CCPA: consent
-can be revoked and the trained model must demonstrably forget. Prior
-work treats consent management, machine unlearning, and on-chain
-auditability as disjoint threads. We close the
-\emph{consent--unlearning--verification triangle} with \sysname, a
-protocol binding all three in a single chain-enforced pipeline: a
-Consent Lifecycle State Machine (\clsm) as soulbound ERC-721 tokens; a
-Verifiable Unlearning Protocol gating on-chain acceptance on three
-independent membership-inference attacks; a three-contract Solidity
-architecture on a gas-free (PureChain, PoA$^2$) and a gas-based
-(Polygon Amoy, PoS) chain; and a dual-domain evaluation on N-BaIoT and
-CASAS. Per-subject lifecycle cost is \$0 on PureChain versus \$0.00120
-on Amoy; the gate accepts approximate unlearning
+Federated learning over consumer IoT must now honour data-subject
+withdrawal under GDPR, the EU AI Act, and CCPA: consent can be revoked
+and the trained model must demonstrably forget. Prior work treats
+consent management, machine unlearning, and on-chain auditability as
+disjoint threads. \sysname closes this
+\emph{consent--unlearning--verification triangle} in one chain-enforced
+pipeline: a Consent Lifecycle State Machine as soulbound ERC-721 tokens,
+a Verifiable Unlearning Protocol gating on-chain acceptance on three
+independent membership-inference attacks, and a three-contract Solidity
+architecture on gas-free PureChain (PoA$^2$) and gas-based Amoy (PoS).
+Across N-BaIoT and CASAS, per-subject lifecycle cost is \$0 on PureChain
+versus \$0.00120 on Amoy, and the gate accepts approximate unlearning
 ($\text{MIA}\!<\!0.55$) yet rejects naive retraining (whose
 distributional uniqueness inflates MIA) and any attestation lacking a
-3-of-5 verifier threshold, showing it faithful to MIA evidence rather
-than the controller's claim.
+3-of-5 verifier threshold, staying faithful to MIA evidence rather than
+the controller's claim.
