@@ -1,27 +1,22 @@
 \section{Discussion and Conclusion}
 \label{sec:discussion}\label{sec:conclusion}
 
-\noindent\emph{Discussion.}
-Shadow MIA conflates distributional uniqueness with membership: naive
-retrain, never trained on the data, scored $0.584$/$0.846$
-(N-BaIoT/CASAS). Requiring \emph{all three} MIAs below $\tauMIA$ is
-conservative by design, preferring false rejection to false acceptance;
-LiRA resists the confound but is $\alpha$-sensitive, so
-$(\alpha,\tauMIA)$ are co-calibrated per model class. \sysname accepts
-\emph{approximate} unlearning (exact retraining being infeasible at IoT
-scale; GDPR Art.~17's ``reasonable measures'' is met by the predicate
-plus on-chain audit), leaving formal-erasure and ECDSA-leakage
-guarantees (BLS-collapsed in the journal) out of scope; off-chain
-training on revoked data is unpreventable but leaves no valid UA, a
-detectable omission. On deployment, \sysname discharges GDPR
-Arts.~7/17/21, EU AI Act Arts.~15/26, and CCPA \S~1798.105 via the
-soulbound NFT, the $\dmax$-bounded liveness and verifiability
-predicates, and audit completeness; PoA$^2$ is validator-permissioned
-yet publicly readable, while Amoy runs identical contracts
-permissionlessly, so the economic model, not the protocol, is the
-decision variable.
+Our gate is deliberately conservative: shadow MIA conflates
+distributional uniqueness with membership (naive retrain, never trained
+on the data, scored $0.584$/$0.846$), so requiring \emph{all three} MIAs
+below $\tauMIA$ errs toward false rejection, and LiRA, which resists the
+confound but is $\alpha$-sensitive, is co-calibrated with $\tauMIA$ per
+model class. \sysname targets \emph{approximate} unlearning, meeting
+GDPR Art.~17's ``reasonable measures'' by predicate plus on-chain audit
+rather than formal erasure; formal-erasure and ECDSA-leakage guarantees
+(BLS-collapsed in the journal), and off-chain training on revoked data
+(unpreventable, yet a detectable missing UA), stay out of scope. Its
+consent, liveness/verifiability, and audit mechanisms discharge GDPR
+Arts.~7/17/21, EU AI Act Arts.~15/26, and CCPA \S~1798.105, and run
+unchanged on a permissioned-yet-public PoA$^2$ chain or permissionless
+Amoy, so the economic model, not the protocol, is the deployment
+variable.
 
-\smallskip\noindent\emph{Conclusion.}
 \sysname is, to our knowledge, the first protocol to bind dynamic
 consent, machine unlearning, and on-chain verification in one
 chain-enforced pipeline, closing the consent--unlearning--verification
