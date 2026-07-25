@@ -27,8 +27,11 @@ $t=3$), and the three contracts \texttt{ConsentRegistry} (CR),
 \texttt{UnlearningOracle} (UO), \texttt{FLGatekeeper} (GK); any chain
 reader is an \emph{auditor}. \sysname runs
 FedAvg~\cite{mcmahan2017fedavg},
-$\theta^{(r+1)}=\sum_{k\in K_r}\frac{n_k}{\sum_{j\in K_r} n_j}\,
-\theta^{(r+1)}_k$, with the participant set $K_r$ fixed to
+\begin{equation}\label{eq:fedavg}
+\theta^{(r+1)}=\sum_{k\in K_r}\frac{n_k}{\sum_{j\in K_r} n_j}\,
+\theta^{(r+1)}_k,
+\end{equation}
+with the participant set $K_r$ in~\eqref{eq:fedavg} fixed to
 $\mathit{GK}.\mathtt{validateRound}$'s return value, not an
 orchestrator-chosen subset: consent is enforced at the membership, not
 the gradient, level.
@@ -42,15 +45,17 @@ terminal $F=\{\textsc{Unl}\}$, and states
 $S=\{\textsc{Ina},\textsc{Act},\textsc{Sus},\textsc{Rev},\textsc{Exp},
 \textsc{Unl}\}$ (inactive, active, suspended, revoked, expired,
 unlearned). Its nine $\delta$-edges over the eight events $\Sigma$ are
-\begin{align*}
+\begin{equation}\label{eq:delta}
+\begin{aligned}
 &\texttt{grant}\!:\textsc{Ina}\!\to\!\textsc{Act},\;\;
 \{\texttt{modify},\texttt{tick}\}\!:\textsc{Act}\!\circlearrowleft,\\
 &\texttt{revoke}\!:\textsc{Act}\!\to\!\textsc{Rev},\;\;
 \texttt{expire}\!:\textsc{Act}\!\to\!\textsc{Exp},\\
 &\texttt{suspend}/\texttt{resume}\!:\textsc{Act}\!\leftrightarrow\!\textsc{Sus},\\
 &\texttt{unlearn\_verified}\!:\{\textsc{Rev},\textsc{Exp}\}\!\to\!\textsc{Unl}.
-\end{align*}
-Safety is immediate from $\delta$: no edge targets \textsc{Act} from
+\end{aligned}
+\end{equation}
+Safety is immediate from~\eqref{eq:delta}: no edge targets \textsc{Act} from
 $\{\textsc{Rev},\textsc{Exp}\}$, \texttt{unlearn\_verified} is
 oracle-only, and the lone \texttt{validateRound} edge \texttt{tick}
 guards on $\rho_r\in\mathcal{P}$. \texttt{ConsentRegistry}
@@ -74,15 +79,13 @@ SISA-Fed~\cite{bourtoule2021sisa} (per-shard retrain), gradient ascent
 FedEraser~\cite{liu2021federaser} (history replay with 3-round
 calibration).
 
-\emph{Membership-inference attacks.} Against $\mathit{DS}_i$'s training
-set $\mathcal{D}_i$ (member set $M$), three statistically independent
-attacks each score $f_{\mathrm{post}}$ in $[0,1]$ (higher $=$ more
-residual membership), so false negatives rarely coincide. The
-\emph{shadow-model} attack~\cite{shokri2017mia}, adapted to
-reconstruction models~\cite{hilprecht2019monte}, is the supervised
-baseline: $S=5$ shadow autoencoders yield ``in''/``out'' reconstruction
-errors that train an MLP classifier, $s_{\mathrm{sh}}=$ the fraction of
-$M$ it flags ``in.'' \emph{LiRA}~\cite{carlini2022lira}, the strongest,
+\emph{Membership-inference attacks.} Against $\mathit{DS}_i$'s set $\mathcal{D}_i$ (members $M$), three
+independent attacks each score $f_{\mathrm{post}}$ in $[0,1]$ (higher
+$=$ more residual membership). The \emph{shadow-model}
+attack~\cite{shokri2017mia}, adapted to reconstruction
+models~\cite{hilprecht2019monte}, trains an MLP classifier on the
+``in''/``out'' reconstruction errors of $S=5$ shadow autoencoders;
+$s_{\mathrm{sh}}=$ the fraction of $M$ it flags ``in.'' \emph{LiRA}~\cite{carlini2022lira}, the strongest,
 fits in-/out-pool Gaussians to the log-reconstruction-errors of
 $n_{\mathrm{in}}=n_{\mathrm{out}}=4$ reference models per $x\in M$ and
 takes $s_{\mathrm{lira}}=$ TPR at an $\alpha$-controlled FPR
@@ -102,14 +105,14 @@ binding the UA to one chain against cross-chain replay. Writing
 $R(\Sigma)$ for the distinct registered signers of $h_u$ and
 $h_{\mathrm{rev}}(i)=\mathit{CR}.\mathtt{modelHashAtRevocation}(i)$, the
 oracle finalises iff
-\begin{equation*}
+\begin{equation}\label{eq:accept}
 \begin{aligned}
 \mathrm{accept}(u,\Sigma):\ &\Big(\textstyle\bigwedge_{j} s_j^{\mathrm{fp}}<5500\Big)
   \,\wedge\, |R(\Sigma)|\ge t\\[-1pt]
   &\wedge\; h_{\mathrm{pre}}=h_{\mathrm{rev}}(i)
   \,\wedge\, \mathrm{state}(i)\in\{\textsc{Rev},\textsc{Exp}\}.
 \end{aligned}
-\end{equation*}
+\end{equation}
 The last two conjuncts pin the UA to the exact model version and block
 re-attestation of an already-\textsc{Unl} token, closing the replay
 loop. With $\tauMIA^{\mathrm{fp}}=5500$ just above the $0.5$
@@ -161,5 +164,5 @@ violation, and model-hash update emits an indexed event.
 either a valid UA drives the token to \textsc{Unl} or the gatekeeper
 logs a public \texttt{ComplianceViolation}, degrading to ``no
 training,'' not ``unconsented training.'' \emph{Verifiability:} the
-oracle finalises iff $\mathrm{accept}(u,\Sigma)$ holds. Mechanised
+oracle finalises iff $\mathrm{accept}(u,\Sigma)$~\eqref{eq:accept} holds. Mechanised
 proofs are left to future work.

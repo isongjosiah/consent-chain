@@ -1,8 +1,8 @@
 \section{Related Work}
 \label{sec:related}
 
-Three threads each solve part of the problem but none their conjunction
-(Table~\ref{tab:related}). MedRec~\cite{azaria2016medrec} records consent
+Three threads each solve part of the problem but none their conjunction.
+MedRec~\cite{azaria2016medrec} records consent
 immutably yet treats the record as an endpoint: no training is gated by
 it. Federated-unlearning methods, SISA~\cite{bourtoule2021sisa} (shard
 retraining), FedEraser~\cite{liu2021federaser} (history replay), and
@@ -41,12 +41,13 @@ Zuo et al.~\cite{zuo2024blockchain}     & No      & Yes & Partial & Yes     & No
 \end{tabular}}
 \end{table}
 
-Each prior system thus occupies at most one column of
-Table~\ref{tab:related}; \sysname supplies the missing edges between
-them: consent state gating rounds (vertex~A) under \clsm properties, any
+Each prior system thus covers at most one dimension; \sysname supplies
+the missing edges between them: consent state gating rounds (vertex~A)
+under \clsm properties, any
 unlearning paradigm as a black box (vertex~B), and three-MIA
 verification (vertex~C) driving the consent transition. Chain choice is
 an economic, not a protocol, decision: identical contracts run on
 PureChain~\cite{kim2025purechain}, a public gas-free PoA$^2$ chain, and
 gas-based Amoy, a difference we quantify in
-Section~\ref{sec:evaluation}.
+Section~\ref{sec:evaluation}. Table~\ref{tab:related} summarises this
+positioning.
