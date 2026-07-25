@@ -1,44 +1,42 @@
 \section{Related Work}
 \label{sec:related}
 
-\smallskip
-MedRec~\cite{azaria2016medrec} records patient consent immutably
-on-chain (the durability and owner-exclusive control we inherit), but
-treats the record as the protocol \emph{endpoint}: no training is gated
-by it, and nothing shows a withdrawal produced a model update.
-\emph{Gap}: consent is recorded but does not influence training.
+Three threads each approach part of the problem. Consent on-chain comes
+first: MedRec~\cite{azaria2016medrec} records patient consent immutably
+(the durability and owner-exclusive control we inherit), but treats the
+record as the protocol \emph{endpoint}: no training is gated by it, and
+nothing shows a withdrawal produced a model update. The consent record
+is authoritative yet inert.
 
-\smallskip
-SISA~\cite{bourtoule2021sisa} pre-shards data so removal retrains only
-the affected shard; FedEraser~\cite{liu2021federaser} replays
-aggregation history with calibration; gradient-ascent methods take a few
-negative-rate steps on the data to remove. None of these, nor the
-broader federated-unlearning literature~\cite{romandini2024fusurvey},
+That inertness matters because the unlearning a withdrawal should
+trigger is itself unanchored. SISA~\cite{bourtoule2021sisa} pre-shards
+data so removal retrains only the affected shard;
+FedEraser~\cite{liu2021federaser} replays aggregation history with
+calibration; gradient-ascent methods take a few negative-rate steps.
+None of these, nor the broader survey~\cite{romandini2024fusurvey},
 specifies how unlearning is triggered, by whom, or how it binds back to
-consent. \emph{Gap}: unlearning is implementable but not bound
-end-to-end to the consent that should trigger it.
+consent: the mechanism exists but hangs free of the consent that should
+invoke it.
 
-\smallskip
-BlockFL~\cite{kim2020blockchained} logs device-side updates on-chain and
-BFLC~\cite{li2020bflc} replaces the aggregator with committee consensus,
-but neither encodes consent. Closest to us, Zuo et
-al.~\cite{zuo2024blockchain} certify IoT federated unlearning on-chain;
-yet their ledger records that an unlearning routine \emph{ran}, not that
-the model \emph{forgot}, and no consent lifecycle gates training.
-Membership inference~\cite{shokri2017mia,carlini2022lira,choquettechoo2021labelonly}
-is the canonical forgetting test, though a single attack can overstate
-it~\cite{hayes2024inexact}, motivating our three-attack conjunction.
-\emph{Gap}: updates are auditable, but consent semantics and
-\emph{measured} forgetting verification are absent.
+Blockchain-FL brings computation on-chain but still not consent:
+BlockFL~\cite{kim2020blockchained} logs device updates and
+BFLC~\cite{li2020bflc} swaps the aggregator for committee consensus, yet
+a joined participant cannot withdraw without trusting the orchestrator.
+Closest to us, Zuo et al.~\cite{zuo2024blockchain} certify IoT federated
+unlearning on-chain, but their ledger records that an unlearning routine
+\emph{ran}, not that the model \emph{forgot}. Whether it forgot is what
+membership inference~\cite{shokri2017mia,carlini2022lira,choquettechoo2021labelonly}
+measures, though a single attack can overstate
+it~\cite{hayes2024inexact}, motivating our three-attack conjunction; yet
+no prior system uses these scores as an on-chain acceptance criterion.
 
-\smallskip
-Across the four dimensions (consent representation, unlearning
-trigger/method, verification, on-chain footprint), each prior system
-covers at most one. \sysname addresses all four in one chain-enforced
-protocol at gas-free cost: MedRec's registry (vertex~A) under \clsm
-properties, any unlearning paradigm as a black box (vertex~B), and
-three-MIA verification (vertex~C) gating the consent transition: the
-missing edge. Chain choice matters at IoT scale; we quantify this
+Each thread thus supplies one vertex, consent representation, an
+unlearning method, a forgetting test, but none of the edges between
+them. \sysname binds all three in one chain-enforced protocol at
+gas-free cost: MedRec's registry (vertex~A) under \clsm properties, any
+unlearning paradigm as a black box (vertex~B), and three-MIA
+verification (vertex~C) gating the consent transition. Chain choice
+matters at IoT scale; we quantify this
 (Section~\ref{sec:evaluation}) against PureChain~\cite{kim2025purechain},
 a public, gas-free, EVM-compatible PoA$^2$ chain, a substrate rather
 than a contribution, on which the protocol is identical to a gas-based
