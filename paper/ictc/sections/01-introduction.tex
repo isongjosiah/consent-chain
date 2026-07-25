@@ -1,33 +1,23 @@
 \section{Introduction}
 \label{sec:introduction}
 
-Federated learning (FL) trains a shared model across decentralised
-clients without centralising their data~\cite{mcmahan2017fedavg} and is
-often the only legally viable option in consumer IoT. Yet GDPR
-Articles~7 and~17 demand more than privacy: consent must be
-purpose-granular and revocable, with revocation propagating into the
-model. Federated unlearning (FUL) erases a client's data and its
-influence, but a bare withdrawal signal is a one-shot trigger, not an
-enforced state: it cannot express purpose-scoped, time-bounded, or
-partial consent, and nothing binds round selection to honour it, so
-training may continue between request and claimed erasure, unrecorded.
-Nor does running an algorithm evidence forgetting: approximate
-unlearning, the only kind tractable at FL scale, gives no closed-form
-guarantee, fails \emph{silently}, and is self-reported by the controller
-that owes it. Membership-inference attacks
-(MIAs)~\cite{shokri2017mia,carlini2022lira,choquettechoo2021labelonly}
-detect this residual signal, and the check is not redundant: on CASAS,
-gradient ascent, FedEraser, and even exact retraining leave a signal
-above threshold (Section~\ref{sec:eval-casas}). \sysname therefore
-couples \emph{dynamic consent}, an auditable state gating every round
-\emph{before} training, with \emph{verifiable machine unlearning}, where
-erasure must pass independent MIAs before consent advances. Prior
-threads each supply one piece: consent ledgers
-(MedRec~\cite{azaria2016medrec}) cannot gate training; unlearning
-methods (SISA~\cite{bourtoule2021sisa}, FedEraser~\cite{liu2021federaser})
-leave trigger and verification off-chain;
-blockchain-FL~\cite{kim2020blockchained,li2020bflc} logs updates without
-consent or forgetting verification.
+Federated learning (FL) trains a shared model without centralising
+client data~\cite{mcmahan2017fedavg}, often the only legally viable
+option in consumer IoT. But GDPR Articles~7 and~17 demand
+purpose-granular, revocable consent whose withdrawal propagates into the
+model. Federated unlearning (FUL) erases a client's data and influence,
+yet a bare withdrawal is a one-shot trigger, not a scoped state binding
+round selection, so training on revoked data may continue unrecorded;
+and approximate unlearning, the only kind tractable at FL scale, offers
+no guarantee, fails \emph{silently}, and is self-reported by the
+controller that owes it. \sysname couples \emph{dynamic consent} with
+\emph{verifiable machine unlearning} in one chain-enforced protocol,
+closing both gaps. Prior work covers single corners:
+MedRec~\cite{azaria2016medrec} cannot gate training;
+SISA~\cite{bourtoule2021sisa}/FedEraser~\cite{liu2021federaser} leave
+trigger and verification off-chain;
+blockchain-FL~\cite{kim2020blockchained,li2020bflc} adds neither consent
+nor forgetting verification.
 
 \sysname makes four contributions: (1)~a Consent Lifecycle State Machine
 (\clsm) of six states and nine transitions with four stated safety and

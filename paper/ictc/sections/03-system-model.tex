@@ -1,11 +1,6 @@
 \section{System Model and Framework}
 \label{sec:system-model}\label{sec:framework}
 
-We fix the entities, the federated-learning baseline, and the consent
-automaton, then the three framework layers (the \clsm on-chain
-instantiation, the Verifiable Unlearning Protocol, and the
-three-contract architecture that closes the automation loop), and end
-with the threat model and the properties they satisfy.
 Figure~\ref{fig:arch} gives the layered overview.
 
 \begin{figure}[t]
@@ -19,7 +14,7 @@ $\rightarrow$attest$\rightarrow$finalise is the edge \sysname closes.}
 \label{fig:arch}
 \end{figure}
 
-\subsection{Entities}
+\subsection{System model}
 
 Six entities
 $\langle \mathit{DS}_i, \mathit{DC}, \{\mathit{FL}_k\}, \mathit{VC},
@@ -29,17 +24,14 @@ NFT), controller $\mathit{DC}$ (drives the round loop, triggers
 unlearning on revocation), devices $\mathit{FL}_k$ (local SGD), Verifier
 Committee $\mathit{VC}=\{v_1,\dots,v_n\}$ ($n=5$ ECDSA keys, threshold
 $t=3$), and the three contracts \texttt{ConsentRegistry} (CR),
-\texttt{UnlearningOracle} (UO), \texttt{FLGatekeeper} (GK). Any chain
-reader is an \emph{auditor}.
-
-\subsection{Federated learning baseline}
-
-\sysname runs FedAvg~\cite{mcmahan2017fedavg},
+\texttt{UnlearningOracle} (UO), \texttt{FLGatekeeper} (GK); any chain
+reader is an \emph{auditor}. \sysname runs
+FedAvg~\cite{mcmahan2017fedavg},
 $\theta^{(r+1)}=\sum_{k\in K_r}\frac{n_k}{\sum_{j\in K_r} n_j}\,
-\theta^{(r+1)}_k$, with one restriction: the participant set $K_r$
-\emph{must} be the value returned by
-$\mathit{GK}.\mathtt{validateRound}$, not an orchestrator-chosen
-subset: consent enforced at the membership, not the gradient, level.
+\theta^{(r+1)}_k$, with the participant set $K_r$ fixed to
+$\mathit{GK}.\mathtt{validateRound}$'s return value, not an
+orchestrator-chosen subset: consent is enforced at the membership, not
+the gradient, level.
 
 \subsection{Consent Lifecycle State Machine}
 \label{sec:clsm-formal}
@@ -74,28 +66,24 @@ blocks all rounds (liveness). Within $\dmax$ blocks the controller must
 unlearn, score $f_{\mathrm{post}}$ with the three MIAs, assemble the
 Unlearning Attestation, gather $t$-of-$n$ signatures, and submit.
 
-\subsubsection{Approximate unlearning methods}
-
-\sysname is method-agnostic over the three families of
-Section~\ref{sec:related}: SISA-Fed~\cite{bourtoule2021sisa} (per-shard
-retrain), gradient ascent
+\emph{Unlearning methods.} \sysname is method-agnostic over the three
+families of Section~\ref{sec:related}:
+SISA-Fed~\cite{bourtoule2021sisa} (per-shard retrain), gradient ascent
 ($\theta^{(j+1)}=\theta^{(j)}+\eta\,\nabla\mathcal{L}(\theta^{(j)};
 \mathcal{D}_i)$, $k=10$ steps, $\eta=10^{-4}$), and
 FedEraser~\cite{liu2021federaser} (history replay with 3-round
 calibration).
 
-\subsubsection{Three independent membership inference attacks}
-
-Against $\mathit{DS}_i$'s training set $\mathcal{D}_i$ (member set $M$),
-three statistically independent attacks each score $f_{\mathrm{post}}$
-in $[0,1]$ (higher $=$ more residual membership), so false negatives
-rarely coincide. The \emph{shadow-model}
-attack~\cite{shokri2017mia}, adapted to reconstruction
-models~\cite{hilprecht2019monte}, is the supervised baseline: $S=5$
-shadow autoencoders yield ``in''/``out'' reconstruction errors that
-train an MLP classifier, $s_{\mathrm{sh}}=$ the fraction of $M$ it flags
-``in.'' \emph{LiRA}~\cite{carlini2022lira}, the strongest, fits
-in-/out-pool Gaussians to the log-reconstruction-errors of
+\emph{Membership-inference attacks.} Against $\mathit{DS}_i$'s training
+set $\mathcal{D}_i$ (member set $M$), three statistically independent
+attacks each score $f_{\mathrm{post}}$ in $[0,1]$ (higher $=$ more
+residual membership), so false negatives rarely coincide. The
+\emph{shadow-model} attack~\cite{shokri2017mia}, adapted to
+reconstruction models~\cite{hilprecht2019monte}, is the supervised
+baseline: $S=5$ shadow autoencoders yield ``in''/``out'' reconstruction
+errors that train an MLP classifier, $s_{\mathrm{sh}}=$ the fraction of
+$M$ it flags ``in.'' \emph{LiRA}~\cite{carlini2022lira}, the strongest,
+fits in-/out-pool Gaussians to the log-reconstruction-errors of
 $n_{\mathrm{in}}=n_{\mathrm{out}}=4$ reference models per $x\in M$ and
 takes $s_{\mathrm{lira}}=$ TPR at an $\alpha$-controlled FPR
 ($\alpha=0.05$; $\alpha=0.5$ ablation in Section~\ref{sec:discussion}).
@@ -103,10 +91,8 @@ The \emph{label-only} attack~\cite{choquettechoo2021labelonly}, seeing
 only the reconstruction decision, thresholds at FPR $0.05$ and takes
 $s_{\mathrm{lo}}=$ the fraction of $M$ below it.
 
-\subsubsection{Unlearning Attestation and hash binding}
-
-The Unlearning Attestation is the tuple
-$u=\langle i, h_{\mathrm{pre}}, h_{\mathrm{post}}, m,
+\emph{Attestation and hash binding.} The Unlearning Attestation is the
+tuple $u=\langle i, h_{\mathrm{pre}}, h_{\mathrm{post}}, m,
 s_{\mathrm{sh}}^{\mathrm{fp}}, s_{\mathrm{lira}}^{\mathrm{fp}},
 s_{\mathrm{lo}}^{\mathrm{fp}}, t_u\rangle$: token ID,
 pre-/post-un\-learning model hashes, method $m\in\{0,1,2\}$, fixed-point
@@ -144,10 +130,9 @@ token and unblocks the gatekeeper. \texttt{FLGatekeeper} gates rounds:
 \texttt{validateRound} reverts on any ineligible participant or pending
 unlearning (encoding liveness), and permissionless \texttt{reportTimeout}
 emits \texttt{ComplianceViolation} past the $\dmax$ deadline. The loop
-is closed: a revocation fires \texttt{recordPendingUnlearning}, and only
-a valid UA, via the oracle's \texttt{unblock}, releases the
-gatekeeper, giving
-consent$\rightarrow$unlearn$\rightarrow$verify$\rightarrow$attest$\rightarrow$finalise.
+closes when a revocation fires \texttt{recordPendingUnlearning} and only
+a valid UA, via the oracle's \texttt{unblock}, releases the gatekeeper
+(Figure~\ref{fig:arch}).
 
 \subsection{Threat model}
 
@@ -167,15 +152,14 @@ supplementary \texttt{docs/threat-model.md}.
 \label{sec:properties}
 
 \sysname satisfies four properties: the first pair by construction, the
-second empirically (Section~\ref{sec:evaluation}).
-Safety (consent integrity): every $k$ admitted by
-\texttt{validateRound} has $\mathrm{state}(k)=\textsc{Act}$ with
-$\rho_r\in\mathcal{P}_k$, and $\nexists$ $\delta$-path
-$\textsc{Rev}\!\to\!\textsc{Act}$. Audit completeness: every
-transition, attestation, violation, and model-hash update emits an
-indexed event. Enforceability (liveness): within $\dmax$ blocks
-of a revocation, either a valid UA drives the token to \textsc{Unl} or
-the gatekeeper logs a public \texttt{ComplianceViolation}, degrading to
-``no training,'' not ``unconsented training.'' Verifiability:
-the oracle finalises iff $\mathrm{accept}(u,\Sigma)$ holds. Mechanised
+second empirically (Section~\ref{sec:evaluation}). \emph{Safety (consent
+integrity):} \texttt{validateRound} admits only \textsc{Act} tokens with
+$\rho_r\in\mathcal{P}_k$, and no $\delta$-path re-enters \textsc{Act}
+(above). \emph{Audit completeness:} every transition, attestation,
+violation, and model-hash update emits an indexed event.
+\emph{Enforceability (liveness):} within $\dmax$ blocks of a revocation,
+either a valid UA drives the token to \textsc{Unl} or the gatekeeper
+logs a public \texttt{ComplianceViolation}, degrading to ``no
+training,'' not ``unconsented training.'' \emph{Verifiability:} the
+oracle finalises iff $\mathrm{accept}(u,\Sigma)$ holds. Mechanised
 proofs are left to future work.
