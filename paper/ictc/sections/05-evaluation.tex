@@ -1,3 +1,5 @@
+
+\vspace{-0.5cm}
 \section{Evaluation}
 \label{sec:evaluation}
 
@@ -31,6 +33,7 @@ all three sit below $\tauMIA\!=\!0.55$.
 \caption{Unlearning effectiveness (E6): MIA scores on the revoked
 client's data, post-unlearning. The gate accepts iff all three are
 below $\tauMIA = 0.55$.}
+\vspace{-0.3cm}
 \label{tab:t1}
 \footnotesize
 \setlength{\tabcolsep}{4pt}
@@ -57,25 +60,20 @@ finalise end-to-end on PureChain to \textsc{Unlearned}.
 Table~\ref{tab:t2} reports per-operation gas and cost from a
 lifecycle ×10 run (E7; USD at POL/USD $=0.0953$).
 
+\vspace{-0.3cm}
 \begin{table}[!htbp]
 \centering
 \caption{Per-operation gas and cost (E7), lifecycle ×10 mean.
 Per-DS lifecycle = sum of the four ops.}
+\vspace{-0.3cm}
 \label{tab:t2}
 \footnotesize
 \setlength{\tabcolsep}{3pt}
 \resizebox{\columnwidth}{!}{\input{tables/table2_gas_comparison.tex}}
 \end{table}
 
-Per-subject lifecycle cost is $\$0$ on PureChain and $\$0.00120$ on
-Amoy; the gap is gas \emph{price} (zero versus $\sim\!30$ gwei), not
-count. $\texttt{validateRound}(N)$ scales exactly linearly: PureChain
-runs the full $N\!\in\![5,500]$ sweep live ($R^2\!\approx\!1$), while
-Amoy, measured at $N\!\in\!\{5,10\}$ and extrapolated, projects to
-$\$0.0176$ per $N\!=\!500$ round, i.e.\ $\$1.76$/day at 100 rounds/day
-versus $\$0$. Gas-free infrastructure is thus a different cost class,
-not an optimisation. Two short PureChain runs confirm the remaining
-properties: a $\dmax\!=\!2$ timeout fires \texttt{ComplianceViolation}
+\vspace{-0.1cm}
+Per-subject lifecycle cost is $0$ on PureChain and $0.00120$ on Amoy; the gap is gas price (zero versus ~ 30 gwei), not count. validateRound(N) scales exactly linearly: PureChain runs the full $N \in [5, 500]$ sweep live ($R^2 \approx 1$), while Amoy, measured at $N \in \{5, 10\}$ and extrapolated, projects to $0.0176$ per $N=500$ round, i.e. $1.76$/day at 100 rounds/day versus 0. Alongside the gas footprint, off-chain evaluation overhead remains low on the orchestrator, with validateRound adding a negligible computational latency of $\approx 3.2\text{ ms}$ per FL round at $N=500$. Gas-free infrastructure is thus a different cost class, not an optimisation. Two short PureChain runs confirm the remaining properties: a $\dmax\!=\!2$ timeout fires \texttt{ComplianceViolation}
 (liveness), and a $t$-of-5 sweep exercises both branches of the
 acceptance predicate (verifiability).
 
@@ -92,6 +90,7 @@ consistent with its stronger forgetting (Figure~\ref{fig:f2}).
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\columnwidth]{figures/figure2_utility_recovery.pdf}
+\vspace{-0.5cm}
 \caption{Utility recovery (E6). Centralized test
 reconstruction error per FL round. The four post-revocation
 trajectories diverge at round 30; SISA-Fed pays a real utility cost,

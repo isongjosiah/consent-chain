@@ -1,6 +1,8 @@
-\section{Related Work}
+\vspace{-0.3cm}
+\section{related work}
 \label{sec:related}
 
+\vspace{-0.3cm}
 Three threads each solve part of the problem but none their conjunction.
 MedRec~\cite{azaria2016medrec} records consent
 immutably yet treats the record as an endpoint: no training is gated by
@@ -18,12 +20,14 @@ inference~\cite{shokri2017mia,carlini2022lira,choquettechoo2021labelonly}
 measures (a single attack can overstate it~\cite{hayes2024inexact},
 motivating our three-attack conjunction).
 
-\begin{table}[t]
+\vspace{-0.4cm}
+\begin{table}[!htbp]
 \centering
 \caption{Prior work across the four contribution dimensions plus cost.
 \emph{Consent} = gates training (not merely recorded); \emph{Verify} =
 measures forgetting (not merely records the action); \emph{Partial} =
 recorded but not enforced or measured.}
+\vspace{-0.3cm}
 \label{tab:related}
 \footnotesize
 \setlength{\tabcolsep}{4pt}
@@ -41,9 +45,10 @@ Zuo et al.~\cite{zuo2024blockchain}     & No      & Yes & Partial & Yes     & No
 \end{tabular}}
 \end{table}
 
+\vspace{-0.3cm}
 Each prior system thus covers at most one dimension; \sysname supplies
 the missing edges between them: consent state gating rounds under \clsm properties, any
 unlearning paradigm as a black box, and three-MIA verification driving the consent
 transition. Chain choice is an economic, not a protocol, decision: identical contracts run on
-PureChain~\cite{kim2025purechain}, a public gas-free PoA$^2$ chain, and gas-based Amoy, a difference we quantify in
+PureChain~\cite{ajakwe2025ebctc}, a public gas-free PoA$^2$ chain, and gas-based Amoy, a difference we quantify in
 Section~\ref{sec:evaluation}. Table~\ref{tab:related} summarises this positioning.

@@ -1,4 +1,4 @@
-\section{Discussion and Conclusion}
+\section{discussion and conclusion}
 \label{sec:discussion}\label{sec:conclusion}
 
 Our gate is deliberately conservative: shadow MIA conflates
@@ -8,11 +8,7 @@ below $\tauMIA$ errs toward false rejection, and LiRA, which resists the
 confound but is $\alpha$-sensitive, is co-calibrated with $\tauMIA$ per
 model class. \sysname targets \emph{approximate} unlearning, meeting
 GDPR Art.~17's ``reasonable measures'' by predicate plus on-chain audit
-rather than formal erasure; formal-erasure and ECDSA-leakage guarantees
-(BLS-collapsed in the journal), and off-chain training on revoked data
-(unpreventable, yet a detectable missing UA), stay out of scope. Its
-consent, liveness/verifiability, and audit mechanisms discharge GDPR
-Arts.~7/17/21, EU AI Act Arts.~15/26, and CCPA \S~1798.105, and run
+rather than formal erasure; formal-erasure and ECDSA-leakage guarantees (BLS-collapsed in the journal), and while off-chain training on revoked data by a malicious orchestrator cannot be physically prevented prior to round execution, any resulting unlearned model will fail to produce a valid attestation, rendering non-compliant execution publicly detectable on-chain. Its consent, liveness/verifiability, and audit mechanisms discharge GDPR Arts.~7/17/21, EU AI Act Arts.~15/26, and CCPA \S~1798.105, and run
 unchanged on a permissioned-yet-public PoA$^2$ chain or permissionless
 Amoy, so the economic model, not the protocol, is the deployment
 variable.
