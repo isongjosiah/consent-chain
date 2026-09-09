@@ -78,7 +78,7 @@ Section V already owns this ("deliberately conservative… 'reasonable measures'
 - [ ] Add the IEEE copyright notice per the acceptance instructions.
 - [ ] Re-run IEEE PDF eXpress after edits; confirm still exactly 4 pages.
 - [ ] Check the notification email for whether ICTC wants a summary-of-changes field in EDAS (usually not, but cheap to confirm).
-- [ ] Confirm the acknowledgment grant numbers are final (IITP/NRF/ITRC percentages sum to 100 — good).
+- [x] Acknowledgment updated 2026-09-10 to four grants at 25 % each (IITP, NRF Priority Research Centers, ITRC, and NRF Basic Science Research RS-2025-25431637). Sums to 100.
 - [ ] Final upload via EDAS before the camera-ready deadline in the notification.
 
 ---
@@ -105,3 +105,15 @@ Paper is back to **exactly 4 pages** after every edit below; `latexmk` clean, no
 
 **Still open:**
 - `ajakwe2025federated` was added to `references.bib` but is never `\cite`d, so it does not appear in the reference list. Citing it costs ~3 lines of references, which the 4-page budget does not currently have.
+
+### Acknowledgment update (2026-09-10)
+
+The fourth grant added 4 lines and pushed the paper to 5 pages (ref [16] spilling). Recovered without touching any claim:
+
+- Fig. 2 regenerated shorter (`figsize` 2.6 → 2.35 in) with a shortened y-label, `"Test recon. error (MSE)"` — the original label was clipped at the reduced height, and the caption still names the centralized test set.
+- Fig. 2 caption trimmed by one line.
+- §V: "a permissioned-yet-public PoA² chain or permissionless Amoy" → "PoA² or permissionless Amoy"; conclusion opening tightened by a line.
+
+Two space levers were tried and **rejected**: tightening the bibliography `itemsep` past `-0.65ex` overlapped adjacent reference entries at `-0.95ex`, and shrinking Fig. 2 to 2.25 in clipped the y-label. Both are dead ends if more space is ever needed.
+
+Minor typography: added the missing spaces in "Korea(NRF)" and "Education(RS-2025-25431637" from the supplied text. Say the word if the funder requires it character-exact.

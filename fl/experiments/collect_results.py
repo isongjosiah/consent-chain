@@ -339,7 +339,7 @@ def render_figure2(post_revoke_dir: Path, out_path: Path) -> None:
         "post_federaser": (0, (3, 1, 1, 1)),
     }
 
-    fig, ax = plt.subplots(figsize=(3.5, 2.6), dpi=300)
+    fig, ax = plt.subplots(figsize=(3.5, 2.35), dpi=300)
     for key, label in labels.items():
         if key not in series:
             continue
@@ -353,7 +353,7 @@ def render_figure2(post_revoke_dir: Path, out_path: Path) -> None:
             alpha=0.7, ha="right")
 
     ax.set_xlabel("FL round")
-    ax.set_ylabel("Centralized test recon (MSE)")
+    ax.set_ylabel("Test recon. error (MSE)")
     ax.set_xlim(1, 40)
     ax.grid(True, alpha=0.3)
     ax.legend(loc="upper right", fontsize=7, frameon=False)

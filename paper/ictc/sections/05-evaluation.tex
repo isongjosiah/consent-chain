@@ -40,9 +40,9 @@ below $\tauMIA = 0.55$.}
 \resizebox{\columnwidth}{!}{\input{tables/table1_unlearning.tex}}
 \end{table}
 
-The gate accepts all three approximate methods: shadow MIA reads
-$0.438$/$0.254$/$0.523$ (gradient ascent/SISA-Fed/FedEraser), with LiRA
-and label-only far below $\tauMIA$. Strikingly, it \emph{rejects} exact
+The gate accepts all three approximate methods --- shadow MIA
+$0.438$/$0.254$/$0.523$ (gradient ascent/SISA-Fed/FedEraser), LiRA and
+label-only far below $\tauMIA$. Strikingly, it \emph{rejects} exact
 naive retraining, which never trained on client 5: shadow scores
 $0.584>\tauMIA$ because it reads client 5's distinctive traffic
 distribution, not membership~\cite{shokri2017mia}, a confound LiRA
@@ -99,10 +99,9 @@ consistent with its stronger forgetting (Figure~\ref{fig:f2}).
 \centering
 \includegraphics[width=\columnwidth]{figures/figure2_utility_recovery.pdf}
 \vspace{-0.5cm}
-\caption{Utility recovery. Centralized test
-reconstruction error per FL round. The four post-revocation
-trajectories diverge at round 30; SISA-Fed pays a real utility cost,
-gradient ascent and FedEraser converge to within $0.5\%$ of plain
+\caption{Utility recovery. Centralized test reconstruction error per FL
+round. Trajectories diverge at round 30: SISA-Fed pays a real utility
+cost, gradient ascent and FedEraser converge to within $0.5\%$ of plain
 post-revoke by round 40.}
 \label{fig:f2}
 \end{figure}
