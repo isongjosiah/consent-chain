@@ -7,7 +7,7 @@ The two substantive comments converge on things the paper already *names* but do
 
 ---
 
-## Priority 1 — Verifier committee: incentives / collusion (R1 + R3, the shared signal)
+## Priority 1 — Verifier committee: incentives / collusion (R1 + R3, the shared signal) — ✅ DONE
 
 **What they said.** R1: threshold committee is "a trust floor susceptible to verifier collusion without formal zero-knowledge or theoretical erasure guarantees." R3: "detail economic incentives or penalty mechanisms for the verifier committee."
 
@@ -29,7 +29,7 @@ Since two of three reviewers raised this independently, Variant A is worth the s
 
 ---
 
-## Priority 2 — Federation scale (R3)
+## Priority 2 — Federation scale (R3) — ✅ DONE (synthetic-partition run not attempted)
 
 **What they said.** "Evaluating larger client pools beyond small toy testbeds (5–9 clients)."
 
@@ -43,7 +43,7 @@ Since two of three reviewers raised this independently, Variant A is worth the s
 
 ---
 
-## Priority 3 (optional) — "no formal guarantees" framing (R1)
+## Priority 3 (optional) — "no formal guarantees" framing (R1) — ✅ DONE
 
 Section V already owns this ("deliberately conservative… 'reasonable measures' by predicate plus on-chain audit rather than formal erasure"). If you want one clause that reframes it as a design position rather than a gap:
 
@@ -60,20 +60,48 @@ Section V already owns this ("deliberately conservative… 'reasonable measures'
 
 ## Polish checklist (pre-PDF-eXpress)
 
-- [ ] **Index Terms trailing comma:** "…trustworthy AI, IoT," → drop the final comma.
-- [ ] **E6/E7 labels** in Table II, Table III, and Fig. 2 captions are never defined in-text. Either strip them or anchor once, e.g. "(experiment IDs E6–E7 index the runs in docs/eval-protocol.md)."
-- [ ] **PoA² spacing:** the extracted text shows "PoA2chain" run together in §II and §V — check the compiled PDF; likely a missing space/`\xspace` after the superscript macro.
-- [ ] **Fig. 2:** the "revoke @ r=30" annotation appears to collide with the legend box ("Baseline (9 clients)revoke @ r=30" in extraction) — verify the render.
-- [ ] **Ref [15]** "ebctc" → check intended capitalization (eBCTC?); protect with braces in BibTeX.
-- [ ] **Ref [16]** Härterich — diacritic renders oddly in extraction; confirm the umlaut compiles correctly.
-- [ ] **Optional, per your own calibration rule:** contribution (1) says "proved safety and liveness" while III-F says mechanised proofs are future work. "Established by construction" would be the strictly calibrated phrasing. Reviewers didn't object, so your call.
+- [x] **Index Terms trailing comma** — no change needed; the final comma was already absent in the compiled PDF.
+- [x] **E6/E7 labels** — stripped from the Table II, Table III and Fig. 2 captions rather than anchored, since anchoring costs space the page budget did not have.
+- [x] **PoA² spacing** — false alarm. `pdftotext` drops the space after math mode; the PDF renders "PoA² chain" correctly in both §II and §V.
+- [x] **Fig. 2 legend collision** — real. "revoke @ r=30" overprinted "Baseline (9 clients)". Fixed in `fl/experiments/collect_results.py:render_figure2` (annotation moved left of the rule, `ha="right"`, down to 30 % of axis height) and the figure regenerated.
+- [x] **Ref [15] eBCTC** — brace-protected in BibTeX; now renders "eBCTC … K-ETS". Same fix applied to "XS-FedPRS" in [2] and "Monte Carlo" in [16], which had the same lowercasing problem.
+- [x] **Ref [16] Härterich** — already correct. `H\"{a}rterich` compiles fine; the odd rendering was an extraction artefact.
+- [x] **Calibration of contribution (1)** — applied. Now reads "nine transitions whose safety and liveness hold by construction", consistent with III-F leaving mechanised proofs to future work.
 
 ---
 
 ## Camera-ready mechanics
+
+**Blocked on you:** the IEEE copyright notice string (comes from the acceptance email / EDAS), PDF eXpress, and the EDAS upload.
+
 
 - [ ] Add the IEEE copyright notice per the acceptance instructions.
 - [ ] Re-run IEEE PDF eXpress after edits; confirm still exactly 4 pages.
 - [ ] Check the notification email for whether ICTC wants a summary-of-changes field in EDAS (usually not, but cheap to confirm).
 - [ ] Confirm the acknowledgment grant numbers are final (IITP/NRF/ITRC percentages sum to 100 — good).
 - [ ] Final upload via EDAS before the camera-ready deadline in the notification.
+
+---
+
+## Applied edits (session of 2026-09-10)
+
+Paper is back to **exactly 4 pages** after every edit below; `latexmk` clean, no new overfull boxes.
+
+**Regressions fixed first (introduced in commit 3d5f5bd, not part of this brief):**
+- §IV-C cost paragraph had lost its `\$` escapes, `\texttt{}` wrappers and `$\sim\!30$` — rendered as "cost is 0 on PureChain and 0.00120 on Amoy". Restored.
+- §V limitations sentence had lost its verb ("formal-erasure and ECDSA-leakage guarantees (BLS-collapsed in the journal), and while…") — it was an ungrammatical fragment. Rewritten, and the detectability argument kept.
+
+**Brief edits:** P1 Variant A (condensed to ~6 lines) in III-E; P2 scale limitation folded into the §V limitations paragraph; P3 "evidence-based by design" clause.
+
+**Space offsets used** (needed ~7 lines; the paper had zero slack):
+1. Cut the §I roadmap paragraph (brief-sanctioned).
+2. Compressed the closing Related Work paragraph (brief-sanctioned).
+3. Compressed the §IV opening sentence.
+4. Tightened the new P1 and P2 text after first draft.
+
+**Layout bugs found while re-rendering** (caused by the `\vspace{-0.5cm}` before section headings, which only misbehave when a heading lands at a column bottom):
+- "III. SYSTEM MODEL AND FRAMEWORK" was overprinting the last line of §II. Reduced to `-0.2cm`.
+- "IV. EVALUATION" shared a baseline with the preceding "work." Reduced to `-0.2cm`.
+
+**Still open:**
+- `ajakwe2025federated` was added to `references.bib` but is never `\cite`d, so it does not appear in the reference list. Citing it costs ~3 lines of references, which the 4-page budget does not currently have.

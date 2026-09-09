@@ -18,7 +18,7 @@ closing both gaps.
 
 \sysname makes four contributions: (1)~a Consent Lifecycle State Machine
 (\clsm), a soulbound-ERC-721 automaton of six states and nine
-transitions with proved safety and liveness; (2)~a Verifiable Unlearning
+transitions whose safety and liveness hold by construction; (2)~a Verifiable Unlearning
 Protocol (\vup), method-agnostic, accepting a UA iff three
 \emph{independent} MIAs (shadow~\cite{shokri2017mia},
 LiRA~\cite{carlini2022lira}, label-only~\cite{choquettechoo2021labelonly})
@@ -30,9 +30,3 @@ first side-by-side cost comparison; and (4)~a dual-domain evaluation
 BiLSTM) over three approximate-unlearning methods plus exact retraining,
 measuring forgetting, cost, and utility recovery.
 
-The rest of the paper proceeds as follows.
-Section~\ref{sec:related} positions \sysname against prior work;
-Section~\ref{sec:system-model} gives the system and threat models and
-the \clsm/\vup/contract framework; Section~\ref{sec:evaluation} reports
-the dual-domain evaluation; and Section~\ref{sec:discussion} covers
-limitations, regulatory alignment, and concludes.

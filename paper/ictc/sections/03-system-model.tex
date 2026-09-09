@@ -1,4 +1,4 @@
-\vspace{-0.5cm}
+\vspace{-0.2cm}
 \section{system model and framework}
 \label{sec:system-model}\label{sec:framework}
 
@@ -145,8 +145,13 @@ $\dmax$), a \emph{deceptive controller} (three MIAs plus VC $t$-of-$n$
 signatures), a \emph{consent forger} (soulbound NFT, \texttt{dsOwner}
 check), and a \emph{replay attacker} (UA binding
 $(c,i,h_{\mathrm{pre}})$). The committee is the trust floor: $\ge t$
-colluding verifiers can certify an invalid attestation, so
-verifier-incentive design is future work. Colluding participants (an
+colluding verifiers can certify an invalid attestation. Our journal
+remedy stakes verifiers, slashable on a successful challenge:
+$\mathit{DS}_i$, the one party holding $\mathcal{D}_i$ and motivated to
+dispute, contests an accepted UA by exhibiting a contradicting MIA
+evaluation against the attested
+$(h_{\mathrm{pre}},h_{\mathrm{post}})$, with per-attestation committees
+VRF-drawn from a larger pool against pre-collusion. Colluding participants (an
 orthogonal DP layer) and six further classes are out of scope
 (Section~\ref{sec:discussion}); the full per-adversary model is in
 supplementary \texttt{docs/threat-model.md}.

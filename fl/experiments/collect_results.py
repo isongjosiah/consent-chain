@@ -348,7 +348,9 @@ def render_figure2(post_revoke_dir: Path, out_path: Path) -> None:
                 label=label, linewidth=1.4)
 
     ax.axvline(30, color="black", linestyle=":", linewidth=0.8, alpha=0.6)
-    ax.text(30.4, ax.get_ylim()[1] * 0.95, "revoke @ r=30", fontsize=7, alpha=0.7)
+    y0, y1 = ax.get_ylim()
+    ax.text(29.4, y0 + 0.30 * (y1 - y0), "revoke @ r=30", fontsize=7,
+            alpha=0.7, ha="right")
 
     ax.set_xlabel("FL round")
     ax.set_ylabel("Centralized test recon (MSE)")

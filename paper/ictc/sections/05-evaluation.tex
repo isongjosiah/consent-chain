@@ -1,13 +1,13 @@
 
-\vspace{-0.5cm}
-\section{Evaluation}
+\vspace{-0.2cm}
+\section{evaluation}
 \label{sec:evaluation}
 
-We evaluate \sysname on unlearning effectiveness, on-chain cost
-(PureChain versus Polygon Amoy), scalability of round validation to
-$N\!=\!500$, and utility recovery, plus two on-chain demos validating
-the liveness and verifiability properties; the full reproducibility
-recipe is in supplementary \texttt{docs/eval-protocol.md}.
+We evaluate unlearning effectiveness, on-chain cost (PureChain versus
+Polygon Amoy), round-validation scalability to $N\!=\!500$, and utility
+recovery, plus two on-chain demos of the liveness and verifiability
+properties; the reproducibility recipe is in supplementary
+\texttt{docs/eval-protocol.md}.
 
 \subsection{Experimental setup}
 \label{sec:eval-setup}
@@ -30,7 +30,7 @@ all three sit below $\tauMIA\!=\!0.55$.
 
 \begin{table}[!htbp]
 \centering
-\caption{Unlearning effectiveness (E6): MIA scores on the revoked
+\caption{Unlearning effectiveness: MIA scores on the revoked
 client's data, post-unlearning. The gate accepts iff all three are
 below $\tauMIA = 0.55$.}
 \vspace{-0.3cm}
@@ -58,12 +58,12 @@ finalise end-to-end on PureChain to \textsc{Unlearned}.
 \label{sec:eval-gas}
 
 Table~\ref{tab:t2} reports per-operation gas and cost from a
-lifecycle ×10 run (E7; USD at POL/USD $=0.0953$).
+lifecycle $\times 10$ run (USD at POL/USD $=0.0953$).
 
 \vspace{-0.3cm}
 \begin{table}[!htbp]
 \centering
-\caption{Per-operation gas and cost (E7), lifecycle ×10 mean.
+\caption{Per-operation gas and cost, lifecycle $\times 10$ mean.
 Per-DS lifecycle = sum of the four ops.}
 \vspace{-0.3cm}
 \label{tab:t2}
@@ -73,7 +73,15 @@ Per-DS lifecycle = sum of the four ops.}
 \end{table}
 
 \vspace{-0.1cm}
-Per-subject lifecycle cost is $0$ on PureChain and $0.00120$ on Amoy; the gap is gas price (zero versus ~ 30 gwei), not count. validateRound(N) scales exactly linearly: PureChain runs the full $N \in [5, 500]$ sweep live ($R^2 \approx 1$), while Amoy, measured at $N \in \{5, 10\}$ and extrapolated, projects to $0.0176$ per $N=500$ round, i.e. $1.76$/day at 100 rounds/day versus 0. Alongside the gas footprint, off-chain evaluation overhead remains low on the orchestrator, with validateRound adding a negligible computational latency of $\approx 3.2\text{ ms}$ per FL round at $N=500$. Gas-free infrastructure is thus a different cost class, not an optimisation. Two short PureChain runs confirm the remaining properties: a $\dmax\!=\!2$ timeout fires \texttt{ComplianceViolation}
+Per-subject lifecycle cost is $\$0$ on PureChain and $\$0.00120$ on
+Amoy; the gap is gas \emph{price} (zero versus $\sim\!30$ gwei), not
+count. $\texttt{validateRound}(N)$ scales exactly linearly: PureChain
+runs the full $N\!\in\![5,500]$ sweep live ($R^2\!\approx\!1$), while
+Amoy, measured at $N\!\in\!\{5,10\}$ and extrapolated, projects to
+$\$0.0176$ per $N\!=\!500$ round, i.e.\ $\$1.76$/day at 100 rounds/day
+versus $\$0$; off-chain, \texttt{validateRound} adds only ${\approx}3.2$\,ms
+per round at $N\!=\!500$. Gas-free infrastructure is thus a different
+cost class, not an optimisation. Two short PureChain runs confirm the remaining properties: a $\dmax\!=\!2$ timeout fires \texttt{ComplianceViolation}
 (liveness), and a $t$-of-5 sweep exercises both branches of the
 acceptance predicate (verifiability).
 
@@ -91,7 +99,7 @@ consistent with its stronger forgetting (Figure~\ref{fig:f2}).
 \centering
 \includegraphics[width=\columnwidth]{figures/figure2_utility_recovery.pdf}
 \vspace{-0.5cm}
-\caption{Utility recovery (E6). Centralized test
+\caption{Utility recovery. Centralized test
 reconstruction error per FL round. The four post-revocation
 trajectories diverge at round 30; SISA-Fed pays a real utility cost,
 gradient ascent and FedEraser converge to within $0.5\%$ of plain
